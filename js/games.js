@@ -1,3 +1,5 @@
+// js/games.js - FINAL FIX LOGO MUNcul DI HOMEPAGE
+
 document.addEventListener('DOMContentLoaded', () => {
     const containers = {
         popular: document.getElementById('popular-games'),
@@ -68,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
         card.className = 'game-card';
         const logoUrl = logoMap[name] || 'https://via.placeholder.com/150x150/cccccc/000000?text=No+Logo';
         card.innerHTML = `
-            <img src="\( {logoUrl}" alt=" \){name}" loading="lazy">
+            <img src="\( {logoUrl}" alt=" \){name}" loading="lazy" style="max-width:100%; height:auto; max-height:120px; object-fit:contain; border-radius:12px;">
             <p>${name}</p>
         `;
         card.onclick = () => {
