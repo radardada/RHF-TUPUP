@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Up - RHF SETORS</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/forms.css">
+</head>
+<body>
+    <header><!-- Sama seperti index.html --></header>
+
+    <main>
+        <section id="topup-page">
+            <h2>Top Up <span id="game-name"></span></h2>
+            <img id="game-logo" src="" alt="Game Logo" style="width:200px; margin:20px auto; display:block;">
+
+            <form id="topupForm">
+                <label for="playerId">User ID / Player ID:</label>
+                <input type="text" id="playerId" required>
+
+                <label for="zoneId">Zone ID (jika ada):</label>
+                <input type="text" id="zoneId" placeholder="Kosongkan jika tidak ada">
+
+                <label for="amount">Pilih Nominal:</label>
+                <select id="amount" required></select>
+
+                <label for="payment">Metode Pembayaran:</label>
+                <select id="payment"><!-- Sama seperti sebelumnya --></select>
+
+                <button type="submit">Bayar Sekarang</button>
+            </form>
+            <div id="status"></div>
+        </section>
+    </main>
+
+    <script type="module" src="js/firebase-init.js"></script>
+    <script type="module">
+        const game = localStorage.getItem('selectedGame') || 'Unknown Game';
+        document.getElementById('game-name').textContent = game;
+
+        const slug = game.toLowerCase().replace(/[^a-z0-9]/g, '-').replace(/diamonds|uc|points|etc/g, '').trim();
+        document.getElementById('game-logo').src = `images/games/${slug}.png`;
+
+        // Load nominal khusus per game (contoh)
+        const amounts = game.includes('Mobile Legends') ? [12000, 29000, 60000, 172000] : [5000, 20000, 50000, 100000];
+        const select = document.getElementById('amount');
+        amounts.forEach(amt => {
+            const opt = document.createElement('option');
+            opt.value = amt;
+            opt.textContent = `Rp ${new Intl.NumberFormat('id-ID').format(amt)}`;
+            select.appendChild(opt);
+        });
+
+        // Form handler sama seperti sebelumnya, simpan ke Firebase
+    </script>
+</body>
+</html>
