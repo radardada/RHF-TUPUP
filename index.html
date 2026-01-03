@@ -8,6 +8,21 @@
     <!-- Tambah style lain jika ada -->
 </head>
 <body>
+    <!-- Load header otomatis -->
+    <div id="header-container"></div>
+    <script>
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-container').innerHTML = data;
+            });
+    </script>
+
+    <!-- Sisa konten halaman tetap di bawah -->
+    <main>
+        ...
+    </main>
+</body>
     <header>
         <div class="logo-header">
             <img src="images/logo.png" alt="RHF SETORS Logo" class="logo">
