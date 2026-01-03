@@ -6,27 +6,26 @@
     <title>Top Up - RHF SETORS</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/forms.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/footer.css">
 </head>
 <body>
-    <header><!-- Sama seperti index.html --></header>
+    <header><!-- Copy header dari index.html --></header>
 
     <main>
         <section id="topup-page">
             <h2>Top Up <span id="game-name"></span></h2>
-            <img id="game-logo" src="" alt="Game Logo" style="width:200px; margin:20px auto; display:block;">
+            <img id="game-logo" src="" alt="Logo Game" style="width:150px; height:auto; display:block; margin:20px auto; border-radius:10px;">
 
             <form id="topupForm">
-                <label for="playerId">User ID / Player ID:</label>
-                <input type="text" id="playerId" required>
-
-                <label for="zoneId">Zone ID (jika ada):</label>
-                <input type="text" id="zoneId" placeholder="Kosongkan jika tidak ada">
+                <!-- Input dinamis akan ditambah oleh JS -->
+                <div id="dynamic-inputs"></div>
 
                 <label for="amount">Pilih Nominal:</label>
                 <select id="amount" required></select>
 
                 <label for="payment">Metode Pembayaran:</label>
-                <select id="payment"><!-- Sama seperti sebelumnya --></select>
+                <select id="payment"><!-- Opsi sama seperti sebelumnya --></select>
 
                 <button type="submit">Bayar Sekarang</button>
             </form>
@@ -34,25 +33,101 @@
         </section>
     </main>
 
+    <footer><!-- Copy footer --></footer>
+
     <script type="module" src="js/firebase-init.js"></script>
     <script type="module">
-        const game = localStorage.getItem('selectedGame') || 'Unknown Game';
+        const game = localStorage.getItem('selectedGame') || 'Game Tidak Diketahui';
         document.getElementById('game-name').textContent = game;
 
-        const slug = game.toLowerCase().replace(/[^a-z0-9]/g, '-').replace(/diamonds|uc|points|etc/g, '').trim();
+        // Logo sama seperti di homepage
+        let slug = game.toLowerCase().replace(/[: ]/g, '-').replace(/diamonds|uc|points|crystals|md|tokens|gold|cp|shard|bonds|gems/g, '').replace(/--+/g, '-').trim();
         document.getElementById('game-logo').src = `images/games/${slug}.png`;
 
-        // Load nominal khusus per game (contoh)
-        const amounts = game.includes('Mobile Legends') ? [12000, 29000, 60000, 172000] : [5000, 20000, 50000, 100000];
-        const select = document.getElementById('amount');
-        amounts.forEach(amt => {
-            const opt = document.createElement('option');
-            opt.value = amt;
-            opt.textContent = `Rp ${new Intl.NumberFormat('id-ID').format(amt)}`;
-            select.appendChild(opt);
+        // Dynamic inputs berdasarkan game (mirip tokogame.com)
+        const inputsContainer = document.getElementById('dynamic-inputs');
+        let inputs = [];
+
+        if (game.includes('Mobile Legends') || game.includes('Free Fire') || game.includes('PUBG Mobile') || game.includes('Call of Duty')) {
+            inputs = [
+                {label: 'User ID', id: 'playerId', placeholder: 'Masukkan User ID', required: true},
+                {label: 'Zone / Server ID', id: 'zoneId', placeholder: 'Contoh: 1234 (wajib untuk verifikasi)', required: true}
+            ];
+        } else if (game.includes('Valorant')) {
+            inputs = [
+                {label: 'Riot ID', id: 'riotId', placeholder: 'Nama#Tag (contoh: Player#1234)', required: true}
+            ];
+        } else if (game.includes('Genshin Impact') || game.includes('Honkai: Star Rail')) {
+            inputs = [
+                {label: 'UID', id: 'uid', placeholder: 'Masukkan UID kamu', required: true},
+                {label: 'Server', id: 'server', type: 'select', options: ['Asia', 'America', 'Europe', 'TW/HK/MO']}
+            ];
+        } else if (game.includes('Steam Wallet') || game.includes('Google Play')) {
+            inputs = [
+                {label: 'Email Akun', id: 'email', type: 'email', required: true}
+            ];
+        } else if (game.includes('Higgs Domino')) {
+            inputs = [
+                {label: 'User ID', id: 'playerId', placeholder: 'Masukkan User ID', required: true}
+            ];
+        } else {
+            // Default
+            inputs = [{label: 'User ID / Akun', id: 'playerId', required: true}];
+        }
+
+        // Tambah input ke form
+        inputs.forEach(inp => {
+            const label = document.createElement('label');
+            label.textContent = inp.label;
+            label.htmlFor = inp.id;
+
+            let inputEl;
+            if (inp.type === 'select') {
+                inputEl = document.createElement('select');
+                inp.options.forEach(opt => {
+                    const option = document.createElement('option');
+                    option.value = opt;
+                    option.textContent = opt;
+                    inputEl.appendChild(option);
+                });
+            } else {
+                inputEl = document.createElement('input');
+                inputEl.type = inp.type || 'text';
+                inputEl.placeholder = inp.placeholder || '';
+            }
+            inputEl.id = inp.id;
+            if (inp.required) inputEl.required = true;
+
+            inputsContainer.appendChild(label);
+            inputsContainer.appendChild(inputEl);
         });
 
-        // Form handler sama seperti sebelumnya, simpan ke Firebase
+        // Nominal khusus per game (contoh lebih banyak)
+        const amountSelect = document.getElementById('amount');
+        let amounts = {};
+        if (game.includes('Mobile Legends')) {
+            amounts = {86: '86 Diamonds (Weekly)', 172: '172 Diamonds', 257: '257 Diamonds + Bonus', 344: '344 Diamonds', 706: '706 Diamonds + Bonus Starlight'};
+        } else if (game.includes('Free Fire')) {
+            amounts = {70: '70 Diamonds (Membership)', 140: '140 Diamonds', 355: '355 Diamonds', 720: '720 Diamonds + Bonus'};
+        } else {
+            amounts = {5000: 'Rp 5.000', 10000: 'Rp 10.000', 50000: 'Rp 50.000', 100000: 'Rp 100.000'};
+        }
+
+        Object.keys(amounts).forEach(val => {
+            const opt = document.createElement('option');
+            opt.value = val;
+            opt.textContent = amounts[val];
+            amountSelect.appendChild(opt);
+        });
+
+        // Submit form → simpan ke Firebase (sama seperti form-handler.js sebelumnya)
+        document.getElementById('topupForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            // Kumpul semua data input + amount + payment
+            // Push ke Firebase transactions
+            // Update saldo
+            // Tampil status sukses
+        });
     </script>
 </body>
 </html>
