@@ -77,7 +77,7 @@ function loadAllItems() {
         {name: "ShopeePay", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHa2u4zHXUM413-vtJLTrEKVMymrirO_DwWsFMgUC1CA&s"},
 
         // Sisa Voucher (logo baru high quality & resmi)
-        {name: "Candy Crush Saga", url: "https://assets.stickpng.com/images/580b57fcd9996e24bc43c517.png"},
+        {name: "Candy Crush Saga", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3yUVZpUf4dJ1upa4iLsjtJDbP-z-yp7N7wJFzgW3f2A&s=10"},
         {name: "Tinder Plus/Gold", url: "https://pngate.com/wp-content/uploads/2025/04/tinder-main-logo-icon-gradient-flame-1.png"},
         {name: "Steam Wallet Code IDR", url: "https://e7.pngegg.com/pngimages/308/733/png-clipart-steam-computer-icons-killer-queen-black-valve-corporation-video-game-load-the-animation-logo-video-game.png"},
         {name: "Google Play Voucher", url: "https://www.freepnglogos.com/uploads/google-play-png-logo/media-google-play-png-logo-5.png"},
@@ -85,7 +85,7 @@ function loadAllItems() {
         {name: "Vision+ Voucher", url: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Logo_Univision_2019.svg/250px-Logo_Univision_2019.svg.png"}, // Mirip Vision+ (sementara, kalau ada resmi lebih baik)
         {name: "Vidio Voucher", url: "https://www.vhv.rs/dpng/d/17-176969_music-video-icon-png-transparent-png.png"}, // Mirip Vidio (sementara, kalau ada resmi lebih baik)
         {name: "Token PLN", url: "https://thumbs.dreamstime.com/b/september-brazil-photo-illustration-perusahaan-listrik-negara-pln-logo-seen-displayed-smartphone-256461831.jpg"}, // Mirip PLN (sementara)
-        {name: "Fortnite V Bucks", url: "https://assets.stickpng.com/images/5ef09460f3d0af0004ad1776.png"},
+        {name: "Fortnite V Bucks", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTV0ISVsoMmcea1KBh4aUBUs6qpJW-FFZIz0fCKj--7iQ&s"},
         {name: "Twitch Gift Cards", url: "https://www.freeiconspng.com/uploads/twitch-tv-symbol-transparent-background-6.jpg"},
         {name: "Garena Shell Voucher", url: "https://www.pngfind.com/pngs/m/392-3928798_logo-point-blank-garena-png-logo-garena-free.png"},
         {name: "XBOX Gift Cards", url: "https://1000logos.net/wp-content/uploads/2021/11/logo-Xbox.png"},
