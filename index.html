@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/footer.css">
     <style>
-        /* Hero section dengan gradient biru-hijau */
+        /* Hero section dengan gradient biru-hijau (tetap seperti yang kamu suka) */
         #hero {
             background: linear-gradient(to bottom, #007bff, #00c6ff, #28a745);
             color: white;
@@ -39,7 +39,7 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
-        /* KOLOM/TAB KATEGORI DI BAWAH HERO */
+        /* KOLOM TAB KATEGORI DI BAWAH HERO (super rapi & responsif) */
         .category-tabs {
             max-width: 1000px;
             margin: 40px auto;
@@ -93,11 +93,12 @@
             text-align: center;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             cursor: pointer;
-            transition: transform 0.3s;
+            transition: transform 0.3s ease;
         }
 
         .game-card:hover {
             transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
         }
 
         .game-card img {
@@ -108,8 +109,9 @@
         }
 
         .game-card p {
-            margin: 10px 0 0;
+            margin: 12px 0 0;
             font-weight: bold;
+            font-size: 14px;
             color: #333;
         }
 
@@ -120,6 +122,12 @@
             }
             .tab-btn {
                 border-radius: 0;
+            }
+            #hero h2 {
+                font-size: 36px;
+            }
+            #hero input {
+                width: 90%;
             }
         }
     </style>
@@ -147,7 +155,7 @@
             <input type="text" id="game-search" placeholder="Cari game atau voucher...">
         </section>
 
-        <!-- KOLOM KATEGORI BARU DI BAWAH HERO -->
+        <!-- KOLOM TAB KATEGORI SUPER RAPI -->
         <div class="category-tabs">
             <div class="tabs">
                 <button class="tab-btn active" data-tab="games">GAMES</button>
@@ -180,11 +188,13 @@
     </main>
 
     <footer>
-        <p>&copy; 2026 RHF SETORS. All rights reserved.</p>
+        <p>© 2026 RHF SETORS. All rights reserved.</p>
     </footer>
 
-    <script type="module" src="js/main.js"></script>
-    <!-- JS untuk tab kategori -->
+    <!-- Script untuk render logo & card di semua tab -->
+    <script type="module" src="js/games.js"></script>
+
+    <!-- Script untuk fungsi tab -->
     <script>
         document.querySelectorAll('.tab-btn').forEach(btn => {
             btn.addEventListener('click', () => {
