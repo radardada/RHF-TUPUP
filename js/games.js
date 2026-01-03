@@ -1,9 +1,4 @@
-// js/games.js - FINAL SUPER LENGKAP & OPTIMAL
-// Fungsi: Load data dari data/games.json → render logo full ke semua tab kategori di homepage
-// Card rapi, hover effect, klik ke topup.html, loading lazy, error handling
-
-document.addEventListener('DOMContentLoaded', async () => {
-    // Container grid di tab kategori
+document.addEventListener('DOMContentLoaded', () => {
     const containers = {
         popular: document.getElementById('popular-games'),
         all: document.getElementById('all-games'),
@@ -12,7 +7,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         vouchers: document.getElementById('vouchers')
     };
 
-    // Logo Map LENGKAP (semua URL persis dari list kamu)
     const logoMap = {
         "Mobile Legends Diamonds": "https://img.esports.id/img/article/637920200914081250.png",
         "Free Fire Diamonds": "https://iconlogovector.com/uploads/images/2025/08/lg-6893f81b6ef79-FREE-FIRE.webp",
@@ -69,7 +63,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         "Razer Gold Voucher": "https://media.gold.razer.com/goldweb/site/images/logo/razer-gold-silver.png"
     };
 
-    // Fungsi buat card rapi dengan logo
     const createCard = (name) => {
         const card = document.createElement('div');
         card.className = 'game-card';
@@ -78,43 +71,24 @@ document.addEventListener('DOMContentLoaded', async () => {
             <img src="\( {logoUrl}" alt=" \){name}" loading="lazy">
             <p>${name}</p>
         `;
-        card.addEventListener('click', () => {
+        card.onclick = () => {
             localStorage.setItem('selectedGame', name);
-            window.location.href = 'topup.html';
-        });
+            location.href = 'topup.html';
+        };
         return card;
     };
 
-    try {
-        // Load data dari data/games.json (tidak campur dengan kode JS)
-        const response = await fetch('data/games.json');
-        if (!response.ok) throw new Error('Gagal load data/games.json');
-        const data = await response.json();
+    const gamesData = {
+        popular: ["Mobile Legends Diamonds", "Free Fire Diamonds", "PUBG Mobile UC", "Higgs Domino Island MD"],
+        all: ["Honor of Kings Tokens", "Bigo Live Diamonds", "Honkai: Star Rail Shard", "Valorant Points", "Genshin Impact Crystals", "King's Choice Diamonds", "Arena Breakout Bonds", "Metal Slug: Awakening", "Blood Strike Gold", "Ragnarok M Eternal Love", "Zepeto Zems", "Call of Duty Mobile CP", "Super SUS Golden Stars", "Pokemon UNITE AeosGems", "The Ragnarok SEA", "AFK Journey", "Soul Land: New World", "Ragnarok M Classic", "Delta Force - Garena", "Tokogame Credits", "Mobile Legends Adventure", "League of Legends WC", "Moonlight Blade M", "Night Crows"],
+        emoney: ["DANA", "OVO", "GoPay", "ShopeePay"],
+        pulsa: ["Pulsa Indosat", "Pulsa Tri", "Pulsa Telkomsel", "Pulsa XL", "Pulsa Axis", "Pulsa Smartfren"],
+        vouchers: ["Steam Wallet Code IDR", "Google Play Voucher", "PlayStation Network (PSN)", "Vision+ Voucher", "Vidio Voucher", "Token PLN", "Fortnite V Bucks", "Twitch Gift Cards", "Garena Shell Voucher", "XBOX Gift Cards", "TikTok Live Koin", "Minecraft Minecoins", "Razer Gold Voucher", "Candy Crush Saga", "Tinder Plus/Gold"]
+    };
 
-        // Render ke semua container
-        if (containers.popular && data.popular) {
-            data.popular.forEach(name => containers.popular.appendChild(createCard(name)));
-        }
-        if (containers.all && data.allGames) {
-            data.allGames.forEach(name => containers.all.appendChild(createCard(name)));
-        }
-        if (containers.emoney && data.emoney) {
-            data.emoney.forEach(name => containers.emoney.appendChild(createCard(name)));
-        }
-        if (containers.pulsa && data.pulsa) {
-            data.pulsa.forEach(name => containers.pulsa.appendChild(createCard(name)));
-        }
-        if (containers.vouchers && data.vouchers) {
-            data.vouchers.forEach(name => containers.vouchers.appendChild(createCard(name)));
-        }
-
-    } catch (error) {
-        console.error('Error loading games data:', error);
-        // Tampilkan pesan error di halaman kalau mau
-        const errorMsg = document.createElement('p');
-        errorMsg.textContent = 'Gagal memuat data game. Cek console atau file data/games.json.';
-        errorMsg.style.color = 'red';
-        errorMsg.style.textAlign = 'center';
-        document.body.appendChild(errorMsg);
-    }
+    if (containers.popular) gamesData.popular.forEach(name => containers.popular.appendChild(createCard(name)));
+    if (containers.all) gamesData.all.forEach(name => containers.all.appendChild(createCard(name)));
+    if (containers.emoney) gamesData.emoney.forEach(name => containers.emoney.appendChild(createCard(name)));
+    if (containers.pulsa) gamesData.pulsa.forEach(name => containers.pulsa.appendChild(createCard(name)));
+    if (containers.vouchers) gamesData.vouchers.forEach(name => containers.vouchers.appendChild(createCard(name)));
 });
