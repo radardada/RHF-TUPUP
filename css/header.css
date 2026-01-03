@@ -117,3 +117,13 @@ header {
     margin-top: 0;
     position: relative;
 }
+
+body {
+    padding-top: 120px;   /* <<< Ini "tempat sendiri" untuk header sticky. Mulai dari 120px */
+}
+
+@media (max-width: 768px) {
+    body {
+        padding-top: 100px;  /* Lebih kecil di mobile, karena header lebih ramping */
+    }
+}
