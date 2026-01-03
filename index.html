@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/footer.css">
     <style>
-        /* Hero tetap seperti asli kamu */
+        /* Hero section besar & megah (tetap seperti yang kamu suka) */
         #hero {
             background: linear-gradient(to bottom, #007bff, #00c6ff, #28a745);
             color: white;
@@ -39,13 +39,13 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
-        /* TAB KATEGORI */
+        /* TAB KATEGORI SUPER RAPI & PROFESIONAL */
         .category-tabs {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 40px auto;
             background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
             overflow: hidden;
         }
 
@@ -56,13 +56,13 @@
 
         .tab-btn {
             flex: 1;
-            padding: 18px;
+            padding: 20px;
             background: none;
             border: none;
             font-weight: bold;
             font-size: 18px;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.3s ease;
         }
 
         .tab-btn.active, .tab-btn:hover {
@@ -81,46 +81,67 @@
 
         .game-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
         }
 
         .game-card {
             background: white;
-            border-radius: 15px;
+            border-radius: 20px;
             padding: 20px;
             text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
             cursor: pointer;
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
 
         .game-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
         }
 
         .game-card img {
             max-width: 100%;
             height: auto;
-            max-height: 100px;
+            max-height: 130px;
             object-fit: contain;
-            border-radius: 12px;
+            border-radius: 15px;
+            margin-bottom: 15px;
         }
 
         .game-card p {
-            margin: 15px 0 0;
+            margin: 0;
             font-weight: bold;
-            font-size: 14px;
+            font-size: 15px;
             color: #333;
+            word-break: break-word;
         }
 
+        /* Responsif mobile super rapi */
         @media (max-width: 768px) {
             .tabs {
                 flex-direction: column;
             }
+            .tab-btn {
+                border-radius: 0;
+            }
+            #hero h2 {
+                font-size: 36px;
+            }
+            #hero input {
+                width: 90%;
+            }
             .game-grid {
-                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+                grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+                gap: 20px;
+            }
+            .game-card {
+                padding: 15px;
             }
         }
     </style>
@@ -148,7 +169,7 @@
             <input type="text" id="game-search" placeholder="Cari game atau voucher...">
         </section>
 
-        <!-- TAB KATEGORI -->
+        <!-- TAB KATEGORI SUPER FULL & PROFESIONAL -->
         <div class="category-tabs">
             <div class="tabs">
                 <button class="tab-btn active" data-tab="games">GAMES</button>
@@ -158,23 +179,23 @@
             </div>
 
             <div id="games" class="tab-panel active">
-                <h2 style="text-align:center; color:#007bff; margin-bottom:30px;">Game Populer & Semua Game</h2>
+                <h2 style="text-align:center; color:#007bff; margin-bottom:30px; font-size:32px;">Game Populer & Semua Game</h2>
                 <div id="popular-games" class="game-grid"></div>
-                <div id="all-games" class="game-grid" style="margin-top:50px;"></div>
+                <div id="all-games" class="game-grid" style="margin-top:60px;"></div>
             </div>
 
             <div id="ewallet" class="tab-panel">
-                <h2 style="text-align:center; color:#007bff; margin-bottom:30px;">E-Wallet</h2>
+                <h2 style="text-align:center; color:#007bff; margin-bottom:30px; font-size:32px;">Top Up E-Wallet</h2>
                 <div id="emoney" class="game-grid"></div>
             </div>
 
             <div id="pulsa" class="tab-panel">
-                <h2 style="text-align:center; color:#007bff; margin-bottom:30px;">Pulsa</h2>
+                <h2 style="text-align:center; color:#007bff; margin-bottom:30px; font-size:32px;">Isi Pulsa</h2>
                 <div id="pulsa" class="game-grid"></div>
             </div>
 
             <div id="voucher" class="tab-panel">
-                <h2 style="text-align:center; color:#007bff; margin-bottom:30px;">Voucher Lainnya</h2>
+                <h2 style="text-align:center; color:#007bff; margin-bottom:30px; font-size:32px;">Voucher Lainnya</h2>
                 <div id="vouchers" class="game-grid"></div>
             </div>
         </div>
@@ -184,14 +205,16 @@
         <p>© 2026 RHF SETORS. All rights reserved.</p>
     </footer>
 
+    <!-- Script render logo full dari js/games.js -->
     <script type="module" src="js/games.js"></script>
 
+    <!-- Fungsi tab super smooth -->
     <script>
-        // Fungsi tab
         document.querySelectorAll('.tab-btn').forEach(btn => {
             btn.addEventListener('click', () => {
                 document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
                 document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+                
                 btn.classList.add('active');
                 document.getElementById(btn.dataset.tab).classList.add('active');
             });
