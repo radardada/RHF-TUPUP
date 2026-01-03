@@ -11,14 +11,16 @@ ul { list-style: none; }
 
 /* Header */
 header {
-    background: #007bff; /* Biru primer seperti Tokogame */
+    position: fixed;                    /* <<< INI YANG BIKIN TETAP DI ATAS SAAT SCROLL */
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to bottom, #007bff, #00c6ff);
     color: white;
-    padding: 15px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    padding: 30px 20px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    z-index: 1000;                      /* Biar selalu di depan konten lain */
 }
 .logo-header {
     display: flex;
