@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/footer.css">
     <style>
-        /* Hero section tetap seperti yang kamu suka */
+        /* Hero tetap seperti asli kamu */
         #hero {
             background: linear-gradient(to bottom, #007bff, #00c6ff, #28a745);
             color: white;
@@ -39,7 +39,7 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
-        /* TAB KATEGORI RAPI */
+        /* TAB KATEGORI */
         .category-tabs {
             max-width: 1000px;
             margin: 40px auto;
@@ -79,26 +79,20 @@
             display: block;
         }
 
-        /* GRID CARD - TIDAK DIPAKSA KOTAK (logo tampil natural) */
         .game-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
             gap: 25px;
-            margin-top: 20px;
         }
 
         .game-card {
-            background: #f8f9fa;
+            background: white;
             border-radius: 15px;
             padding: 20px;
             text-align: center;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             cursor: pointer;
             transition: transform 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
         }
 
         .game-card:hover {
@@ -108,8 +102,8 @@
 
         .game-card img {
             max-width: 100%;
-            height: auto;               /* TIDAK DIPAKSA TINGGI FIX → logo natural */
-            max-height: 120px;          /* Batas atas biar tidak terlalu besar */
+            height: auto;
+            max-height: 100px;
             object-fit: contain;
             border-radius: 12px;
         }
@@ -119,19 +113,11 @@
             font-weight: bold;
             font-size: 14px;
             color: #333;
-            word-break: break-word;
         }
 
-        /* Responsif mobile */
         @media (max-width: 768px) {
             .tabs {
                 flex-direction: column;
-            }
-            .tab-btn {
-                border-radius: 0;
-            }
-            #hero h2 {
-                font-size: 36px;
             }
             .game-grid {
                 grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
@@ -162,7 +148,7 @@
             <input type="text" id="game-search" placeholder="Cari game atau voucher...">
         </section>
 
-        <!-- TAB KATEGORI + GRID (logo muncul natural tanpa kotak paksa) -->
+        <!-- TAB KATEGORI -->
         <div class="category-tabs">
             <div class="tabs">
                 <button class="tab-btn active" data-tab="games">GAMES</button>
@@ -198,16 +184,14 @@
         <p>© 2026 RHF SETORS. All rights reserved.</p>
     </footer>
 
-    <!-- Script render logo dari js/games.js -->
     <script type="module" src="js/games.js"></script>
 
-    <!-- Script fungsi tab -->
     <script>
+        // Fungsi tab
         document.querySelectorAll('.tab-btn').forEach(btn => {
             btn.addEventListener('click', () => {
                 document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
                 document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-                
                 btn.classList.add('active');
                 document.getElementById(btn.dataset.tab).classList.add('active');
             });
