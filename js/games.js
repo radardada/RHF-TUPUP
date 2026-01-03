@@ -1,14 +1,18 @@
-// js/games.js - FINAL untuk homepage (semua logo muncul seperti di topup.html)
+// js/games.js - FINAL SUPER LENGKAP & OPTIMAL
+// Fungsi: Load data dari data/games.json → render logo full ke semua tab kategori di homepage
+// Card rapi, hover effect, klik ke topup.html, loading lazy, error handling
 
-document.addEventListener('DOMContentLoaded', () => {
-    // Container grid di tab
-    const popularGrid = document.getElementById('popular-games');
-    const allGrid = document.getElementById('all-games');
-    const emoneyGrid = document.getElementById('emoney');
-    const pulsaGrid = document.getElementById('pulsa');
-    const voucherGrid = document.getElementById('vouchers');
+document.addEventListener('DOMContentLoaded', async () => {
+    // Container grid di tab kategori
+    const containers = {
+        popular: document.getElementById('popular-games'),
+        all: document.getElementById('all-games'),
+        emoney: document.getElementById('emoney'),
+        pulsa: document.getElementById('pulsa'),
+        vouchers: document.getElementById('vouchers')
+    };
 
-    // Logo Map LENGKAP dari list kamu (semua URL persis)
+    // Logo Map LENGKAP (semua URL persis dari list kamu)
     const logoMap = {
         "Mobile Legends Diamonds": "https://img.esports.id/img/article/637920200914081250.png",
         "Free Fire Diamonds": "https://iconlogovector.com/uploads/images/2025/08/lg-6893f81b6ef79-FREE-FIRE.webp",
@@ -65,36 +69,52 @@ document.addEventListener('DOMContentLoaded', () => {
         "Razer Gold Voucher": "https://media.gold.razer.com/goldweb/site/images/logo/razer-gold-silver.png"
     };
 
-    // Fungsi buat card dengan logo
+    // Fungsi buat card rapi dengan logo
     const createCard = (name) => {
         const card = document.createElement('div');
         card.className = 'game-card';
         const logoUrl = logoMap[name] || 'https://via.placeholder.com/150x150/cccccc/000000?text=No+Logo';
         card.innerHTML = `
-            <img src="\( {logoUrl}" alt=" \){name}" style="width:100%; height:120px; object-fit:contain; border-radius:12px;">
-            <p style="text-align:center; margin-top:10px; font-weight:bold;">${name}</p>
+            <img src="\( {logoUrl}" alt=" \){name}" loading="lazy">
+            <p>${name}</p>
         `;
-        card.style.cursor = 'pointer';
-        card.onclick = () => {
+        card.addEventListener('click', () => {
             localStorage.setItem('selectedGame', name);
-            location.href = 'topup.html';
-        };
+            window.location.href = 'topup.html';
+        });
         return card;
     };
 
-    // Data kategori (kamu bisa pindah ke games.json nanti)
-    const gamesData = {
-        popular: ["Mobile Legends Diamonds", "Free Fire Diamonds", "PUBG Mobile UC", "Higgs Domino Island MD"],
-        all: ["Honor of Kings Tokens", "Bigo Live Diamonds", "Honkai: Star Rail Shard", "Valorant Points", "Genshin Impact Crystals", "King's Choice Diamonds", "Arena Breakout Bonds", "Metal Slug: Awakening", "Blood Strike Gold", "Ragnarok M Eternal Love", "Zepeto Zems", "Call of Duty Mobile CP", "Super SUS Golden Stars", "Pokemon UNITE AeosGems", "The Ragnarok SEA", "AFK Journey", "Soul Land: New World", "Ragnarok M Classic", "Delta Force - Garena", "Tokogame Credits", "Mobile Legends Adventure", "League of Legends WC", "Moonlight Blade M", "Night Crows"],
-        emoney: ["DANA", "OVO", "GoPay", "ShopeePay"],
-        pulsa: ["Pulsa Indosat", "Pulsa Tri", "Pulsa Telkomsel", "Pulsa XL", "Pulsa Axis", "Pulsa Smartfren"],
-        vouchers: ["Candy Crush Saga", "Tinder Plus/Gold", "Steam Wallet Code IDR", "Google Play Voucher", "PlayStation Network (PSN)", "Vision+ Voucher", "Vidio Voucher", "Token PLN", "Fortnite V Bucks", "Twitch Gift Cards", "Garena Shell Voucher", "XBOX Gift Cards", "TikTok Live Koin", "Minecraft Minecoins", "Razer Gold Voucher"]
-    };
+    try {
+        // Load data dari data/games.json (tidak campur dengan kode JS)
+        const response = await fetch('data/games.json');
+        if (!response.ok) throw new Error('Gagal load data/games.json');
+        const data = await response.json();
 
-    // Render ke grid masing-masing
-    if (popularGrid) gamesData.popular.forEach(name => popularGrid.appendChild(createCard(name)));
-    if (allGrid) gamesData.all.forEach(name => allGrid.appendChild(createCard(name)));
-    if (emoneyGrid) gamesData.emoney.forEach(name => emoneyGrid.appendChild(createCard(name)));
-    if (pulsaGrid) gamesData.pulsa.forEach(name => pulsaGrid.appendChild(createCard(name)));
-    if (voucherGrid) gamesData.vouchers.forEach(name => voucherGrid.appendChild(createCard(name)));
+        // Render ke semua container
+        if (containers.popular && data.popular) {
+            data.popular.forEach(name => containers.popular.appendChild(createCard(name)));
+        }
+        if (containers.all && data.allGames) {
+            data.allGames.forEach(name => containers.all.appendChild(createCard(name)));
+        }
+        if (containers.emoney && data.emoney) {
+            data.emoney.forEach(name => containers.emoney.appendChild(createCard(name)));
+        }
+        if (containers.pulsa && data.pulsa) {
+            data.pulsa.forEach(name => containers.pulsa.appendChild(createCard(name)));
+        }
+        if (containers.vouchers && data.vouchers) {
+            data.vouchers.forEach(name => containers.vouchers.appendChild(createCard(name)));
+        }
+
+    } catch (error) {
+        console.error('Error loading games data:', error);
+        // Tampilkan pesan error di halaman kalau mau
+        const errorMsg = document.createElement('p');
+        errorMsg.textContent = 'Gagal memuat data game. Cek console atau file data/games.json.';
+        errorMsg.style.color = 'red';
+        errorMsg.style.textAlign = 'center';
+        document.body.appendChild(errorMsg);
+    }
 });
