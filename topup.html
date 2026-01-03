@@ -10,12 +10,36 @@
     <link rel="stylesheet" href="css/forms.css">
 
     <style>
-        html, body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            background: #f8f9fa;
-        }
+        /* TEMPAT KOSONG KHUSUS UNTUK HEADER BIRU (tidak tumpang tindih lagi) */
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    padding-top: 200px;     /* <<< INI TEMPAT KOSONG untuk header biru. Mulai dari 200px */
+    box-sizing: border-box;
+}
+
+header {
+    position: fixed;        /* <<< Tetap stay di atas saat scroll */
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to bottom, #007bff, #00c6ff);
+    color: white;
+    padding: 30px 20px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    z-index: 9999;
+}
+
+/* Hapus margin-top di main kalau ada */
+main {
+    flex: 1;
+    padding: 20px 10px;
+    margin-top: 0;          /* Pastikan tidak ada margin-top lagi */
+}
 
         body {
             display: flex;
