@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RHF SETORS - Top Up Games Diamonds, Vouchers Murah</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Tambah style lain jika ada -->
+</head>
+<body>
+    <header>
+        <div class="logo-header">
+            <img src="images/logo.png" alt="RHF SETORS Logo" class="logo">
+            <h1>RHF SETORS</h1>
+            <p>Top Up Games Diamonds, Vouchers Murah</p>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#news">News & Promo</a></li>
+                <li><a href="#search">Cari Game</a></li>
+                <li><a href="#contact">Kontak Kami</a></li>
+                <li><a href="admin.html">Admin</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero">
+            <h2>Top Up Games & Voucher Murah, Aman, Cepat</h2>
+            <p>Top Up Games Voucher Lebih Murah 20%, Cepat, dan Aman. Tanpa login, langsung terisi!</p>
+            <div id="search-bar">
+                <input type="text" id="game-search" placeholder="Cari game atau voucher...">
+            </div>
+        </section>
+
+        <section id="topup-game">
+            <h2>TOP UP GAME</h2>
+            <div id="popular-games" class="game-list"></div>
+            <a href="#all-games">Lihat Semua Game</a>
+        </section>
+
+        <section id="all-games">
+            <h2>Semua Game</h2>
+            <div id="all-games-list" class="game-list"></div>
+        </section>
+
+        <section id="voucher">
+            <h2>VOUCHER DIGITAL</h2>
+            <div id="voucher-list" class="game-list"></div>
+        </section>
+
+        <section id="pulsa-emoney">
+            <h2>PULSA & E-MONEY</h2>
+            <div id="pulsa-list" class="game-list"></div>
+            <div id="emoney-list" class="game-list"></div>
+        </section>
+
+        <section id="topup-form" style="display: none;">
+            <h2>Top Up <span id="selected-game"></span></h2>
+            <!-- Form sama seperti sebelumnya -->
+            <form id="topupForm">...</form>
+            <div id="status"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 RHF SETORS. All rights reserved. | cs@rhfsetors.com</p>
+    </footer>
+
+    <!-- Scripts sama -->
+    <script type="module" src="js/firebase-init.js"></script>
+    <script type="module" src="js/script.js"></script>
+    <script type="module" src="js/form-handler.js"></script>
+    <script type="module" src="js/games.js"></script> <!-- Untuk search -->
+</body>
+</html>

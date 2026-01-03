@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - RHF SETORS</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+    <header>
+        <h1>Admin Panel RHF SETORS</h1>
+    </header>
+
+    <main>
+        <section id="login" style="display: block;">
+            <h2>Login Admin</h2>
+            <input type="password" id="adminPass" placeholder="Masukkan password">
+            <button onclick="loginAdmin()">Login</button>
+        </section>
+
+        <section id="admin-dashboard" style="display: none;">
+            <h2>Dashboard Real-Time RHF SETORS</h2>
+
+            <div class="admin-section">
+                <h3>Saldo Saat Ini</h3>
+                <p><strong><span id="current-balance">0</span> IDR</strong></p>
+                <input type="number" id="add-balance" placeholder="Tambah saldo">
+                <button onclick="addBalance()">Tambah Saldo</button>
+                <button onclick="resetBalance()">Reset Saldo</button>
+            </div>
+
+            <div class="admin-section">
+                <h3>Daftar Pembeli</h3>
+                <table id="buyers-table">
+                    <thead><tr><th>ID</th><th>Nama/ID Pembeli</th><th>Aksi</th></tr></thead>
+                    <tbody></tbody>
+                </table>
+                <input type="text" id="new-buyer" placeholder="Tambah pembeli baru">
+                <button onclick="addBuyer()">Tambah</button>
+            </div>
+
+            <div class="admin-section">
+                <h3>Riwayat Transaksi (Real-time)</h3>
+                <table id="transactions-table">
+                    <thead><tr><th>ID</th><th>Game</th><th>Nominal</th><th>Pembayaran</th><th>Player ID</th><th>Status</th><th>Aksi</th></tr></thead>
+                    <tbody></tbody>
+                </table>
+                <button onclick="clearAllTransactions()">Hapus Semua Transaksi</button>
+            </div>
+
+            <div class="admin-section">
+                <h3>Promo Aktif</h3>
+                <ul id="promo-list"></ul>
+                <input type="text" id="new-promo" placeholder="Tambah promo baru">
+                <button onclick="addPromo()">Tambah Promo</button>
+            </div>
+
+            <div class="admin-section">
+                <h3>System Logs</h3>
+                <ul id="logs-list"></ul>
+                <button onclick="clearLogs()">Hapus Semua Log</button>
+            </div>
+        </section>
+    </main>
+
+    <script type="module" src="js/firebase-init.js"></script>
+    <script type="module" src="js/admin.js"></script>
+</body>
+</html>
