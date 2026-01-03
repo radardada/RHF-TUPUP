@@ -1,0 +1,182 @@
+/* Reset & Basic */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    background: #f8f9fa; 
+    color: #333; 
+    line-height: 1.6; 
+}
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+
+/* Header */
+header {
+    background: #007bff; /* Biru primer seperti Tokogame */
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+.logo-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.logo { height: 60px; }
+header h1 { font-size: 28px; }
+header p { font-size: 14px; opacity: 0.9; }
+nav ul {
+    display: flex;
+    gap: 20px;
+}
+nav ul li a {
+    font-weight: bold;
+    padding: 10px;
+    transition: background 0.3s;
+}
+nav ul li a:hover { background: rgba(255,255,255,0.2); border-radius: 5px; }
+
+/* Hero Section */
+#hero {
+    background: linear-gradient(135deg, #007bff, #28a745); /* Biru ke hijau */
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+}
+#hero h2 { font-size: 40px; margin-bottom: 20px; }
+#hero p { font-size: 20px; margin-bottom: 30px; }
+#search-bar {
+    max-width: 600px;
+    margin: 0 auto;
+}
+#game-search {
+    width: 100%;
+    padding: 18px;
+    font-size: 18px;
+    border-radius: 50px;
+    border: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    outline: none;
+}
+
+/* Sections */
+main section {
+    padding: 40px 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+main h2 {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 30px;
+    color: #007bff;
+}
+
+/* Game/Voucher List - Grid Mirip Tokogame */
+.game-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 25px;
+}
+.game-item {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+    text-align: center;
+}
+.game-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0,123,255,0.3);
+}
+.game-item img { /* Jika nanti tambah icon game */
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+.game-item p {
+    padding: 15px;
+    font-weight: bold;
+    font-size: 16px;
+    background: #007bff;
+    color: white;
+}
+
+/* Top Up Form */
+#topup-form {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    max-width: 500px;
+    margin: 40px auto;
+}
+#topup-form h2 { text-align: center; color: #007bff; }
+#topup-form label { display: block; margin: 15px 0 5px; font-weight: bold; }
+#topup-form input, #topup-form select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+}
+#topup-form button {
+    width: 100%;
+    padding: 15px;
+    background: #28a745;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background 0.3s;
+}
+#topup-form button:hover { background: #218838; }
+#status { 
+    text-align: center; 
+    margin-top: 20px; 
+    font-size: 18px; 
+    font-weight: bold; 
+}
+
+/* Pulsa & E-Money Section */
+#pulsa-emoney .game-list { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
+
+/* Footer */
+footer {
+    background: #007bff;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 50px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    header { flex-direction: column; text-align: center; }
+    nav ul { margin-top: 15px; flex-wrap: wrap; justify-content: center; }
+    #hero h2 { font-size: 30px; }
+    #hero p { font-size: 16px; }
+    .game-list { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+}
+
+/* Admin CSS (Tetap di file yang sama) */
+#admin-dashboard .admin-section {
+    background: white;
+    padding: 25px;
+    margin: 20px 0;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+table { width: 100%; border-collapse: collapse; margin: 15px 0; }
+th, td { padding: 12px; border: 1px solid #ddd; text-align: left; }
+th { background: #007bff; color: white; }
+button { padding: 8px 12px; background: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer; }
+button:hover { background: #218838; }

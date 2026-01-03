@@ -1,0 +1,74 @@
+/* Footer Styling - RHF SETORS */
+
+footer {
+    background: #007bff;
+    color: white;
+    text-align: center;
+    padding: 40px 20px;
+    margin-top: 80px;
+    position: relative;
+}
+
+footer p {
+    font-size: 16px;
+    margin: 10px 0;
+    opacity: 0.95;
+}
+
+footer a {
+    color: #fff;
+    text-decoration: underline;
+    font-weight: 600;
+}
+
+footer a:hover {
+    opacity: 0.8;
+}
+
+/* Tambahan: Footer dengan link kontak, sosial, dll. */
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.footer-links {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.footer-links a {
+    font-size: 16px;
+    padding: 8px 15px;
+    border-radius: 8px;
+    transition: background 0.3s;
+}
+
+.footer-links a:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.copyright {
+    font-size: 14px;
+    opacity: 0.8;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    footer {
+        padding: 30px 15px;
+    }
+
+    .footer-links {
+        gap: 15px;
+        flex-direction: column;
+    }
+}
