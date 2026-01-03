@@ -1,57 +1,60 @@
-<header>
-    <div class="logo-header">
-        <img src="logo.png" alt="RHF SETORS Logo" class="logo" style="height:80px; margin-right:20px;">
-        <h1 style="margin:0; font-size:40px; line-height:80px;">RHF SETORS</h1>
-    </div>
+header {
+    background: linear-gradient(to bottom, #007bff, #00c6ff);
+    color: white;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
 
-    <div class="menu-items">
-        <a href="#promo">News & Promo</a>
-        <a href="#search">Cari Game</a>
-        <a href="#contact">Kontak Kami</a>
-        <a href="admin.html">Admin</a>
-    </div>
-</header>
+.logo-header {
+    display: flex;
+    align-items: center;
+}
 
-<style>
+.logo-header img {
+    height: 80px;
+    margin-right: 20px;
+}
+
+.logo-header h1 {
+    margin: 0;
+    font-size: 40px;
+    line-height: 80px; /* Agar lurus vertikal dengan logo */
+    font-weight: bold;
+}
+
+.menu-items {
+    display: flex;
+    gap: 40px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.menu-items a {
+    color: white;
+    text-decoration: none;
+    transition: opacity 0.3s;
+}
+
+.menu-items a:hover {
+    opacity: 0.8;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
     header {
-        background: linear-gradient(to bottom, #007bff, #00c6ff);
-        color: white;
-        padding: 20px 40px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
     }
     .logo-header {
-        display: flex;
-        align-items: center;
+        margin-bottom: 20px;
     }
     .menu-items {
-        display: flex;
-        gap: 40px;
-        font-size: 18px;
-        font-weight: bold;
+        flex-direction: column;
+        gap: 15px;
     }
-    .menu-items a {
-        color: white;
-        text-decoration: none;
-        transition: opacity 0.3s;
-    }
-    .menu-items a:hover {
-        opacity: 0.8;
-    }
-    @media (max-width: 768px) {
-        header {
-            flex-direction: column;
-            text-align: center;
-        }
-        .logo-header {
-            margin-bottom: 20px;
-        }
-        .menu-items {
-            flex-direction: column;
-            gap: 15px;
-        }
-    }
-</style>
+}
