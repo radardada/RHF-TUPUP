@@ -1,100 +1,57 @@
-/* Header Styling - RHF SETORS */
+<header>
+    <div class="logo-header">
+        <img src="logo.png" alt="RHF SETORS Logo" class="logo" style="height:80px; margin-right:20px;">
+        <h1 style="margin:0; font-size:40px; line-height:80px;">RHF SETORS</h1>
+    </div>
 
-header {
-    background: #007bff; /* Biru primer */
-    color: white;
-    padding: 20px 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    position: relative;
-    z-index: 1000;
-}
+    <div class="menu-items">
+        <a href="#promo">News & Promo</a>
+        <a href="#search">Cari Game</a>
+        <a href="#contact">Kontak Kami</a>
+        <a href="admin.html">Admin</a>
+    </div>
+</header>
 
-.logo-header {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
-.logo {
-    height: 70px;
-    width: auto;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-}
-
-header h1 {
-    font-size: 32px;
-    font-weight: 700;
-    margin: 0;
-    letter-spacing: 1px;
-}
-
-header p {
-    font-size: 16px;
-    opacity: 0.9;
-    margin: 5px 0 0;
-    font-weight: 400;
-}
-
-nav ul {
-    display: flex;
-    gap: 30px;
-    list-style: none;
-    margin: 0;
-}
-
-nav ul li a {
-    color: white;
-    font-size: 18px;
-    font-weight: 600;
-    padding: 10px 15px;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-}
-
-nav ul li a:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: translateY(-2px);
-}
-
-/* Mobile Responsive */
-@media (max-width: 992px) {
+<style>
     header {
-        flex-direction: column;
-        text-align: center;
-        padding: 20px;
-    }
-
-    .logo-header {
-        margin-bottom: 15px;
-    }
-
-    nav ul {
-        gap: 15px;
+        background: linear-gradient(to bottom, #007bff, #00c6ff);
+        color: white;
+        padding: 20px 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
         flex-wrap: wrap;
-        justify-content: center;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     }
-
-    nav ul li a {
-        font-size: 16px;
-        padding: 8px 12px;
+    .logo-header {
+        display: flex;
+        align-items: center;
     }
-}
-
-@media (max-width: 576px) {
-    header h1 {
-        font-size: 26px;
+    .menu-items {
+        display: flex;
+        gap: 40px;
+        font-size: 18px;
+        font-weight: bold;
     }
-
-    header p {
-        font-size: 14px;
+    .menu-items a {
+        color: white;
+        text-decoration: none;
+        transition: opacity 0.3s;
     }
-
-    .logo {
-        height: 55px;
+    .menu-items a:hover {
+        opacity: 0.8;
     }
-}
+    @media (max-width: 768px) {
+        header {
+            flex-direction: column;
+            text-align: center;
+        }
+        .logo-header {
+            margin-bottom: 20px;
+        }
+        .menu-items {
+            flex-direction: column;
+            gap: 15px;
+        }
+    }
+</style>
