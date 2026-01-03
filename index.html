@@ -3,89 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RHF SETORS - Top Up Games Diamonds, Vouchers Murah</title>
+    <title>RHF SETORS - Top Up Games & Voucher Murah</title>
     <link rel="stylesheet" href="css/style.css">
-    <!-- Tambah style lain jika ada -->
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <style>
+        /* Hero section dengan gradient biru-hijau */
+        #hero {
+            background: linear-gradient(to bottom, #007bff, #00c6ff, #28a745);
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+        }
+        #hero h2 {
+            font-size: 48px;
+            margin: 0 0 20px;
+        }
+        #hero p {
+            font-size: 24px;
+            margin: 0 0 20px;
+            opacity: 0.9;
+        }
+        #hero .subtext {
+            font-size: 20px;
+            margin: 20px 0 40px;
+            opacity: 0.9;
+        }
+        #hero input {
+            width: 80%;
+            max-width: 600px;
+            padding: 20px;
+            font-size: 18px;
+            border-radius: 50px;
+            border: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+    </style>
 </head>
 <body>
-    <!-- Load header otomatis -->
-    <div id="header-container"></div>
-    <script>
-        fetch('header.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('header-container').innerHTML = data;
-            });
-    </script>
-
-    <!-- Sisa konten halaman tetap di bawah -->
-    <main>
-        ...
-    </main>
-</body>
     <header>
         <div class="logo-header">
-            <img src="images/logo.png" alt="RHF SETORS Logo" class="logo">
-            <h1>RHF SETORS</h1>
-            <p>Top Up Games Diamonds, Vouchers Murah</p>
+            <img src="logo.png" alt="RHF SETORS Logo" style="height:80px; margin-right:20px;">
+            <h1 style="margin:0; font-size:40px; line-height:80px;">RHF SETORS</h1>
         </div>
-        <nav>
-            <ul>
-                <li><a href="#news">News & Promo</a></li>
-                <li><a href="#search">Cari Game</a></li>
-                <li><a href="#contact">Kontak Kami</a></li>
-                <li><a href="admin.html">Admin</a></li>
-            </ul>
-        </nav>
+
+        <div class="menu-items">
+            <a href="#promo">News & Promo</a>
+            <a href="#search">Cari Game</a>
+            <a href="#contact">Kontak Kami</a>
+            <a href="admin.html">Admin</a>
+        </div>
     </header>
 
     <main>
         <section id="hero">
-            <h2>Top Up Games & Voucher Murah, Aman, Cepat</h2>
-            <p>Top Up Games Voucher Lebih Murah 20%, Cepat, dan Aman. Tanpa login, langsung terisi!</p>
-            <div id="search-bar">
-                <input type="text" id="game-search" placeholder="Cari game atau voucher...">
-            </div>
+            <h2>Top Up Games & Voucher</h2>
+            <h2 style="font-size:48px; margin:0;">Murah, Aman, Cepat</h2>
+            <p class="subtext">Top Up Games Voucher Lebih Murah 20%, Cepat, dan Aman. Tanpa login, langsung terisi!</p>
+            <input type="text" id="game-search" placeholder="Cari game atau voucher...">
         </section>
 
-        <section id="topup-game">
-            <h2>TOP UP GAME</h2>
+        <section id="popular">
+            <h2 style="text-align:center; color:#007bff; font-size:36px; margin:60px 0 40px;">TOP UP GAME</h2>
             <div id="popular-games" class="game-list"></div>
-            <a href="#all-games">Lihat Semua Game</a>
         </section>
 
-        <section id="all-games">
-            <h2>Semua Game</h2>
-            <div id="all-games-list" class="game-list"></div>
-        </section>
-
-        <section id="voucher">
-            <h2>VOUCHER DIGITAL</h2>
-            <div id="voucher-list" class="game-list"></div>
-        </section>
-
-        <section id="pulsa-emoney">
-            <h2>PULSA & E-MONEY</h2>
-            <div id="pulsa-list" class="game-list"></div>
-            <div id="emoney-list" class="game-list"></div>
-        </section>
-
-        <section id="topup-form" style="display: none;">
-            <h2>Top Up <span id="selected-game"></span></h2>
-            <!-- Form sama seperti sebelumnya -->
-            <form id="topupForm">...</form>
-            <div id="status"></div>
-        </section>
+        <!-- Section lain kalau ada -->
     </main>
 
     <footer>
-        <p>&copy; 2026 RHF SETORS. All rights reserved. | cs@rhfsetors.com</p>
+        <p>&copy; 2026 RHF SETORS. All rights reserved.</p>
     </footer>
 
-    <!-- Scripts sama -->
-    <script type="module" src="js/firebase-init.js"></script>
-    <script type="module" src="js/script.js"></script>
-    <script type="module" src="js/form-handler.js"></script>
-    <script type="module" src="js/games.js"></script> <!-- Untuk search -->
+    <script type="module" src="js/games.js"></script>
 </body>
 </html>
