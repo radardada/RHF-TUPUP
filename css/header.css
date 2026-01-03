@@ -1,13 +1,14 @@
 header {
+    position: fixed;                /* <<< Ini bikin header tetap nempel di atas saat scroll */
+    top: 0;
+    left: 0;
+    width: 100%;                    /* Biar full lebar layar */
     background: linear-gradient(to bottom, #007bff, #00c6ff);
     color: white;
-    padding: 15px 40px; /* Dikurangi dari 20px */
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    padding: 30px 20px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    z-index: 1000;                  /* Biar selalu di depan konten lain */
 }
 
 .logo-header {
