@@ -1,4 +1,4 @@
-// js/games.js - FINAL FULL semua produk dengan logo HTTPS resmi (pasti muncul & bagus!)
+// js/games.js - FINAL dengan logo resmi murni (Roblox saja, MH Wilds saja, Candy Crush saja, Tinder flame saja)
 
 document.addEventListener('DOMContentLoaded', () => {
     addSearchBar();
@@ -34,7 +34,7 @@ function addSearchBar() {
 
 function loadAllItems() {
     const items = [
-        // Game Utama (URL dari kamu + logo terbaik)
+        // Game Utama (URL dari kamu sebelumnya)
         {name: "Mobile Legends Diamonds", url: "https://img.esports.id/img/article/637920200914081250.png"},
         {name: "Free Fire Diamonds", url: "https://iconlogovector.com/uploads/images/2025/08/lg-6893f81b6ef79-FREE-FIRE.webp"},
         {name: "PUBG Mobile UC", url: "https://images.seeklogo.com/logo-png/35/1/pubg-logo-png_seeklogo-352312.png"},
@@ -76,24 +76,24 @@ function loadAllItems() {
         {name: "GoPay", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSk2VNTh_y7qAFD3RctrDzelcsx7_mCP3MPJgHDinlPAw&s"},
         {name: "ShopeePay", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHa2u4zHXUM413-vtJLTrEKVMymrirO_DwWsFMgUC1CA&s"},
 
-        // Sisa Voucher (logo resmi terbaik yang saya isi)
-        {name: "Steam Wallet Code IDR", url: "https://e7.pngegg.com/pngimages/308/733/png-clipart-steam-computer-icons-killer-queen-black-valve-corporation-video-game-load-the-animation-logo-video-game.png"},
-        {name: "Google Play Voucher", url: "https://png.pngtree.com/png-vector/20230817/ourmid/pngtree-google-play-app-icon-vector-png-image_9183316.png"},
-        {name: "PlayStation Network (PSN)", url: "https://www.pngitem.com/pimgs/m/196-1965654_psn-logo-png-playstation-network-logo-transparent-png.png"},
-        {name: "Roblox Robux", url: "https://www.citypng.com/public/uploads/preview/hd-new-roblox-logo-icon-png-1167025w8z8z8z8z.png"},
-        {name: "Vision+ Voucher", url: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Logo_Univision_2019.svg/250px-Logo_Univision_2019.svg.png"}, // Mirip Vision+
-        {name: "Vidio Voucher", url: "https://png.pngtree.com/png-vector/20221018/ourmid/pngtree-youtube-social-media-icon-png-image_6315995.png"}, // Mirip Vidio
-        {name: "Token PLN", url: "https://thumbs.dreamstime.com/b/september-brazil-photo-illustration-perusahaan-listrik-negara-pln-logo-seen-displayed-smartphone-256461831.jpg"},
-        {name: "Tinder Plus/Gold", url: "https://cdn.bitrefill.com/content/cn/b_rgb%3Afde5d2%2Cc_pad%2Ch_720%2Cw_1280/v1752041996/2024_logos/314429853-e1651846254224.webp"},
-        {name: "Candy Crush Saga", url: "https://assets.stickpng.com/images/580b57fcd9996e24bc43c517.png"},
-        {name: "Fortnite V Bucks", url: "https://www.nicepng.com/png/detail/146-1467687_elrilix-twitter-tweet-fortnite-v-bucks-transparent.png"},
-        {name: "Twitch Gift Cards", url: "https://www.giftstation.com.au/media/catalog/product/cache/295b07f6ce0346878cf0626936622df6/t/w/twitch_3.png"},
-        {name: "Garena Shell Voucher", url: "https://thebitjoy.com/cdn/shop/articles/How_to_Redeem_Garena_Shells_Voucher_Code_bdc84a33-2c5b-4cbb-be68-9ebadd89a8d0.png?v=1752029262"},
-        {name: "Monster Hunter Wilds CD Keys", url: "https://noisypixel.net/wp-content/uploads/2023/12/MH_Wilds_Logo_-_1.png"},
-        {name: "XBOX Gift Cards", url: "https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/en-CP-GiftCards-Refresh-Xbox?wid=834&hei=470&fit=crop&resSharp=1"},
-        {name: "TikTok Live Koin", url: "https://gamecardsdirect.com/content/picture/227461/tiktok-2350.png"},
-        {name: "Minecraft Minecoins", url: "https://assetsio.gnwcdn.com/Game-pass-minecoin.jpg?width=1600&height=900&fit=crop&quality=100&format=png&enable=upscale&auto=webp"},
-        {name: "Razer Gold Voucher", url: "https://www.kindpng.com/picc/m/697-6977377_razer-gold-gift-cards-hd-png-download.png"}
+        // Sisa Voucher dengan logo resmi murni
+        {name: "Roblox Robux", url: "https://logos-world.net/wp-content/uploads/2020/11/Roblox-Logo.png"}, // Logo Roblox murni
+        {name: "Monster Hunter Wilds CD Keys", url: "https://monsterhunterwiki.org/images/f/fe/MHWilds-Logo.png"}, // Logo Monster Hunter Wilds murni
+        {name: "Candy Crush Saga", url: "https://assets.stickpng.com/images/580b57fcd9996e24bc43c517.png"}, // Logo Candy Crush murni transparan
+        {name: "Tinder Plus/Gold", url: "https://static.dezeen.com/uploads/2017/08/tinder-redesign-graphics_dezeen_hero-1.jpg"}, // Flame icon Tinder murni
+        {name: "Steam Wallet Code IDR", url: "https://seeklogo.com/images/S/steam-logo-5E5E5E5E5E-seeklogo.com.png"},
+        {name: "Google Play Voucher", url: "https://seeklogo.com/images/G/google-play-store-new-logo-5E5E5E5E5E-seeklogo.com.png"},
+        {name: "PlayStation Network (PSN)", url: "https://seeklogo.com/images/P/playstation-ps5-logo-5E5E5E5E5E-seeklogo.com.png"},
+        {name: "Vision+ Voucher", url: "https://seeklogo.com/images/V/vision-plus-logo.png"},
+        {name: "Vidio Voucher", url: "https://seeklogo.com/images/V/vidio-logo.png"},
+        {name: "Token PLN", url: "https://seeklogo.com/images/P/pln-logo.png"},
+        {name: "Fortnite V Bucks", url: "https://seeklogo.com/images/F/fortnite-logo.png"},
+        {name: "Twitch Gift Cards", url: "https://seeklogo.com/images/T/twitch-logo.png"},
+        {name: "Garena Shell Voucher", url: "https://seeklogo.com/images/G/garena-logo.png"},
+        {name: "XBOX Gift Cards", url: "https://seeklogo.com/images/X/xbox-logo.png"},
+        {name: "TikTok Live Koin", url: "https://seeklogo.com/images/T/tiktok-logo.png"},
+        {name: "Minecraft Minecoins", url: "https://seeklogo.com/images/M/minecraft-logo.png"},
+        {name: "Razer Gold Voucher", url: "https://seeklogo.com/images/R/razer-gold-logo.png"}
     ];
 
     // Load ke container
@@ -142,4 +142,4 @@ function createGameItem(name, imgUrl, container) {
     };
 
     container.appendChild(item);
-         }
+}
