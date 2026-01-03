@@ -9,25 +9,24 @@
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/forms.css">
 
-    <!-- Style khusus topup.html -->
     <style>
         html, body {
             height: 100%;
             margin: 0;
             padding: 0;
+            background: #f8f9fa;
         }
 
         body {
             display: flex;
             flex-direction: column;
-            min-height: 100vh; /* Penting biar footer ke bawah */
-            background: #f8f9fa;
+            min-height: 100vh;
         }
 
         header {
             background: linear-gradient(to bottom, #007bff, #00c6ff);
             color: white;
-            padding: 40px 20px; /* Sedikit lebih besar biar hero-like */
+            padding: 30px 20px;
             text-align: center;
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
@@ -36,63 +35,159 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
 
         header .logo {
-            height: 80px;
+            height: 60px;
         }
 
         header h1 {
-            font-size: 36px;
-            margin: 0;
+            font-size: 28px;
+            margin: 5px 0;
         }
 
         header p {
-            font-size: 18px;
+            font-size: 16px;
+            margin: 5px 0;
             opacity: 0.9;
         }
 
         nav a {
             display: inline-block;
-            margin-top: 20px;
+            margin-top: 10px;
             color: white;
             font-weight: bold;
-            font-size: 18px;
+            font-size: 16px;
+            text-decoration: none;
         }
 
         main {
-            flex: 1; /* Dorong footer ke bawah otomatis */
-            padding: 20px;
+            flex: 1;
+            padding: 20px 10px;
         }
 
         #topup-page {
             max-width: 900px;
-            margin: 0 auto; /* Hilangkan margin-top besar */
+            margin: 0 auto;
             background: white;
-            padding: 40px;
+            padding: 30px;
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
-        /* Sisanya style kamu tetap sama */
-        #promo-text { text-align: center; color: #ff6600; font-weight: bold; font-size: 20px; margin: 30px 0; line-height: 1.5; }
-        #nominal-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 20px; margin: 40px 0; }
-        .nominal-card { background: #f8f9fa; border: 2px solid #e0e0e0; border-radius: 12px; padding: 20px; text-align: center; cursor: pointer; transition: all 0.3s; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        .nominal-card:hover, .nominal-card.selected { border-color: #007bff; background: #e3f2fd; transform: translateY(-5px); }
-        .nominal-card .price { font-size: 22px; font-weight: bold; color: #28a745; }
-        .nominal-card .bonus { color: #d32f2f; font-size: 15px; margin-top: 8px; font-weight: bold; }
-        #payment-icons { display: flex; flex-wrap: wrap; gap: 25px; justify-content: center; margin: 40px 0; }
-        .payment-icon { width: 80px; height: auto; opacity: 0.8; transition: opacity 0.3s; }
-        .payment-icon:hover { opacity: 1; }
-        #total-price { text-align: center; font-size: 28px; font-weight: bold; color: #28a745; margin: 40px 0; background: #e8f5e8; padding: 15px; border-radius: 12px; }
-        #topupForm button { width: 100%; padding: 20px; background: #28a745; color: white; font-size: 24px; font-weight: bold; border: none; border-radius: 12px; cursor: pointer; }
-        #status { text-align: center; font-size: 20px; margin-top: 30px; }
-        #back-btn { display: block; text-align: center; margin: 30px auto; padding: 12px 30px; background: #007bff; color: white; border: none; border-radius: 8px; text-decoration: none; font-size: 16px; }
+        #promo-text {
+            text-align: center;
+            color: #ff6600;
+            font-weight: bold;
+            font-size: 20px;
+            margin: 25px 0;
+            line-height: 1.5;
+        }
+
+        #nominal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .nominal-card {
+            background: #f8f9fa;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .nominal-card:hover, .nominal-card.selected {
+            border-color: #007bff;
+            background: #e3f2fd;
+            transform: translateY(-5px);
+        }
+
+        .nominal-card .price {
+            font-size: 22px;
+            font-weight: bold;
+            color: #28a745;
+        }
+
+        .nominal-card .bonus {
+            color: #d32f2f;
+            font-size: 15px;
+            margin-top: 8px;
+            font-weight: bold;
+        }
+
+        #payment-icons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            justify-content: center;
+            margin: 40px 0;
+        }
+
+        .payment-icon {
+            width: 80px;
+            height: auto;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .payment-icon:hover {
+            opacity: 1;
+        }
+
+        #total-price {
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            color: #28a745;
+            margin: 40px 0;
+            background: #e8f5e8;
+            padding: 15px;
+            border-radius: 12px;
+        }
+
+        #topupForm button {
+            width: 100%;
+            padding: 20px;
+            background: #28a745;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+        }
+
+        #status {
+            text-align: center;
+            font-size: 20px;
+            margin-top: 30px;
+        }
+
+        #back-btn {
+            display: block;
+            text-align: center;
+            margin: 30px auto;
+            padding: 12px 30px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 16px;
+        }
 
         footer {
-            margin-top: 0 !important; /* Override dari footer.css */
             padding: 20px;
+            text-align: center;
+            background: #007bff;
+            color: white;
         }
     </style>
 </head>
@@ -112,8 +207,12 @@
     <main>
         <section id="topup-page">
             <h2 style="text-align:center; color:#007bff; font-size:32px;">Top Up <span id="game-name">Loading...</span></h2>
+
+            <!-- Logo game dalam kotak kecil rapi -->
             <div style="text-align:center; margin:30px 0;">
-                <img id="game-logo" src="" alt="Logo Game" style="width:200px; height:auto; border-radius:15px; box-shadow:0 5px 15px rgba(0,0,0,0.2);">
+                <div style="display:inline-block; width:120px; height:120px; background:#f0f0f0; border-radius:15px; overflow:hidden; box-shadow:0 5px 15px rgba(0,0,0,0.2); padding:10px;">
+                    <img id="game-logo" src="" alt="Logo Game" style="width:100%; height:100%; object-fit:contain;">
+                </div>
             </div>
 
             <div id="promo-text">
@@ -152,20 +251,29 @@
 
     <script type="module" src="js/firebase-init.js"></script>
     <script type="module">
-        // Kode JavaScript kamu tetap sama (logoMap, submit, dll)
-        const game = localStorage.getItem('selectedGame') || 'Game';
+        const game = localStorage.getItem('selectedGame') || 'Mobile Legends Diamonds';
         document.getElementById('game-name').textContent = game;
 
         const logoMap = {
-            "Mobile Legends Diamonds": "https://img.esports.id/img/article/637920200914081250.png",
-            // ... sisanya sama ...
+            "Mobile Legends Diamonds": "https://assets.stickpng.com/images/62061920cdd94000043e3951.png",
+            "Free Fire Diamonds": "https://i.pinimg.com/736x/d7/57/42/d75742fa81a83f6f9df6c3b4d492e600.jpg",
+            "PUBG Mobile UC": "https://imgeucdn.gamespress.com/cdn/files/Games%20Press/2019/04/na-1556303192-/pubg_mobile_logo_-_new.png?w=509&mode=max&otf=y&quality=90&format=png&bgcolor=transparent",
+            "Higgs Domino Island MD": "https://cdn.aptoide.com/imgs/a/0/2/a02ec454b86f45794693b914272aa7a7_screen.jpg",
+            "Honor of Kings Tokens": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMmZxVql5rDkrf9F18ENUODNWfWn96_ZDfGyAD3gUC8g&s=10",
+            "Bigo Live Diamonds": "https://images.seeklogo.com/logo-png/47/1/bigo-live-logo-png_seeklogo-477968.png",
+            "Honkai: Star Rail Shard": "https://assetsio.gnwcdn.com/Honkai-Star-Rail-review.webp?width=1600&height=900&fit=crop&quality=100&format=png&enable=upscale&auto=webp",
+            "Valorant Points": "https://toppng.com/uploads/thumbnail/valorant-logo-icon-11608279985fgrckoiiql.png",
+            "Genshin Impact Crystals": "https://preview.redd.it/edited-the-square-edit-onto-the-full-mavuika-announcement-v0-8n85vhj90p7e1.jpeg?auto=webp&s=54d302e9deec70cb9ba19b153a2ce3a8f3f06400",
+            "Google Play Voucher": "https://www.freepnglogos.com/uploads/google-play-png-logo/media-google-play-png-logo-5.png",
+            "Steam Wallet Code IDR": "https://www.nicepng.com/png/detail/212-2126425_steam-wallet-5-logo-edgewood-retail-district.png",
+            "Razer Gold Voucher": "https://www.nicepng.com/png/detail/346-3465823_razer-gold-silver.png",
+            // Tambahkan lagi sesuai kebutuhan dari list kamu sebelumnya
         };
 
-        const logoUrl = logoMap[game] || 'https://via.placeholder.com/200?text=Logo+Game';
+        const logoUrl = logoMap[game] || 'https://via.placeholder.com/120?text=No+Logo';
         document.getElementById('game-logo').src = logoUrl;
 
-        // Kode lain untuk nominal, input dinamis, dll (tambahkan kembali)
-
+        // Simulasi submit (kamu bisa tambah kode nominal & input dinamis lagi nanti)
         document.getElementById('topupForm').addEventListener('submit', (e) => {
             e.preventDefault();
             document.getElementById('status').innerHTML = '<div style="background:#e8f5e8; color:green; padding:20px; border-radius:12px;">Top Up Berhasil! Item akan masuk dalam 1-5 menit. Terima kasih telah berbelanja di RHF SETORS!</div>';
