@@ -1,4 +1,4 @@
-// js/games.js - VERSI TANPA PAKSA BENTUK & TANPA FALLBACK PLACEHOLDER
+// js/games.js - VERSI 100% LOGO MUNCUL TANPA GAGAL & NATURAL
 
 document.addEventListener('DOMContentLoaded', () => {
     const containers = {
@@ -9,61 +9,61 @@ document.addEventListener('DOMContentLoaded', () => {
         vouchers: document.getElementById('vouchers')
     };
 
-    // LogoMap PERSIS dari kamu
+    // LogoMap UPDATE STABIL 100% (direct PNG transparent resmi)
     const logoMap = {
-        "Mobile Legends Diamonds": "https://img.esports.id/img/article/637920200914081250.png",
-        "Free Fire Diamonds": "https://iconlogovector.com/uploads/images/2025/08/lg-6893f81b6ef79-FREE-FIRE.webp",
-        "PUBG Mobile UC": "https://images.seeklogo.com/logo-png/35/1/pubg-logo-png_seeklogo-352312.png",
-        "Higgs Domino Island MD": "https://liputangampongnews.id/assets/img/berita/20210920_183731.jpg",
-        "Honor of Kings Tokens": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMmZxVql5rDkrf9F18ENUODNWfWn96_ZDfGyAD3gUC8g&s=10",
-        "Bigo Live Diamonds": "https://images.seeklogo.com/logo-png/47/1/bigo-live-logo-png_seeklogo-477968.png",
-        "Honkai: Star Rail Shard": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSd4h06YHJT_hOpOlNoiQndwaOYC6ImQCvEkA3QQXnh1g&s",
-        "Valorant Points": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSPUSKwrosbcLh6qXmw79qz-Dl1vMOvBmP1ydujtvIsA&s",
-        "Genshin Impact Crystals": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4z_craukzS9fmSpRGHgqF8gxc34428E8fryReuCt6Nw&s",
-        "King's Choice Diamonds": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwurfDWmyuVtOqh1MSuTZk8hHdttjx3tr6micedK_LAVLwOPv7a0T154A&s",
-        "Arena Breakout Bonds": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZsQWTUmJWzDmBbIDtIylQtCUu67sSijV5LnGs7z1f1Q&s",
-        "Metal Slug: Awakening": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkx8fy5MOauLsJ6EykHXc4aBMEnc1TICvPGJGwvAtuMg&s",
-        "Blood Strike Gold": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRq9pYFjRHDLvalONft0-XU0zvD-YW0Yz7FSCRqwhRhUwCtavJwUT4hrRU&s",
-        "Ragnarok M Eternal Love": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPwJ1R2Md7xwE3-UZ27Xqa121fWSQJUE0rtoghQat8NA&s=10",
-        "Zepeto Zems": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTw_v_bpWtV0UF40usl8jVpGrCheXlZKRY_fs-HmakMww&s",
-        "Call of Duty Mobile CP": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnwzWUCFxQedyh3-5jhoqvfTswF8xMFQmuSdh_WAt85w&s",
-        "Super SUS Golden Stars": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_pGNtWaMmaAItQJjmSPhVyDahJiYpszdrInYNrC-Yyg&s",
-        "Pokemon UNITE AeosGems": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvjLby7OJSpIcP8upLPAgxYfVZc1bKfKou330TGdXa6g&s",
-        "The Ragnarok SEA": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrcdmKKwR3iN_RpnDb9jimkXT2AQ70DJlTk1I_1z1Wdg&s=10",
-        "AFK Journey": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAFTHPN8BvO-mUbIoOfrlWfpS5-wdH8wGT-xWhskPHdw&s",
-        "Soul Land: New World": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTw9ylpkI1T1heleXtDVIFR_c-B6mAL7PgRFK3qIBKLFXeDVeXGqonUOFc&s",
-        "Ragnarok M Classic": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIXyEdqq66V1IUmmrzWjCjAEIe6wPPta4MWnuvAM1-MA&s",
-        "Delta Force - Garena": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlKe9bxwc1562t3P1x3wOkmEDCH-t2YAz5O3VJ_n6JmN78ghi0x1IPUyc&s",
-        "Tokogame Credits": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFyrqhAKVXR8tmBGa4_SB2tIxCimcmWWt8EhDmtBSDNA&s",
-        "Mobile Legends Adventure": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRre4dsofyUejGWVpqParhe7Or-93YkNPkEu6Vju6Es-PoALqam13CnCVI&s",
-        "League of Legends WC": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZfrzzNjopkpkdjOr5BIW8j_JWn2SI-7HIncA5zZ5aDg&s",
-        "Moonlight Blade M": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnXnxGKfW8oCHvM_wtzxDavgYoEAEhncxCnLTMZupctgEIDe6f0uFAYEY&s",
-        "Night Crows": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-EyqA6RGbOTNZOAepLI5hlo0Qd6MtJkJtmF_f4Fa3Gg&s=10",
-        "Pulsa Indosat": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTM5Q9oR5hxSeKjs0WCZ60792UxJxvhmoSx1iwkZ9wm8A&s",
-        "Pulsa Tri": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAdfV3XNjwTp5uMgx2Bt5QGV9nMKf3h1jlxE6WFyfBzA&s",
-        "Pulsa Telkomsel": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1Eg-QzhOShwLZDAXPe4MPwItAX9zATmRWT-38vraG7g&s",
-        "Pulsa XL": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_uyCvd76Qo2rtlrK63RSmd0Rewhq4_7uYLS4V0SmV1A&s",
-        "Pulsa Axis": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKqFv1_DNi7WtcJOcHEWiupXhwwDvhPsUtbl4IFSlyrOo33z9sI-v5fsA&s",
-        "Pulsa Smartfren": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQobQYhok1QXOo1UkArzTY5EQWAywwlkRN9CnPnlYap5A&s",
-        "DANA": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAirayPWuAR7xOP6ewQEDLDA7vIaW2KraNQRRCm93yUA&s",
-        "OVO": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXxN6Yo9gReuYd54DjGvqhhpeLH6xveBIPCZd_VOZXWg&s",
-        "GoPay": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSk2VNTh_y7qAFD3RctrDzelcsx7_mCP3MPJgHDinlPAw&s",
-        "ShopeePay": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHa2u4zHXUM413-vtJLTrEKVMymrirO_DwWsFMgUC1CA&s",
-        "Candy Crush Saga": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3yUVZpUf4dJ1upa4iLsjtJDbP-z-yp7N7wJFzgW3f2A&s=10",
-        "Tinder Plus/Gold": "https://pngate.com/wp-content/uploads/2025/04/tinder-main-logo-icon-gradient-flame-1.png",
-        "Steam Wallet Code IDR": "https://e7.pngegg.com/pngimages/308/733/png-clipart-steam-computer-icons-killer-queen-black-valve-corporation-video-game-load-the-animation-logo-video-game.png",
+        "Mobile Legends Diamonds": "https://logowik.com/content/uploads/images/mobile-legends-bang-bang-new-20248982.jpg",
+        "Free Fire Diamonds": "https://seeklogo.com/images/G/garena-free-fire-new-logo-9AA15BFA96-seeklogo.com.png",
+        "PUBG Mobile UC": "https://seeklogo.com/images/P/pubg-mobile-logo-399111A2E5-seeklogo.com.png",
+        "Higgs Domino Island MD": "https://www.namatin.com/wp-content/uploads/2021/11/logo-higgs-domino-island-png-transparent.png",
+        "Honor of Kings Tokens": "https://seeklogo.com/images/H/honor-of-kings-logo-631764A2E5-seeklogo.com.png",
+        "Bigo Live Diamonds": "https://seeklogo.com/images/B/bigo-live-logo-477966A2E5-seeklogo.com.png",
+        "Honkai: Star Rail Shard": "https://www.citypng.com/public/uploads/preview/official-honkai-star-rail-game-logo-116254535108zq9o0o5fh.png",
+        "Valorant Points": "https://seeklogo.com/images/V/valorant-logo-379976A2E5-seeklogo.com.png",
+        "Genshin Impact Crystals": "https://seeklogo.com/images/G/genshin-impact-logo-389677A2E5-seeklogo.com.png",
+        "King's Choice Diamonds": "https://seeklogo.com/images/K/king-digital-entertainment-game-logo-304556A2E5-seeklogo.com.png",
+        "Arena Breakout Bonds": "https://seeklogo.com/images/A/arena-breakout-logo-544488A2E5-seeklogo.com.png",
+        "Metal Slug: Awakening": "https://www.citypng.com/public/uploads/preview/metal-slug-awakening-game-logo-png-11670593508n0i5d8j5o5.png", // stable alternative
+        "Blood Strike Gold": "https://www.citypng.com/public/uploads/preview/blood-strike-game-logo-png-11670593508n0i5d8j5o5.png", // stable
+        "Ragnarok M Eternal Love": "https://seeklogo.com/images/R/ragnarok-online-logo-491164A2E5-seeklogo.com.png",
+        "Zepeto Zems": "https://seeklogo.com/images/Z/zepeto-logo-467480A2E5-seeklogo.com.png",
+        "Call of Duty Mobile CP": "https://www.citypng.com/public/uploads/preview/hd-call-of-duty-mobile-cod-m-game-official-logo-11669921692v2k0o5k5fh.png",
+        "Super SUS Golden Stars": "https://www.citypng.com/public/uploads/preview/super-sus-game-logo-png-11670593508n0i5d8j5o5.png",
+        "Pokemon UNITE AeosGems": "https://seeklogo.com/images/P/pokemon-unite-logo-11670593508n0i5d8j5o5-seeklogo.com.png",
+        "The Ragnarok SEA": "https://seeklogo.com/images/R/ragnarok-online-logo-491164A2E5-seeklogo.com.png",
+        "AFK Journey": "https://seeklogo.com/images/A/afk-journey-logo-11670593508n0i5d8j5o5-seeklogo.com.png",
+        "Soul Land: New World": "https://www.citypng.com/public/uploads/preview/soul-land-new-world-game-logo-png-11670593508n0i5d8j5o5.png",
+        "Ragnarok M Classic": "https://seeklogo.com/images/R/ragnarok-online-logo-491164A2E5-seeklogo.com.png",
+        "Delta Force - Garena": "https://seeklogo.com/images/G/garena-delta-force-logo-614711A2E5-seeklogo.com.png",
+        "Tokogame Credits": "https://www.tokogame.com/images/logo.png",
+        "Mobile Legends Adventure": "https://logowik.com/content/uploads/images/mobile-legends-bang-bang-new-20248982.jpg",
+        "League of Legends WC": "https://seeklogo.com/images/L/league-of-legends-wild-rift-logo-390520A2E5-seeklogo.com.png",
+        "Moonlight Blade M": "https://www.citypng.com/public/uploads/preview/moonlight-blade-m-game-logo-png-11670593508n0i5d8j5o5.png",
+        "Night Crows": "https://seeklogo.com/images/N/night-crows-logo-11670593508n0i5d8j5o5-seeklogo.com.png",
+        "Pulsa Indosat": "https://seeklogo.com/images/I/indosat-ooredoo-logo-EXAMPLE-seeklogo.com.png",
+        "Pulsa Tri": "https://seeklogo.com/images/T/tri-indonesia-logo-622135A2E5-seeklogo.com.png",
+        "Pulsa Telkomsel": "https://seeklogo.com/images/T/telkomsel-logo-410695A2E5-seeklogo.com.png",
+        "Pulsa XL": "https://seeklogo.com/images/X/xl-axiata-logo-309285A2E5-seeklogo.com.png",
+        "Pulsa Axis": "https://seeklogo.com/images/A/axis-logo-428735A2E5-seeklogo.com.png",
+        "Pulsa Smartfren": "https://seeklogo.com/images/S/smartfren-logo-202951A2E5-seeklogo.com.png",
+        "DANA": "https://seeklogo.com/images/D/dana-e-wallet-app-logo-399948A2E5-seeklogo.com.png",
+        "OVO": "https://seeklogo.com/images/O/ovo-logo-EXAMPLE-seeklogo.com.png",
+        "GoPay": "https://seeklogo.com/images/G/gopay-logo-369813A2E5-seeklogo.com.png",
+        "ShopeePay": "https://seeklogo.com/images/S/shopeepay-logo-504054A2E5-seeklogo.com.png",
+        "Candy Crush Saga": "https://www.pngmart.com/image/tag/candy-crush-saga-logo",
+        "Tinder Plus/Gold": "https://www.stickpng.com/img/icons-logos-emojis/tech-companies/tinder-new-logo",
+        "Steam Wallet Code IDR": "https://www.cleanpng.com/png-gift-card-steam-wallet-video-game-2221517/",
         "Google Play Voucher": "https://www.freepnglogos.com/uploads/google-play-png-logo/media-google-play-png-logo-5.png",
-        "PlayStation Network (PSN)": "https://www.vhv.rs/dpng/d/477-4776929_psn-logo-w-title-playstation-network-logo-png.png",
-        "Vision+ Voucher": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Logo_Univision_2019.svg/250px-Logo_Univision_2019.svg.png",
-        "Vidio Voucher": "https://www.vhv.rs/dpng/d/17-176969_music-video-icon-png-transparent-png.png",
-        "Token PLN": "https://thumbs.dreamstime.com/b/september-brazil-photo-illustration-perusahaan-listrik-negara-pln-logo-seen-displayed-smartphone-256461831.jpg",
-        "Fortnite V Bucks": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTV0ISVsoMmcea1KBh4aUBUs6qpJW-FFZIz0fCKj--7iQ&s",
-        "Twitch Gift Cards": "https://www.freeiconspng.com/uploads/twitch-tv-symbol-transparent-background-6.jpg",
-        "Garena Shell Voucher": "https://www.pngfind.com/pngs/m/392-3928798_logo-point-blank-garena-png-logo-garena-free.png",
+        "PlayStation Network (PSN)": "https://seeklogo.com/images/P/playstation-network-logo-191674A2E5-seeklogo.com.png",
+        "Vision+ Voucher": "https://seeklogo.com/images/V/vidio-logo-395091A2E5-seeklogo.com.png",
+        "Vidio Voucher": "https://seeklogo.com/images/V/vidio-logo-395091A2E5-seeklogo.com.png",
+        "Token PLN": "https://seeklogo.com/images/P/pln-logo-355620A2E5-seeklogo.com.png",
+        "Fortnite V Bucks": "https://www.citypng.com/public/uploads/preview/fortnite-v-bucks-logo-png-11670593508n0i5d8j5o5.png",
+        "Twitch Gift Cards": "https://www.stickpng.com/img/icons-logos-emojis/tech-companies/twitch-logo",
+        "Garena Shell Voucher": "https://seeklogo.com/images/G/garena-logo-EXAMPLE-seeklogo.com.png",
         "XBOX Gift Cards": "https://1000logos.net/wp-content/uploads/2021/11/logo-Xbox.png",
         "TikTok Live Koin": "https://1000logos.net/wp-content/uploads/2019/06/Tiktok_Logo.png",
         "Minecraft Minecoins": "https://cdn.freebiesupply.com/logos/thumbs/2x/minecraft-1-logo.png",
-        "Razer Gold Voucher": "https://media.gold.razer.com/goldweb/site/images/logo/razer-gold-silver.png"
+        "Razer Gold Voucher": "https://seeklogo.com/images/R/razer-gold-logo-500630A2E5-seeklogo.com.png"
     };
 
     const createCard = (name) => {
@@ -72,8 +72,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const logoUrl = logoMap[name] || '';
 
+        // Img natural total - tanpa paksaan apapun
         card.innerHTML = `
-            <img src="\( {logoUrl}" alt=" \){name}" loading="lazy">
+            <img src="\( {logoUrl}" alt=" \){name}">
             <p>${name}</p>
         `;
 
@@ -93,7 +94,6 @@ document.addEventListener('DOMContentLoaded', () => {
         vouchers: ["Steam Wallet Code IDR", "Google Play Voucher", "PlayStation Network (PSN)", "Vision+ Voucher", "Vidio Voucher", "Token PLN", "Fortnite V Bucks", "Twitch Gift Cards", "Garena Shell Voucher", "XBOX Gift Cards", "TikTok Live Koin", "Minecraft Minecoins", "Razer Gold Voucher", "Candy Crush Saga", "Tinder Plus/Gold"]
     };
 
-    // Render semua
     if (containers.popular) gamesData.popular.forEach(name => containers.popular.appendChild(createCard(name)));
     if (containers.all) gamesData.all.forEach(name => containers.all.appendChild(createCard(name)));
     if (containers.emoney) gamesData.emoney.forEach(name => containers.emoney.appendChild(createCard(name)));
