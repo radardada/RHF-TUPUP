@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RHF SETORS - Top Up Games & Voucher Murah</title>
     <style>
-        /* Reset & Body */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -23,8 +22,6 @@
             align-items: center;
             flex-wrap: wrap;
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            position: relative;
-            z-index: 10;
         }
         .logo-header {
             display: flex;
@@ -57,7 +54,7 @@
             background: rgba(255,255,255,0.2);
         }
 
-        /* Hero Section */
+        /* Hero */
         #hero {
             background: linear-gradient(to bottom, #007bff, #00c6ff, #28a745);
             color: white;
@@ -89,80 +86,45 @@
             outline: none;
         }
 
-        /* Category Tabs */
-        .category-tabs {
-            max-width: 900px;
-            margin: 30px auto;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-            overflow: hidden;
-        }
-        .tabs {
-            display: flex;
-            background: #f0f0f0;
-        }
-        .tab-btn {
-            flex: 1;
-            padding: 18px;
-            background: none;
-            border: none;
-            font-weight: bold;
-            font-size: 18px;
-            color: #333;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        .tab-btn.active, .tab-btn:hover {
-            background: #007bff;
-            color: white !important;
-        }
-        .tab-panel {
-            display: none;
-            padding: 30px 15px;
-        }
-        .tab-panel.active {
-            display: block;
-        }
-        .tab-panel h2 {
+        /* Section Title */
+        .section-title {
             text-align: center;
             color: #007bff;
-            margin-bottom: 30px;
-            font-size: 28px;
+            font-size: 32px;
+            margin: 50px 0 30px;
         }
 
-        /* Game Grid & Card - Natural, tanpa paksa bentuk */
+        /* Game Grid - Luas & Lega */
         .game-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-            gap: 20px;
-            justify-items: center;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 25px;
+            padding: 0 20px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
         .game-card {
             background: white;
-            border-radius: 12px;
-            padding: 15px;
+            border-radius: 15px;
+            padding: 20px;
             text-align: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
             cursor: pointer;
             transition: transform 0.3s ease;
-            width: 100%;
-            max-width: 160px;
         }
         .game-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 25px rgba(0,123,255,0.2);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,123,255,0.2);
         }
         .game-card img {
             max-width: 100%;
             height: auto;
-            display: block;
-            margin: 0 auto 10px;
+            margin-bottom: 15px;
         }
         .game-card p {
             margin: 0;
             font-weight: bold;
-            font-size: 13px;
+            font-size: 14px;
             color: #333;
         }
 
@@ -171,8 +133,8 @@
             background: #007bff;
             color: white;
             text-align: center;
-            padding: 25px;
-            margin-top: 60px;
+            padding: 30px;
+            margin-top: 80px;
         }
 
         /* Responsive */
@@ -182,23 +144,13 @@
                 text-align: center;
                 padding: 20px;
             }
-            .logo-header h1 {
-                font-size: 32px;
-            }
-            .menu-items {
-                margin-top: 15px;
-                gap: 15px;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            .tabs { flex-direction: column; }
+            .logo-header h1 { font-size: 32px; }
+            .menu-items { margin-top: 15px; gap: 15px; flex-wrap: wrap; }
             .game-grid {
-                grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
-                gap: 15px;
+                grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+                gap: 20px;
             }
-            .game-card img {
-                max-width: 80px;
-            }
+            .game-card p { font-size: 13px; }
             #hero h2 { font-size: 36px; }
             #hero h2:nth-of-type(2) { font-size: 40px; }
         }
@@ -226,54 +178,28 @@
             <input type="text" id="game-search" placeholder="Cari game atau voucher...">
         </section>
 
-        <div class="category-tabs">
-            <div class="tabs">
-                <button class="tab-btn active" data-tab="games">GAMES</button>
-                <button class="tab-btn" data-tab="ewallet">E-WALLET</button>
-                <button class="tab-btn" data-tab="pulsa">PULSA</button>
-                <button class="tab-btn" data-tab="voucher">VOUCHER</button>
-            </div>
+        <!-- TIDAK ADA TAB - SEMUA LANGSUNG TAMPIL LUAS -->
+        <h2 class="section-title">Game Populer</h2>
+        <div id="popular-games" class="game-grid"></div>
 
-            <div id="games" class="tab-panel active">
-                <h2>Game Populer & Semua Game</h2>
-                <div id="popular-games" class="game-grid"></div>
-                <div id="all-games" class="game-grid" style="margin-top:40px;"></div>
-            </div>
+        <h2 class="section-title">Semua Game</h2>
+        <div id="all-games" class="game-grid"></div>
 
-            <div id="ewallet" class="tab-panel">
-                <h2>E-Wallet</h2>
-                <div id="emoney" class="game-grid"></div>
-            </div>
+        <h2 class="section-title">E-Wallet</h2>
+        <div id="emoney" class="game-grid"></div>
 
-            <div id="pulsa" class="tab-panel">
-                <h2>Pulsa</h2>
-                <div id="pulsa" class="game-grid"></div>
-            </div>
+        <h2 class="section-title">Pulsa</h2>
+        <div id="pulsa" class="game-grid"></div>
 
-            <div id="voucher" class="tab-panel">
-                <h2>Voucher Lainnya</h2>
-                <div id="vouchers" class="game-grid"></div>
-            </div>
-        </div>
+        <h2 class="section-title">Voucher Lainnya</h2>
+        <div id="vouchers" class="game-grid"></div>
     </main>
 
     <footer>
         <p>© 2026 RHF SETORS. All rights reserved.</p>
     </footer>
 
-    <!-- Load games.js dengan version untuk bypass cache -->
-    <script type="module" src="js/games.js?v=9"></script>
-
-    <script>
-        // Tab switching
-        document.querySelectorAll('.tab-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-                document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-                btn.classList.add('active');
-                document.getElementById(btn.dataset.tab).classList.add('active');
-            });
-        });
-    </script>
+    <!-- Load games.js dengan version anti-cache -->
+    <script type="module" src="js/games.js?v=10"></script>
 </body>
 </html>
