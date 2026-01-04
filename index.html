@@ -4,25 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RHF SETORS - Top Up Games & Voucher Murah</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/style.css"> <!-- Jika ada style.css utama, tetap pakai -->
     <style>
-        /* Hero tetap besar tapi minimalis */
+        /* Hero Section */
         #hero {
             background: linear-gradient(to bottom, #007bff, #00c6ff, #28a745);
             color: white;
             text-align: center;
-            padding: 60px 20px;
+            padding: 80px 20px 60px;
         }
         #hero h2 {
             font-size: 48px;
             margin: 0 0 20px;
-        }
-        #hero p {
-            font-size: 24px;
-            margin: 0 0 20px;
-            opacity: 0.9;
         }
         #hero .subtext {
             font-size: 20px;
@@ -37,9 +30,50 @@
             border-radius: 50px;
             border: none;
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            outline: none;
         }
 
-        /* TAB KATEGORI MINI & RAPPI */
+        /* Header Perbaikan */
+        header {
+            background: linear-gradient(to bottom, #007bff, #00c6ff);
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            position: relative;
+        }
+        .logo-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .logo-header img {
+            height: 80px;
+        }
+        .logo-header h1 {
+            margin: 0;
+            font-size: 40px;
+            color: white;
+        }
+        .menu-items {
+            display: flex;
+            gap: 30px;
+        }
+        .menu-items a {
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            padding: 10px 15px;
+            border-radius: 8px;
+            transition: background 0.3s;
+        }
+        .menu-items a:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        /* Tab Kategori */
         .category-tabs {
             max-width: 900px;
             margin: 30px auto;
@@ -48,43 +82,40 @@
             box-shadow: 0 8px 20px rgba(0,0,0,0.1);
             overflow: hidden;
         }
-
         .tabs {
             display: flex;
             background: #f0f0f0;
         }
-
         .tab-btn {
             flex: 1;
-            padding: 15px;
+            padding: 18px;
             background: none;
             border: none;
             font-weight: bold;
-            font-size: 16px;
+            font-size: 18px;
+            color: #333; /* Biar tidak faint */
             cursor: pointer;
             transition: all 0.3s;
         }
-
         .tab-btn.active, .tab-btn:hover {
             background: #007bff;
-            color: white;
+            color: white !important;
         }
-
         .tab-panel {
             display: none;
             padding: 30px 15px;
         }
-
         .tab-panel.active {
             display: block;
         }
 
+        /* Game Grid & Card */
         .game-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
             gap: 20px;
+            justify-items: center;
         }
-
         .game-card {
             background: white;
             border-radius: 12px;
@@ -93,20 +124,18 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
             cursor: pointer;
             transition: transform 0.3s ease;
+            width: 100%;
+            max-width: 160px;
         }
-
         .game-card:hover {
             transform: translateY(-6px);
         }
-
         .game-card img {
-            width: 100%;
-            height: auto;
+            width: 100px;
+            height: 100px;
             object-fit: contain;
-            border-radius: 10px;
             margin-bottom: 10px;
         }
-
         .game-card p {
             margin: 0;
             font-weight: bold;
@@ -114,23 +143,38 @@
             color: #333;
         }
 
+        /* Footer */
+        footer {
+            background: #007bff;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+                padding: 20px;
+            }
+            .menu-items {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
             .tabs {
                 flex-direction: column;
-            }
-            .tab-btn {
-                padding: 12px;
-                font-size: 15px;
             }
             .game-grid {
                 grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
                 gap: 15px;
             }
-            .game-card {
-                padding: 12px;
-            }
-            .game-card p {
-                font-size: 12px;
+            .game-card img {
+                width: 80px;
+                height: 80px;
             }
         }
     </style>
@@ -138,10 +182,9 @@
 <body>
     <header>
         <div class="logo-header">
-            <img src="images/logo.png" alt="RHF SETORS Logo" style="height:80px; margin-right:20px;">
-            <h1 style="margin:0; font-size:40px; line-height:80px;">RHF SETORS</h1>
+            <img src="images/logo.png" alt="RHF SETORS Logo">
+            <h1>RHF SETORS</h1>
         </div>
-
         <div class="menu-items">
             <a href="#promo">News & Promo</a>
             <a href="#search">Cari Game</a>
@@ -153,12 +196,11 @@
     <main>
         <section id="hero">
             <h2>Top Up Games & Voucher</h2>
-            <h2 style="font-size:48px; margin:0;">Murah, Aman, Cepat</h2>
+            <h2>Murah, Aman, Cepat</h2>
             <p class="subtext">Top Up Games Voucher Lebih Murah 20%, Cepat, dan Aman. Tanpa login, langsung terisi!</p>
             <input type="text" id="game-search" placeholder="Cari game atau voucher...">
         </section>
 
-        <!-- TAB KATEGORI MINI & CLEAN -->
         <div class="category-tabs">
             <div class="tabs">
                 <button class="tab-btn active" data-tab="games">GAMES</button>
