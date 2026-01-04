@@ -1,43 +1,63 @@
-const { db, ref, push, update, onValue } = window.firebaseDB;
+// form-handler.js - RHF STORE ORDER SYSTEM
+import { db } from "./firebase-init.js";
+import { ref, push, set } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
-const form = document.getElementById('topupForm');
-if (form) {
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault();
+document.addEventListener('DOMContentLoaded', () => {
+    const orderButton = document.querySelector('.btn-buy');
+    
+    if (orderButton) {
+        orderButton.addEventListener('click', async (e) => {
+            e.preventDefault();
 
-        const playerId = document.getElementById('playerId').value.trim();
-        const amount = parseInt(document.getElementById('amount').value);
-        const payment = document.getElementById('payment').value;
-        const game = document.getElementById('selected-game').textContent;
+            // 1. Ambil Data dari Form
+            const userId = document.querySelector('input[placeholder="Masukkan ID"]').value;
+            const zoneId = document.querySelector('input[placeholder="(Server)"]')?.value || "";
+            const whatsapp = document.querySelector('input[type="number"]')?.value || ""; // Asumsi ada field WA
+            
+            // Ambil Nominal yang dipilih
+            const selectedNominal = document.querySelector('input[name="diamond_pack"]:checked');
+            // Ambil Metode Pembayaran yang dipilih
+            const selectedPayment = document.querySelector('input[name="payment_method"]:checked');
 
-        if (!playerId) {
-            alert('Masukkan Player ID!');
-            return;
-        }
+            // 2. Validasi Input (Sama seperti Tokogames)
+            if (!userId || !selectedNominal || !selectedPayment) {
+                alert("❌ Mohon lengkapi ID, Nominal, dan Metode Pembayaran!");
+                return;
+            }
 
-        try {
-            // Tambah transaksi
-            const transRef = push(ref(db, 'transactions'));
-            await set(transRef, {
-                game,
-                amount,
-                payment,
-                playerId,
-                status: 'Sukses',
-                timestamp: Date.now()
-            });
+            // 3. Susun Data Pesanan
+            const orderData = {
+                orderId: "RHF-" + Math.floor(Math.random() * 1000000),
+                targetId: userId + (zoneId ? ` (${zoneId})` : ""),
+                item: selectedNominal.value,
+                payment: selectedPayment.value,
+                whatsapp: whatsapp,
+                status: "Pending",
+                timestamp: new Date().toISOString()
+            };
 
-            // Update saldo
-            const balanceRef = ref(db, 'balance');
-            onValue(balanceRef, async (snapshot) => {
-                const data = snapshot.val() || { value: 0 };
-                await update(balanceRef, { value: data.value + amount });
-            }, { onlyOnce: true });
+            try {
+                // 4. Kirim ke Firebase Realtime Database
+                const ordersRef = ref(db, 'orders');
+                const newOrderRef = push(ordersRef);
+                await set(newOrderRef, orderData);
 
-            document.getElementById('status').innerHTML = `<strong style="color:green;">Top Up Berhasil!</strong> ${game} - ${amount} IDR telah ditambahkan.`;
-            form.reset();
-        } catch (error) {
-            document.getElementById('status').innerHTML = `<strong style="color:red;">Error: ${error.message}</strong>`;
-        }
-    });
-}
+                // 5. Notifikasi Berhasil & Arahkan ke WhatsApp (Otomatisasi)
+                alert("✅ Pesanan Berhasil Dibuat!");
+                
+                const waMessage = `Halo RHF STORE, saya ingin konfirmasi pesanan:%0A%0A` +
+                                 `ID Pesanan: ${orderData.orderId}%0A` +
+                                 `Target: ${orderData.targetId}%0A` +
+                                 `Item: ${orderData.item}%0A` +
+                                 `Metode: ${orderData.payment}%0A%0A` +
+                                 `Mohon segera diproses ya!`;
+                
+                window.location.href = `https://wa.me/6281234567890?text=${waMessage}`; // Ganti dengan nomor WA kamu
+
+            } catch (error) {
+                console.error("Error sending order:", error);
+                alert("❌ Terjadi kesalahan, coba lagi nanti.");
+            }
+        });
+    }
+});
