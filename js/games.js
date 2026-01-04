@@ -1,4 +1,4 @@
-// js/games.js - VERSI LAKUKAN APA AJA BIAR MUNCUL 100%
+// js/games.js - VERSI LAKUKAN APA AJA BIAR GAMBAR MUNCUL 100%
 
 document.addEventListener('DOMContentLoaded', () => {
     const containers = {
