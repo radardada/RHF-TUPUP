@@ -131,7 +131,7 @@
             font-size: 28px;
         }
 
-        /* Game Grid & Card */
+        /* Game Grid & Card - Natural, tanpa paksa bentuk */
         .game-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
@@ -154,12 +154,10 @@
             box-shadow: 0 12px 25px rgba(0,123,255,0.2);
         }
         .game-card img {
-            width: 100px;
-            height: 100px;
-            object-fit: contain;
-            background: #f8f9fa;
-            border-radius: 12px;
-            margin-bottom: 10px;
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto 10px;
         }
         .game-card p {
             margin: 0;
@@ -199,8 +197,7 @@
                 gap: 15px;
             }
             .game-card img {
-                width: 80px;
-                height: 80px;
+                max-width: 80px;
             }
             #hero h2 { font-size: 36px; }
             #hero h2:nth-of-type(2) { font-size: 40px; }
@@ -264,8 +261,8 @@
         <p>© 2026 RHF SETORS. All rights reserved.</p>
     </footer>
 
-    <!-- Script games.js dengan version query untuk bypass cache -->
-    <script type="module" src="js/games.js?v=8"></script>
+    <!-- Load games.js dengan version untuk bypass cache -->
+    <script type="module" src="js/games.js?v=9"></script>
 
     <script>
         // Tab switching
