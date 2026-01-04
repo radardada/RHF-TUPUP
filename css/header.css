@@ -1,129 +1,127 @@
-header {
-    position: fixed;                /* Tetap di atas saat scroll */
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: linear-gradient(to bottom, #007bff, #00c6ff);
-    color: white;
-    padding: 30px 20px;
-    text-align: center;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-    z-index: 1000;                  /* Selalu di depan */
-    height: auto;                   /* Biar tinggi otomatis sesuai isi */
-}
+/* header.css - RHF STORE PREMIUM DESIGN */
 
-.logo-header {
+.navbar {
+    background-color: rgba(22, 33, 62, 0.95); /* Semi transparan */
+    backdrop-filter: blur(10px); /* Efek blur kaca */
+    height: 70px;
     display: flex;
     align-items: center;
-    flex-shrink: 0; /* Jangan menyusut */
+    justify-content: space-between;
+    padding: 0 5%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(233, 69, 96, 0.3);
 }
 
-.logo-header img {
-    height: 60px; /* Dikurangi dari 80px biar mobile-friendly */
-    width: auto;
-    margin-right: 15px;
-    object-fit: contain;
-}
-
-.logo-header h1 {
-    margin: 0;
-    font-size: 32px; /* Dikurangi dari 40px inline style */
-    line-height: 1.2;
-    font-weight: bold;
-    white-space: nowrap;
-}
-
-.menu-items {
+/* Logo Area */
+.logo {
     display: flex;
-    gap: 30px; /* Dikurangi dari 40px */
-    font-size: 16px; /* Dikurangi dari 18px */
-    font-weight: 600;
-}
-
-.menu-items a {
-    color: white;
+    align-items: center;
+    gap: 12px;
     text-decoration: none;
-    padding: 8px 16px;
-    border-radius: 25px;
-    transition: all 0.3s ease;
 }
 
-.menu-items a:hover {
-    background: rgba(255,255,255,0.2);
-    opacity: 1;
+.logo img {
+    height: 45px;
+    width: auto;
+    transition: transform 0.3s ease;
 }
 
-/* Hamburger Menu */
-.hamburger {
+.logo:hover img {
+    transform: scale(1.1);
+}
+
+.logo span {
+    color: #ffffff;
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.logo span b {
+    color: #e94560; /* Warna aksen RHF STORE */
+}
+
+/* Navigation Links */
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+}
+
+.nav-links li a {
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 600;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.nav-links li a:hover, .nav-links li a.active {
+    color: #e94560;
+}
+
+/* Search Bar (Khas Tokogame) */
+.search-container {
+    background: #1a1a2e;
+    border: 1px solid #24344d;
+    border-radius: 20px;
+    padding: 5px 15px;
+    display: flex;
+    align-items: center;
+}
+
+.search-container input {
+    background: transparent;
+    border: none;
+    color: white;
+    padding: 5px;
+    outline: none;
+    font-size: 14px;
+    width: 150px;
+}
+
+/* Mobile Menu Toggle */
+.menu-toggle {
     display: none;
     flex-direction: column;
     gap: 5px;
     cursor: pointer;
-    padding: 5px;
 }
 
-.hamburger span {
-    width: 28px;
+.menu-toggle span {
+    width: 25px;
     height: 3px;
-    background: white;
+    background-color: white;
     border-radius: 2px;
-    transition: all 0.3s ease;
 }
 
-/* Mobile Responsive */
-@media (max-width: 768px) {
-    header {
-        padding: 12px 20px;
+/* Responsive Tablet & Mobile */
+@media (max-width: 992px) {
+    .search-container {
+        display: none; /* Sembunyikan search di mobile agar tidak sempit */
     }
-    
-    .logo-header h1 {
-        font-size: 24px;
-    }
-    
-    .logo-header img {
-        height: 50px;
-    }
-    
-    .menu-items {
-        display: none; /* Sembunyi di mobile */
-        flex-direction: column;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background: linear-gradient(to bottom, #007bff, #00c6ff);
-        padding: 20px;
-        gap: 15px;
-        text-align: center;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-    }
-
-    .menu-items.active {
-        display: flex;
-    }
-
-    .hamburger {
-        display: flex;
-    }
-    
-    /* Pastikan menu tidak overlap hero */
-    main {
-        margin-top: 0 !important;
-    }
-}
-
-/* Fix tumpang tindih dengan hero */
-#hero {
-    margin-top: 0;
-    position: relative;
-}
-
-body {
-    padding-top: 120px;   /* <<< Ini "tempat sendiri" untuk header sticky. Mulai dari 120px */
 }
 
 @media (max-width: 768px) {
-    body {
-        padding-top: 100px;  /* Lebih kecil di mobile, karena header lebih ramping */
+    .nav-links {
+        display: none; /* Nanti bisa diaktifkan dengan JS untuk menu mobile */
+    }
+    
+    .menu-toggle {
+        display: flex;
+    }
+    
+    .navbar {
+        padding: 0 20px;
+    }
+
+    .logo span {
+        font-size: 18px;
     }
 }
