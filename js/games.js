@@ -1,7 +1,7 @@
-// js/games.js - FINAL FIX LOGO MUNcul SETELAH TAMBAH KOLOM
+// js/games.js - FIXED & OPTIMIZED - Logo HTTPS Pasti Muncul
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Container semua grid di tab kategori
+    // Container grid
     const containers = {
         popular: document.getElementById('popular-games'),
         all: document.getElementById('all-games'),
@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
         vouchers: document.getElementById('vouchers')
     };
 
-    // Logo Map FULL (semua URL dari list kamu)
+    // Logo Map (semua URL kamu tetap dipakai)
     const logoMap = {
         "Mobile Legends Diamonds": "https://img.esports.id/img/article/637920200914081250.png",
         "Free Fire Diamonds": "https://iconlogovector.com/uploads/images/2025/08/lg-6893f81b6ef79-FREE-FIRE.webp",
@@ -70,15 +70,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const createCard = (name) => {
         const card = document.createElement('div');
         card.className = 'game-card';
-        const logoUrl = logoMap[name] || 'https://via.placeholder.com/150x150/cccccc/000000?text=No+Logo';
+
+        const logoUrl = logoMap[name] || 'https://via.placeholder.com/120x120/f0f0f0/999999?text=No+Logo';
+
         card.innerHTML = `
-            <img src="\( {logoUrl}" alt=" \){name}" loading="lazy" style="width:100%; height:auto; object-fit:contain; border-radius:12px;">
-            <p>${name}</p>
+            <img src="\( {logoUrl}" alt=" \){name}" loading="lazy" onerror="this.src='https://via.placeholder.com/120x120/f0f0f0/999999?text=?'">
+            <p>${name.replace('<br>', '\n').split('\n').join('<br>')}</p>
         `;
+
         card.onclick = () => {
             localStorage.setItem('selectedGame', name);
             location.href = 'topup.html';
         };
+
         return card;
     };
 
@@ -90,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
         vouchers: ["Steam Wallet Code IDR", "Google Play Voucher", "PlayStation Network (PSN)", "Vision+ Voucher", "Vidio Voucher", "Token PLN", "Fortnite V Bucks", "Twitch Gift Cards", "Garena Shell Voucher", "XBOX Gift Cards", "TikTok Live Koin", "Minecraft Minecoins", "Razer Gold Voucher", "Candy Crush Saga", "Tinder Plus/Gold"]
     };
 
-    // Render ke semua container
+    // Render semua card
     if (containers.popular) gamesData.popular.forEach(name => containers.popular.appendChild(createCard(name)));
     if (containers.all) gamesData.all.forEach(name => containers.all.appendChild(createCard(name)));
     if (containers.emoney) gamesData.emoney.forEach(name => containers.emoney.appendChild(createCard(name)));
