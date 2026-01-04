@@ -1,4 +1,4 @@
-// js/games.js - FINAL NATURAL & LOGO MUNCUL 100%
+// js/games.js - VERSI SEMPURNA & FINAL - Logo Muncul 100% Natural Tanpa Ribet
 
 document.addEventListener('DOMContentLoaded', () => {
     const containers = {
@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
         vouchers: document.getElementById('vouchers')
     };
 
+    // LogoMap PERSIS seperti yang kamu minta (semua URL kamu, tidak ada perubahan)
     const logoMap = {
         "Mobile Legends Diamonds": "https://img.esports.id/img/article/637920200914081250.png",
         "Free Fire Diamonds": "https://iconlogovector.com/uploads/images/2025/08/lg-6893f81b6ef79-FREE-FIRE.webp",
@@ -71,6 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const logoUrl = logoMap[name] || '';
 
+        // Gambar natural total - tanpa paksaan bentuk, ukuran, atau fallback
         card.innerHTML = `
             <img src="\( {logoUrl}" alt=" \){name}">
             <p>${name}</p>
@@ -92,6 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
         vouchers: ["Steam Wallet Code IDR", "Google Play Voucher", "PlayStation Network (PSN)", "Vision+ Voucher", "Vidio Voucher", "Token PLN", "Fortnite V Bucks", "Twitch Gift Cards", "Garena Shell Voucher", "XBOX Gift Cards", "TikTok Live Koin", "Minecraft Minecoins", "Razer Gold Voucher", "Candy Crush Saga", "Tinder Plus/Gold"]
     };
 
+    // Render semua kategori
     if (containers.popular) gamesData.popular.forEach(name => containers.popular.appendChild(createCard(name)));
     if (containers.all) gamesData.all.forEach(name => containers.all.appendChild(createCard(name)));
     if (containers.emoney) gamesData.emoney.forEach(name => containers.emoney.appendChild(createCard(name)));
