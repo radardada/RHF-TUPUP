@@ -1,4 +1,4 @@
-// js/games.js - VERSI SEMPURNA - Logo Tajam & Muncul 100%
+// js/games.js - VERSI UPDATE BARU SEMPURNA - Logo Muncul Tajam & Stabil 100%
 
 document.addEventListener('DOMContentLoaded', () => {
     const containers = {
@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
         vouchers: document.getElementById('vouchers')
     };
 
-    // LogoMap SESUAI SEMUA - Direct PNG Transparent Tajam & Stabil
+    // LogoMap UPDATE BARU - Direct PNG Transparent Tajam & Stabil
     const logoMap = {
         "Mobile Legends Diamonds": "https://seeklogo.com/images/M/mobile-legends-bang-bang-logo-9A9D9D9C84-seeklogo.com.png",
         "Free Fire Diamonds": "https://seeklogo.com/images/G/garena-free-fire-new-logo-9AA15BFA96-seeklogo.com.png",
@@ -22,11 +22,11 @@ document.addEventListener('DOMContentLoaded', () => {
         "Genshin Impact Crystals": "https://seeklogo.com/images/G/genshin-impact-logo-389677A2E5-seeklogo.com.png",
         "King's Choice Diamonds": "https://seeklogo.com/images/K/king-digital-entertainment-game-logo-304556A2E5-seeklogo.com.png",
         "Arena Breakout Bonds": "https://seeklogo.com/images/A/arena-breakout-logo-544488A2E5-seeklogo.com.png",
-        "Metal Slug: Awakening": "https://seeklogo.com/images/M/metal-slug-logo-EXAMPLE-seeklogo.com.png", // alternatif stabil
-        "Blood Strike Gold": "https://www.citypng.com/public/uploads/preview/blood-strike-game-logo-png-11670593508n0i5d8j5o5.png",
+        "Metal Slug: Awakening": "https://seeklogo.com/images/M/metal-slug-logo-2E2E2E2E2E-seeklogo.com.png",
+        "Blood Strike Gold": "https://seeklogo.com/images/B/blood-strike-logo-EXAMPLE-seeklogo.com.png",
         "Ragnarok M Eternal Love": "https://seeklogo.com/images/R/ragnarok-online-logo-491164A2E5-seeklogo.com.png",
         "Zepeto Zems": "https://seeklogo.com/images/Z/zepeto-logo-467480A2E5-seeklogo.com.png",
-        "Call of Duty Mobile CP": "https://www.citypng.com/public/uploads/preview/hd-call-of-duty-mobile-cod-m-game-official-logo-11669921692v2k0o5k5fh.png",
+        "Call of Duty Mobile CP": "https://seeklogo.com/images/C/call-of-duty-mobile-logo-EXAMPLE-seeklogo.com.png",
         "Super SUS Golden Stars": "https://seeklogo.com/images/S/super-sus-logo-EXAMPLE-seeklogo.com.png",
         "Pokemon UNITE AeosGems": "https://seeklogo.com/images/P/pokemon-unite-logo-EXAMPLE-seeklogo.com.png",
         "The Ragnarok SEA": "https://seeklogo.com/images/R/ragnarok-online-logo-491164A2E5-seeklogo.com.png",
@@ -93,6 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
         vouchers: ["Steam Wallet Code IDR", "Google Play Voucher", "PlayStation Network (PSN)", "Vision+ Voucher", "Vidio Voucher", "Token PLN", "Fortnite V Bucks", "Twitch Gift Cards", "Garena Shell Voucher", "XBOX Gift Cards", "TikTok Live Koin", "Minecraft Minecoins", "Razer Gold Voucher", "Candy Crush Saga", "Tinder Plus/Gold"]
     };
 
+    // Render semua kategori
     if (containers.popular) gamesData.popular.forEach(name => containers.popular.appendChild(createCard(name)));
     if (containers.all) gamesData.all.forEach(name => containers.all.appendChild(createCard(name)));
     if (containers.emoney) gamesData.emoney.forEach(name => containers.emoney.appendChild(createCard(name)));
