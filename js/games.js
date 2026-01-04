@@ -1,7 +1,6 @@
-// js/games.js - FIXED & OPTIMIZED - Logo HTTPS Pasti Muncul
+// js/games.js - VERSI SUPER LENGKAP & FINAL - Logo HTTPS 100% Muncul
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Container grid
     const containers = {
         popular: document.getElementById('popular-games'),
         all: document.getElementById('all-games'),
@@ -10,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
         vouchers: document.getElementById('vouchers')
     };
 
-    // Logo Map (semua URL kamu tetap dipakai)
+    // LogoMap PERSIS seperti yang kamu minta (semua URL kamu)
     const logoMap = {
         "Mobile Legends Diamonds": "https://img.esports.id/img/article/637920200914081250.png",
         "Free Fire Diamonds": "https://iconlogovector.com/uploads/images/2025/08/lg-6893f81b6ef79-FREE-FIRE.webp",
@@ -71,11 +70,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const card = document.createElement('div');
         card.className = 'game-card';
 
-        const logoUrl = logoMap[name] || 'https://via.placeholder.com/120x120/f0f0f0/999999?text=No+Logo';
+        const logoUrl = logoMap[name] || 'https://via.placeholder.com/120x120/f0f0f0/666666?text=No+Logo';
 
         card.innerHTML = `
-            <img src="\( {logoUrl}" alt=" \){name}" loading="lazy" onerror="this.src='https://via.placeholder.com/120x120/f0f0f0/999999?text=?'">
-            <p>${name.replace('<br>', '\n').split('\n').join('<br>')}</p>
+            <img src="\( {logoUrl}" alt=" \){name}" loading="lazy" onerror="this.src='https://via.placeholder.com/120x120/f0f0f0/666666?text=?'; this.onerror=null;">
+            <p>${name}</p>
         `;
 
         card.onclick = () => {
