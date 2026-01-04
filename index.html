@@ -10,94 +10,58 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: #f8f9fa;
             color: #333;
-            line-height: 1.6;
         }
 
-        /* Header */
         header {
             background: linear-gradient(to bottom, #007bff, #00c6ff);
-            padding: 20px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
+            padding: 20px;
+            text-align: center;
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-        }
-        .logo-header {
-            display: flex;
-            align-items: center;
-            gap: 20px;
         }
         .logo-header img {
             height: 80px;
-            border-radius: 10px;
         }
         .logo-header h1 {
-            margin: 0;
-            font-size: 40px;
             color: white;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-        .menu-items {
-            display: flex;
-            gap: 30px;
-        }
-        .menu-items a {
-            color: white;
-            font-weight: bold;
-            font-size: 18px;
-            padding: 10px 15px;
-            border-radius: 8px;
-            transition: background 0.3s;
-        }
-        .menu-items a:hover {
-            background: rgba(255,255,255,0.2);
+            font-size: 36px;
+            margin-top: 10px;
         }
 
-        /* Hero */
         #hero {
             background: linear-gradient(to bottom, #007bff, #00c6ff, #28a745);
             color: white;
             text-align: center;
-            padding: 80px 20px 60px;
+            padding: 60px 20px;
         }
         #hero h2 {
-            font-size: 48px;
-            margin-bottom: 20px;
-        }
-        #hero h2:nth-of-type(2) {
-            font-size: 52px;
-            margin: 0;
-            font-weight: 900;
+            font-size: 42px;
+            margin-bottom: 10px;
         }
         #hero .subtext {
             font-size: 20px;
-            margin: 20px 0 40px;
             opacity: 0.9;
+            margin-bottom: 30px;
         }
         #hero input {
-            width: 80%;
+            width: 85%;
             max-width: 600px;
-            padding: 20px;
+            padding: 18px;
             font-size: 18px;
             border-radius: 50px;
             border: none;
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            outline: none;
         }
 
-        /* Section Title */
         .section-title {
             text-align: center;
+            font-size: 30px;
             color: #007bff;
-            font-size: 32px;
             margin: 50px 0 30px;
         }
 
-        /* Game Grid - Luas & Lega */
         .game-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
             gap: 25px;
             padding: 0 20px;
             max-width: 1200px;
@@ -110,30 +74,23 @@
             text-align: center;
             box-shadow: 0 6px 20px rgba(0,0,0,0.1);
             cursor: pointer;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s;
         }
         .game-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,123,255,0.2);
         }
         .game-card img {
-    max-width: 100px;
-    max-height: 100px;
-    object-fit: contain;
-    display: block;
-    margin: 0 auto 10px auto;
-    background: #f0f0f0;
-    border-radius: 12px;
-    padding: 10px;
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+            margin-bottom: 15px;
         }
         .game-card p {
-            margin: 0;
             font-weight: bold;
             font-size: 14px;
             color: #333;
         }
 
-        /* Footer */
         footer {
             background: #007bff;
             color: white;
@@ -142,36 +99,29 @@
             margin-top: 80px;
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                text-align: center;
-                padding: 20px;
-            }
-            .logo-header h1 { font-size: 32px; }
-            .menu-items { margin-top: 15px; gap: 15px; flex-wrap: wrap; }
             .game-grid {
-                grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
                 gap: 20px;
             }
-            .game-card p { font-size: 13px; }
-            #hero h2 { font-size: 36px; }
-            #hero h2:nth-of-type(2) { font-size: 40px; }
+            .game-card img {
+                width: 80px;
+                height: 80px;
+            }
+            .game-card p {
+                font-size: 13px;
+            }
+            #hero h2 {
+                font-size: 36px;
+            }
         }
     </style>
 </head>
 <body>
     <header>
         <div class="logo-header">
-            <img src="images/logo.png" alt="RHF SETORS Logo">
+            <img src="images/logo.png" alt="RHF SETORS">
             <h1>RHF SETORS</h1>
-        </div>
-        <div class="menu-items">
-            <a href="#promo">News & Promo</a>
-            <a href="#search">Cari Game</a>
-            <a href="#contact">Kontak Kami</a>
-            <a href="admin.html">Admin</a>
         </div>
     </header>
 
@@ -183,7 +133,6 @@
             <input type="text" id="game-search" placeholder="Cari game atau voucher...">
         </section>
 
-        <!-- TIDAK ADA TAB - SEMUA LANGSUNG TAMPIL LUAS -->
         <h2 class="section-title">Game Populer</h2>
         <div id="popular-games" class="game-grid"></div>
 
@@ -204,7 +153,7 @@
         <p>© 2026 RHF SETORS. All rights reserved.</p>
     </footer>
 
-    <!-- Load games.js dengan version anti-cache -->
-    <script type="module" src="js/games.js?v=10"></script>
+    <!-- Anti-cache version -->
+    <script type="module" src="js/games.js?v=11"></script>
 </body>
 </html>
