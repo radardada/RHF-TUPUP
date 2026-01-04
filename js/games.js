@@ -1,5 +1,3 @@
-// js/games.js - VERSI LAKUKAN APA AJA BIAR GAMBAR MUNCUL 100%
-
 document.addEventListener('DOMContentLoaded', () => {
     const containers = {
         popular: document.getElementById('popular-games'),
