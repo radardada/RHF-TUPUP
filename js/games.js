@@ -1,4 +1,4 @@
-// js/games.js - VERSI FINAL DENGAN FALLBACK PLACEHOLDER ?
+// js/games.js - VERSI TANPA PAKSA BENTUK & TANPA FALLBACK PLACEHOLDER
 
 document.addEventListener('DOMContentLoaded', () => {
     const containers = {
@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
         vouchers: document.getElementById('vouchers')
     };
 
-    // LogoMap PERSIS seperti yang kamu berikan
+    // LogoMap PERSIS dari kamu
     const logoMap = {
         "Mobile Legends Diamonds": "https://img.esports.id/img/article/637920200914081250.png",
         "Free Fire Diamonds": "https://iconlogovector.com/uploads/images/2025/08/lg-6893f81b6ef79-FREE-FIRE.webp",
@@ -70,10 +70,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const card = document.createElement('div');
         card.className = 'game-card';
 
-        const logoUrl = logoMap[name] || 'https://via.placeholder.com/120x120/f0f0f0/666666?text=?';
+        const logoUrl = logoMap[name] || '';
 
         card.innerHTML = `
-            <img src="\( {logoUrl}" alt=" \){name}" loading="lazy" onerror="this.src='https://via.placeholder.com/120x120/f0f0f0/666666?text=?'; this.onerror=null;">
+            <img src="\( {logoUrl}" alt=" \){name}" loading="lazy">
             <p>${name}</p>
         `;
 
