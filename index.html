@@ -4,36 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RHF SETORS - Top Up Games & Voucher Murah</title>
-    <link rel="stylesheet" href="css/style.css"> <!-- Jika ada style.css utama, tetap pakai -->
     <style>
-        /* Hero Section */
-        #hero {
-            background: linear-gradient(to bottom, #007bff, #00c6ff, #28a745);
-            color: white;
-            text-align: center;
-            padding: 80px 20px 60px;
-        }
-        #hero h2 {
-            font-size: 48px;
-            margin: 0 0 20px;
-        }
-        #hero .subtext {
-            font-size: 20px;
-            margin: 20px 0 40px;
-            opacity: 0.9;
-        }
-        #hero input {
-            width: 80%;
-            max-width: 600px;
-            padding: 20px;
-            font-size: 18px;
-            border-radius: 50px;
-            border: none;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            outline: none;
+        /* Reset & Body */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
         }
 
-        /* Header Perbaikan */
+        /* Header */
         header {
             background: linear-gradient(to bottom, #007bff, #00c6ff);
             padding: 20px 40px;
@@ -43,6 +24,7 @@
             flex-wrap: wrap;
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
             position: relative;
+            z-index: 10;
         }
         .logo-header {
             display: flex;
@@ -51,11 +33,13 @@
         }
         .logo-header img {
             height: 80px;
+            border-radius: 10px;
         }
         .logo-header h1 {
             margin: 0;
             font-size: 40px;
             color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
         .menu-items {
             display: flex;
@@ -73,7 +57,39 @@
             background: rgba(255,255,255,0.2);
         }
 
-        /* Tab Kategori */
+        /* Hero Section */
+        #hero {
+            background: linear-gradient(to bottom, #007bff, #00c6ff, #28a745);
+            color: white;
+            text-align: center;
+            padding: 80px 20px 60px;
+        }
+        #hero h2 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        #hero h2:nth-of-type(2) {
+            font-size: 52px;
+            margin: 0;
+            font-weight: 900;
+        }
+        #hero .subtext {
+            font-size: 20px;
+            margin: 20px 0 40px;
+            opacity: 0.9;
+        }
+        #hero input {
+            width: 80%;
+            max-width: 600px;
+            padding: 20px;
+            font-size: 18px;
+            border-radius: 50px;
+            border: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            outline: none;
+        }
+
+        /* Category Tabs */
         .category-tabs {
             max-width: 900px;
             margin: 30px auto;
@@ -93,7 +109,7 @@
             border: none;
             font-weight: bold;
             font-size: 18px;
-            color: #333; /* Biar tidak faint */
+            color: #333;
             cursor: pointer;
             transition: all 0.3s;
         }
@@ -107,6 +123,12 @@
         }
         .tab-panel.active {
             display: block;
+        }
+        .tab-panel h2 {
+            text-align: center;
+            color: #007bff;
+            margin-bottom: 30px;
+            font-size: 28px;
         }
 
         /* Game Grid & Card */
@@ -128,12 +150,15 @@
             max-width: 160px;
         }
         .game-card:hover {
-            transform: translateY(-6px);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0,123,255,0.2);
         }
         .game-card img {
             width: 100px;
             height: 100px;
             object-fit: contain;
+            background: #f8f9fa;
+            border-radius: 12px;
             margin-bottom: 10px;
         }
         .game-card p {
@@ -148,8 +173,8 @@
             background: #007bff;
             color: white;
             text-align: center;
-            padding: 20px;
-            margin-top: 50px;
+            padding: 25px;
+            margin-top: 60px;
         }
 
         /* Responsive */
@@ -159,15 +184,16 @@
                 text-align: center;
                 padding: 20px;
             }
+            .logo-header h1 {
+                font-size: 32px;
+            }
             .menu-items {
                 margin-top: 15px;
+                gap: 15px;
                 flex-wrap: wrap;
                 justify-content: center;
-                gap: 15px;
             }
-            .tabs {
-                flex-direction: column;
-            }
+            .tabs { flex-direction: column; }
             .game-grid {
                 grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
                 gap: 15px;
@@ -176,6 +202,8 @@
                 width: 80px;
                 height: 80px;
             }
+            #hero h2 { font-size: 36px; }
+            #hero h2:nth-of-type(2) { font-size: 40px; }
         }
     </style>
 </head>
@@ -210,23 +238,23 @@
             </div>
 
             <div id="games" class="tab-panel active">
-                <h2 style="text-align:center; color:#007bff; margin-bottom:20px; font-size:28px;">Game Populer & Semua Game</h2>
+                <h2>Game Populer & Semua Game</h2>
                 <div id="popular-games" class="game-grid"></div>
                 <div id="all-games" class="game-grid" style="margin-top:40px;"></div>
             </div>
 
             <div id="ewallet" class="tab-panel">
-                <h2 style="text-align:center; color:#007bff; margin-bottom:20px; font-size:28px;">E-Wallet</h2>
+                <h2>E-Wallet</h2>
                 <div id="emoney" class="game-grid"></div>
             </div>
 
             <div id="pulsa" class="tab-panel">
-                <h2 style="text-align:center; color:#007bff; margin-bottom:20px; font-size:28px;">Pulsa</h2>
+                <h2>Pulsa</h2>
                 <div id="pulsa" class="game-grid"></div>
             </div>
 
             <div id="voucher" class="tab-panel">
-                <h2 style="text-align:center; color:#007bff; margin-bottom:20px; font-size:28px;">Voucher Lainnya</h2>
+                <h2>Voucher Lainnya</h2>
                 <div id="vouchers" class="game-grid"></div>
             </div>
         </div>
@@ -236,9 +264,11 @@
         <p>© 2026 RHF SETORS. All rights reserved.</p>
     </footer>
 
-    <script type="module" src="js/games.js"></script>
+    <!-- Script games.js dengan version query untuk bypass cache -->
+    <script type="module" src="js/games.js?v=8"></script>
 
     <script>
+        // Tab switching
         document.querySelectorAll('.tab-btn').forEach(btn => {
             btn.addEventListener('click', () => {
                 document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
