@@ -1,234 +1,189 @@
-/* css/forms.css - VERSI BARU & RAPI - Cocok dengan tampilan Tokogame */
+/* forms.css - RHF STORE PREMIUM DESIGN */
 
-* {
-    box-sizing: border-box;
-}
-
-body {
-    background: #f5f7fa;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #333;
-}
-
-/* Form Container */
-#topup-page {
+/* Container Utama Form */
+.form-container {
     max-width: 900px;
     margin: 20px auto;
-    background: white;
-    padding: 40px;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-}
-
-/* Judul Game */
-#topup-page h2 {
-    text-align: center;
-    color: #007bff;
-    font-size: 32px;
-    margin-bottom: 20px;
-}
-
-/* Logo Game Tengah */
-#topup-page > div[style*="text-align:center"] > div {
-    display: inline-block;
-    width: 140px;
-    height: 140px;
-    background: #f0f0f0;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-    padding: 15px;
-}
-
-#topup-page > div[style*="text-align:center"] img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
-
-/* Promo Text */
-#promo-text {
-    text-align: center;
-    color: #ff6600;
-    font-size: 20px;
-    font-weight: bold;
-    margin: 30px 0;
-    line-height: 1.5;
-}
-
-/* Input Group */
-.form-group {
-    margin-bottom: 25px;
-}
-
-.form-group label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 10px;
-    color: #333;
-    font-size: 16px;
-}
-
-.form-group input,
-.form-group select {
-    width: 100%;
-    padding: 18px 20px;
-    font-size: 16px;
-    border: 2px solid #e0e0e0;
-    border-radius: 15px;
-    background: #f8f9fa;
-    transition: all 0.3s ease;
-    outline: none;
-}
-
-.form-group input:focus,
-.form-group select:focus {
-    border-color: #007bff;
-    background: white;
-    box-shadow: 0 0 0 4px rgba(0,123,255,0.1);
-}
-
-/* Nominal Grid */
-#nominal-grid {
+    padding: 0 15px;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
     gap: 20px;
-    margin: 40px 0;
 }
 
-.nominal-card {
-    background: #f8f9fa;
-    border: 2px solid #e0e0e0;
-    border-radius: 15px;
-    padding: 20px;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+/* Panel Step (Langkah-langkah) */
+.form-card {
+    background: #16213e;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #24344d;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
-.nominal-card:hover,
-.nominal-card.selected {
-    border-color: #007bff;
-    background: #e3f2fd;
-    transform: translateY(-8px);
-    box-shadow: 0 12px 25px rgba(0,123,255,0.2);
-}
-
-.nominal-card .price {
-    font-size: 22px;
-    font-weight: bold;
-    color: #28a745;
-}
-
-.nominal-card .bonus {
-    color: #d32f2f;
-    font-size: 15px;
-    margin-top: 8px;
-    font-weight: bold;
-}
-
-/* Payment Icons */
-#payment-icons {
+.form-header {
+    background: #1a1a2e;
+    padding: 15px 20px;
     display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
+    align-items: center;
+    gap: 15px;
+    border-bottom: 1px solid #24344d;
+}
+
+.form-header .step-number {
+    background: #e94560;
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
     justify-content: center;
-    margin: 50px 0;
-}
-
-.payment-icon {
-    width: 80px;
-    height: auto;
-    opacity: 0.8;
-    transition: opacity 0.3s;
-}
-
-.payment-icon:hover {
-    opacity: 1;
-}
-
-/* Total Price */
-#total-price {
-    text-align: center;
-    font-size: 28px;
     font-weight: bold;
-    color: #28a745;
-    background: #e8f5e8;
-    padding: 20px;
-    border-radius: 15px;
-    margin: 40px 0;
+    font-size: 14px;
 }
 
-/* Submit Button */
-#topupForm button[type="submit"] {
+.form-header h3 {
+    font-size: 16px;
+    color: white;
+    margin: 0;
+}
+
+.form-body {
+    padding: 20px;
+}
+
+/* Input User ID */
+.input-group {
+    display: flex;
+    gap: 10px;
+}
+
+.form-control {
     width: 100%;
-    padding: 20px;
-    background: linear-gradient(to right, #28a745, #20c997);
+    padding: 12px 15px;
+    background: #0f3460;
+    border: 1px solid #24344d;
+    border-radius: 8px;
     color: white;
-    font-size: 24px;
-    font-weight: bold;
-    border: none;
-    border-radius: 15px;
-    cursor: pointer;
-    box-shadow: 0 8px 20px rgba(40,167,69,0.3);
-    transition: all 0.3s;
+    font-size: 14px;
+    transition: 0.3s;
 }
 
-#topupForm button[type="submit"]:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(40,167,69,0.4);
+.form-control:focus {
+    outline: none;
+    border-color: #e94560;
+    box-shadow: 0 0 5px rgba(233, 69, 96, 0.5);
 }
 
-/* Status Message */
-#status {
-    text-align: center;
-    margin-top: 30px;
-    font-size: 20px;
+/* Grid Nominal / Pilihan Layanan */
+.nominal-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 12px;
 }
 
-/* Back Button */
-#back-btn {
+.nominal-item {
+    position: relative;
+}
+
+.nominal-item input {
+    display: none; /* Sembunyikan radio button asli */
+}
+
+.nominal-label {
     display: block;
+    background: #0f3460;
+    border: 1px solid #24344d;
+    padding: 15px 10px;
+    border-radius: 10px;
+    cursor: pointer;
     text-align: center;
-    margin: 40px auto;
-    padding: 15px 40px;
-    background: #007bff;
+    transition: 0.2s;
+}
+
+.nominal-label .item-name {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.nominal-label .item-price {
+    display: block;
+    font-size: 11px;
+    color: #94a3b8;
+}
+
+/* Efek saat Nominal dipilih */
+.nominal-item input:checked + .nominal-label {
+    background: rgba(233, 69, 96, 0.1);
+    border-color: #e94560;
     color: white;
-    text-decoration: none;
-    font-size: 18px;
+}
+
+.nominal-item input:checked + .nominal-label .item-price {
+    color: #e94560;
+}
+
+/* Grid Metode Pembayaran */
+.payment-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+.payment-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #0f3460;
+    padding: 12px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    border: 1px solid #24344d;
+}
+
+.payment-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.payment-logo {
+    height: 25px;
+    width: auto;
+    background: white;
+    padding: 2px 5px;
+    border-radius: 4px;
+}
+
+.payment-item input:checked + .payment-label {
+    border-color: #e94560;
+    background: rgba(233, 69, 96, 0.1);
+}
+
+/* Tombol Beli Sekarang */
+.btn-buy {
+    background: #e94560;
+    color: white;
+    border: none;
+    width: 100%;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 16px;
     font-weight: bold;
-    border-radius: 50px;
-    width: fit-content;
-    box-shadow: 0 6px 15px rgba(0,123,255,0.2);
-    transition: all 0.3s;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 10px;
+    box-shadow: 0 4px 15px rgba(233, 69, 96, 0.3);
 }
 
-#back-btn:hover {
-    background: #0056b3;
-    transform: translateY(-5px);
+.btn-buy:hover {
+    background: #cf3d55;
+    transform: translateY(-2px);
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-    #topup-page {
-        padding: 25px;
-        margin: 10px;
+/* Responsive Mobile */
+@media (max-width: 500px) {
+    .nominal-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
-    #nominal-grid {
-        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-        gap: 15px;
-    }
-    .nominal-card {
-        padding: 15px;
-    }
-    #payment-icons {
-        gap: 20px;
-    }
-    .payment-icon {
-        width: 70px;
-    }
-    #hero input {
-        padding: 16px;
-    }
-    }
+}
