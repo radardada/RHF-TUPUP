@@ -11,7 +11,6 @@
     body { font-family: 'Poppins', sans-serif; background: #f8f9fa; color: #333; }
     .container { max-width: 900px; margin: 40px auto; padding: 0 20px; }
 
-    /* Header */
     header {
       background: #fff;
       box-shadow: 0 4px 15px rgba(0,0,0,0.1);
@@ -31,7 +30,6 @@
     .header-logo img { height: 50px; }
     .back-link { color: #333; font-weight: 600; text-decoration: none; }
 
-    /* Main Top Up Card */
     .topup-card {
       background: #fff;
       border-radius: 20px;
@@ -40,7 +38,6 @@
       margin-top: 20px;
     }
 
-    /* Game Banner */
     .game-banner {
       background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), #1a1a2e;
       padding: 50px 30px;
@@ -51,11 +48,9 @@
     .game-title { font-size: 36px; font-weight: 700; margin: 15px 0; }
     .game-subtitle { font-size: 18px; opacity: 0.9; }
 
-    /* Form Section */
     .form-section { padding: 40px 50px; }
     .step-title { font-size: 26px; font-weight: 600; color: #ff6600; margin-bottom: 30px; }
 
-    /* Input ID - Berbeda per game */
     .input-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -75,7 +70,6 @@
     .form-group input:focus { outline: none; border-color: #ff6600; box-shadow: 0 0 15px rgba(255,102,0,0.2); }
     .input-note { font-size: 14px; color: #666; margin-top: 10px; }
 
-    /* Nominal Grid */
     .nominal-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -101,7 +95,6 @@
     .nominal-price { font-size: 30px; font-weight: 700; color: #ff6600; }
     .nominal-bonus { font-size: 14px; color: #666; margin-top: 8px; }
 
-    /* Pilihan Pembayaran - Logo + Radio */
     .payment-section {
       margin: 50px 0;
     }
@@ -128,7 +121,6 @@
     .payment-item img { height: 50px; margin-bottom: 10px; }
     .payment-item label { font-weight: 600; cursor: pointer; display: block; }
 
-    /* Summary */
     .summary-box {
       background: #f0f0f0;
       border-radius: 18px;
@@ -176,8 +168,8 @@
   <div class="container">
     <div class="topup-card">
 
-      <!-- Game Banner dengan Logo Dinamis dari URL parameter -->
-      <div class="game-banner" id="game-banner">
+      <!-- Game Banner - Logo langsung dari data di bawah (tidak dari games.js) -->
+      <div class="game-banner">
         <img id="game-logo" class="game-logo" src="" alt="Game Logo">
         <h1 id="game-title">Top Up Game</h1>
         <p class="game-subtitle">Proses Instan • Harga Termurah • Aman 100%</p>
@@ -185,11 +177,11 @@
 
       <div class="form-section">
 
-        <!-- Input ID (berbeda per game) -->
+        <!-- Input ID -->
         <div class="step">
           <div class="step-title">1. Masukkan Data Akun</div>
           <div class="input-grid" id="input-fields">
-            <!-- Diisi otomatis oleh JS berdasarkan game -->
+            <!-- Diisi otomatis oleh JS -->
           </div>
           <p class="input-note">Pastikan data akun benar. Tidak dapat diubah setelah pembayaran.</p>
         </div>
@@ -198,7 +190,7 @@
         <div class="step">
           <div class="step-title">2. Pilih Nominal</div>
           <div class="nominal-grid" id="nominal-options">
-            <!-- Nominal hardcode contoh, bisa diganti dari Firebase nanti -->
+            <!-- Diisi otomatis oleh JS -->
           </div>
         </div>
 
@@ -206,7 +198,7 @@
         <div class="step payment-section">
           <div class="step-title">3. Pilih Metode Pembayaran</div>
           <div class="payment-grid">
-            <div class="payment-item">
+            <div class="payment-item selected">
               <input type="radio" name="payment" id="qris" checked>
               <label for="qris">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/QRIS_Logo.png" alt="QRIS">
@@ -244,7 +236,7 @@
             <div class="payment-item">
               <input type="radio" name="payment" id="bank">
               <label for="bank">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/7/72/Bank_Transfer_logo.png" alt="Transfer Bank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/7/72/Bank_Transfer_logo.png" alt="Bank Transfer">
                 Transfer Bank
               </label>
             </div>
@@ -269,15 +261,12 @@
   </div>
 
   <script>
-    // Data game dengan logo, input berbeda, dan nominal contoh
+    // Data game dengan logo langsung di sini (tidak dari games.js)
     const gamesData = {
       ml: {
         name: "Mobile Legends",
         logo: "https://seeklogo.com/images/M/mobile-legends-logo-7E6A5E6D9B-seeklogo.com.png",
-        inputs: [
-          { label: "User ID", placeholder: "Contoh: 123456789" },
-          { label: "Zone ID", placeholder: "Contoh: 1234" }
-        ],
+        inputs: [{ label: "User ID", placeholder: "Contoh: 123456789" }, { label: "Zone ID", placeholder: "Contoh: 1234" }],
         nominals: [
           { name: "86 Diamonds", price: "Rp 20.000", bonus: "+8 Bonus" },
           { name: "172 Diamonds", price: "Rp 40.000", bonus: "+17 Bonus" },
@@ -287,9 +276,7 @@
       ff: {
         name: "Free Fire",
         logo: "https://upload.wikimedia.org/wikipedia/en/c/c5/Logo_of_Garena_Free_Fire.png",
-        inputs: [
-          { label: "User ID", placeholder: "Contoh: 123456789" }
-        ],
+        inputs: [{ label: "User ID", placeholder: "Contoh: 123456789" }],
         nominals: [
           { name: "100 Diamonds", price: "Rp 15.000", bonus: "+10 Bonus" },
           { name: "210 Diamonds", price: "Rp 30.000", bonus: "+21 Bonus" },
@@ -299,27 +286,58 @@
       pubg: {
         name: "PUBG Mobile",
         logo: "https://seeklogo.com/images/P/pubg-mobile-logo-2F3D6E0E4B-seeklogo.com.png",
-        inputs: [
-          { label: "User ID", placeholder: "Contoh: 5123456789" }
-        ],
+        inputs: [{ label: "User ID", placeholder: "Contoh: 5123456789" }],
         nominals: [
           { name: "60 UC", price: "Rp 15.000", bonus: "" },
           { name: "325 UC", price: "Rp 70.000", bonus: "+25 Bonus" }
         ]
+      },
+      valorant: {
+        name: "Valorant",
+        logo: "https://upload.wikimedia.org/wikipedia/commons/f/fc/Valorant_logo_-_pink_color_version.svg",
+        inputs: [{ label: "Riot ID", placeholder: "Nama#Tag" }],
+        nominals: [
+          { name: "425 Points", price: "Rp 70.000", bonus: "" },
+          { name: "875 Points", price: "Rp 140.000", bonus: "+50 Bonus" }
+        ]
+      },
+      genshin: {
+        name: "Genshin Impact",
+        logo: "https://www.freepnglogos.com/uploads/genshin-impact-logo-png/hd-transparent-logo-genshin-impact-free-download-2.png",
+        inputs: [{ label: "User ID", placeholder: "Contoh: 812345678" }, { label: "Server", placeholder: "Asia/Europe" }],
+        nominals: [
+          { name: "980 Crystals", price: "Rp 200.000", bonus: "+110 Bonus" }
+        ]
+      },
+      bigo: {
+        name: "Bigo Live",
+        logo: "https://images.seeklogo.com/logo-png/47/1/bigo-live-logo-png_seeklogo-477968.png",
+        inputs: [{ label: "User ID", placeholder: "Contoh: 123456789" }],
+        nominals: [
+          { name: "210 Diamonds", price: "Rp 30.000", bonus: "" }
+        ]
+      },
+      hsr: {
+        name: "Honkai: Star Rail",
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSd4h06YHJT_hOpOlNoiQndwaOYC6ImQCvEkA3QQXnh1g&s",
+        inputs: [{ label: "User ID", placeholder: "Contoh: 812345678" }],
+        nominals: [
+          { name: "980 Oneiric Shard", price: "Rp 200.000", bonus: "+110 Bonus" }
+        ]
       }
-      // Tambah game lain sesuai list logo kamu
+      // Tambah game lain dari list logo kamu sesuai kebutuhan
     };
 
     // Ambil parameter game dari URL
     const urlParams = new URLSearchParams(window.location.search);
-    const gameCode = urlParams.get('game') || 'ml'; // default ML
+    const gameCode = urlParams.get('game') || 'ml'; // default Mobile Legends
     const game = gamesData[gameCode] || gamesData.ml;
 
-    // Update banner
+    // Update banner & title
     document.getElementById('game-logo').src = game.logo;
     document.getElementById('game-title').textContent = `Top Up ${game.name}`;
 
-    // Render input berbeda per game
+    // Render input
     const inputContainer = document.getElementById('input-fields');
     game.inputs.forEach(input => {
       const div = document.createElement('div');
@@ -350,7 +368,7 @@
     });
     document.getElementById('total-price').textContent = game.nominals[0].price;
 
-    // Highlight payment selected
+    // Payment selection
     document.querySelectorAll('.payment-item').forEach(item => {
       item.addEventListener('click', () => {
         document.querySelectorAll('.payment-item').forEach(i => i.classList.remove('selected'));
@@ -360,10 +378,11 @@
     });
 
     function processPayment() {
-      alert('Pembayaran sedang diproses...\nMetode: ' + document.querySelector('input[name="payment"]:checked + label').textContent.trim());
-      // Nanti bisa redirect ke payment gateway atau WhatsApp
+      const selectedMethod = document.querySelector('input[name="payment"]:checked + label').textContent.trim();
+      alert(`Pembayaran dengan ${selectedMethod} sedang diproses...\nTerima kasih telah top up di RHF!`);
+      // Bisa redirect ke WhatsApp atau payment gateway
     }
   </script>
 
 </body>
-</html>
+  </html>
