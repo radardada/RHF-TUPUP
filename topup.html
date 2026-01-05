@@ -28,7 +28,7 @@
       padding: 0 20px;
     }
     .header-logo img { height: 50px; }
-    .back-link { color: #333; font-weight: 600; text-decoration: none; }
+    .back-link { color: #333; font-weight: 600; text-decoration: none; font-size: 16px; }
 
     .topup-card {
       background: #fff;
@@ -40,73 +40,78 @@
 
     .game-banner {
       background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), #1a1a2e;
-      padding: 50px 30px;
+      padding: 60px 30px;
       text-align: center;
       color: #fff;
     }
-    .game-logo { height: 120px; margin-bottom: 20px; border-radius: 20px; box-shadow: 0 8px 25px rgba(0,0,0,0.4); }
-    .game-title { font-size: 36px; font-weight: 700; margin: 15px 0; }
-    .game-subtitle { font-size: 18px; opacity: 0.9; }
+    .game-logo {
+      height: 130px;
+      margin-bottom: 20px;
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+      background: #fff;
+      padding: 15px;
+    }
+    .game-title { font-size: 38px; font-weight: 700; margin: 15px 0; }
+    .game-subtitle { font-size: 19px; opacity: 0.9; }
 
-    .form-section { padding: 40px 50px; }
-    .step-title { font-size: 26px; font-weight: 600; color: #ff6600; margin-bottom: 30px; }
+    .form-section { padding: 50px; }
+    .step-title { font-size: 26px; font-weight: 600; color: #ff6600; margin-bottom: 35px; text-align: center; }
 
     .input-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 25px;
-      margin-bottom: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-bottom: 40px;
     }
-    @media (max-width: 768px) { .input-grid { grid-template-columns: 1fr; } }
-    .form-group label { display: block; font-weight: 600; margin-bottom: 10px; font-size: 16px; }
+    .form-group label { display: block; font-weight: 600; margin-bottom: 12px; font-size: 17px; }
     .form-group input {
       width: 100%;
-      padding: 16px 20px;
+      padding: 18px 22px;
       border: 2px solid #eee;
-      border-radius: 14px;
+      border-radius: 16px;
       font-size: 18px;
-      transition: border 0.3s;
+      transition: all 0.3s;
     }
-    .form-group input:focus { outline: none; border-color: #ff6600; box-shadow: 0 0 15px rgba(255,102,0,0.2); }
-    .input-note { font-size: 14px; color: #666; margin-top: 10px; }
+    .form-group input:focus { outline: none; border-color: #ff6600; box-shadow: 0 0 20px rgba(255,102,0,0.2); }
+    .input-note { font-size: 15px; color: #777; margin-top: 12px; text-align: center; }
 
     .nominal-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-      margin: 40px 0;
+      gap: 25px;
+      margin: 50px 0;
     }
     .nominal-item {
       background: #f8f9fa;
       border: 2px solid #eee;
-      border-radius: 18px;
-      padding: 25px;
+      border-radius: 20px;
+      padding: 30px;
       text-align: center;
       cursor: pointer;
-      transition: all 0.4s;
+      transition: all 0.4s ease;
     }
-    .nominal-item:hover { border-color: #ff6600; transform: translateY(-10px); box-shadow: 0 15px 30px rgba(255,102,0,0.15); }
+    .nominal-item:hover { border-color: #ff6600; transform: translateY(-12px); box-shadow: 0 20px 40px rgba(255,102,0,0.15); }
     .nominal-item.selected {
       border-color: #ff6600;
       background: #fff5f0;
-      box-shadow: 0 15px 35px rgba(255,102,0,0.25);
+      box-shadow: 0 20px 45px rgba(255,102,0,0.3);
+      transform: translateY(-8px);
     }
-    .nominal-name { font-size: 18px; font-weight: 600; margin-bottom: 10px; }
-    .nominal-price { font-size: 30px; font-weight: 700; color: #ff6600; }
-    .nominal-bonus { font-size: 14px; color: #666; margin-top: 8px; }
+    .nominal-name { font-size: 19px; font-weight: 600; margin-bottom: 12px; }
+    .nominal-price { font-size: 32px; font-weight: 700; color: #ff6600; }
+    .nominal-bonus { font-size: 15px; color: #ff6600; margin-top: 10px; font-weight: 600; }
 
-    .payment-section {
-      margin: 50px 0;
-    }
+    .payment-section { margin: 60px 0; }
     .payment-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 20px;
+      gap: 25px;
     }
     .payment-item {
       border: 2px solid #eee;
-      border-radius: 16px;
-      padding: 20px;
+      border-radius: 18px;
+      padding: 25px;
       text-align: center;
       cursor: pointer;
       transition: all 0.3s;
@@ -116,41 +121,41 @@
     .payment-item.selected {
       border-color: #ff6600;
       background: #fff5f0;
-      box-shadow: 0 10px 25px rgba(255,102,0,0.2);
+      box-shadow: 0 15px 35px rgba(255,102,0,0.2);
     }
-    .payment-item img { height: 50px; margin-bottom: 10px; }
-    .payment-item label { font-weight: 600; cursor: pointer; display: block; }
+    .payment-item img { height: 55px; margin-bottom: 12px; }
+    .payment-item label { font-weight: 600; font-size: 16px; cursor: pointer; display: block; }
 
     .summary-box {
       background: #f0f0f0;
-      border-radius: 18px;
-      padding: 30px;
+      border-radius: 20px;
+      padding: 35px;
       text-align: center;
-      margin: 50px 0;
+      margin: 60px 0;
     }
-    .summary-title { font-size: 22px; margin-bottom: 15px; }
-    .total-price { font-size: 48px; font-weight: 700; color: #ff6600; }
+    .summary-title { font-size: 24px; margin-bottom: 15px; }
+    .total-price { font-size: 52px; font-weight: 700; color: #ff6600; }
     .btn-pay {
       width: 100%;
-      padding: 20px;
+      padding: 22px;
       background: linear-gradient(to right, #ff6600, #ff8833);
       color: #fff;
       border: none;
-      border-radius: 18px;
-      font-size: 24px;
+      border-radius: 20px;
+      font-size: 26px;
       font-weight: 700;
       cursor: pointer;
-      margin-top: 20px;
-      transition: 0.3s;
+      margin-top: 25px;
+      transition: 0.4s;
     }
-    .btn-pay:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(255,102,0,0.4); }
+    .btn-pay:hover { transform: translateY(-6px); box-shadow: 0 20px 45px rgba(255,102,0,0.4); }
 
     .guarantee {
       text-align: center;
-      font-size: 15px;
+      font-size: 16px;
       color: #666;
       line-height: 1.8;
-      margin-top: 30px;
+      margin-top: 40px;
     }
   </style>
 </head>
@@ -161,38 +166,40 @@
       <div class="header-logo">
         <a href="index.html"><img src="images/logo.png" alt="RHF"></a>
       </div>
-      <a href="index.html" class="back-link">← Kembali</a>
+      <a href="index.html" class="back-link">← Kembali ke Beranda</a>
     </div>
   </header>
 
   <div class="container">
     <div class="topup-card">
 
-      <!-- Game Banner - Logo Hardcode Pasti Muncul -->
+      <!-- Game Banner -->
       <div class="game-banner">
-        <img id="game-logo" class="game-logo" src="" alt="Game Logo">
+        <img id="game-logo" class="game-logo" src="" alt="Logo Game">
         <h1 id="game-title">Top Up Game</h1>
-        <p class="game-subtitle">Proses Instan • Harga Termurah • Aman 100%</p>
+        <p class="game-subtitle">Proses Instan • Harga Termurah • Aman & Terpercaya</p>
       </div>
 
       <div class="form-section">
 
-        <!-- Input ID -->
+        <!-- Step 1: Input Akun (berbeda per game) -->
         <div class="step">
           <div class="step-title">1. Masukkan Data Akun</div>
           <div class="input-grid" id="input-fields">
+            <!-- Diisi otomatis oleh JS -->
           </div>
-          <p class="input-note">Pastikan data akun benar. Tidak dapat diubah setelah pembayaran.</p>
+          <p class="input-note">Pastikan data benar. Tidak dapat diubah setelah pembayaran berhasil.</p>
         </div>
 
-        <!-- Pilih Nominal -->
+        <!-- Step 2: Pilih Nominal -->
         <div class="step">
-          <div class="step-title">2. Pilih Nominal</div>
+          <div class="step-title">2. Pilih Nominal Top Up</div>
           <div class="nominal-grid" id="nominal-options">
+            <!-- Diisi otomatis oleh JS -->
           </div>
         </div>
 
-        <!-- Pilihan Pembayaran -->
+        <!-- Step 3: Metode Pembayaran -->
         <div class="step payment-section">
           <div class="step-title">3. Pilih Metode Pembayaran</div>
           <div class="payment-grid">
@@ -200,58 +207,58 @@
               <input type="radio" name="payment" id="qris" checked>
               <label for="qris">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/QRIS_Logo.png" alt="QRIS">
-                QRIS All Payment
+                QRIS Semua Payment
               </label>
             </div>
             <div class="payment-item">
               <input type="radio" name="payment" id="dana">
               <label for="dana">
-                <img src="https://images.seeklogo.com/logo-png/47/1/dana-logo-png_seeklogo-477966.png" alt="DANA">
+                <img src="https://seeklogo.com/images/D/dana-logo-7E6A5E6D9B-seeklogo.com.png" alt="DANA">
                 DANA
               </label>
             </div>
             <div class="payment-item">
               <input type="radio" name="payment" id="ovo">
               <label for="ovo">
-                <img src="https://images.seeklogo.com/logo-png/47/1/ovo-logo-png_seeklogo-477966.png" alt="OVO">
+                <img src="https://seeklogo.com/images/O/ovo-logo-7E6A5E6D9B-seeklogo.com.png" alt="OVO">
                 OVO
               </label>
             </div>
             <div class="payment-item">
               <input type="radio" name="payment" id="gopay">
               <label for="gopay">
-                <img src="https://images.seeklogo.com/logo-png/47/1/gopay-logo-png_seeklogo-477966.png" alt="GoPay">
+                <img src="https://seeklogo.com/images/G/gopay-logo-7E6A5E6D9B-seeklogo.com.png" alt="GoPay">
                 GoPay
               </label>
             </div>
             <div class="payment-item">
               <input type="radio" name="payment" id="shopeepay">
               <label for="shopeepay">
-                <img src="https://images.seeklogo.com/logo-png/47/1/shopeepay-logo-png_seeklogo-477966.png" alt="ShopeePay">
+                <img src="https://seeklogo.com/images/S/shopeepay-logo-7E6A5E6D9B-seeklogo.com.png" alt="ShopeePay">
                 ShopeePay
               </label>
             </div>
             <div class="payment-item">
               <input type="radio" name="payment" id="bank">
               <label for="bank">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/7/72/Bank_Transfer_logo.png" alt="Transfer Bank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Bank_Central_Asia.svg/2560px-Bank_Central_Asia.svg.png" alt="Transfer Bank">
                 Transfer Bank
               </label>
             </div>
           </div>
         </div>
 
-        <!-- Summary -->
+        <!-- Summary & Bayar -->
         <div class="summary-box">
-          <div class="summary-title">Total yang Harus Dibayar</div>
+          <div class="summary-title">Total Harga</div>
           <div class="total-price" id="total-price">Rp 0</div>
-          <button class="btn-pay" onclick="processPayment()">Bayar Sekarang</button>
+          <button class="btn-pay" onclick="processPayment()">Lanjut ke Pembayaran</button>
         </div>
 
         <div class="guarantee">
-          <p>✓ Proses Otomatis 1-5 Menit</p>
-          <p>✓ Garansi 100% Aman - Uang Kembali Jika Gagal</p>
-          <p>✓ Support 24/7 via WhatsApp</p>
+          <p>✓ Proses Otomatis 1-5 Menit Setelah Pembayaran</p>
+          <p>✓ 100% Aman - Garansi Uang Kembali Jika Gagal</p>
+          <p>✓ Support 24/7 via WhatsApp & Live Chat</p>
         </div>
 
       </div>
@@ -259,7 +266,7 @@
   </div>
 
   <script>
-    // Data game & logo langsung di sini (pasti muncul, tidak dari games.js)
+    // Data game lengkap dengan logo resmi & high quality (pasti muncul 100%)
     const gamesData = {
       ml: {
         name: "Mobile Legends",
@@ -272,7 +279,8 @@
           { name: "86 Diamonds", price: "Rp 20.000", bonus: "+8 Bonus" },
           { name: "172 Diamonds", price: "Rp 40.000", bonus: "+17 Bonus" },
           { name: "257 Diamonds", price: "Rp 60.000", bonus: "+28 Bonus" },
-          { name: "Starlight Member", price: "Rp 120.000", bonus: "Skin Eksklusif" }
+          { name: "Starlight Member", price: "Rp 120.000", bonus: "Skin Eksklusif" },
+          { name: "Twilight Pass", price: "Rp 150.000", bonus: "Hadiah Premium" }
         ]
       },
       ff: {
@@ -284,7 +292,9 @@
         nominals: [
           { name: "100 Diamonds", price: "Rp 15.000", bonus: "+10 Bonus" },
           { name: "210 Diamonds", price: "Rp 30.000", bonus: "+21 Bonus" },
-          { name: "Membership Mingguan", price: "Rp 35.000", bonus: "Privilege" }
+          { name: "355 Diamonds", price: "Rp 50.000", bonus: "+46 Bonus" },
+          { name: "720 Diamonds", price: "Rp 100.000", bonus: "+108 Bonus" },
+          { name: "Weekly Membership", price: "Rp 35.000", bonus: "Privilege" }
         ]
       },
       pubg: {
@@ -295,7 +305,8 @@
         ],
         nominals: [
           { name: "60 UC", price: "Rp 15.000", bonus: "" },
-          { name: "325 UC", price: "Rp 70.000", bonus: "+25 Bonus" }
+          { name: "325 UC", price: "Rp 70.000", bonus: "+25 Bonus" },
+          { name: "660 UC", price: "Rp 140.000", bonus: "+66 Bonus" }
         ]
       },
       valorant: {
@@ -305,7 +316,8 @@
           { label: "Riot ID", placeholder: "Nama#TAG" }
         ],
         nominals: [
-          { name: "425 Points", price: "Rp 70.000", bonus: "" }
+          { name: "425 Points", price: "Rp 70.000", bonus: "" },
+          { name: "875 Points", price: "Rp 140.000", bonus: "+50 Bonus" }
         ]
       },
       genshin: {
@@ -313,10 +325,11 @@
         logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4z_craukzS9fmSpRGHgqF8gxc34428E8fryReuCt6Nw&s",
         inputs: [
           { label: "User ID", placeholder: "Contoh: 812345678" },
-          { label: "Server", placeholder: "Asia" }
+          { label: "Server", placeholder: "Asia / Europe / America" }
         ],
         nominals: [
-          { name: "980 Crystals", price: "Rp 200.000", bonus: "+110 Bonus" }
+          { name: "60 Genesis Crystals", price: "Rp 15.000", bonus: "+60 Bonus" },
+          { name: "980 Genesis Crystals", price: "Rp 200.000", bonus: "+110 Bonus" }
         ]
       },
       bigo: {
@@ -326,7 +339,8 @@
           { label: "User ID", placeholder: "Contoh: 123456789" }
         ],
         nominals: [
-          { name: "210 Diamonds", price: "Rp 30.000", bonus: "" }
+          { name: "210 Diamonds", price: "Rp 30.000", bonus: "" },
+          { name: "420 Diamonds", price: "Rp 60.000", bonus: "" }
         ]
       },
       hsr: {
@@ -336,38 +350,46 @@
           { label: "User ID", placeholder: "Contoh: 812345678" }
         ],
         nominals: [
-          { name: "980 Shard", price: "Rp 200.000", bonus: "+110 Bonus" }
+          { name: "60 Oneiric Shard", price: "Rp 15.000", bonus: "+60 Bonus" },
+          { name: "980 Oneiric Shard", price: "Rp 200.000", bonus: "+110 Bonus" }
         ]
       }
-      // Tambah game lain kalau perlu
+      // Tambah game lain dari list kamu kalau perlu
     };
 
-    // Ambil parameter game dari URL
+    // Ambil kode game dari URL
     const urlParams = new URLSearchParams(window.location.search);
-    const gameCode = urlParams.get('game') || 'ml';
+    const gameCode = urlParams.get('game') || 'ml'; // default Mobile Legends
     const game = gamesData[gameCode] || gamesData.ml;
 
-    // Update banner & logo (pasti muncul)
-    document.getElementById('game-logo').src = game.logo;
-    document.getElementById('game-title').textContent = `Top Up ${game.name}`;
+    // Pastikan logo & title muncul 100%
+    const gameLogo = document.getElementById('game-logo');
+    gameLogo.src = game.logo;
+    gameLogo.alt = game.name + " Logo";
+    gameLogo.onload = () => console.log('Logo loaded: ' + game.logo); // debug
+    gameLogo.onerror = () => gameLogo.src = 'https://via.placeholder.com/200?text=Logo+' + game.name; // fallback
 
-    // Render input
+    document.getElementById('game-title').textContent = 'Top Up ' + game.name;
+
+    // Render input beda-beda per game
     const inputContainer = document.getElementById('input-fields');
-    game.inputs.forEach(input => {
+    inputContainer.innerHTML = ''; // kosongkan dulu
+    game.inputs.forEach(inp => {
       const div = document.createElement('div');
       div.className = 'form-group';
       div.innerHTML = `
-        <label>${input.label}</label>
-        <input type="text" placeholder="${input.placeholder}">
+        <label>${inp.label}</label>
+        <input type="text" placeholder="${inp.placeholder}">
       `;
       inputContainer.appendChild(div);
     });
 
-    // Render nominal
+    // Render nominal beda per game
     const nominalContainer = document.getElementById('nominal-options');
-    game.nominals.forEach((nom, index) => {
+    nominalContainer.innerHTML = '';
+    game.nominals.forEach((nom, i) => {
       const div = document.createElement('div');
-      div.className = 'nominal-item' + (index === 0 ? ' selected' : '');
+      div.className = 'nominal-item' + (i === 0 ? ' selected' : '');
       div.onclick = () => {
         document.querySelectorAll('.nominal-item').forEach(n => n.classList.remove('selected'));
         div.classList.add('selected');
@@ -392,7 +414,7 @@
     });
 
     function processPayment() {
-      alert('Pembayaran diproses... Terima kasih!');
+      alert('Pembayaran sedang diproses...\nMetode: ' + document.querySelector('input[name="payment"]:checked + label').textContent.trim());
     }
   </script>
 
