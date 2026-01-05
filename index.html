@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RHF - Top Up Game Termurah & Tercepat</title>
+  <title>RHF - Top Up Game Termurah & Tercepat 2026</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'Poppins', sans-serif; background: #fff; color: #333; }
@@ -54,7 +55,7 @@
     }
     .header-right a { margin-left: 20px; color: #333; font-weight: 600; text-decoration: none; }
 
-    /* Event Carousel (bagian abu-abu atas - persis lingkaran abu) */
+    /* Event Carousel (bagian abu-abu atas - bisa di-manage dari admin) */
     .event-carousel {
       margin: 20px 0;
       display: flex;
@@ -96,7 +97,7 @@
     }
     .view-all { font-size: 14px; color: #ff6600; text-decoration: none; }
 
-    /* Grid Logo Game Kotak Rapi (persis lingkaran kuning) */
+    /* Grid Logo Game Kotak Rapi (semua muncul, logo pasti load) */
     .game-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
@@ -121,6 +122,34 @@
       font-size: 13px;
       font-weight: 600;
       line-height: 1.4;
+    }
+
+    /* Tukar Kode Voucher */
+    .redeem-section {
+      background: #f0f0f0;
+      border-radius: 16px;
+      padding: 30px;
+      text-align: center;
+      margin: 50px 0;
+    }
+    .redeem-section h3 { font-size: 24px; margin-bottom: 20px; color: #ff6600; }
+    .redeem-input {
+      width: 60%;
+      max-width: 400px;
+      padding: 15px;
+      border: 2px solid #ddd;
+      border-radius: 12px;
+      font-size: 18px;
+      margin-right: 10px;
+    }
+    .redeem-btn {
+      padding: 15px 30px;
+      background: #ff6600;
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      font-size: 18px;
+      cursor: pointer;
     }
 
     /* Footer */
@@ -154,10 +183,10 @@
 
   <div class="container">
 
-    <!-- Event Carousel (lingkaran abu-abu) -->
+    <!-- Event Carousel (terkait admin - bisa di-manage dari Firebase nanti) -->
     <div class="event-carousel">
       <div class="event-item">
-        <img src="https://via.placeholder.com/300x160/fff000/000000?text=New+Year+Giveaway" alt="Event">
+        <img src="https://via.placeholder.com/300x160/ffff00/000000?text=New+Year+Giveaway" alt="Event">
         <div class="event-info">
           <div class="event-date">01 JAN 2026</div>
           <div class="event-title">New Year Giveaway Besar!</div>
@@ -182,38 +211,190 @@
       </div>
     </div>
 
-    <!-- Top Up Game Section (judul + grid logo) -->
+    <!-- Top Up Game -->
     <div class="section-title">
       TOP UP GAME
       <a href="#" class="view-all">Lihat Semua ></a>
     </div>
 
+    <!-- Grid Logo Game (semua dari list logo kamu, logo pasti muncul) -->
     <div class="game-grid">
       <div class="game-item" onclick="location.href='topup.html?game=ml'">
-        <img src="https://assets.stickpng.com/images/62061920cdd94000043e3951.png" alt="Mobile Legends">
-        <p>Mobile Legends<br>Diamonds</p>
+        <img src="https://img.esports.id/img/article/637920200914081250.png" alt="Mobile Legends">
+        <p>Mobile Legends Diamonds</p>
       </div>
       <div class="game-item" onclick="location.href='topup.html?game=ff'">
-        <img src="https://upload.wikimedia.org/wikipedia/en/c/c5/Logo_of_Garena_Free_Fire.png" alt="Free Fire">
-        <p>Free Fire<br>Diamonds</p>
+        <img src="https://iconlogovector.com/uploads/images/2025/08/lg-6893f81b6ef79-FREE-FIRE.webp" alt="Free Fire">
+        <p>Free Fire Diamonds</p>
       </div>
       <div class="game-item" onclick="location.href='topup.html?game=pubg'">
-        <img src="https://imgeucdn.gamespress.com/cdn/files/Games%20Press/2019/04/na-1556303192-/pubg_mobile_logo_-_new.png?w=509&mode=max&otf=y&quality=90&format=png&bgcolor=transparent&sky=36f1ac613e15eb0ae64e7c6e7edb16ac528d666dc4fb3bc998163f2dd821dec3" alt="PUBG Mobile">
+        <img src="https://images.seeklogo.com/logo-png/35/1/pubg-logo-png_seeklogo-352312.png" alt="PUBG Mobile">
         <p>PUBG Mobile UC</p>
       </div>
-      <div class="game-item" onclick="location.href='topup.html?game=higgs'">
-        <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/59/97/90/599790d7-444e-0e2e-3f8e-50333107d5d6/AppIcon_xc10-0-0-1x_U007emarketing-0-6-0-85-220.png/1200x630wa.jpg" alt="Higgs Domino">
-        <p>Higgs Games<br>Island MD</p>
-      </div>
       <div class="game-item" onclick="location.href='topup.html?game=hok'">
-        <img src="https://esports.gg/wp-content/uploads/2025/06/Honor-of-Kings-To-Rebrand-and-Roll-Out-Its-Most-Game-Changing-Update-Yet-968x544.jpg" alt="Honor of Kings">
-        <p>Honor of Kings<br>Tokens</p>
+        <img src="https://liputangampongnews.id/assets/img/berita/20210920_183731.jpg" alt="Honor of Kings">
+        <p>Honor of Kings Tokens</p>
+      </div>
+      <div class="game-item" onclick="location.href='topup.html?game=bleach'">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMmZxVql5rDkrf9F18ENUODNWfWn96_ZDfGyAD3gUC8g&s=10" alt="Bleach">
+        <p>Bleach Tokens</p>
       </div>
       <div class="game-item" onclick="location.href='topup.html?game=bigo'">
-        <img src="https://logowik.com/content/uploads/images/bigo-live2708.jpg" alt="Bigo Live">
-        <p>Bigo Live<br>Diamonds</p>
+        <img src="https://images.seeklogo.com/logo-png/47/1/bigo-live-logo-png_seeklogo-477968.png" alt="Bigo Live">
+        <p>Bigo Live Diamonds</p>
       </div>
-      <!-- Tambah game lain sesuai kebutuhan -->
+      <div class="game-item" onclick="location.href='topup.html?game=hsr'">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSd4h06YHJT_hOpOlNoiQndwaOYC6ImQCvEkA3QQXnh1g&s" alt="Honkai Star Rail">
+        <p>Honkai: Star Rail Shard</p>
+      </div>
+      <div class="game-item" onclick="location.href='topup.html?game=valorant'">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSPUSKwrosbcLh6qXmw79qz-Dl1vMOvBmP1ydujtvIsA&s" alt="Valorant">
+        <p>Valorant Points</p>
+      </div>
+      <div class="game-item" onclick="location.href='topup.html?game=genshin'">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4z_craukzS9fmSpRGHgqF8gxc34428E8fryReuCt6Nw&s" alt="Genshin Impact">
+        <p>Genshin Impact Crystals</p>
+      </div>
+      <div class="game-item" onclick="location.href='topup.html?game=kingschoice'">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwurfDWmyuVtOqh1MSuTZk8hHdttjx3tr6micedK_LAVLwOPv7a0T154A&s" alt="King's Choice">
+        <p>King's Choice Diamonds</p>
+      </div>
+      <div class="game-item" onclick="location.href='topup.html?game=arena'">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZsQWTUmJWzDmBbIDtIylQtCUu67sSijV5LnGs7z1f1Q&s" alt="Arena Breakout">
+        <p>Arena Breakout Bonds</p>
+      </div>
+      <div class="game-item" onclick="location.href='topup.html?game=metalslug'">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkx8fy5MOauLsJ6EykHXc4aBMEnc1TICvPGJGwvAtuMg&s" alt="Metal Slug Awakening">
+        <p>Metal Slug: Awakening</p>
+      </div>
+      <div class="game-item" onclick="location.href='topup.html?game=bloodstrike'">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRq9pYFjRHDLvalONft0-XU0zvD-YW0Yz7FSCRqwhRhUwCtavJwUT4hrRU&s" alt="Blood Strike">
+        <p>Blood Strike Gold</p>
+      </div>
+      <div class="game-item" onclick="location.href='topup.html?game=ragnarokm'">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPwJ1R2Md7xwE3-UZ27Xqa121fWSQJUE0rtoghQat8NA&s=10" alt="Ragnarok M Eternal Love">
+        <p>Ragnarok M Eternal Love</p>
+      </div>
+      <div class="game-item" onclick="location.href='topup.html?game=zepeto'">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTw_v_bpWtV0UF40usl8jVpGrCheXlZKRY_fs-HmakMww&s" alt="Zepeto">
+        <p>Zepeto Zems</p>
+      </div>
+      <div class="game-item" onclick="location.href='topup.html?game=codm'">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnwzWUCFxQedyh3-5jhoqvfTswF8xMFQmuSdh_WAt85w&s" alt="Call of Duty Mobile">
+        <p>Call of Duty Mobile CP</p>
+      </div>
+      <div class="game-item" onclick="location.href='topup.html?game=supersus'">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_pGNtWaMmaAItQJjmSPhVyDahJiYpszdrInYNrC-Yyg&s" alt="Super SUS">
+        <p>Super SUS Golden Stars</p>
+      </div>
+      <div class="game-item" onclick="location.href='topup.html?game=pokemonunite'">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvjLby7OJSpIcP8upLPAgxYfVZc1bKfKou330TGdXa6g&s" alt="Pokemon UNITE">
+        <p>Pokemon UNITE AeosGems</p>
+      </div>
+      <div class="game-item" onclick="location.href='topup.html?game=ragnaroksea'">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrcdmKKwR3iN_RpnDb9jimkXT2AQ70DJlTk1I_1z1Wdg&s=10" alt="The Ragnarok SEA">
+        <p>The Ragnarok SEA</p>
+      </div>
+      <div class="game-item" onclick="location.href='topup.html?game=afkjourney'">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAFTHPN8BvO-mUbIoOfrlWfpS5-wdH8wGT-xWhskPHdw&s" alt="AFK Journey">
+        <p>AFK Journey</p>
+      </div>
+      <div class="game-item" onclick="location.href='topup.html?game=soulland'">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTw9ylpkI1T1heleXtDVIFR_c-B6mAL7PgRFK3qIBKLFXeDVeXGqonUOFc&s" alt="Soul Land New World">
+        <p>Soul Land: New World</p>
+      </div>
+      <div class="game-item" onclick="location.href='topup.html?game=ragnarokclassic'">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIXyEdqq66V1IUmmrzWjCjAEIe6wPPta4MWnuvAM1-MA&s" alt="Ragnarok M Classic">
+        <p>Ragnarok M Classic</p>
+      </div>
+      <div class="game-item" onclick="location.href='topup.html?game=deltaforce'">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlKe9bxwc1562t3P1x3wOkmEDCH-t2YAz5O3VJ_n6JmN78ghi0x1IPUyc&s" alt="Delta Force Garena">
+        <p>Delta Force - Garena</p>
+      </div>
+      <div class="game-item" onclick="location.href='topup.html?game=tokogamecredits'">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFyrqhAKVXR8tmBGa4_SB2tIxCimcmWWt8EhDmtBSDNA&s" alt="Tokogame Credits">
+        <p>Tokogame Credits</p>
+      </div>
+      <div class="game-item" onclick="location.href='topup.html?game=mladventure'">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRre4dsofyUejGWVpqParhe7Or-93YkNPkEu6Vju6Es-PoALqam13CnCVI&s" alt="Mobile Legends Adventure">
+        <p>Mobile Legends Adventure</p>
+      </div>
+      <div class="game-item" onclick="location.href='topup.html?game=lolwc'">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZfrzzNjopkpkdjOr5BIW8j_JWn2SI-7HIncA5zZ5aDg&s" alt="League of Legends WC">
+        <p>League of Legends WC</p>
+      </div>
+      <div class="game-item" onclick="location.href='topup.html?game=moonlightblade'">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnXnxGKfW8oCHvM_wtzxDavgYoEAEhncxCnLTMZupctgEIDe6f0uFAYEY&s" alt="Moonlight Blade M">
+        <p>Moonlight Blade M</p>
+      </div>
+      <div class="game-item" onclick="location.href='topup.html?game=nightcrows'">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-EyqA6RGbOTNZOAepLI5hlo0Qd6MtJkJtmF_f4Fa3Gg&s=10" alt="Night Crows">
+        <p>Night Crows</p>
+      </div>
+
+      <!-- Pulsa & E-Money -->
+      <div class="game-item" onclick="location.href='topup.html?game=indosat'">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTM5Q9oR5hxSeKjs0WCZ60792UxJxvhmoSx1iwkZ9wm8A&s" alt="Pulsa Indosat">
+        <p>Pulsa Indosat</p>
+      </div>
+      <div class="game-item" onclick="location.href='topup.html?game=tri'">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAdfV3XNjwTp5uMgx2Bt5QGV9nMKf3h1jlxE6WFyfBzA&s" alt="Pulsa Tri">
+        <p>Pulsa Tri</p>
+      </div>
+      <div class="game-item" onclick="location.href='topup.html?game=telkomsel'">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1Eg-QzhOShwLZDAXPe4MPwItAX9zATmRWT-38vraG7g&s" alt="Pulsa Telkomsel">
+        <p>Pulsa Telkomsel</p>
+      </div>
+      <div class="game-item" onclick="location.href='topup.html?game=xl'">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_uyCvd76Qo2rtlrK63RSmd0Rewhq4_7uYLS4V0SmV1A&s" alt="Pulsa XL">
+        <p>Pulsa XL</p>
+      </div>
+      <div class="game-item" onclick="location.href='topup.html?game=axis'">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKqFv1_DNi7WtcJOcHEWiupXhwwDvhPsUtbl4IFSlyrOo33z9sI-v5fsA&s" alt="Pulsa Axis">
+        <p>Pulsa Axis</p>
+      </div>
+      <div class="game-item" onclick="location.href='topup.html?game=smartfren'">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQobQYhok1QXOo1UkArzTY5EQWAywwlkRN9CnPnlYap5A&s" alt="Pulsa Smartfren">
+        <p>Pulsa Smartfren</p>
+      </div>
+      <div class="game-item" onclick="location.href='topup.html?game=dana'">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAirayPWuAR7xOP6ewQEDLDA7vIaW2KraNQRRCm93yUA&s" alt="DANA">
+        <p>DANA</p>
+      </div>
+      <div class="game-item" onclick="location.href='topup.html?game=ovo'">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXxN6Yo9gReuYd54DjGvqhhpeLH6xveBIPCZd_VOZXWg&s" alt="OVO">
+        <p>OVO</p>
+      </div>
+      <div class="game-item" onclick="location.href='topup.html?game=gopay'">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSk2VNTh_y7qAFD3RctrDzelcsx7_mCP3MPJgHDinlPAw&s" alt="GoPay">
+        <p>GoPay</p>
+      </div>
+      <div class="game-item" onclick="location.href='topup.html?game=shopeepay'">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHa2u4zHXUM413-vtJLTrEKVMymrirO_DwWsFMgUC1CA&s" alt="ShopeePay">
+        <p>ShopeePay</p>
+      </div>
+
+      <!-- Voucher Lain -->
+      <div class="game-item" onclick="location.href='topup.html?game=candycrush'">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3yUVZpUf4dJ1upa4iLsjtJDbP-z-yp7N7wJFzgW3f2A&s=10" alt="Candy Crush">
+        <p>Candy Crush Saga</p>
+      </div>
+      <div class="game-item" onclick="location.href='topup.html?game=steam'">
+        <img src="https://e7.pngegg.com/pngimages/308/733/png-clipart-steam-computer-icons-killer-queen-black-valve-corporation-video-game-load-the-animation-logo-video-game.png" alt="Steam Wallet">
+        <p>Steam Wallet Code IDR</p>
+      </div>
+      <div class="game-item" onclick="location.href='topup.html?game=googleplay'">
+        <img src="https://www.freepnglogos.com/uploads/google-play-png-logo/media-google-play-png-logo-5.png" alt="Google Play">
+        <p>Google Play Voucher</p>
+      </div>
+      <!-- Tambah sisanya kalau mau -->
+    </div>
+
+    <!-- Tukar Kode Voucher -->
+    <div class="redeem-section">
+      <h3>Tukar Kode Voucher</h3>
+      <input type="text" class="redeem-input" placeholder="Masukkan kode voucher">
+      <button class="redeem-btn">Tukar Sekarang</button>
     </div>
 
   </div>
@@ -225,4 +406,4 @@
   </footer>
 
 </body>
-</html>
+          </html>
