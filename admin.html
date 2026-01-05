@@ -1,59 +1,202 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-    <link rel="stylesheet" href="css/admin.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel - RHF SETORS</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f0f2f5; margin: 0; padding: 0; }
+    .container { max-width: 1200px; margin: 20px auto; padding: 20px; background: white; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+    header { background: #007bff; color: white; padding: 20px; text-align: center; border-radius: 12px 12px 0 0; margin: -20px -20px 20px; }
+    .login-form, .dashboard { display: none; }
+    .login-form { max-width: 400px; margin: 100px auto; padding: 30px; background: white; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+    input, button, select { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 8px; }
+    button { background: #007bff; color: white; cursor: pointer; font-size: 16px; }
+    button:hover { background: #0056b3; }
+    table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+    th, td { padding: 12px; border: 1px solid #ddd; text-align: left; }
+    th { background: #007bff; color: white; }
+    .tab { overflow: hidden; border: 1px solid #ccc; background-color: #f1f1f1; border-radius: 8px; }
+    .tab button { background-color: inherit; float: left; border: none; outline: none; cursor: pointer; padding: 14px 16px; transition: 0.3s; }
+    .tab button:hover { background-color: #ddd; }
+    .tab button.active { background-color: #007bff; color: white; }
+    .tabcontent { display: none; padding: 20px; border: 1px solid #ccc; border-top: none; border-radius: 0 0 8px 8px; }
+    .stats { display: flex; justify-content: space-around; margin: 20px 0; }
+    .stat-card { background: #007bff; color: white; padding: 20px; border-radius: 12px; width: 22%; text-align: center; }
+  </style>
 </head>
 <body>
-    <div class="sidebar">
-        <div class="sidebar-header">
-            <img src="images/logo.png" alt="Logo">
-            <h2>RHF ADMIN</h2>
-        </div>
-        <ul class="sidebar-menu">
-            <li><a href="#" class="active">Dashboard</a></li>
-            <li><a href="#">Kelola Games</a></li>
-            <li><a href="#">Pesanan Masuk</a></li>
-            <li><a href="#">Konfigurasi</a></li>
-        </ul>
-    </div>
 
-    <div class="main-content">
-        <div class="header-stats">
-            <div class="stat-card">
-                <h4>Total Pendapatan</h4>
-                <p>Rp 5.000.000</p>
-            </div>
-            <div class="stat-card">
-                <h4>Pesanan Selesai</h4>
-                <p>128</p>
-            </div>
-            <div class="stat-card">
-                <h4>User Terdaftar</h4>
-                <p>450</p>
-            </div>
-        </div>
+<div class="login-form" id="loginForm">
+  <h2>Login Admin RHF SETORS</h2>
+  <input type="text" id="username" placeholder="Username (admin)">
+  <input type="password" id="password" placeholder="Password (rhf2026)">
+  <button onclick="login()">Login</button>
+</div>
 
-        <div class="data-table-container">
-            <div class="table-title">Daftar Transaksi Terbaru</div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Game</th>
-                        <th>Nominal</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>#RHF001</td>
-                        <td>Mobile Legends</td>
-                        <td>Rp 50.000</td>
-                        <td><span class="badge badge-success">Selesai</span></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
+<div class="container dashboard" id="dashboard">
+  <header>
+    <h1>Admin Panel - RHF SETORS</h1>
+    <button onclick="logout()" style="position:absolute; top:20px; right:20px; background:red;">Logout</button>
+  </header>
+
+  <div class="stats">
+    <div class="stat-card"><h3>Total Pelanggan</h3><p id="totalCustomers">0</p></div>
+    <div class="stat-card"><h3>Total Saldo</h3><p id="totalSaldo">Rp 0</p></div>
+    <div class="stat-card"><h3>Transaksi Hari Ini</h3><p id="todayTrans">0</p></div>
+    <div class="stat-card"><h3>Produk Aktif</h3><p id="totalProducts">56</p></div>
+  </div>
+
+  <div class="tab">
+    <button class="tablinks active" onclick="openTab(event, 'Pelanggan')">Kelola Pelanggan</button>
+    <button class="tablinks" onclick="openTab(event, 'Transaksi')">Riwayat Transaksi</button>
+    <button class="tablinks" onclick="openTab(event, 'Produk')">Kelola Produk</button>
+  </div>
+
+  <!-- Tab Pelanggan -->
+  <div id="Pelanggan" class="tabcontent" style="display:block;">
+    <h2>Kelola Akun Pelanggan</h2>
+    <button onclick="addCustomerForm()">+ Tambah Pelanggan Baru</button>
+    <table id="customerTable">
+      <thead><tr><th>ID</th><th>Nama</th><th>Email</th><th>Saldo</th><th>Aksi</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <!-- Tab Transaksi -->
+  <div id="Transaksi" class="tabcontent">
+    <h2>Riwayat Transaksi</h2>
+    <table id="transTable">
+      <thead><tr><th>ID</th><th>Pelanggan</th><th>Produk</th><th>Jumlah</th><th>Tanggal</th></tr></thead>
+      <tbody>
+        <tr><td>001</td><td>Budi</td><td>Mobile Legends 100 Diamonds</td><td>Rp 25.000</td><td>05-01-2026</td></tr>
+        <!-- Simulasi, tambah via JS nanti -->
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Tab Produk -->
+  <div id="Produk" class="tabcontent">
+    <h2>Kelola Produk (Game/Voucher)</h2>
+    <p>Tambah/hapus produk di sini akan otomatis update di index.html via script.js</p>
+    <input type="text" id="newProduct" placeholder="Nama Produk Baru">
+    <button onclick="addProduct()">Tambah Produk</button>
+    <ul id="productList"></ul>
+  </div>
+</div>
+
+<script>
+  // Data sementara (localStorage)
+  let customers = JSON.parse(localStorage.getItem('rhf_customers')) || [];
+  let transactions = JSON.parse(localStorage.getItem('rhf_trans')) || [];
+  let products = JSON.parse(localStorage.getItem('rhf_products')) || ["Mobile Legends Diamonds", "Free Fire Diamonds", "PUBG Mobile UC"]; // Default
+
+  function login() {
+    const user = document.getElementById('username').value;
+    const pass = document.getElementById('password').value;
+    if (user === 'admin' && pass === 'rhf2026') {
+      document.getElementById('loginForm').style.display = 'none';
+      document.getElementById('dashboard').style.display = 'block';
+      loadDashboard();
+    } else {
+      alert('Username atau password salah!');
+    }
+  }
+
+  function logout() {
+    document.getElementById('loginForm').style.display = 'block';
+    document.getElementById('dashboard').style.display = 'none';
+  }
+
+  function loadDashboard() {
+    // Update stats
+    document.getElementById('totalCustomers').textContent = customers.length;
+    let totalSaldo = customers.reduce((sum, c) => sum + (c.saldo || 0), 0);
+    document.getElementById('totalSaldo').textContent = 'Rp ' + totalSaldo.toLocaleString('id-ID');
+    document.getElementById('totalProducts').textContent = products.length;
+
+    // Load customers table
+    const tbody = document.querySelector('#customerTable tbody');
+    tbody.innerHTML = '';
+    customers.forEach((c, i) => {
+      const row = `<tr>
+        <td>${i+1}</td>
+        <td>${c.name}</td>
+        <td>${c.email}</td>
+        <td>Rp ${c.saldo.toLocaleString('id-ID')}</td>
+        <td>
+          <button onclick="editSaldo(${i})">Edit Saldo</button>
+          <button onclick="deleteCustomer(${i})" style="background:red;">Hapus</button>
+        </td>
+      </tr>`;
+      tbody.innerHTML += row;
+    });
+
+    // Load products
+    const list = document.getElementById('productList');
+    list.innerHTML = '';
+    products.forEach((p, i) => {
+      list.innerHTML += `<li>\( {p} <button onclick="deleteProduct( \){i})" style="background:red; float:right;">Hapus</button></li>`;
+    });
+  }
+
+  function addCustomerForm() {
+    const name = prompt('Nama Pelanggan:');
+    const email = prompt('Email:');
+    const saldo = parseInt(prompt('Saldo Awal:') || 0);
+    if (name && email) {
+      customers.push({ name, email, saldo });
+      localStorage.setItem('rhf_customers', JSON.stringify(customers));
+      loadDashboard();
+    }
+  }
+
+  function editSaldo(index) {
+    const newSaldo = parseInt(prompt('Saldo Baru:', customers[index].saldo) || 0);
+    customers[index].saldo = newSaldo;
+    localStorage.setItem('rhf_customers', JSON.stringify(customers));
+    loadDashboard();
+  }
+
+  function deleteCustomer(index) {
+    if (confirm('Hapus pelanggan ini?')) {
+      customers.splice(index, 1);
+      localStorage.setItem('rhf_customers', JSON.stringify(customers));
+      loadDashboard();
+    }
+  }
+
+  function addProduct() {
+    const name = document.getElementById('newProduct').value;
+    if (name) {
+      products.push(name);
+      localStorage.setItem('rhf_products', JSON.stringify(products));
+      document.getElementById('newProduct').value = '';
+      loadDashboard();
+    }
+  }
+
+  function deleteProduct(index) {
+    if (confirm('Hapus produk ini?')) {
+      products.splice(index, 1);
+      localStorage.setItem('rhf_products', JSON.stringify(products));
+      loadDashboard();
+    }
+  }
+
+  function openTab(evt, tabName) {
+    const tabcontent = document.getElementsByClassName("tabcontent");
+    for (let i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+    }
+    const tablinks = document.getElementsByClassName("tablinks");
+    for (let i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(tabName).style.display = "block";
+    evt.currentTarget.className += " active";
+  }
+</script>
+
 </body>
-</html>
+                                                                                </html>
