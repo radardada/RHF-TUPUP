@@ -1,331 +1,130 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Top Up - RHF SETORS</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/footer.css">
-    <link rel="stylesheet" href="css/forms.css">
-
-    <style>
-        /* Reset & Tempat Kosong untuk Header Fixed (tidak ada tumpang tindih) */
-        html, body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            background: #f8f9fa;
-        }
-
-        body {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            padding-top: 80px;                  /* Tempat kosong khusus header minimalis */
-            box-sizing: border-box;
-        }
-
-        /* HEADER MINIMALIS KHUSUS TOPUP.HTML (seperti gambar yang kamu kirim) */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: linear-gradient(to bottom, #007bff, #00c6ff);
-            color: white;
-            padding: 12px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            z-index: 1000;
-        }
-
-        .logo-header {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        header .logo {
-            height: 50px;
-            width: 50px;
-            background: black;
-            padding: 8px;
-            border-radius: 10px;
-            object-fit: contain;
-        }
-
-        header h1 {
-            font-size: 28px;
-            margin: 0;
-            font-weight: bold;
-        }
-
-        .back-btn {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 16px;
-            padding: 8px 16px;
-            background: rgba(255,255,255,0.2);
-            border-radius: 20px;
-        }
-
-        main {
-            flex: 1;
-            padding: 20px 10px;
-        }
-
-        #topup-page {
-            max-width: 900px;
-            margin: 0 auto;
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        #promo-text {
-            text-align: center;
-            color: #ff6600;
-            font-weight: bold;
-            font-size: 20px;
-            margin: 25px 0;
-            line-height: 1.5;
-        }
-
-        #nominal-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-            gap: 20px;
-            margin: 40px 0;
-        }
-
-        .nominal-card {
-            background: #f8f9fa;
-            border: 2px solid #e0e0e0;
-            border-radius: 12px;
-            padding: 20px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-
-        .nominal-card:hover, .nominal-card.selected {
-            border-color: #007bff;
-            background: #e3f2fd;
-            transform: translateY(-5px);
-        }
-
-        .nominal-card .price {
-            font-size: 22px;
-            font-weight: bold;
-            color: #28a745;
-        }
-
-        .nominal-card .bonus {
-            color: #d32f2f;
-            font-size: 15px;
-            margin-top: 8px;
-            font-weight: bold;
-        }
-
-        #payment-icons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 25px;
-            justify-content: center;
-            margin: 40px 0;
-        }
-
-        .payment-icon {
-            width: 80px;
-            height: auto;
-            opacity: 0.8;
-            transition: opacity 0.3s;
-        }
-
-        .payment-icon:hover {
-            opacity: 1;
-        }
-
-        #total-price {
-            text-align: center;
-            font-size: 28px;
-            font-weight: bold;
-            color: #28a745;
-            margin: 40px 0;
-            background: #e8f5e8;
-            padding: 15px;
-            border-radius: 12px;
-        }
-
-        #topupForm button {
-            width: 100%;
-            padding: 20px;
-            background: #28a745;
-            color: white;
-            font-size: 24px;
-            font-weight: bold;
-            border: none;
-            border-radius: 12px;
-            cursor: pointer;
-        }
-
-        #status {
-            text-align: center;
-            font-size: 20px;
-            margin-top: 30px;
-        }
-
-        #back-btn {
-            display: block;
-            text-align: center;
-            margin: 30px auto;
-            padding: 12px 30px;
-            background: #007bff;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            text-decoration: none;
-            font-size: 16px;
-        }
-
-        footer {
-            padding: 20px;
-            text-align: center;
-            background: #007bff;
-            color: white;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TUPUP - Top Up Game, Pulsa, Voucher & E-Wallet Murah, Cepat, Terpercaya</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; background: linear-gradient(135deg, #6a11cb, #2575fc); color: white; min-height: 100vh; }
+    header { background: rgba(0,0,0,0.25); padding: 30px 20px; text-align: center; backdrop-filter: blur(10px); }
+    .logo { font-size: 56px; font-weight: bold; letter-spacing: 3px; text-shadow: 0 6px 15px rgba(0,0,0,0.5); }
+    .tagline { font-size: 22px; margin-top: 15px; opacity: 0.95; }
+    .search-bar { max-width: 800px; margin: 40px auto; padding: 0 20px; }
+    .search-bar input { width: 100%; padding: 20px; border-radius: 50px; border: none; font-size: 20px; text-align: center; box-shadow: 0 15px 40px rgba(0,0,0,0.3); outline: none; }
+    .tabs { display: flex; justify-content: center; flex-wrap: wrap; margin: 40px 0; padding: 0 20px; gap: 15px; }
+    .tabs button { background: rgba(255,255,255,0.2); border: none; padding: 18px 40px; border-radius: 50px; font-size: 20px; cursor: pointer; transition: all 0.4s; backdrop-filter: blur(10px); }
+    .tabs button:hover, .tabs button.active { background: white; color: #6a11cb; transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+    .section { max-width: 1400px; margin: 0 auto; padding: 20px; }
+    .section-title { text-align: center; font-size: 36px; margin: 50px 0 40px; text-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+    .promo-banner { background: linear-gradient(45deg, #ff6b6b, #feca57); color: #333; padding: 30px; border-radius: 25px; text-align: center; margin: 40px auto; max-width: 1200px; font-size: 24px; font-weight: bold; box-shadow: 0 15px 35px rgba(0,0,0,0.3); }
+    .game-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 30px; }
+    .game-card { background: white; color: #333; border-radius: 25px; overflow: hidden; text-align: center; box-shadow: 0 12px 30px rgba(0,0,0,0.25); transition: all 0.4s ease; cursor: pointer; }
+    .game-card:hover { transform: translateY(-20px) scale(1.08); box-shadow: 0 30px 60px rgba(106,17,203,0.5); }
+    .game-card img { width: 100%; height: 140px; object-fit: contain; background: #f8f9fa; padding: 25px; transition: transform 0.3s; }
+    .game-card:hover img { transform: scale(1.1); }
+    .game-card p { padding: 20px; font-weight: bold; font-size: 18px; background: linear-gradient(to bottom, #f8f9fa, #e9ecef); }
+    .benefits { display: flex; justify-content: center; flex-wrap: wrap; margin: 60px 0; gap: 30px; }
+    .benefit { text-align: center; max-width: 300px; }
+    .benefit img { width: 80px; height: 80px; margin-bottom: 20px; }
+    .benefit h3 { font-size: 24px; margin-bottom: 10px; }
+    footer { background: rgba(0,0,0,0.5); padding: 50px 20px; text-align: center; margin-top: 80px; }
+    .footer-links a { color: white; margin: 0 20px; text-decoration: none; opacity: 0.8; font-size: 18px; }
+    .footer-links a:hover { opacity: 1; text-decoration: underline; }
+    @media (max-width: 768px) { .game-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); } }
+  </style>
 </head>
 <body>
 
-    <!-- HEADER MINIMALIS -->
-    <header>
-        <div class="logo-header">
-            <img src="images/logo.png" alt="RHF SETORS" class="logo">
-            <h1>RHF SETORS</h1>
-        </div>
-        <a href="index.html" class="back-btn">← Kembali</a>
-    </header>
+<header>
+  <div class="logo">TUPUP</div>
+  <div class="tagline">Top Up Game Murah, Cepat, Aman & Terpercaya #1 di Indonesia</div>
+</header>
 
-    <main>
-        <section id="topup-page">
-            <h2 style="text-align:center; color:#007bff; font-size:32px;">Top Up <span id="game-name">Loading...</span></h2>
+<div class="search-bar">
+  <input type="text" placeholder="Cari game, voucher, pulsa atau e-wallet...">
+</div>
 
-            <!-- Logo game dalam kotak kecil rapi -->
-            <div style="text-align:center; margin:30px 0;">
-                <div style="display:inline-block; width:120px; height:120px; background:#f0f0f0; border-radius:15px; overflow:hidden; box-shadow:0 5px 15px rgba(0,0,0,0.2); padding:10px;">
-                    <img id="game-logo" src="" alt="Logo Game" style="width:100%; height:100%; object-fit:contain;">
-                </div>
-            </div>
+<div class="tabs">
+  <button class="active">GAMES</button>
+  <button>PULSA</button>
+  <button>E-WALLET</button>
+  <button>VOUCHER</button>
+</div>
 
-            <div id="promo-text">
-                Cepat & Aman - Tanpa Login - Garansi Uang Kembali 10x Lipat Jika Gagal!
-            </div>
+<div class="promo-banner">
+  🔥 PROMO SPESIAL: Top Up Minimal Rp 10.000 Dapat Bonus Diamonds + Cashback s/d Rp 20.000! 🔥
+</div>
 
-            <form id="topupForm">
-                <div id="dynamic-inputs" style="margin-bottom:40px;"></div>
+<div class="section">
+  <div class="section-title">Game Populer & Terbaru</div>
+  <div class="game-grid">
+    <!-- Placeholder card - akan diganti otomatis oleh script.js -->
+    <div class="game-card">
+      <img src="" alt="{name}">
+      <p>{name}</p>
+    </div>
+    <!-- Duplikat untuk grid penuh (minimal 20 card) -->
+    <div class="game-card"><img src="" alt="{name}"><p>{name}</p></div>
+    <div class="game-card"><img src="" alt="{name}"><p>{name}</p></div>
+    <div class="game-card"><img src="" alt="{name}"><p>{name}</p></div>
+    <div class="game-card"><img src="" alt="{name}"><p>{name}</p></div>
+    <div class="game-card"><img src="" alt="{name}"><p>{name}</p></div>
+    <div class="game-card"><img src="" alt="{name}"><p>{name}</p></div>
+    <div class="game-card"><img src="" alt="{name}"><p>{name}</p></div>
+    <div class="game-card"><img src="" alt="{name}"><p>{name}</p></div>
+    <div class="game-card"><img src="" alt="{name}"><p>{name}</p></div>
+    <div class="game-card"><img src="" alt="{name}"><p>{name}</p></div>
+    <div class="game-card"><img src="" alt="{name}"><p>{name}</p></div>
+    <div class="game-card"><img src="" alt="{name}"><p>{name}</p></div>
+    <div class="game-card"><img src="" alt="{name}"><p>{name}</p></div>
+    <div class="game-card"><img src="" alt="{name}"><p>{name}</p></div>
+    <div class="game-card"><img src="" alt="{name}"><p>{name}</p></div>
+    <div class="game-card"><img src="" alt="{name}"><p>{name}</p></div>
+    <div class="game-card"><img src="" alt="{name}"><p>{name}</p></div>
+    <div class="game-card"><img src="" alt="{name}"><p>{name}</p></div>
+    <div class="game-card"><img src="" alt="{name}"><p>{name}</p></div>
+    <div class="game-card"><img src="" alt="{name}"><p>{name}</p></div>
+  </div>
+</div>
 
-                <h3 style="text-align:center; color:#007bff; font-size:24px; margin:40px 0 20px;">Pilih Nominal</h3>
-                <div id="nominal-grid"></div>
+<div class="section">
+  <div class="section-title">Kenapa Top Up di TUPUP?</div>
+  <div class="benefits">
+    <div class="benefit">
+      <img src="https://via.placeholder.com/80?text=🚀" alt="Cepat">
+      <h3>Proses Instan</h3>
+      <p>Top up langsung masuk dalam hitungan detik, tanpa ribet!</p>
+    </div>
+    <div class="benefit">
+      <img src="https://via.placeholder.com/80?text=💰" alt="Murah'">
+      <h3>Harga Termurah</h3>
+      <p>Dapatkan bonus & promo setiap hari, lebih hemat!</p>
+    </div>
+    <div class="benefit">
+      <img src="https://via.placeholder.com/80?text=🔒" alt="Aman">
+      <h3>100% Aman</h3>
+      <p>Partner resmi publisher game, akun aman terjamin!</p>
+    </div>
+    <div class="benefit">
+      <img src="https://via.placeholder.com/80?text=💳" alt="Banyak Pembayaran">
+      <h3>Banyak Pilihan Bayar</h3>
+      <p>E-Wallet, Transfer Bank, Alfamart, Indomaret & Pulsa</p>
+    </div>
+  </div>
+</div>
 
-                <h3 style="text-align:center; color:#007bff; font-size:24px; margin:50px 0 20px;">Metode Pembayaran</h3>
-                <div id="payment-icons">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAirayPWuAR7xOP6ewQEDLDA7vIaW2KraNQRRCm93yUA&s" alt="DANA" class="payment-icon">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXxN6Yo9gReuYd54DjGvqhhpeLH6xveBIPCZd_VOZXWg&s" alt="OVO" class="payment-icon">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSk2VNTh_y7qAFD3RctrDzelcsx7_mCP3MPJgHDinlPAw&s" alt="GoPay" class="payment-icon">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHa2u4zHXUM413-vtJLTrEKVMymrirO_DwWsFMgUC1CA&s" alt="ShopeePay" class="payment-icon">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTM5Q9oR5hxSeKjs0WCZ60792UxJxvhmoSx1iwkZ9wm8A&s" alt="Pulsa" class="payment-icon">
-                </div>
+<footer>
+  <div class="footer-links">
+    <a href="#">Tentang Kami</a>
+    <a href="#">Syarat & Ketentuan</a>
+    <a href="#">Kebijakan Privasi</a>
+    <a href="#">Hubungi Kami</a>
+    <a href="#">Promo</a>
+  </div>
+  <p>&copy; 2026 TUPUP - Top Up Game Murah, Cepat & Terpercaya. All Rights Reserved.</p>
+</footer>
 
-                <div id="total-price">Total: Rp 0</div>
-
-                <button type="submit">Bayar Sekarang</button>
-            </form>
-
-            <div id="status"></div>
-
-            <a href="index.html" id="back-btn">Kembali ke Homepage</a>
-        </section>
-    </main>
-
-    <footer>
-        <p>© 2026 RHF SETORS. All rights reserved.</p>
-    </footer>
-
-    <script type="module" src="js/firebase-init.js"></script>
-    <script type="module">
-        const game = localStorage.getItem('selectedGame') || 'Mobile Legends Diamonds';
-        document.getElementById('game-name').textContent = game;
-
-        const logoMap = {
-            "Mobile Legends Diamonds": "https://img.esports.id/img/article/637920200914081250.png",
-            "Free Fire Diamonds": "https://iconlogovector.com/uploads/images/2025/08/lg-6893f81b6ef79-FREE-FIRE.webp",
-            "PUBG Mobile UC": "https://images.seeklogo.com/logo-png/35/1/pubg-logo-png_seeklogo-352312.png",
-            "Higgs Domino Island MD": "https://liputangampongnews.id/assets/img/berita/20210920_183731.jpg",
-            "Honor of Kings Tokens": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMmZxVql5rDkrf9F18ENUODNWfWn96_ZDfGyAD3gUC8g&s=10",
-            "Bigo Live Diamonds": "https://images.seeklogo.com/logo-png/47/1/bigo-live-logo-png_seeklogo-477968.png",
-            "Honkai: Star Rail Shard": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSd4h06YHJT_hOpOlNoiQndwaOYC6ImQCvEkA3QQXnh1g&s",
-            "Valorant Points": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSPUSKwrosbcLh6qXmw79qz-Dl1vMOvBmP1ydujtvIsA&s",
-            "Genshin Impact Crystals": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4z_craukzS9fmSpRGHgqF8gxc34428E8fryReuCt6Nw&s",
-            "King's Choice Diamonds": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwurfDWmyuVtOqh1MSuTZk8hHdttjx3tr6micedK_LAVLwOPv7a0T154A&s",
-            "Arena Breakout Bonds": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZsQWTUmJWzDmBbIDtIylQtCUu67sSijV5LnGs7z1f1Q&s",
-            "Metal Slug: Awakening": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkx8fy5MOauLsJ6EykHXc4aBMEnc1TICvPGJGwvAtuMg&s",
-            "Blood Strike Gold": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRq9pYFjRHDLvalONft0-XU0zvD-YW0Yz7FSCRqwhRhUwCtavJwUT4hrRU&s",
-            "Ragnarok M Eternal Love": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPwJ1R2Md7xwE3-UZ27Xqa121fWSQJUE0rtoghQat8NA&s=10",
-            "Zepeto Zems": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTw_v_bpWtV0UF40usl8jVpGrCheXlZKRY_fs-HmakMww&s",
-            "Call of Duty Mobile CP": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnwzWUCFxQedyh3-5jhoqvfTswF8xMFQmuSdh_WAt85w&s",
-            "Super SUS Golden Stars": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_pGNtWaMmaAItQJjmSPhVyDahJiYpszdrInYNrC-Yyg&s",
-            "Pokemon UNITE AeosGems": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvjLby7OJSpIcP8upLPAgxYfVZc1bKfKou330TGdXa6g&s",
-            "The Ragnarok SEA": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrcdmKKwR3iN_RpnDb9jimkXT2AQ70DJlTk1I_1z1Wdg&s=10",
-            "AFK Journey": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAFTHPN8BvO-mUbIoOfrlWfpS5-wdH8wGT-xWhskPHdw&s",
-            "Soul Land: New World": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTw9ylpkI1T1heleXtDVIFR_c-B6mAL7PgRFK3qIBKLFXeDVeXGqonUOFc&s",
-            "Ragnarok M Classic": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIXyEdqq66V1IUmmrzWjCjAEIe6wPPta4MWnuvAM1-MA&s",
-            "Delta Force - Garena": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlKe9bxwc1562t3P1x3wOkmEDCH-t2YAz5O3VJ_n6JmN78ghi0x1IPUyc&s",
-            "Tokogame Credits": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFyrqhAKVXR8tmBGa4_SB2tIxCimcmWWt8EhDmtBSDNA&s",
-            "Mobile Legends Adventure": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRre4dsofyUejGWVpqParhe7Or-93YkNPkEu6Vju6Es-PoALqam13CnCVI&s",
-            "League of Legends WC": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZfrzzNjopkpkdjOr5BIW8j_JWn2SI-7HIncA5zZ5aDg&s",
-            "Moonlight Blade M": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnXnxGKfW8oCHvM_wtzxDavgYoEAEhncxCnLTMZupctgEIDe6f0uFAYEY&s",
-            "Night Crows": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-EyqA6RGbOTNZOAepLI5hlo0Qd6MtJkJtmF_f4Fa3Gg&s=10",
-            "Pulsa Indosat": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTM5Q9oR5hxSeKjs0WCZ60792UxJxvhmoSx1iwkZ9wm8A&s",
-            "Pulsa Tri": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAdfV3XNjwTp5uMgx2Bt5QGV9nMKf3h1jlxE6WFyfBzA&s",
-            "Pulsa Telkomsel": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1Eg-QzhOShwLZDAXPe4MPwItAX9zATmRWT-38vraG7g&s",
-            "Pulsa XL": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_uyCvd76Qo2rtlrK63RSmd0Rewhq4_7uYLS4V0SmV1A&s",
-            "Pulsa Axis": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKqFv1_DNi7WtcJOcHEWiupXhwwDvhPsUtbl4IFSlyrOo33z9sI-v5fsA&s",
-            "Pulsa Smartfren": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQobQYhok1QXOo1UkArzTY5EQWAywwlkRN9CnPnlYap5A&s",
-            "DANA": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAirayPWuAR7xOP6ewQEDLDA7vIaW2KraNQRRCm93yUA&s",
-            "OVO": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXxN6Yo9gReuYd54DjGvqhhpeLH6xveBIPCZd_VOZXWg&s",
-            "GoPay": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSk2VNTh_y7qAFD3RctrDzelcsx7_mCP3MPJgHDinlPAw&s",
-            "ShopeePay": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHa2u4zHXUM413-vtJLTrEKVMymrirO_DwWsFMgUC1CA&s",
-            "Candy Crush Saga": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3yUVZpUf4dJ1upa4iLsjtJDbP-z-yp7N7wJFzgW3f2A&s=10",
-            "Tinder Plus/Gold": "https://pngate.com/wp-content/uploads/2025/04/tinder-main-logo-icon-gradient-flame-1.png",
-            "Steam Wallet Code IDR": "https://e7.pngegg.com/pngimages/308/733/png-clipart-steam-computer-icons-killer-queen-black-valve-corporation-video-game-load-the-animation-logo-video-game.png",
-            "Google Play Voucher": "https://www.freepnglogos.com/uploads/google-play-png-logo/media-google-play-png-logo-5.png",
-            "PlayStation Network (PSN)": "https://www.vhv.rs/dpng/d/477-4776929_psn-logo-w-title-playstation-network-logo-png.png",
-            "Vision+ Voucher": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Logo_Univision_2019.svg/250px-Logo_Univision_2019.svg.png",
-            "Vidio Voucher": "https://www.vhv.rs/dpng/d/17-176969_music-video-icon-png-transparent-png.png",
-            "Token PLN": "https://thumbs.dreamstime.com/b/september-brazil-photo-illustration-perusahaan-listrik-negara-pln-logo-seen-displayed-smartphone-256461831.jpg",
-            "Fortnite V Bucks": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTV0ISVsoMmcea1KBh4aUBUs6qpJW-FFZIz0fCKj--7iQ&s",
-            "Twitch Gift Cards": "https://www.freeiconspng.com/uploads/twitch-tv-symbol-transparent-background-6.jpg",
-            "Garena Shell Voucher": "https://www.pngfind.com/pngs/m/392-3928798_logo-point-blank-garena-png-logo-garena-free.png",
-            "XBOX Gift Cards": "https://1000logos.net/wp-content/uploads/2021/11/logo-Xbox.png",
-            "TikTok Live Koin": "https://1000logos.net/wp-content/uploads/2019/06/Tiktok_Logo.png",
-            "Minecraft Minecoins": "https://cdn.freebiesupply.com/logos/thumbs/2x/minecraft-1-logo.png",
-            "Razer Gold Voucher": "https://media.gold.razer.com/goldweb/site/images/logo/razer-gold-silver.png"
-        };
-
-        const logoUrl = logoMap[game] || 'https://via.placeholder.com/120x120/cccccc/000000?text=No+Logo';
-        document.getElementById('game-logo').src = logoUrl;
-
-        document.getElementById('topupForm').addEventListener('submit', (e) => {
-            e.preventDefault();
-            document.getElementById('status').innerHTML = '<div style="background:#e8f5e8; color:green; padding:20px; border-radius:12px;">Top Up Berhasil! Item akan masuk dalam 1-5 menit. Terima kasih telah berbelanja di RHF SETORS!</div>';
-        });
-    </script>
+<script src="script.js"></script>
 </body>
 </html>
