@@ -3,155 +3,75 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RHF - Top Up Game, Voucher, Pulsa & E-Money Termurah & Tercepat</title>
+  <title>RHF - Top Up Game, Voucher, Pulsa & E-Money Termurah 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/header.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/footer.css">
   <style>
-    /* Desain Premium, Rapi & Berkelas 2026 */
-    body {
-      margin: 0;
-      font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
-      background: linear-gradient(to bottom, #0f0f1a, #1a1a2e);
-      color: #e0e0e0;
-    }
-    .container { max-width: 1280px; margin: 0 auto; padding: 0 20px; }
-
-    /* Header Elegan */
-    header {
-      background: rgba(15, 15, 26, 0.95);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      padding: 15px 0;
-    }
-    .header-content {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .logo img { height: 70px; transition: transform 0.3s; }
-    .logo img:hover { transform: scale(1.05); }
-    nav a {
-      color: #fff;
-      margin: 0 20px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-    nav a:hover { color: #ff3366; }
-
-    /* Hero Banner Premium */
-    .hero {
-      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://via.placeholder.com/1920x800?text=Hero+Banner+RHF+Premium+2026') center/cover no-repeat;
-      height: 600px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      border-bottom: 4px solid #ff3366;
-    }
-    .hero h1 { font-size: 56px; margin: 0; text-shadow: 0 4px 10px rgba(0,0,0,0.8); }
-    .hero p { font-size: 28px; margin: 20px 0; }
-    .hero .btn-hero {
-      background: linear-gradient(to right, #ff3366, #ff6b9d);
-      padding: 15px 40px;
-      border-radius: 50px;
-      color: #fff;
-      font-size: 20px;
-      font-weight: bold;
-      text-decoration: none;
-      box-shadow: 0 8px 20px rgba(255,51,102,0.4);
-      transition: all 0.3s;
-    }
-    .hero .btn-hero:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(255,51,102,0.6); }
-
-    /* Category Tabs Berkelas */
-    .category-tabs {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      margin: 40px 0;
-      flex-wrap: wrap;
-    }
-    .category-tab {
-      background: rgba(255,255,255,0.1);
-      backdrop-filter: blur(10px);
-      padding: 15px 35px;
-      border-radius: 50px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: all 0.4s;
-      border: 2px solid transparent;
-    }
-    .category-tab:hover, .category-tab.active {
-      background: linear-gradient(to right, #ff3366, #ff6b9d);
-      border-color: #ff3366;
-      transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(255,51,102,0.3);
-    }
-
-    /* Produk Card Premium */
-    .products-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 30px;
-      padding: 20px 0;
-    }
-    .product-card {
-      background: rgba(26, 26, 46, 0.8);
-      backdrop-filter: blur(15px);
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-      transition: all 0.4s;
-      border: 1px solid rgba(255,51,102,0.2);
-    }
-    .product-card:hover {
-      transform: translateY(-15px);
-      box-shadow: 0 20px 40px rgba(255,51,102,0.3);
-    }
-    .product-card img { width: 100%; height: 200px; object-fit: cover; }
-    .product-info {
-      padding: 20px;
-      text-align: center;
-    }
-    .product-info h3 { margin: 10px 0; font-size: 18px; }
-    .price { font-size: 24px; color: #ff3366; font-weight: bold; margin: 15px 0; }
-    .btn { 
-      background: linear-gradient(to right, #ff3366, #ff6b9d);
-      color: #fff; padding: 12px 30px; border-radius: 50px; 
-      text-decoration: none; font-weight: bold; display: inline-block;
-      transition: all 0.3s;
-    }
-    .btn:hover { transform: scale(1.05); box-shadow: 0 8px 20px rgba(255,51,102,0.4); }
-
-    /* Promo Section Elegan */
-    .promo {
-      background: linear-gradient(to right, #ff3366, #ff6b9d);
-      border-radius: 30px;
-      padding: 50px;
-      text-align: center;
+    /* Tambahan CSS untuk Slider Kategori (pasti muncul & smooth) */
+    .categories-section {
       margin: 60px 0;
-      box-shadow: 0 15px 40px rgba(255,51,102,0.4);
     }
-    .promo h2 { font-size: 40px; margin: 0 0 20px; }
-
-    /* Footer Premium */
-    footer {
-      background: #0a0a14;
-      padding: 60px 20px 30px;
+    .categories-slider {
+      overflow: hidden;
+      background: rgba(26, 26, 46, 0.6);
+      padding: 40px 0;
+      border-radius: 24px;
+      backdrop-filter: blur(10px);
+    }
+    .slider-container {
+      display: flex;
+      animation: scroll 45s linear infinite;
+      gap: 60px;
+      padding-left: 60px;
+    }
+    .slider-item {
+      min-width: 160px;
       text-align: center;
-      border-top: 1px solid #333;
+      flex-shrink: 0;
     }
-    footer p { margin: 10px 0; font-size: 14px; }
+    .slider-item img {
+      width: 130px;
+      height: 130px;
+      object-fit: contain;
+      filter: brightness(1.2) drop-shadow(0 4px 10px rgba(0,0,0,0.5));
+      transition: transform 0.4s ease;
+    }
+    .slider-item img:hover {
+      transform: scale(1.15);
+    }
+    .slider-item p {
+      margin-top: 15px;
+      font-size: 16px;
+      font-weight: 600;
+      color: #ffffff;
+    }
+    .slider-duplicate {
+      display: flex;
+      gap: 60px;
+      padding-left: 60px;
+    }
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* Loading state produk */
+    #products-container:empty::before {
+      content: "Memuat produk terbaik untuk Anda...";
+      display: block;
+      text-align: center;
+      font-size: 20px;
+      color: #888;
+      padding: 80px 20px;
+      grid-column: 1 / -1;
+    }
   </style>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- Header Premium -->
+
+  <!-- Header Premium (mirip TokoGame tapi lebih mewah) -->
   <header>
     <div class="container header-content">
       <div class="logo">
@@ -170,46 +90,77 @@
   <!-- Hero Banner -->
   <section class="hero">
     <div>
-      <h1>RHF - Top Up Game Premium</h1>
-      <p>Termurah • Tercepat • Terpercaya Sejak 2026</p>
-      <a href="#products" class="btn-hero">Mulai Top Up Sekarang</a>
+      <h1>RHF Premium Top Up</h1>
+      <p>Termurah • Tercepat • Terpercaya 2026</p>
+      <a href="#products" class="btn-hero">Lihat Produk</a>
     </div>
   </section>
 
   <div class="container">
-    <!-- Category Tabs -->
-    <div class="category-tabs">
-      <div class="category-tab active">Top Up Game</div>
-      <div class="category-tab">Voucher Digital</div>
-      <div class="category-tab">Pulsa & Paket Data</div>
-      <div class="category-tab">E-Money</div>
+
+    <!-- Slider Kategori Game dengan Logo (PASTI MUNCUL) -->
+    <div class="categories-section">
+      <h2 class="section-title">Kategori Populer</h2>
+      <div class="categories-slider">
+        <div class="slider-container">
+          <!-- Logo Game Resmi High Quality -->
+          <div class="slider-item"><img src="https://upload.wikimedia.org/wikipedia/en/c/c5/Logo_of_Garena_Free_Fire.png" alt="Free Fire"><p>Free Fire</p></div>
+          <div class="slider-item"><img src="https://seeklogo.com/images/M/mobile-legends-logo-7E6A5E6D9B-seeklogo.com.png" alt="Mobile Legends"><p>Mobile Legends</p></div>
+          <div class="slider-item"><img src="https://seeklogo.com/images/P/pubg-mobile-logo-2F3D6E0E4B-seeklogo.com.png" alt="PUBG Mobile"><p>PUBG Mobile</p></div>
+          <div class="slider-item"><img src="https://upload.wikimedia.org/wikipedia/commons/f/fc/Valorant_logo_-_pink_color_version.svg" alt="Valorant"><p>Valorant</p></div>
+          <div class="slider-item"><img src="https://www.freepnglogos.com/uploads/genshin-impact-logo-png/hd-transparent-logo-genshin-impact-free-download-2.png" alt="Genshin Impact"><p>Genshin Impact</p></div>
+          <div class="slider-item"><img src="https://interfaceingame.com/wp-content/uploads/honkai-star-rail/honkai-star-rail-logo.png" alt="Honkai Star Rail"><p>Honkai: Star Rail</p></div>
+          <div class="slider-item"><img src="https://www.pngarts.com/files/8/Call-of-Duty-Mobile-Logo-PNG-Image-Background.png" alt="COD Mobile"><p>COD Mobile</p></div>
+          <div class="slider-item"><img src="https://logowik.com/content/uploads/images/bigo-live2708.jpg" alt="Bigo Live"><p>Bigo Live</p></div>
+          <div class="slider-item"><img src="https://www.freepnglogos.com/uploads/google-play-png-logo/media-google-play-png-logo-5.png" alt="Google Play"><p>Google Play</p></div>
+          <div class="slider-item"><img src="https://seeklogo.com/images/S/steam-logo-270306A5E7-seeklogo.com.png" alt="Steam Wallet"><p>Steam Wallet</p></div>
+          <div class="slider-item"><img src="https://seeklogo.com/images/T/telkomsel-logo-410695A5E7-seeklogo.com.png" alt="Telkomsel"><p>Pulsa Telkomsel</p></div>
+          <div class="slider-item"><img src="https://media.gold.razer.com/goldweb/site/images/logo/razer-gold-silver.png" alt="Razer Gold"><p>Razer Gold</p></div>
+
+          <!-- Duplikat untuk infinite scroll -->
+          <div class="slider-duplicate">
+            <div class="slider-item"><img src="https://upload.wikimedia.org/wikipedia/en/c/c5/Logo_of_Garena_Free_Fire.png" alt="Free Fire"><p>Free Fire</p></div>
+            <div class="slider-item"><img src="https://seeklogo.com/images/M/mobile-legends-logo-7E6A5E6D9B-seeklogo.com.png" alt="Mobile Legends"><p>Mobile Legends</p></div>
+            <div class="slider-item"><img src="https://seeklogo.com/images/P/pubg-mobile-logo-2F3D6E0E4B-seeklogo.com.png" alt="PUBG Mobile"><p>PUBG Mobile</p></div>
+            <div class="slider-item"><img src="https://upload.wikimedia.org/wikipedia/commons/f/fc/Valorant_logo_-_pink_color_version.svg" alt="Valorant"><p>Valorant</p></div>
+            <div class="slider-item"><img src="https://www.freepnglogos.com/uploads/genshin-impact-logo-png/hd-transparent-logo-genshin-impact-free-download-2.png" alt="Genshin Impact"><p>Genshin Impact</p></div>
+            <div class="slider-item"><img src="https://interfaceingame.com/wp-content/uploads/honkai-star-rail/honkai-star-rail-logo.png" alt="Honkai Star Rail"><p>Honkai: Star Rail</p></div>
+            <div class="slider-item"><img src="https://www.pngarts.com/files/8/Call-of-Duty-Mobile-Logo-PNG-Image-Background.png" alt="COD Mobile"><p>COD Mobile</p></div>
+            <div class="slider-item"><img src="https://logowik.com/content/uploads/images/bigo-live2708.jpg" alt="Bigo Live"><p>Bigo Live</p></div>
+            <div class="slider-item"><img src="https://www.freepnglogos.com/uploads/google-play-png-logo/media-google-play-png-logo-5.png" alt="Google Play"><p>Google Play</p></div>
+            <div class="slider-item"><img src="https://seeklogo.com/images/S/steam-logo-270306A5E7-seeklogo.com.png" alt="Steam Wallet"><p>Steam Wallet</p></div>
+            <div class="slider-item"><img src="https://seeklogo.com/images/T/telkomsel-logo-410695A5E7-seeklogo.com.png" alt="Telkomsel"><p>Pulsa Telkomsel</p></div>
+            <div class="slider-item"><img src="https://media.gold.razer.com/goldweb/site/images/logo/razer-gold-silver.png" alt="Razer Gold"><p>Razer Gold</p></div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Produk Populer -->
-    <h2 class="section-title" id="products" style="text-align:center; font-size:36px; margin:50px 0;">Produk Top Up Terpopuler</h2>
+    <h2 class="section-title" id="products">Produk Top Up Terpopuler</h2>
     <div class="products-grid" id="products-container">
-      <!-- Produk load dari Firebase / JSON -->
+      <!-- Produk akan dimuat otomatis dari Firebase atau JSON -->
     </div>
 
     <!-- Promo Spesial -->
-    <div class="promo">
+    <div class="promo-section">
       <h2>Promo Eksklusif 2026!</h2>
-      <p style="font-size:24px;">Top Up Minimal Rp50.000 → Bonus Diamond + Cashback 15%</p>
-      <a href="#" class="btn" style="margin-top:20px; padding:15px 50px; font-size:20px;">Klaim Promo</a>
+      <p>Top Up Minimal Rp50.000 → Bonus Diamond + Cashback 15%</p>
+      <a href="#" class="btn">Klaim Sekarang</a>
     </div>
   </div>
 
   <!-- Footer -->
   <footer>
-    <p>&copy; 2026 RHF - Dibuat oleh RHF SETORS. Hak Cipta Dilindungi.</p>
-    <p>Support 24/7: support@rhf.com | WhatsApp: 0812-3456-7890</p>
-    <p>Promo | Testimoni | Syarat & Ketentuan | Kontak Kami</p>
+    <div class="footer-container">
+      <!-- Isi footer sesuai footer.css kamu -->
+      <p style="text-align:center; padding:20px; color:#999;">&copy; 2026 RHF - Dibuat oleh RHF SETORS</p>
+    </div>
   </footer>
 
-  <!-- Load Produk dari Firebase (seperti sebelumnya) -->
-  <script type="module">
-    import { loadProducts } from './js/games.js';
-    document.addEventListener('DOMContentLoaded', loadProducts);
-  </script>
+  <!-- Load JS -->
+  <script type="module" src="js/main.js"></script>
+  <script type="module" src="js/games.js"></script>
+  <script type="module" src="js/script.js"></script>
 </body>
 </html>
