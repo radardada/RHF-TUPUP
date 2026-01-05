@@ -3,13 +3,215 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Panel - RHF</title>
+  <title>Admin Panel RHF - Super Lengkap & Real-Time</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <!-- Firebase SDK -->
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Poppins', sans-serif; background: #f0f2f5; color: #333; }
+    .container { max-width: 1400px; margin: 0 auto; padding: 20px; }
+
+    header { background: #fff; box-shadow: 0 4px 15px rgba(0,0,0,0.1); padding: 20px 0; border-radius: 12px; margin-bottom: 30px; }
+    .header-content { display: flex; justify-content: space-between; align-items: center; }
+    .header-logo img { height: 60px; }
+    .admin-info h2 { color: #ff6600; font-size: 24px; }
+
+    .dashboard { display: grid; grid-template-columns: 280px 1fr; gap: 30px; }
+    .sidebar { background: #fff; border-radius: 16px; padding: 20px; box-shadow: 0 8px 25px rgba(0,0,0,0.1); height: fit-content; }
+    .menu-title { font-size: 18px; font-weight: 600; margin-bottom: 20px; color: #ff6600; }
+    .menu-item { display: flex; align-items: center; padding: 15px 20px; margin-bottom: 10px; border-radius: 12px; cursor: pointer; transition: all 0.3s; }
+    .menu-item i { font-size: 20px; margin-right: 15px; color: #ff6600; }
+    .menu-item:hover, .menu-item.active { background: #ff6600; color: #fff; }
+    .menu-item:hover i, .menu-item.active i { color: #fff; }
+
+    .main-content { background: #fff; border-radius: 16px; padding: 30px; box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
+    .content-section { display: none; }
+    .content-section.active { display: block; }
+    .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+    .section-title { font-size: 28px; font-weight: 700; color: #ff6600; }
+
+    .form-group { margin-bottom: 25px; }
+    .form-group label { display: block; margin-bottom: 10px; font-weight: 600; font-size: 16px; }
+    .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 10px; font-size: 16px; }
+    .form-group textarea { height: 120px; }
+    .btn { background: #28a745; color: #fff; padding: 15px 30px; border: none; border-radius: 10px; font-size: 18px; cursor: pointer; transition: 0.3s; margin-right: 10px; }
+    .btn:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(40,167,69,0.3); }
+    .btn-delete { background: #dc3545; }
+
+    table { width: 100%; border-collapse: collapse; margin-top: 30px; }
+    th, td { padding: 15px; text-align: left; border-bottom: 1px solid #eee; }
+    th { background: #f8f9fa; font-weight: 600; color: #ff6600; }
+    .action-btn { padding: 8px 15px; border: none; border-radius: 8px; cursor: pointer; margin-right: 8px; }
+    .edit-btn { background: #ff6600; color: #fff; }
+    .delete-btn { background: #dc3545; color: #fff; }
+
+    .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 200; align-items: center; justify-content: center; }
+    .modal-content { background: #fff; border-radius: 16px; padding: 30px; width: 90%; max-width: 800px; box-shadow: 0 10px 40px rgba(0,0,0,0.2); position: relative; }
+    .modal-close { position: absolute; top: 15px; right: 15px; font-size: 28px; color: #666; cursor: pointer; }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <div class="header-content">
+        <div class="header-logo">
+          <img src="images/logo.png" alt="RHF Admin">
+        </div>
+        <div class="admin-info">
+          <h2>Admin Panel RHF</h2>
+          <p>Super Lengkap - Kelola Semua Real-Time</p>
+        </div>
+      </div>
+    </header>
+
+    <div class="dashboard">
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <div class="menu-title">Menu Admin</div>
+        <div class="menu-item active" onclick="showSection('events')">
+          <i class="fas fa-trophy"></i> Kelola Event & Promo
+        </div>
+        <div class="menu-item" onclick="showSection('vouchers')">
+          <i class="fas fa-ticket-alt"></i> Kelola Voucher / Kode
+        </div>
+        <div class="menu-item" onclick="showSection('products')">
+          <i class="fas fa-gamepad"></i> Kelola Produk & Harga
+        </div>
+        <div class="menu-item" onclick="showSection('discounts')">
+          <i class="fas fa-percent"></i> Kelola Potongan Harga
+        </div>
+        <div class="menu-item" onclick="showSection('leaderboard')">
+          <i class="fas fa-medal"></i> Kelola Leaderboard Pemenang
+        </div>
+        <div class="menu-item" onclick="alert('Logout berhasil!'); window.location.href = 'index.html';">
+          <i class="fas fa-sign-out-alt"></i> Logout
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <div class="main-content">
+
+        <!-- Kelola Event & Promo (banyak input) -->
+        <div id="events" class="content-section active">
+          <div class="section-header">
+            <h2 class="section-title">Kelola Event & Promo</h2>
+            <button class="btn" onclick="openModal('events', 'add')">+ Tambah Event</button>
+          </div>
+          <table id="events-table">
+            <thead>
+              <tr>
+                <th>Nama Event</th>
+                <th>Gambar URL</th>
+                <th>Tanggal Mulai</th>
+                <th>Tanggal Selesai</th>
+                <th>Deskripsi</th>
+                <th>Keterangan Pemenang</th>
+                <th>URL Detail</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+
+        <!-- Kelola Voucher / Kode (kode untuk game spesifik atau all) -->
+        <div id="vouchers" class="content-section">
+          <div class="section-header">
+            <h2 class="section-title">Kelola Voucher & Kode Promo</h2>
+            <button class="btn" onclick="openModal('vouchers', 'add')">+ Tambah Voucher</button>
+          </div>
+          <table id="vouchers-table">
+            <thead>
+              <tr>
+                <th>Kode</th>
+                <th>Diskon (%)</th>
+                <th>Minimal Beli</th>
+                <th>Masa Berlaku</th>
+                <th>Game (All/Spesifik)</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+
+        <!-- Kelola Produk & Harga -->
+        <div id="products" class="content-section">
+          <div class="section-header">
+            <h2 class="section-title">Kelola Produk & Harga</h2>
+            <button class="btn" onclick="openModal('products', 'add')">+ Tambah Produk</button>
+          </div>
+          <table id="products-table">
+            <thead>
+              <tr>
+                <th>Game</th>
+                <th>Produk</th>
+                <th>Harga</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+
+        <!-- Kelola Potongan Harga -->
+        <div id="discounts" class="content-section">
+          <div class="section-header">
+            <h2 class="section-title">Kelola Potongan Harga</h2>
+            <button class="btn" onclick="openModal('discounts', 'add')">+ Tambah Potongan</button>
+          </div>
+          <table id="discounts-table">
+            <thead>
+              <tr>
+                <th>Nama Promo</th>
+                <th>Potongan (%)</th>
+                <th>Minimal Beli</th>
+                <th>Berlaku untuk Event</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+
+        <!-- Kelola Leaderboard Pemenang (random nama untuk top spender 1jt) -->
+        <div id="leaderboard" class="content-section">
+          <div class="section-header">
+            <h2 class="section-title">Kelola Leaderboard Pemenang (Hadiah 1jt)</h2>
+            <button class="btn" onclick="generateRandomWinner()">Generate Pemenang Random</button>
+          </div>
+          <table id="leaderboard-table">
+            <thead>
+              <tr>
+                <th>Rank</th>
+                <th>Nama Pemenang</th>
+                <th>Hadiah</th>
+                <th>Top Up Amount</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Universal (banyak input) -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="modal-close" onclick="closeModal()">&times;</span>
+      <h2 id="modal-title" class="section-title">Tambah Baru</h2>
+      <div id="modal-form"></div>
+      <button class="btn" onclick="saveData()">Simpan</button>
+    </div>
+  </div>
+
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-    import { getDatabase, ref, onValue, set, push, remove } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+    import { getDatabase, ref, onValue, set, push, update, remove } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyALIhKFz4bpOPmES6t2fAdx8VMPP0ye1wc",
@@ -25,182 +227,251 @@
     const app = initializeApp(firebaseConfig);
     const database = getDatabase(app);
 
-    // Global reference
-    window.dbRef = ref(database, 'products');
+    const refs = {
+      events: ref(database, 'events'),
+      vouchers: ref(database, 'vouchers'),
+      products: ref(database, 'products'),
+      discounts: ref(database, 'discounts'),
+      leaderboard: ref(database, 'leaderboard')
+    };
 
-    // Load products real-time
-    onValue(window.dbRef, (snapshot) => {
-      const products = snapshot.val() || [];
-      const tbody = document.querySelector('#products-table tbody');
-      tbody.innerHTML = '';
+    let currentSection = 'events';
+    let currentMode = 'add';
+    let currentEditKey = null;
 
-      Object.keys(products).forEach(key => {
-        const p = products[key];
-        const tr = document.createElement('tr');
-        tr.innerHTML = `
-          <td>${p.id || key}</td>
-          <td>${p.game}</td>
-          <td>${p.product}</td>
-          <td contenteditable="true" class="editable-price" data-key="\( {key}"> \){p.price}</td>
-          <td><span class="status active">Aktif</span></td>
-          <td>
-            <button class="action-btn edit-btn" onclick="editProduct('${key}')"><i class="fas fa-edit"></i></button>
-            <button class="action-btn delete-btn" onclick="deleteProduct('${key}')"><i class="fas fa-trash"></i></button>
-          </td>
-        `;
-        tbody.appendChild(tr);
-      });
-
-      // Add event listener untuk edit harga langsung
-      document.querySelectorAll('.editable-price').forEach(cell => {
-        cell.addEventListener('blur', function() {
-          const key = this.dataset.key;
-          const newPrice = this.textContent.trim();
-          if (newPrice !== products[key].price) {
-            set(ref(database, `products/${key}/price`), newPrice)
-              .then(() => alert('Harga berhasil diperbarui!'))
-              .catch(err => alert('Error: ' + err.message));
+    // Load Data Real-Time for All Sections
+    function loadData(section) {
+      const tbody = document.querySelector(`#${section}-table tbody`);
+      onValue(refs[section], (snapshot) => {
+        tbody.innerHTML = '';
+        const data = snapshot.val() || {};
+        Object.keys(data).forEach(key => {
+          const item = data[key];
+          const tr = document.createElement('tr');
+          let rowHTML = '';
+          if (section === 'events') {
+            rowHTML = `
+              <td>${item.name || ''}</td>
+              <td>${item.image || ''}</td>
+              <td>${item.startDate || ''}</td>
+              <td>${item.endDate || ''}</td>
+              <td>${item.desc || ''}</td>
+              <td>${item.winner || 'Belum ada'}</td>
+              <td>${item.url || ''}</td>
+              <td>
+                <button class="action-btn edit-btn" onclick="openModal('events', 'edit', '${key}')"><i class="fas fa-edit"></i></button>
+                <button class="action-btn delete-btn" onclick="deleteData('events', '${key}')"><i class="fas fa-trash"></i></button>
+              </td>
+            `;
+          } else if (section === 'vouchers') {
+            rowHTML = `
+              <td>${item.code || ''}</td>
+              <td>${item.discount || ''}%</td>
+              <td>Rp ${item.minPurchase || 0}</td>
+              <td>${item.expiry || ''}</td>
+              <td>${item.game || 'All'}</td>
+              <td>
+                <button class="action-btn edit-btn" onclick="openModal('vouchers', 'edit', '${key}')"><i class="fas fa-edit"></i></button>
+                <button class="action-btn delete-btn" onclick="deleteData('vouchers', '${key}')"><i class="fas fa-trash"></i></button>
+              </td>
+            `;
+          } else if (section === 'products') {
+            rowHTML = `
+              <td>${item.game || ''}</td>
+              <td>${item.product || ''}</td>
+              <td contenteditable="true" class="editable-price" data-key="\( {key}"> \){item.price || ''}</td>
+              <td>
+                <button class="action-btn edit-btn" onclick="openModal('products', 'edit', '${key}')"><i class="fas fa-edit"></i></button>
+                <button class="action-btn delete-btn" onclick="deleteData('products', '${key}')"><i class="fas fa-trash"></i></button>
+              </td>
+            `;
+          } else if (section === 'discounts') {
+            rowHTML = `
+              <td>${item.name || ''}</td>
+              <td>${item.percent || ''}%</td>
+              <td>Rp ${item.minPurchase || 0}</td>
+              <td>${item.eventName || ''}</td>
+              <td>
+                <button class="action-btn edit-btn" onclick="openModal('discounts', 'edit', '${key}')"><i class="fas fa-edit"></i></button>
+                <button class="action-btn delete-btn" onclick="deleteData('discounts', '${key}')"><i class="fas fa-trash"></i></button>
+              </td>
+            `;
+          } else if (section === 'leaderboard') {
+            rowHTML = `
+              <td>${item.rank || ''}</td>
+              <td>${item.name || ''}</td>
+              <td>Rp ${item.amount || 0}</td>
+              <td>${item.prize || ''}</td>
+              <td>
+                <button class="action-btn edit-btn" onclick="openModal('leaderboard', 'edit', '${key}')"><i class="fas fa-edit"></i></button>
+                <button class="action-btn delete-btn" onclick="deleteData('leaderboard', '${key}')"><i class="fas fa-trash"></i></button>
+              </td>
+            `;
           }
+          tr.innerHTML = rowHTML;
+          tbody.appendChild(tr);
         });
+
+        // Editable price for products
+        if (section === 'products') {
+          document.querySelectorAll('.editable-price').forEach(cell => {
+            cell.addEventListener('blur', function() {
+              const key = this.dataset.key;
+              const newPrice = this.textContent.trim();
+              update(ref(database, `\( {section}/ \){key}`), { price: newPrice });
+            });
+          });
+        }
       });
-    });
+    }
 
-    // Tambah Produk Baru
-    window.addProduct = function() {
-      const game = prompt("Nama Game:");
-      if (!game) return;
-      const product = prompt("Nama Produk (contoh: 86 Diamonds):");
-      if (!product) return;
-      const price = prompt("Harga (contoh: Rp 20.000):");
-      if (!price) return;
+    // Open Modal with Many Inputs
+    window.openModal = function(section, mode, key = null) {
+      currentSection = section;
+      currentMode = mode;
+      currentEditKey = key;
+      document.getElementById('modal-title').textContent = mode === 'edit' ? 'Edit ' + section.charAt(0).toUpperCase() + section.slice(1) : 'Tambah ' + section.charAt(0).toUpperCase() + section.slice(1) + ' Baru';
+      document.getElementById('modal').style.display = 'flex';
 
-      const newProductRef = push(window.dbRef);
-      set(newProductRef, {
-        game: game,
-        product: product,
-        price: price,
-        image: "https://via.placeholder.com/300?text=" + encodeURIComponent(game)
-      }).then(() => {
-        alert("Produk baru berhasil ditambahkan!");
-      }).catch(err => alert("Error: " + err.message));
-    };
+      const form = document.getElementById('modal-form');
+      form.innerHTML = '';
 
-    // Edit Produk (bisa dikembangkan lebih lanjut)
-    window.editProduct = function(key) {
-      const newPrice = prompt("Masukkan harga baru:");
-      if (newPrice) {
-        set(ref(database, `products/${key}/price`), newPrice)
-          .then(() => alert("Harga diperbarui!"))
-          .catch(err => alert("Error: " + err.message));
+      if (section === 'events') {
+        form.innerHTML = `
+          <div class="form-group">
+            <label>Nama Event</label>
+            <input type="text" id="event-name">
+          </div>
+          <div class="form-group">
+            <label>Gambar Event (URL)</label>
+            <input type="text" id="event-image">
+          </div>
+          <div class="form-group">
+            <label>Tanggal Mulai</label>
+            <input type="date" id="event-start-date">
+          </div>
+          <div class="form-group">
+            <label>Tanggal Selesai</label>
+            <input type="date" id="event-end-date">
+          </div>
+          <div class="form-group">
+            <label>Deskripsi Event</label>
+            <textarea id="event-desc" rows="5"></textarea>
+          </div>
+          <div class="form-group">
+            <label>Keterangan Pemenang (agak banyak, opsional)</label>
+            <textarea id="event-winner" rows="4"></textarea>
+          </div>
+          <div class="form-group">
+            <label>URL Detail Event</label>
+            <input type="text" id="event-url">
+          </div>
+          <div class="form-group">
+            <label>Syarat & Ketentuan</label>
+            <textarea id="event-terms" rows="4"></textarea>
+          </div>
+        `;
+      } else if (section === 'vouchers') {
+        form.innerHTML = `
+          <div class="form-group">
+            <label>Kode Voucher</label>
+            <input type="text" id="voucher-code">
+          </div>
+          <div class="form-group">
+            <label>Diskon (%)</label>
+            <input type="number" id="voucher-discount">
+          </div>
+          <div class="form-group">
+            <label>Minimal Pembelian (Rp)</label>
+            <input type="number" id="voucher-min">
+          </div>
+          <div class="form-group">
+            <label>Masa Berlaku (Tanggal Selesai)</label>
+            <input type="date" id="voucher-expiry">
+          </div>
+          <div class="form-group">
+            <label>Limit Pemakaian</label>
+            <input type="number" id="voucher-limit" placeholder="Kosongkan untuk unlimited">
+          </div>
+          <div class="form-group">
+            <label>Berlaku untuk Game</label>
+            <select id="voucher-game">
+              <option value="all">Semua Game</option>
+              <option value="ml">Mobile Legends</option>
+              <option value="ff">Free Fire</option>
+              <option value="pubg">PUBG Mobile</option>
+              <!-- Tambah game lain -->
+            </select>
+          </div>
+        `;
+      } else if (section === 'products') {
+        form.innerHTML = `
+          <div class="form-group">
+            <label>Nama Game</label>
+            <input type="text" id="product-game">
+          </div>
+          <div class="form-group">
+            <label>Nama Produk</label>
+            <input type="text" id="product-name">
+          </div>
+          <div class="form-group">
+            <label>Harga (Rp)</label>
+            <input type="text" id="product-price">
+          </div>
+          <div class="form-group">
+            <label>Gambar Produk (URL)</label>
+            <input type="text" id="product-image">
+          </div>
+        `;
+      } else if (section === 'discounts') {
+        form.innerHTML = `
+          <div class="form-group">
+            <label>Nama Promo</label>
+            <input type="text" id="discount-name">
+          </div>
+          <div class="form-group">
+            <label>Potongan (%) </label>
+            <input type="number" id="discount-percent">
+          </div>
+          <div class="form-group">
+            <label>Minimal Pembelian (Rp)</label>
+            <input type="number" id="discount-min">
+          </div>
+          <div class="form-group">
+            <label>Berlaku untuk Event</label>
+            <input type="text" id="discount-event" placeholder="Nama Event atau All">
+          </div>
+          <div class="form-group">
+            <label>Masa Berlaku</label>
+            <input type="date" id="discount-expiry">
+          </div>
+        `;
+      } else if (section === 'leaderboard') {
+        form.innerHTML = `
+          <div class="form-group">
+            <label>Rank</label>
+            <input type="number" id="leader-rank">
+          </div>
+          <div class="form-group">
+            <label>Nama Pemenang (Random atau Manual)</label>
+            <input type="text" id="leader-name">
+          </div>
+          <div class="form-group">
+            <label>Top Up Amount (Rp)</label>
+            <input type="number" id="leader-amount">
+          </div>
+          <div class="form-group">
+            <label>Hadiah (contoh: Rp 1.000.000)</label>
+            <input type="text" id="leader-prize">
+          </div>
+        `;
       }
-    };
 
-    // Hapus Produk
-    window.deleteProduct = function(key) {
-      if (confirm("Yakin ingin menghapus produk ini?")) {
-        remove(ref(database, `products/${key}`))
-          .then(() => alert("Produk dihapus!"))
-          .catch(err => alert("Error: " + err.message));
-      }
-    };
-  </script>
-  <style>
-    body { font-family: 'Poppins', sans-serif; background: #f0f2f5; color: #333; }
-    .container { max-width: 1400px; margin: 0 auto; padding: 20px; }
-    header { background: #fff; box-shadow: 0 4px 15px rgba(0,0,0,0.1); padding: 20px; border-radius: 12px; margin-bottom: 30px; }
-    .header-content { display: flex; justify-content: space-between; align-items: center; }
-    .header-logo img { height: 60px; }
-    .admin-info h2 { color: #ff6600; }
-
-    .dashboard { display: grid; grid-template-columns: 280px 1fr; gap: 30px; }
-    .sidebar { background: #fff; border-radius: 16px; padding: 20px; box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
-    .menu-title { font-size: 18px; font-weight: 600; margin-bottom: 20px; color: #ff6600; }
-    .menu-item { display: flex; align-items: center; padding: 15px; margin-bottom: 10px; border-radius: 12px; cursor: pointer; transition: 0.3s; }
-    .menu-item i { margin-right: 15px; font-size: 20px; color: #ff6600; }
-    .menu-item:hover, .menu-item.active { background: #ff6600; color: #fff; }
-    .menu-item:hover i, .menu-item.active i { color: #fff; }
-
-    .main-content { background: #fff; border-radius: 16px; padding: 30px; box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
-    .section-title { font-size: 28px; font-weight: 700; color: #ff6600; margin-bottom: 30px; display: flex; justify-content: space-between; align-items: center; }
-
-    table { width: 100%; border-collapse: collapse; }
-    th, td { padding: 15px; text-align: left; border-bottom: 1px solid #eee; }
-    th { background: #f8f9fa; color: #ff6600; font-weight: 600; }
-    .editable-price { background: #fff9e6; padding: 8px; border-radius: 8px; cursor: text; }
-    .editable-price:focus { outline: 2px solid #ff6600; }
-    .status.active { color: green; font-weight: bold; }
-    .action-btn { padding: 8px 12px; border: none; border-radius: 8px; cursor: pointer; margin: 0 5px; }
-    .edit-btn { background: #ff6600; color: #fff; }
-    .delete-btn { background: #dc3545; color: #fff; }
-    .btn-add { background: #28a745; color: #fff; padding: 12px 25px; border: none; border-radius: 10px; font-size: 16px; cursor: pointer; }
-  </style>
-</head>
-<body>
-
-  <div class="container">
-    <header>
-      <div class="header-content">
-        <div class="header-logo">
-          <img src="images/logo.png" alt="RHF Admin">
-        </div>
-        <div class="admin-info">
-          <h2>Admin Panel RHF</h2>
-          <p>Kelola Produk, Harga & Pesanan Secara Real-Time</p>
-        </div>
-      </div>
-    </header>
-
-    <div class="dashboard">
-      <!-- Sidebar -->
-      <div class="sidebar">
-        <div class="menu-title">Menu Admin</div>
-        <div class="menu-item active">
-          <i class="fas fa-tachometer-alt"></i> Dashboard
-        </div>
-        <div class="menu-item" onclick="alert('Fitur lain segera hadir!')">
-          <i class="fas fa-gamepad"></i> Kelola Produk & Harga
-        </div>
-        <div class="menu-item" onclick="alert('Fitur lain segera hadir!')">
-          <i class="fas fa-shopping-cart"></i> Pesanan
-        </div>
-        <div class="menu-item" onclick="alert('Fitur lain segera hadir!')">
-          <i class="fas fa-trophy"></i> Event & Promo
-        </div>
-      </div>
-
-      <!-- Main Content -->
-      <div class="main-content">
-        <div class="section-title">
-          Kelola Produk & Harga (Real-Time dengan Firebase)
-          <button class="btn-add" onclick="addProduct()">+ Tambah Produk Baru</button>
-        </div>
-
-        <table id="products-table">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Game</th>
-              <th>Produk</th>
-              <th>Harga (Klik untuk Edit)</th>
-              <th>Status</th>
-              <th>Aksi</th>
-            </tr>
-          </thead>
-          <tbody>
-            <!-- Produk akan dimuat otomatis dari Firebase -->
-            <tr><td colspan="6" style="text-align:center; padding:50px; color:#888;">Memuat data produk...</td></tr>
-          </tbody>
-        </table>
-
-        <p style="margin-top:30px; color:#666;">
-          <strong>Cara Pakai:</strong><br>
-          • Klik sel "Harga" → edit langsung → tekan Enter/klik di luar → harga otomatis update di website utama (real-time).<br>
-          • Tombol Edit/Hapus untuk ubah atau hapus produk.<br>
-          • Tambah Produk Baru dari tombol hijau.
-        </p>
-      </div>
-    </div>
-  </div>
-
-</body>
-</html>
+      if (mode === 'edit') {
+        onValue(ref(database, `\( {section}/ \){key}`), (snapshot) => {
+          const item = snapshot.val();
+          if (section === 'events') {
+            document.getElementById('event-name').value = item.name || '';
+            document.getElementById('event-image').value = item.image || '';
+            document.getElementById('event-start-date').value = item.startDate || '';
+            document.getElementById('eve
