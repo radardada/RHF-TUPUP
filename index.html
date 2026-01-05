@@ -3,274 +3,260 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RHF - Top Up Game Termurah & Tercepat 2026</title>
+  <title>RHF - Top Up Game Termurah & Tercepat</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/header.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/footer.css">
   <style>
-    /* Desain Super Mirip TokoGame.com - Clean, Putih, Aksen Oranye */
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background-color: #f8f9fa;
-      color: #333;
-    }
+    body { background: #f8f9fa; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-    /* Header Mirip Persis TokoGame */
-    header {
-      background: #ffffff;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-    .header-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 15px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-    }
-    .header-logo img {
-      height: 50px; /* Logo kecil & rapi - tidak kebesaran lagi */
-      max-width: 180px;
-      object-fit: contain;
-    }
-    @media (max-width: 768px) {
-      .header-logo img { height: 45px; }
-    }
-
-    /* Search Bar Tengah */
-    .header-search {
-      flex: 1;
-      max-width: 500px;
-      margin: 0 20px;
-      position: relative;
-    }
-    .header-search input {
-      width: 100%;
-      padding: 12px 50px 12px 20px;
-      border: 2px solid #ddd;
-      border-radius: 30px;
-      font-size: 16px;
-    }
-    .header-search button {
-      position: absolute;
-      right: 8px;
-      top: 50%;
-      transform: translateY(-50%);
-      background: #ff6600;
-      border: none;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      color: #fff;
-      font-size: 18px;
-      cursor: pointer;
-    }
-
-    /* Nav Kanan */
-    .header-nav a {
-      margin: 0 15px;
-      color: #333;
-      font-weight: 600;
-      text-decoration: none;
-    }
-    .header-nav a:hover {
-      color: #ff6600;
-    }
-
-    /* Hero Banner Mirip TokoGame (putih bersih dengan teks besar) */
-    .hero {
-      background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://via.placeholder.com/1920x500?text=Banner+Promo+RHF') center/cover;
-      padding: 100px 20px;
-      text-align: center;
-      color: #fff;
-    }
-    .hero h1 {
-      font-size: 48px;
-      margin-bottom: 20px;
-    }
-    .hero p {
-      font-size: 24px;
-      margin-bottom: 30px;
-    }
-    .btn-hero {
-      background: #ff6600;
-      color: #fff;
-      padding: 15px 40px;
-      border-radius: 30px;
-      font-size: 20px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    /* Kategori Tabs Mirip TokoGame */
-    .category-tabs {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      margin: 40px 0;
-      flex-wrap: wrap;
-    }
+    /* Tab Kategori Aktif */
     .category-tab {
       background: #fff;
-      padding: 15px 35px;
-      border-radius: 30px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-      font-weight: bold;
+      padding: 16px 40px;
+      border-radius: 50px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      font-weight: 600;
       font-size: 18px;
-      transition: 0.3s;
+      cursor: pointer;
+      transition: all 0.3s;
     }
-    .category-tab:hover, .category-tab.active {
+    .category-tab.active {
       background: #ff6600;
       color: #fff;
     }
 
-    /* Produk Grid Mirip TokoGame */
+    /* Slider Kategori Logo - Klik langsung ke topup.html game tertentu */
+    .categories-slider {
+      overflow: hidden;
+      background: #fff;
+      padding: 40px 0;
+      border-radius: 20px;
+      margin: 40px 0;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    }
+    .slider-container {
+      display: flex;
+      animation: scroll 40s linear infinite;
+      gap: 60px;
+      padding-left: 60px;
+    }
+    .slider-item {
+      min-width: 160px;
+      text-align: center;
+      flex-shrink: 0;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    .slider-item:hover { transform: scale(1.1); }
+    .slider-item img {
+      width: 130px;
+      height: 130px;
+      object-fit: contain;
+    }
+    .slider-item p {
+      margin-top: 15px;
+      font-weight: 600;
+    }
+    .slider-duplicate { display: flex; gap: 60px; padding-left: 60px; }
+    @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    /* Produk Grid */
+    .products-section {
+      display: none; /* Semua kategori hidden dulu */
+    }
+    .products-section.active {
+      display: block;
+    }
     .products-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 25px;
-      padding: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 30px;
+      padding: 40px 0;
     }
     .product-card {
       background: #fff;
-      border-radius: 15px;
+      border-radius: 16px;
       overflow: hidden;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.12);
       text-align: center;
-      transition: transform 0.3s;
+      transition: transform 0.4s;
     }
-    .product-card:hover {
-      transform: translateY(-10px);
-    }
-    .product-card img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-    }
-    .product-card h3 {
-      font-size: 18px;
-      margin: 15px 10px;
-    }
-    .price {
-      font-size: 24px;
-      color: #ff6600;
-      font-weight: bold;
-      margin: 10px 0;
-    }
-    .btn {
-      background: #ff6600;
-      color: #fff;
-      padding: 12px;
-      width: 100%;
-      font-weight: bold;
-      border: none;
-      cursor: pointer;
-    }
-
-    /* Leaderboard Event (tetap ada seperti request sebelumnya) */
-    .leaderboard-section {
-      max-width: 1000px;
-      margin: 60px auto;
-      background: #fff;
-      border-radius: 20px;
-      padding: 40px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    }
-    .leaderboard-title {
-      text-align: center;
-      font-size: 36px;
-      color: #ff6600;
-      margin-bottom: 30px;
-    }
-    /* ... tabel leaderboard sama seperti sebelumnya ... */
-
-    /* Loading */
-    #products-container:empty::before {
-      content: "Memuat produk...";
-      text-align: center;
-      font-size: 18px;
-      color: #666;
-      padding: 60px;
-      grid-column: 1 / -1;
-    }
+    .product-card:hover { transform: translateY(-10px); }
+    .product-card img { width: 100%; height: 200px; object-fit: cover; }
+    .product-info { padding: 20px; }
+    .product-info h3 { font-size: 18px; margin: 10px 0; }
+    .price { font-size: 26px; color: #ff6600; font-weight: bold; }
+    .btn { background: #ff6600; color: #fff; padding: 12px; width: 100%; font-weight: bold; border: none; cursor: pointer; }
   </style>
 </head>
 <body>
 
   <!-- Header Mirip TokoGame -->
-  <header>
-    <div class="header-container">
+  <header style="background:#fff; box-shadow:0 2px 10px rgba(0,0,0,0.1); padding:15px 0; position:sticky; top:0; z-index:1000;">
+    <div class="container" style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap;">
       <div class="header-logo">
         <a href="index.html">
-          <img src="images/logo.png" alt="RHF">
+          <img src="images/logo.png" alt="RHF" style="height:50px; object-fit:contain;">
         </a>
       </div>
-
-      <div class="header-search">
-        <input type="text" placeholder="Cari game atau produk...">
-        <button>🔍</button>
+      <div style="flex:1; max-width:500px; margin:0 20px; position:relative;">
+        <input type="text" placeholder="Cari game atau produk..." style="width:100%; padding:12px 50px 12px 20px; border:2px solid #ddd; border-radius:30px; font-size:16px;">
+        <button style="position:absolute; right:8px; top:50%; transform:translateY(-50%); background:#ff6600; border:none; width:40px; height:40px; border-radius:50%; color:#fff; font-size:18px; cursor:pointer;">🔍</button>
       </div>
-
-      <nav class="header-nav">
-        <a href="#">Promo</a>
-        <a href="#">Cara Top Up</a>
-        <a href="#">Testimoni</a>
-        <a href="#">Kontak</a>
-        <a href="#">Login</a>
+      <nav style="display:flex; gap:20px;">
+        <a href="#" style="color:#333; font-weight:600;">Promo</a>
+        <a href="#" style="color:#333; font-weight:600;">Cara Top Up</a>
+        <a href="#" style="color:#333; font-weight:600;">Testimoni</a>
+        <a href="#" style="color:#333; font-weight:600;">Kontak</a>
+        <a href="#" style="color:#333; font-weight:600;">Login</a>
       </nav>
     </div>
   </header>
 
   <!-- Hero Banner -->
-  <section class="hero">
-    <h1>RHF Top Up Game</h1>
-    <p>Termurah • Tercepat • Terpercaya Se-Indonesia</p>
-    <a href="#products" class="btn-hero">Mulai Top Up Sekarang</a>
+  <section style="background:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('https://via.placeholder.com/1920x500?text=RHF+Top+Up+Game') center/cover; padding:120px 20px; text-align:center; color:#fff;">
+    <h1 style="font-size:48px; margin-bottom:20px;">RHF Top Up Game</h1>
+    <p style="font-size:24px; margin-bottom:40px;">Termurah • Tercepat • Terpercaya</p>
+    <a href="#categories" style="background:#ff6600; color:#fff; padding:18px 50px; border-radius:50px; font-size:22px; text-decoration:none; font-weight:bold;">Pilih Game</a>
   </section>
 
   <div class="container">
 
     <!-- Tab Kategori -->
-    <div class="category-tabs">
-      <div class="category-tab active">Top Up Game</div>
-      <div class="category-tab">Voucher</div>
-      <div class="category-tab">Pulsa</div>
-      <div class="category-tab">E-Money</div>
+    <div style="display:flex; justify-content:center; gap:20px; margin:50px 0; flex-wrap:wrap;">
+      <div class="category-tab active" onclick="showCategory('all')">Semua Game</div>
+      <div class="category-tab" onclick="showCategory('ml')">Mobile Legends</div>
+      <div class="category-tab" onclick="showCategory('ff')">Free Fire</div>
+      <div class="category-tab" onclick="showCategory('pubg')">PUBG Mobile</div>
+      <div class="category-tab" onclick="showCategory('valorant')">Valorant</div>
     </div>
 
-    <!-- Leaderboard Event -->
-    <div class="leaderboard-section">
-      <h2 class="leaderboard-title">Leaderboard Top Spender Bulan Ini</h2>
-      <!-- Tabel leaderboard sama seperti sebelumnya -->
-      <table class="leaderboard-table">
-        <!-- ... isi tabel ... -->
-      </table>
+    <!-- Slider Logo Kategori - Klik langsung ke topup.html game tersebut -->
+    <div class="categories-slider" id="categories">
+      <div class="slider-container">
+        <div class="slider-item" onclick="location.href='topup.html?game=ml'">
+          <img src="https://seeklogo.com/images/M/mobile-legends-logo-7E6A5E6D9B-seeklogo.com.png" alt="Mobile Legends">
+          <p>Mobile Legends</p>
+        </div>
+        <div class="slider-item" onclick="location.href='topup.html?game=ff'">
+          <img src="https://upload.wikimedia.org/wikipedia/en/c/c5/Logo_of_Garena_Free_Fire.png" alt="Free Fire">
+          <p>Free Fire</p>
+        </div>
+        <div class="slider-item" onclick="location.href='topup.html?game=pubg'">
+          <img src="https://seeklogo.com/images/P/pubg-mobile-logo-2F3D6E0E4B-seeklogo.com.png" alt="PUBG Mobile">
+          <p>PUBG Mobile</p>
+        </div>
+        <div class="slider-item" onclick="location.href='topup.html?game=valorant'">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/f/fc/Valorant_logo_-_pink_color_version.svg" alt="Valorant">
+          <p>Valorant</p>
+        </div>
+        <div class="slider-item" onclick="location.href='topup.html?game=genshin'">
+          <img src="https://www.freepnglogos.com/uploads/genshin-impact-logo-png/hd-transparent-logo-genshin-impact-free-download-2.png" alt="Genshin Impact">
+          <p>Genshin Impact</p>
+        </div>
+
+        <!-- Duplikat untuk infinite scroll -->
+        <div class="slider-duplicate">
+          <div class="slider-item" onclick="location.href='topup.html?game=ml'">
+            <img src="https://seeklogo.com/images/M/mobile-legends-logo-7E6A5E6D9B-seeklogo.com.png" alt="Mobile Legends">
+            <p>Mobile Legends</p>
+          </div>
+          <div class="slider-item" onclick="location.href='topup.html?game=ff'">
+            <img src="https://upload.wikimedia.org/wikipedia/en/c/c5/Logo_of_Garena_Free_Fire.png" alt="Free Fire">
+            <p>Free Fire</p>
+          </div>
+          <!-- dst... -->
+        </div>
+      </div>
     </div>
 
-    <!-- Produk Populer -->
+    <!-- Produk per Kategori - Langsung Tampil Tanpa Loading -->
     <h2 style="text-align:center; font-size:36px; margin:50px 0; color:#ff6600;">Produk Terpopuler</h2>
-    <div class="products-grid" id="products-container">
-      <!-- Produk load dari JS -->
+
+    <!-- Semua Game -->
+    <div class="products-section active" id="all">
+      <div class="products-grid">
+        <!-- Mobile Legends -->
+        <div class="product-card" onclick="location.href='topup.html?game=ml'">
+          <img src="https://pic.bittopup.com/apiUpload/8de2e802db1b8a576937844d943537ff.jpg" alt="ML">
+          <div class="product-info">
+            <h3>Mobile Legends - 86 Diamonds</h3>
+            <div class="price">Rp 20.000</div>
+            <button class="btn">Beli Sekarang</button>
+          </div>
+        </div>
+        <!-- Free Fire -->
+        <div class="product-card" onclick="location.href='topup.html?game=ff'">
+          <img src="https://cdn-www.bluestacks.com/bs-images/Free-Fire-Codashop_EN_8.jpg" alt="FF">
+          <div class="product-info">
+            <h3>Free Fire - 100 Diamonds</h3>
+            <div class="price">Rp 15.000</div>
+            <button class="btn">Beli Sekarang</button>
+          </div>
+        </div>
+        <!-- Tambah produk lain -->
+      </div>
     </div>
+
+    <!-- Mobile Legends Only -->
+    <div class="products-section" id="ml">
+      <div class="products-grid">
+        <div class="product-card" onclick="location.href='topup.html?game=ml'">
+          <img src="https://pic.bittopup.com/apiUpload/8de2e802db1b8a576937844d943537ff.jpg" alt="ML">
+          <div class="product-info">
+            <h3>Mobile Legends - 86 Diamonds</h3>
+            <div class="price">Rp 20.000</div>
+            <button class="btn">Beli Sekarang</button>
+          </div>
+        </div>
+        <div class="product-card" onclick="location.href='topup.html?game=ml'">
+          <img src="https://cdn.mobilelegends.com/wp-content/uploads/2023/03/MLBB-Diamonds.jpg" alt="ML">
+          <div class="product-info">
+            <h3>Mobile Legends - Starlight Member</h3>
+            <div class="price">Rp 120.000</div>
+            <button class="btn">Beli Sekarang</button>
+          </div>
+        </div>
+        <!-- Tambah nominal ML lain -->
+      </div>
+    </div>
+
+    <!-- Free Fire Only -->
+    <div class="products-section" id="ff">
+      <div class="products-grid">
+        <div class="product-card" onclick="location.href='topup.html?game=ff'">
+          <img src="https://cdn-www.bluestacks.com/bs-images/Free-Fire-Codashop_EN_8.jpg" alt="FF">
+          <div class="product-info">
+            <h3>Free Fire - 100 Diamonds</h3>
+            <div class="price">Rp 15.000</div>
+            <button class="btn">Beli Sekarang</button>
+          </div>
+        </div>
+        <!-- Tambah nominal FF lain -->
+      </div>
+    </div>
+
+    <!-- Kategori lain serupa -->
 
   </div>
 
   <!-- Footer -->
-  <footer>
-    <div class="footer-container">
-      <p style="text-align:center; padding:40px; color:#999;">&copy; 2026 RHF - Dibuat oleh RHF SETORS</p>
-    </div>
+  <footer style="background:#333; color:#fff; text-align:center; padding:40px;">
+    <p>&copy; 2026 RHF - Dibuat oleh RHF SETORS</p>
   </footer>
 
-  <!-- JS -->
-  <script type="module" src="js/main.js"></script>
-  <script type="module" src="js/games.js"></script>
-  <script type="module" src="js/script.js"></script>
+  <script>
+    // Ganti kategori saat tab diklik
+    function showCategory(cat) {
+      document.querySelectorAll('.products-section').forEach(sec => sec.classList.remove('active'));
+      document.getElementById(cat).classList.add('active');
+
+      document.querySelectorAll('.category-tab').forEach(tab => tab.classList.remove('active'));
+      event.target.classList.add('active');
+    }
+  </script>
 </body>
 </html>
