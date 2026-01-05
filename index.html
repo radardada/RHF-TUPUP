@@ -3,193 +3,213 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RHF SETORS - Top Up Game Murah & Cepat</title>
+  <title>RHF - Top Up Game, Voucher, Pulsa & E-Money Termurah & Tercepat</title>
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/footer.css">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    /* Desain Premium, Rapi & Berkelas 2026 */
     body {
-      font-family: 'Segoe UI', Arial, sans-serif;
-      background: linear-gradient(to bottom, #007bff, #00c853);
-      color: white;
-      min-height: 100vh;
+      margin: 0;
+      font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(to bottom, #0f0f1a, #1a1a2e);
+      color: #e0e0e0;
     }
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 20px; }
+
+    /* Header Elegan */
     header {
+      background: rgba(15, 15, 26, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 15px 0;
+    }
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo img { height: 70px; transition: transform 0.3s; }
+    .logo img:hover { transform: scale(1.05); }
+    nav a {
+      color: #fff;
+      margin: 0 20px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    nav a:hover { color: #ff3366; }
+
+    /* Hero Banner Premium */
+    .hero {
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://via.placeholder.com/1920x800?text=Hero+Banner+RHF+Premium+2026') center/cover no-repeat;
+      height: 600px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       text-align: center;
-      padding: 30px 20px;
+      border-bottom: 4px solid #ff3366;
     }
-    .logo {
-      font-size: 48px;
-      font-weight: bold;
-      text-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    }
-    .search-bar {
-      max-width: 600px;
-      margin: 20px auto;
-      padding: 0 20px;
-    }
-    .search-bar input {
-      width: 100%;
-      padding: 16px;
+    .hero h1 { font-size: 56px; margin: 0; text-shadow: 0 4px 10px rgba(0,0,0,0.8); }
+    .hero p { font-size: 28px; margin: 20px 0; }
+    .hero .btn-hero {
+      background: linear-gradient(to right, #ff3366, #ff6b9d);
+      padding: 15px 40px;
       border-radius: 50px;
-      border: none;
-      font-size: 18px;
-      text-align: center;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      color: #fff;
+      font-size: 20px;
+      font-weight: bold;
+      text-decoration: none;
+      box-shadow: 0 8px 20px rgba(255,51,102,0.4);
+      transition: all 0.3s;
     }
-    .tabs {
+    .hero .btn-hero:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(255,51,102,0.6); }
+
+    /* Category Tabs Berkelas */
+    .category-tabs {
       display: flex;
       justify-content: center;
       gap: 15px;
-      margin: 20px 0;
+      margin: 40px 0;
       flex-wrap: wrap;
     }
-    .tabs button {
-      background: rgba(255,255,255,0.2);
-      border: none;
-      padding: 12px 30px;
+    .category-tab {
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(10px);
+      padding: 15px 35px;
       border-radius: 50px;
-      font-size: 16px;
+      font-weight: bold;
       cursor: pointer;
-      transition: 0.3s;
+      transition: all 0.4s;
+      border: 2px solid transparent;
     }
-    .tabs button:hover, .tabs button.active {
-      background: white;
-      color: #007bff;
+    .category-tab:hover, .category-tab.active {
+      background: linear-gradient(to right, #ff3366, #ff6b9d);
+      border-color: #ff3366;
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(255,51,102,0.3);
     }
-    .section-title {
-      text-align: center;
-      font-size: 28px;
-      margin: 40px 0 20px;
-    }
-    .game-grid {
+
+    /* Produk Card Premium */
+    .products-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      padding: 20px;
-      max-width: 1200px;
-      margin: 0 auto;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+      padding: 20px 0;
     }
-    .game-card {
-      background: white;
-      color: #333;
+    .product-card {
+      background: rgba(26, 26, 46, 0.8);
+      backdrop-filter: blur(15px);
       border-radius: 20px;
       overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      transition: all 0.4s;
+      border: 1px solid rgba(255,51,102,0.2);
+    }
+    .product-card:hover {
+      transform: translateY(-15px);
+      box-shadow: 0 20px 40px rgba(255,51,102,0.3);
+    }
+    .product-card img { width: 100%; height: 200px; object-fit: cover; }
+    .product-info {
+      padding: 20px;
       text-align: center;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
-      transition: all 0.4s ease;
-      cursor: pointer;
     }
-    .game-card:hover {
-      transform: translateY(-12px) scale(1.05);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    .product-info h3 { margin: 10px 0; font-size: 18px; }
+    .price { font-size: 24px; color: #ff3366; font-weight: bold; margin: 15px 0; }
+    .btn { 
+      background: linear-gradient(to right, #ff3366, #ff6b9d);
+      color: #fff; padding: 12px 30px; border-radius: 50px; 
+      text-decoration: none; font-weight: bold; display: inline-block;
+      transition: all 0.3s;
     }
-    .game-card img {
-      width: 80px;
-      height: 80px;
-      object-fit: contain;
-      margin: 20px auto;
-      background: #f8f9fa;
-      border-radius: 15px;
-      padding: 10px;
+    .btn:hover { transform: scale(1.05); box-shadow: 0 8px 20px rgba(255,51,102,0.4); }
+
+    /* Promo Section Elegan */
+    .promo {
+      background: linear-gradient(to right, #ff3366, #ff6b9d);
+      border-radius: 30px;
+      padding: 50px;
+      text-align: center;
+      margin: 60px 0;
+      box-shadow: 0 15px 40px rgba(255,51,102,0.4);
     }
-    .game-card p {
-      padding: 15px;
-      font-weight: bold;
-      font-size: 15px;
-      background: #f8f9fa;
-    }
+    .promo h2 { font-size: 40px; margin: 0 0 20px; }
+
+    /* Footer Premium */
     footer {
+      background: #0a0a14;
+      padding: 60px 20px 30px;
       text-align: center;
-      padding: 30px;
-      margin-top: 50px;
-      background: rgba(0,0,0,0.2);
+      border-top: 1px solid #333;
     }
-    @media (max-width: 992px) {
-      .game-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (max-width: 600px) {
-      .game-grid { grid-template-columns: 1fr; }
-      .logo { font-size: 36px; }
-    }
+    footer p { margin: 10px 0; font-size: 14px; }
   </style>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+  <!-- Header Premium -->
+  <header>
+    <div class="container header-content">
+      <div class="logo">
+        <img src="images/logo.png" alt="RHF Logo">
+      </div>
+      <nav>
+        <a href="#">Promo</a>
+        <a href="#">Cara Top Up</a>
+        <a href="#">Testimoni</a>
+        <a href="#">Kontak</a>
+        <a href="#">Login</a>
+      </nav>
+    </div>
+  </header>
 
-<header>
-  <div class="logo">RHF SETORS</div>
-</header>
+  <!-- Hero Banner -->
+  <section class="hero">
+    <div>
+      <h1>RHF - Top Up Game Premium</h1>
+      <p>Termurah • Tercepat • Terpercaya Sejak 2026</p>
+      <a href="#products" class="btn-hero">Mulai Top Up Sekarang</a>
+    </div>
+  </section>
 
-<div class="search-bar">
-  <input type="text" placeholder="Cari game atau voucher...">
-</div>
+  <div class="container">
+    <!-- Category Tabs -->
+    <div class="category-tabs">
+      <div class="category-tab active">Top Up Game</div>
+      <div class="category-tab">Voucher Digital</div>
+      <div class="category-tab">Pulsa & Paket Data</div>
+      <div class="category-tab">E-Money</div>
+    </div>
 
-<div class="tabs">
-  <button class="active">GAMES</button>
-  <button>E-WALLET</button>
-  <button>PULSA</button>
-  <button>VOUCHER</button>
-</div>
+    <!-- Produk Populer -->
+    <h2 class="section-title" id="products" style="text-align:center; font-size:36px; margin:50px 0;">Produk Top Up Terpopuler</h2>
+    <div class="products-grid" id="products-container">
+      <!-- Produk load dari Firebase / JSON -->
+    </div>
 
-<div class="section-title">Game Populer & Semua Game</div>
+    <!-- Promo Spesial -->
+    <div class="promo">
+      <h2>Promo Eksklusif 2026!</h2>
+      <p style="font-size:24px;">Top Up Minimal Rp50.000 → Bonus Diamond + Cashback 15%</p>
+      <a href="#" class="btn" style="margin-top:20px; padding:15px 50px; font-size:20px;">Klaim Promo</a>
+    </div>
+  </div>
 
-<div class="game-grid" id="gameContainer">
-  <!-- Card akan digenerate otomatis oleh script.js -->
-</div>
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 RHF - Dibuat oleh RHF SETORS. Hak Cipta Dilindungi.</p>
+    <p>Support 24/7: support@rhf.com | WhatsApp: 0812-3456-7890</p>
+    <p>Promo | Testimoni | Syarat & Ketentuan | Kontak Kami</p>
+  </footer>
 
-<footer>
-  <p>&copy; 2026 RHF SETORS - Top Up Game Murah, Cepat & Terpercaya</p>
-</footer>
-
-<script>
-  // Daftar game + URL logo dari kamu
-  const games = [
-    { name: "Mobile Legends Diamonds", url: "https://img.esports.id/img/article/637920200914081250.png" },
-    { name: "Free Fire Diamonds", url: "https://iconlogovector.com/uploads/images/2025/08/lg-6893f81b6ef79-FREE-FIRE.webp" },
-    { name: "PUBG Mobile UC", url: "https://images.seeklogo.com/logo-png/35/1/pubg-logo-png_seeklogo-352312.png" },
-    { name: "Higgs Domino Island MD", url: "https://liputangampongnews.id/assets/img/berita/20210920_183731.jpg" },
-    { name: "Honor of Kings Tokens", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMmZxVql5rDkrf9F18ENUODNWfWn96_ZDfGyAD3gUC8g&s=10" },
-    { name: "Bigo Live Diamonds", url: "https://images.seeklogo.com/logo-png/47/1/bigo-live-logo-png_seeklogo-477968.png" },
-    { name: "Honkai: Star Rail Shard", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSd4h06YHJT_hOpOlNoiQndwaOYC6ImQCvEkA3QQXnh1g&s" },
-    { name: "Valorant Points", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSPUSKwrosbcLh6qXmw79qz-Dl1vMOvBmP1ydujtvIsA&s" },
-    { name: "Genshin Impact Crystals", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4z_craukzS9fmSpRGHgqF8gxc34428E8fryReuCt6Nw&s" },
-    { name: "King's Choice Diamonds", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwurfDWmyuVtOqh1MSuTZk8hHdttjx3tr6micedK_LAVLwOPv7a0T154A&s" },
-    { name: "Arena Breakout Bonds", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZsQWTUmJWzDmBbIDtIylQtCUu67sSijV5LnGs7z1f1Q&s" },
-    { name: "Metal Slug: Awakening", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkx8fy5MOauLsJ6EykHXc4aBMEnc1TICvPGJGwvAtuMg&s" },
-    { name: "Blood Strike Gold", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRq9pYFjRHDLvalONft0-XU0zvD-YW0Yz7FSCRqwhRhUwCtavJwUT4hrRU&s" },
-    { name: "Ragnarok M Eternal Love", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPwJ1R2Md7xwE3-UZ27Xqa121fWSQJUE0rtoghQat8NA&s=10" },
-    { name: "Zepeto Zems", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTw_v_bpWtV0UF40usl8jVpGrCheXlZKRY_fs-HmakMww&s" },
-    { name: "Call of Duty Mobile CP", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnwzWUCFxQedyh3-5jhoqvfTswF8xMFQmuSdh_WAt85w&s" },
-    { name: "Super SUS Golden Stars", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_pGNtWaMmaAItQJjmSPhVyDahJiYpszdrInYNrC-Yyg&s" },
-    { name: "Pokemon UNITE AeosGems", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvjLby7OJSpIcP8upLPAgxYfVZc1bKfKou330TGdXa6g&s" },
-    { name: "The Ragnarok SEA", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrcdmKKwR3iN_RpnDb9jimkXT2AQ70DJlTk1I_1z1Wdg&s=10" },
-    { name: "AFK Journey", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAFTHPN8BvO-mUbIoOfrlWfpS5-wdH8wGT-xWhskPHdw&s" },
-    { name: "Soul Land: New World", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTw9ylpkI1T1heleXtDVIFR_c-B6mAL7PgRFK3qIBKLFXeDVeXGqonUOFc&s" },
-    { name: "Ragnarok M Classic", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIXyEdqq66V1IUmmrzWjCjAEIe6wPPta4MWnuvAM1-MA&s" },
-    { name: "Delta Force - Garena", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlKe9bxwc1562t3P1x3wOkmEDCH-t2YAz5O3VJ_n6JmN78ghi0x1IPUyc&s" },
-    { name: "Tokogame Credits", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFyrqhAKVXR8tmBGa4_SB2tIxCimcmWWt8EhDmtBSDNA&s" },
-    { name: "Mobile Legends Adventure", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRre4dsofyUejGWVpqParhe7Or-93YkNPkEu6Vju6Es-PoALqam13CnCVI&s" },
-    { name: "League of Legends WC", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZfrzzNjopkpkdjOr5BIW8j_JWn2SI-7HIncA5zZ5aDg&s" },
-    { name: "Moonlight Blade M", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnXnxGKfW8oCHvM_wtzxDavgYoEAEhncxCnLTMZupctgEIDe6f0uFAYEY&s" },
-    { name: "Night Crows", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-EyqA6RGbOTNZOAepLI5hlo0Qd6MtJkJtmF_f4Fa3Gg&s=10" }
-    // Tambah Pulsa, E-Wallet, Voucher kalau mau (bisa di section terpisah)
-  ];
-
-  const container = document.getElementById('gameContainer');
-
-  games.forEach(game => {
-    const card = document.createElement('div');
-    card.className = 'game-card';
-    card.innerHTML = `
-      <img src="\( {game.url}" alt=" \){game.name}">
-      <p>${game.name}</p>
-    `;
-    // Klik card pindah ke halaman top up
-    card.onclick = () => {
-      const encodedName = encodeURIComponent(game.name);
-      window.location.href = `topup.html?game=${encodedName}`;
-    };
-    container.appendChild(card);
-  });
-</script>
-
+  <!-- Load Produk dari Firebase (seperti sebelumnya) -->
+  <script type="module">
+    import { loadProducts } from './js/games.js';
+    document.addEventListener('DOMContentLoaded', loadProducts);
+  </script>
 </body>
 </html>
