@@ -1,11 +1,12 @@
-// firebase-init.js - RHF STORE DATABASE CONNECTION
+// js/firebase-init.js
+// Firebase Configuration untuk project RHF resmi
+// Versi terbaru Firebase SDK v10+ (modular style)
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js";
 import { getDatabase } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
-import { getFirestore } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js";
 
-// Konfigurasi Firebase RHF STORE
+// Konfigurasi Firebase kamu (sudah sesuai dengan project rhf-resmi)
 const firebaseConfig = {
   apiKey: "AIzaSyALIhKFz4bpOPmES6t2fAdx8VMPP0ye1wc",
   authDomain: "rhf-resmi.firebaseapp.com",
@@ -17,12 +18,14 @@ const firebaseConfig = {
   measurementId: "G-LNCVH73P3X"
 };
 
-// Initialize Firebase
+// Inisialisasi Firebase
 const app = initializeApp(firebaseConfig);
+
+// Inisialisasi Analytics (opsional, tapi bagus untuk tracking visitor)
 const analytics = getAnalytics(app);
 
-// Inisialisasi Database agar bisa dipanggil di file lain (admin.js / topup.js)
-const db = getDatabase(app);     // Untuk Realtime Database (Orderan masuk cepat)
-const dbStore = getFirestore(app); // Untuk Firestore (Data Game/User)
+// Inisialisasi Realtime Database (yang kita pakai untuk produk & order)
+export const database = getDatabase(app);
 
-export { app, db, dbStore, analytics };
+// Export app & analytics kalau nanti butuh (misal untuk auth atau storage)
+export { app, analytics };
