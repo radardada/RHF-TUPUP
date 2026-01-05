@@ -182,7 +182,7 @@
 
       <div class="form-section">
 
-        <!-- Step 1: Input Akun (berbeda per game) -->
+        <!-- Step 1: Input Akun -->
         <div class="step">
           <div class="step-title">1. Masukkan Data Akun</div>
           <div class="input-grid" id="input-fields">
@@ -266,7 +266,7 @@
   </div>
 
   <script>
-    // Data game lengkap dengan logo resmi & high quality (pasti muncul 100%)
+    // Semua data game & logo langsung di file ini (TIDAK dari games.js)
     const gamesData = {
       ml: {
         name: "Mobile Legends",
@@ -354,26 +354,29 @@
           { name: "980 Oneiric Shard", price: "Rp 200.000", bonus: "+110 Bonus" }
         ]
       }
-      // Tambah game lain dari list kamu kalau perlu
+      // Tambah game lain kalau perlu
     };
 
     // Ambil kode game dari URL
     const urlParams = new URLSearchParams(window.location.search);
-    const gameCode = urlParams.get('game') || 'ml'; // default Mobile Legends
+    const gameCode = urlParams.get('game') || 'ml';
     const game = gamesData[gameCode] || gamesData.ml;
 
-    // Pastikan logo & title muncul 100%
-    const gameLogo = document.getElementById('game-logo');
-    gameLogo.src = game.logo;
-    gameLogo.alt = game.name + " Logo";
-    gameLogo.onload = () => console.log('Logo loaded: ' + game.logo); // debug
-    gameLogo.onerror = () => gameLogo.src = 'https://via.placeholder.com/200?text=Logo+' + game.name; // fallback
+    // Pastikan logo muncul 100%
+    const logoImg = document.getElementById('game-logo');
+    logoImg.src = game.logo;
+    logoImg.alt = game.name + " Logo";
+    logoImg.onload = () => console.log('Logo berhasil dimuat:', game.logo);
+    logoImg.onerror = () => {
+      logoImg.src = 'https://via.placeholder.com/200x130/333333/ffffff?text=' + encodeURIComponent(game.name);
+      console.log('Logo gagal, pakai placeholder');
+    };
 
     document.getElementById('game-title').textContent = 'Top Up ' + game.name;
 
-    // Render input beda-beda per game
+    // Render input beda-beda
     const inputContainer = document.getElementById('input-fields');
-    inputContainer.innerHTML = ''; // kosongkan dulu
+    inputContainer.innerHTML = '';
     game.inputs.forEach(inp => {
       const div = document.createElement('div');
       div.className = 'form-group';
@@ -384,7 +387,7 @@
       inputContainer.appendChild(div);
     });
 
-    // Render nominal beda per game
+    // Render nominal beda-beda
     const nominalContainer = document.getElementById('nominal-options');
     nominalContainer.innerHTML = '';
     game.nominals.forEach((nom, i) => {
@@ -414,7 +417,7 @@
     });
 
     function processPayment() {
-      alert('Pembayaran sedang diproses...\nMetode: ' + document.querySelector('input[name="payment"]:checked + label').textContent.trim());
+      alert('Pembayaran sedang diproses...\nTerima kasih telah top up di RHF!');
     }
   </script>
 
