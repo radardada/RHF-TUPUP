@@ -3,128 +3,298 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TUPUP - Top Up Game, Pulsa, Voucher & E-Wallet Murah, Cepat, Terpercaya</title>
+  <title>TUPUP - Top Up Game, Pulsa, E-Wallet & Voucher Murah Cepat</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Segoe UI', Arial, sans-serif; background: linear-gradient(135deg, #6a11cb, #2575fc); color: white; min-height: 100vh; }
-    header { background: rgba(0,0,0,0.25); padding: 30px 20px; text-align: center; backdrop-filter: blur(10px); }
-    .logo { font-size: 56px; font-weight: bold; letter-spacing: 3px; text-shadow: 0 6px 15px rgba(0,0,0,0.5); }
-    .tagline { font-size: 22px; margin-top: 15px; opacity: 0.95; }
-    .search-bar { max-width: 800px; margin: 40px auto; padding: 0 20px; }
-    .search-bar input { width: 100%; padding: 20px; border-radius: 50px; border: none; font-size: 20px; text-align: center; box-shadow: 0 15px 40px rgba(0,0,0,0.3); outline: none; }
-    .tabs { display: flex; justify-content: center; flex-wrap: wrap; margin: 40px 0; padding: 0 20px; gap: 15px; }
-    .tabs button { background: rgba(255,255,255,0.2); border: none; padding: 18px 40px; border-radius: 50px; font-size: 20px; cursor: pointer; transition: all 0.4s; backdrop-filter: blur(10px); }
-    .tabs button:hover, .tabs button.active { background: white; color: #6a11cb; transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
-    .section { max-width: 1400px; margin: 0 auto; padding: 20px; }
-    .section-title { text-align: center; font-size: 36px; margin: 50px 0 40px; text-shadow: 0 4px 10px rgba(0,0,0,0.3); }
-    .promo-banner { background: linear-gradient(45deg, #ff6b6b, #feca57); color: #333; padding: 30px; border-radius: 25px; text-align: center; margin: 40px auto; max-width: 1200px; font-size: 24px; font-weight: bold; box-shadow: 0 15px 35px rgba(0,0,0,0.3); }
-    .game-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 30px; }
-    .game-card { background: white; color: #333; border-radius: 25px; overflow: hidden; text-align: center; box-shadow: 0 12px 30px rgba(0,0,0,0.25); transition: all 0.4s ease; cursor: pointer; }
-    .game-card:hover { transform: translateY(-20px) scale(1.08); box-shadow: 0 30px 60px rgba(106,17,203,0.5); }
-    .game-card img { width: 100%; height: 140px; object-fit: contain; background: #f8f9fa; padding: 25px; transition: transform 0.3s; }
-    .game-card:hover img { transform: scale(1.1); }
-    .game-card p { padding: 20px; font-weight: bold; font-size: 18px; background: linear-gradient(to bottom, #f8f9fa, #e9ecef); }
-    .benefits { display: flex; justify-content: center; flex-wrap: wrap; margin: 60px 0; gap: 30px; }
-    .benefit { text-align: center; max-width: 300px; }
-    .benefit img { width: 80px; height: 80px; margin-bottom: 20px; }
-    .benefit h3 { font-size: 24px; margin-bottom: 10px; }
-    footer { background: rgba(0,0,0,0.5); padding: 50px 20px; text-align: center; margin-top: 80px; }
-    .footer-links a { color: white; margin: 0 20px; text-decoration: none; opacity: 0.8; font-size: 18px; }
-    .footer-links a:hover { opacity: 1; text-decoration: underline; }
-    @media (max-width: 768px) { .game-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); } }
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      min-height: 100vh;
+    }
+    header {
+      text-align: center;
+      padding: 40px 20px;
+      background: rgba(0,0,0,0.2);
+      backdrop-filter: blur(10px);
+    }
+    .logo {
+      font-size: 60px;
+      font-weight: bold;
+      letter-spacing: 3px;
+      text-shadow: 0 6px 15px rgba(0,0,0,0.5);
+    }
+    .tagline {
+      font-size: 22px;
+      margin-top: 10px;
+      opacity: 0.9;
+    }
+    .search-bar {
+      max-width: 800px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+    .search-bar input {
+      width: 100%;
+      padding: 18px 24px;
+      border-radius: 50px;
+      border: none;
+      font-size: 18px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      outline: none;
+    }
+    .tabs {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin: 40px 0 20px;
+      padding: 0 20px;
+    }
+    .tabs button {
+      background: rgba(255,255,255,0.15);
+      border: none;
+      padding: 16px 40px;
+      border-radius: 50px;
+      font-size: 18px;
+      cursor: pointer;
+      transition: all 0.4s;
+      backdrop-filter: blur(10px);
+    }
+    .tabs button:hover, .tabs button.active {
+      background: white;
+      color: #667eea;
+      transform: scale(1.05);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+    .promo-banner {
+      background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+      color: #333;
+      padding: 25px;
+      border-radius: 20px;
+      text-align: center;
+      margin: 30px auto;
+      max-width: 1100px;
+      font-size: 24px;
+      font-weight: bold;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .section-title {
+      text-align: center;
+      font-size: 32px;
+      margin: 40px 0 30px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 25px;
+    }
+    .card {
+      background: white;
+      color: #333;
+      border-radius: 24px;
+      overflow: hidden;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+      transition: all 0.4s ease;
+      cursor: pointer;
+    }
+    .card:hover {
+      transform: translateY(-15px) scale(1.06);
+      box-shadow: 0 30px 60px rgba(102, 126, 234, 0.4);
+    }
+    .card img {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      margin: 25px auto;
+      background: #f8f9fa;
+      padding: 15px;
+      border-radius: 20px;
+    }
+    .card p {
+      padding: 20px;
+      font-weight: bold;
+      font-size: 16px;
+      background: linear-gradient(to bottom, #f8f9fa, #e9ecef);
+    }
+    footer {
+      text-align: center;
+      padding: 50px 20px;
+      margin-top: 80px;
+      background: rgba(0,0,0,0.4);
+    }
+    .hidden { display: none; }
+    @media (max-width: 768px) {
+      .grid { grid-template-columns: repeat(2, 1fr); }
+      .logo { font-size: 45px; }
+    }
+    @media (max-width: 480px) {
+      .grid { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
 
 <header>
   <div class="logo">TUPUP</div>
-  <div class="tagline">Top Up Game Murah, Cepat, Aman & Terpercaya #1 di Indonesia</div>
+  <div class="tagline">Top Up Game, Pulsa, E-Wallet & Voucher Termurah #1 Indonesia</div>
 </header>
 
 <div class="search-bar">
-  <input type="text" placeholder="Cari game, voucher, pulsa atau e-wallet...">
+  <input type="text" id="searchInput" placeholder="Cari game, pulsa, atau voucher...">
 </div>
 
 <div class="tabs">
-  <button class="active">GAMES</button>
-  <button>PULSA</button>
-  <button>E-WALLET</button>
-  <button>VOUCHER</button>
+  <button class="active" onclick="showTab('games')">GAMES</button>
+  <button onclick="showTab('pulsa')">PULSA</button>
+  <button onclick="showTab('ewallet')">E-WALLET</button>
+  <button onclick="showTab('voucher')">VOUCHER</button>
 </div>
 
 <div class="promo-banner">
-  🔥 PROMO SPESIAL: Top Up Minimal Rp 10.000 Dapat Bonus Diamonds + Cashback s/d Rp 20.000! 🔥
+  🔥 PROMO HARI INI: Top Up Minimal Rp10.000 Bonus + Cashback hingga Rp25.000! 🔥
 </div>
 
-<div class="section">
-  <div class="section-title">Game Populer & Terbaru</div>
-  <div class="game-grid">
-    <!-- Placeholder card - akan diganti otomatis oleh script.js -->
-    <div class="game-card">
-      <img src="" alt="{name}">
-      <p>{name}</p>
-    </div>
-    <!-- Duplikat untuk grid penuh (minimal 20 card) -->
-    <div class="game-card"><img src="" alt="{name}"><p>{name}</p></div>
-    <div class="game-card"><img src="" alt="{name}"><p>{name}</p></div>
-    <div class="game-card"><img src="" alt="{name}"><p>{name}</p></div>
-    <div class="game-card"><img src="" alt="{name}"><p>{name}</p></div>
-    <div class="game-card"><img src="" alt="{name}"><p>{name}</p></div>
-    <div class="game-card"><img src="" alt="{name}"><p>{name}</p></div>
-    <div class="game-card"><img src="" alt="{name}"><p>{name}</p></div>
-    <div class="game-card"><img src="" alt="{name}"><p>{name}</p></div>
-    <div class="game-card"><img src="" alt="{name}"><p>{name}</p></div>
-    <div class="game-card"><img src="" alt="{name}"><p>{name}</p></div>
-    <div class="game-card"><img src="" alt="{name}"><p>{name}</p></div>
-    <div class="game-card"><img src="" alt="{name}"><p>{name}</p></div>
-    <div class="game-card"><img src="" alt="{name}"><p>{name}</p></div>
-    <div class="game-card"><img src="" alt="{name}"><p>{name}</p></div>
-    <div class="game-card"><img src="" alt="{name}"><p>{name}</p></div>
-    <div class="game-card"><img src="" alt="{name}"><p>{name}</p></div>
-    <div class="game-card"><img src="" alt="{name}"><p>{name}</p></div>
-    <div class="game-card"><img src="" alt="{name}"><p>{name}</p></div>
-    <div class="game-card"><img src="" alt="{name}"><p>{name}</p></div>
-    <div class="game-card"><img src="" alt="{name}"><p>{name}</p></div>
+<div class="container">
+  <!-- GAMES -->
+  <div id="games" class="tab-content">
+    <div class="section-title">Game Populer & Terbaru</div>
+    <div class="grid" id="gamesGrid"></div>
   </div>
-</div>
 
-<div class="section">
-  <div class="section-title">Kenapa Top Up di TUPUP?</div>
-  <div class="benefits">
-    <div class="benefit">
-      <img src="https://via.placeholder.com/80?text=🚀" alt="Cepat">
-      <h3>Proses Instan</h3>
-      <p>Top up langsung masuk dalam hitungan detik, tanpa ribet!</p>
-    </div>
-    <div class="benefit">
-      <img src="https://via.placeholder.com/80?text=💰" alt="Murah'">
-      <h3>Harga Termurah</h3>
-      <p>Dapatkan bonus & promo setiap hari, lebih hemat!</p>
-    </div>
-    <div class="benefit">
-      <img src="https://via.placeholder.com/80?text=🔒" alt="Aman">
-      <h3>100% Aman</h3>
-      <p>Partner resmi publisher game, akun aman terjamin!</p>
-    </div>
-    <div class="benefit">
-      <img src="https://via.placeholder.com/80?text=💳" alt="Banyak Pembayaran">
-      <h3>Banyak Pilihan Bayar</h3>
-      <p>E-Wallet, Transfer Bank, Alfamart, Indomaret & Pulsa</p>
-    </div>
+  <!-- PULSA -->
+  <div id="pulsa" class="tab-content hidden">
+    <div class="section-title">Pulsa All Operator</div>
+    <div class="grid" id="pulsaGrid"></div>
+  </div>
+
+  <!-- E-WALLET -->
+  <div id="ewallet" class="tab-content hidden">
+    <div class="section-title">Isi Saldo E-Wallet</div>
+    <div class="grid" id="ewalletGrid"></div>
+  </div>
+
+  <!-- VOUCHER -->
+  <div id="voucher" class="tab-content hidden">
+    <div class="section-title">Voucher Digital</div>
+    <div class="grid" id="voucherGrid"></div>
   </div>
 </div>
 
 <footer>
-  <div class="footer-links">
-    <a href="#">Tentang Kami</a>
-    <a href="#">Syarat & Ketentuan</a>
-    <a href="#">Kebijakan Privasi</a>
-    <a href="#">Hubungi Kami</a>
-    <a href="#">Promo</a>
-  </div>
-  <p>&copy; 2026 TUPUP - Top Up Game Murah, Cepat & Terpercaya. All Rights Reserved.</p>
+  <p>© 2026 TUPUP - Top Up Murah, Cepat, Aman & Terpercaya. All Rights Reserved.</p>
 </footer>
 
-<script src="script.js"></script>
+<script>
+  // Data dari list kamu
+  const games = [
+    { name: "Mobile Legends Diamonds", url: "https://img.esports.id/img/article/637920200914081250.png" },
+    { name: "Free Fire Diamonds", url: "https://iconlogovector.com/uploads/images/2025/08/lg-6893f81b6ef79-FREE-FIRE.webp" },
+    { name: "PUBG Mobile UC", url: "https://images.seeklogo.com/logo-png/35/1/pubg-logo-png_seeklogo-352312.png" },
+    { name: "Higgs Domino Island MD", url: "https://liputangampongnews.id/assets/img/berita/20210920_183731.jpg" },
+    { name: "Honor of Kings Tokens", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMmZxVql5rDkrf9F18ENUODNWfWn96_ZDfGyAD3gUC8g&s=10" },
+    { name: "Bigo Live Diamonds", url: "https://images.seeklogo.com/logo-png/47/1/bigo-live-logo-png_seeklogo-477968.png" },
+    { name: "Honkai: Star Rail Shard", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSd4h06YHJT_hOpOlNoiQndwaOYC6ImQCvEkA3QQXnh1g&s" },
+    { name: "Valorant Points", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSPUSKwrosbcLh6qXmw79qz-Dl1vMOvBmP1ydujtvIsA&s" },
+    { name: "Genshin Impact Crystals", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4z_craukzS9fmSpRGHgqF8gxc34428E8fryReuCt6Nw&s" },
+    { name: "King's Choice Diamonds", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwurfDWmyuVtOqh1MSuTZk8hHdttjx3tr6micedK_LAVLwOPv7a0T154A&s" },
+    { name: "Arena Breakout Bonds", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZsQWTUmJWzDmBbIDtIylQtCUu67sSijV5LnGs7z1f1Q&s" },
+    { name: "Metal Slug: Awakening", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkx8fy5MOauLsJ6EykHXc4aBMEnc1TICvPGJGwvAtuMg&s" },
+    { name: "Blood Strike Gold", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRq9pYFjRHDLvalONft0-XU0zvD-YW0Yz7FSCRqwhRhUwCtavJwUT4hrRU&s" },
+    { name: "Ragnarok M Eternal Love", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPwJ1R2Md7xwE3-UZ27Xqa121fWSQJUE0rtoghQat8NA&s=10" },
+    { name: "Zepeto Zems", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTw_v_bpWtV0UF40usl8jVpGrCheXlZKRY_fs-HmakMww&s" },
+    { name: "Call of Duty Mobile CP", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnwzWUCFxQedyh3-5jhoqvfTswF8xMFQmuSdh_WAt85w&s" },
+    { name: "Super SUS Golden Stars", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_pGNtWaMmaAItQJjmSPhVyDahJiYpszdrInYNrC-Yyg&s" },
+    { name: "Pokemon UNITE AeosGems", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvjLby7OJSpIcP8upLPAgxYfVZc1bKfKou330TGdXa6g&s" },
+    { name: "The Ragnarok SEA", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrcdmKKwR3iN_RpnDb9jimkXT2AQ70DJlTk1I_1z1Wdg&s=10" },
+    { name: "AFK Journey", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAFTHPN8BvO-mUbIoOfrlWfpS5-wdH8wGT-xWhskPHdw&s" },
+    { name: "Soul Land: New World", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTw9ylpkI1T1heleXtDVIFR_c-B6mAL7PgRFK3qIBKLFXeDVeXGqonUOFc&s" },
+    { name: "Ragnarok M Classic", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIXyEdqq66V1IUmmrzWjCjAEIe6wPPta4MWnuvAM1-MA&s" },
+    { name: "Delta Force - Garena", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlKe9bxwc1562t3P1x3wOkmEDCH-t2YAz5O3VJ_n6JmN78ghi0x1IPUyc&s" },
+    { name: "Tokogame Credits", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFyrqhAKVXR8tmBGa4_SB2tIxCimcmWWt8EhDmtBSDNA&s" },
+    { name: "Mobile Legends Adventure", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRre4dsofyUejGWVpqParhe7Or-93YkNPkEu6Vju6Es-PoALqam13CnCVI&s" },
+    { name: "League of Legends WC", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZfrzzNjopkpkdjOr5BIW8j_JWn2SI-7HIncA5zZ5aDg&s" },
+    { name: "Moonlight Blade M", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnXnxGKfW8oCHvM_wtzxDavgYoEAEhncxCnLTMZupctgEIDe6f0uFAYEY&s" },
+    { name: "Night Crows", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-EyqA6RGbOTNZOAepLI5hlo0Qd6MtJkJtmF_f4Fa3Gg&s=10" }
+  ];
+
+  const pulsa = [
+    { name: "Pulsa Indosat", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTM5Q9oR5hxSeKjs0WCZ60792UxJxvhmoSx1iwkZ9wm8A&s" },
+    { name: "Pulsa Tri", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAdfV3XNjwTp5uMgx2Bt5QGV9nMKf3h1jlxE6WFyfBzA&s" },
+    { name: "Pulsa Telkomsel", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1Eg-QzhOShwLZDAXPe4MPwItAX9zATmRWT-38vraG7g&s" },
+    { name: "Pulsa XL", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_uyCvd76Qo2rtlrK63RSmd0Rewhq4_7uYLS4V0SmV1A&s" },
+    { name: "Pulsa Axis", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKqFv1_DNi7WtcJOcHEWiupXhwwDvhPsUtbl4IFSlyrOo33z9sI-v5fsA&s" },
+    { name: "Pulsa Smartfren", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQobQYhok1QXOo1UkArzTY5EQWAywwlkRN9CnPnlYap5A&s" }
+  ];
+
+  const ewallet = [
+    { name: "DANA", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAirayPWuAR7xOP6ewQEDLDA7vIaW2KraNQRRCm93yUA&s" },
+    { name: "OVO", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXxN6Yo9gReuYd54DjGvqhhpeLH6xveBIPCZd_VOZXWg&s" },
+    { name: "GoPay", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSk2VNTh_y7qAFD3RctrDzelcsx7_mCP3MPJgHDinlPAw&s" },
+    { name: "ShopeePay", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHa2u4zHXUM413-vtJLTrEKVMymrirO_DwWsFMgUC1CA&s" }
+  ];
+
+  const voucher = [
+    { name: "Candy Crush Saga", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3yUVZpUf4dJ1upa4iLsjtJDbP-z-yp7N7wJFzgW3f2A&s=10" },
+    { name: "Tinder Plus/Gold", url: "https://pngate.com/wp-content/uploads/2025/04/tinder-main-logo-icon-gradient-flame-1.png" },
+    { name: "Steam Wallet Code IDR", url: "https://e7.pngegg.com/pngimages/308/733/png-clipart-steam-computer-icons-killer-queen-black-valve-corporation-video-game-load-the-animation-logo-video-game.png" },
+    { name: "Google Play Voucher", url: "https://www.freepnglogos.com/uploads/google-play-png-logo/media-google-play-png-logo-5.png" },
+    { name: "PlayStation Network (PSN)", url: "https://www.vhv.rs/dpng/d/477-4776929_psn-logo-w-title-playstation-network-logo-png.png" },
+    { name: "Token PLN", url: "https://thumbs.dreamstime.com/b/september-brazil-photo-illustration-perusahaan-listrik-negara-pln-logo-seen-displayed-smartphone-256461831.jpg" },
+    { name: "Fortnite V Bucks", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTV0ISVsoMmcea1KBh4aUBUs6qpJW-FFZIz0fCKj--7iQ&s" },
+    { name: "Garena Shell Voucher", url: "https://www.pngfind.com/pngs/m/392-3928798_logo-point-blank-garena-png-logo-garena-free.png" },
+    { name: "XBOX Gift Cards", url: "https://1000logos.net/wp-content/uploads/2021/11/logo-Xbox.png" },
+    { name: "TikTok Live Koin", url: "https://1000logos.net/wp-content/uploads/2019/06/Tiktok_Logo.png" },
+    { name: "Minecraft Minecoins", url: "https://cdn.freebiesupply.com/logos/thumbs/2x/minecraft-1-logo.png" },
+    { name: "Razer Gold Voucher", url: "https://media.gold.razer.com/goldweb/site/images/logo/razer-gold-silver.png" }
+  ];
+
+  function createCards(data, containerId) {
+    const container = document.getElementById(containerId);
+    container.innerHTML = '';
+    data.forEach(item => {
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.innerHTML = `
+        <img src="\( {item.url}" alt=" \){item.name}" onerror="this.src='https://via.placeholder.com/100?text=No+Image'">
+        <p>${item.name}</p>
+      `;
+      card.onclick = () => {
+        window.location.href = `topup.html?product=${encodeURIComponent(item.name)}`;
+      };
+      container.appendChild(card);
+    });
+  }
+
+  function showTab(tab) {
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+    document.getElementById(tab).classList.remove('hidden');
+    document.querySelectorAll('.tabs button').forEach(btn => btn.classList.remove('active'));
+    document.querySelector(`button[onclick="showTab('${tab}')"]`).classList.add('active');
+  }
+
+  // Search filter
+  document.getElementById('searchInput').addEventListener('input', function(e) {
+    const query = e.target.value.toLowerCase();
+    const allData = [...games, ...pulsa, ...ewallet, ...voucher];
+    const filtered = allData.filter(item => item.name.toLowerCase().includes(query));
+    // Tampilkan semua di tab aktif, atau buat tab "hasil pencarian" kalau mau lebih advanced
+    createCards(filtered.length > 0 ? filtered.slice(0, 20) : allData, 'gamesGrid'); // sementara tampil di games
+  });
+
+  // Init
+  createCards(games, 'gamesGrid');
+  createCards(pulsa, 'pulsaGrid');
+  createCards(ewallet, 'ewalletGrid');
+  createCards(voucher, 'voucherGrid');
+</script>
+
 </body>
 </html>
