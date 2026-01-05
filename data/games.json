@@ -1,55 +1,128 @@
 [
-  { "id": "mlbb", "name": "Mobile Legends Diamonds", "image": "https://img.esports.id/img/article/637920200914081250.png", "category": "Games", "developer": "Moonton" },
-  { "id": "ff", "name": "Free Fire Diamonds", "image": "https://iconlogovector.com/uploads/images/2025/08/lg-6893f81b6ef79-FREE-FIRE.webp", "category": "Games", "developer": "Garena" },
-  { "id": "pubgm", "name": "PUBG Mobile UC", "image": "https://images.seeklogo.com/logo-png/35/1/pubg-logo-png_seeklogo-352312.png", "category": "Games", "developer": "Tencent" },
-  { "id": "higgs", "name": "Higgs Domino Island MD", "image": "https://liputangampongnews.id/assets/img/berita/20210920_183731.jpg", "category": "Games", "developer": "Higgs Games" },
-  { "id": "hok", "name": "Honor of Kings Tokens", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMmZxVql5rDkrf9F18ENUODNWfWn96_ZDfGyAD3gUC8g&s=10", "category": "Games", "developer": "Level Infinite" },
-  { "id": "bigo", "name": "Bigo Live Diamonds", "image": "https://images.seeklogo.com/logo-png/47/1/bigo-live-logo-png_seeklogo-477968.png", "category": "Hiburan", "developer": "Bigo" },
-  { "id": "hsr", "name": "Honkai: Star Rail Shard", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSd4h06YHJT_hOpOlNoiQndwaOYC6ImQCvEkA3QQXnh1g&s", "category": "Games", "developer": "HoYoverse" },
-  { "id": "valorant", "name": "Valorant Points", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSPUSKwrosbcLh6qXmw79qz-Dl1vMOvBmP1ydujtvIsA&s", "category": "Games", "developer": "Riot Games" },
-  { "id": "genshin", "name": "Genshin Impact Crystals", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4z_craukzS9fmSpRGHgqF8gxc34428E8fryReuCt6Nw&s", "category": "Games", "developer": "HoYoverse" },
-  { "id": "kings-choice", "name": "King's Choice Diamonds", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwurfDWmyuVtOqh1MSuTZk8hHdttjx3tr6micedK_LAVLwOPv7a0T154A&s", "category": "Games", "developer": "ONEMT" },
-  { "id": "arena-breakout", "name": "Arena Breakout Bonds", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZsQWTUmJWzDmBbIDtIylQtCUu67sSijV5LnGs7z1f1Q&s", "category": "Games", "developer": "Tencent" },
-  { "id": "metal-slug", "name": "Metal Slug: Awakening", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkx8fy5MOauLsJ6EykHXc4aBMEnc1TICvPGJGwvAtuMg&s", "category": "Games", "developer": "VNG Games" },
-  { "id": "blood-strike", "name": "Blood Strike Gold", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRq9pYFjRHDLvalONft0-XU0zvD-YW0Yz7FSCRqwhRhUwCtavJwUT4hrRU&s", "category": "Games", "developer": "NetEase" },
-  { "id": "ragnarok-m", "name": "Ragnarok M Eternal Love", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPwJ1R2Md7xwE3-UZ27Xqa121fWSQJUE0rtoghQat8NA&s=10", "category": "Games", "developer": "Gravity" },
-  { "id": "zepeto", "name": "Zepeto Zems", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTw_v_bpWtV0UF40usl8jVpGrCheXlZKRY_fs-HmakMww&s", "category": "Hiburan", "developer": "Naver" },
-  { "id": "codm", "name": "Call of Duty Mobile CP", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnwzWUCFxQedyh3-5jhoqvfTswF8xMFQmuSdh_WAt85w&s", "category": "Games", "developer": "Garena" },
-  { "id": "supersus", "name": "Super SUS Golden Stars", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_pGNtWaMmaAItQJjmSPhVyDahJiYpszdrInYNrC-Yyg&s", "category": "Games", "developer": "PII Games" },
-  { "id": "pokemon-unite", "name": "Pokemon UNITE AeosGems", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvjLby7OJSpIcP8upLPAgxYfVZc1bKfKou330TGdXa6g&s", "category": "Games", "developer": "The Pokemon Co." },
-  { "id": "the-ragnarok", "name": "The Ragnarok SEA", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrcdmKKwR3iN_RpnDb9jimkXT2AQ70DJlTk1I_1z1Wdg&s=10", "category": "Games", "developer": "Gravity" },
-  { "id": "afk-journey", "name": "AFK Journey", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAFTHPN8BvO-mUbIoOfrlWfpS5-wdH8wGT-xWhskPHdw&s", "category": "Games", "developer": "Farlight" },
-  { "id": "soul-land", "name": "Soul Land: New World", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTw9ylpkI1T1heleXtDVIFR_c-B6mAL7PgRFK3qIBKLFXeDVeXGqonUOFc&s", "category": "Games", "developer": "Soulland" },
-  { "id": "ragnarok-classic", "name": "Ragnarok M Classic", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIXyEdqq66V1IUmmrzWjCjAEIe6wPPta4MWnuvAM1-MA&s", "category": "Games", "developer": "Gravity" },
-  { "id": "delta-force", "name": "Delta Force - Garena", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlKe9bxwc1562t3P1x3wOkmEDCH-t2YAz5O3VJ_n6JmN78ghi0x1IPUyc&s", "category": "Games", "developer": "Garena" },
-  { "id": "tokogame-credits", "name": "Tokogame Credits", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFyrqhAKVXR8tmBGa4_SB2tIxCimcmWWt8EhDmtBSDNA&s", "category": "Layanan", "developer": "Tokogame" },
-  { "id": "ml-adventure", "name": "Mobile Legends Adventure", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRre4dsofyUejGWVpqParhe7Or-93YkNPkEu6Vju6Es-PoALqam13CnCVI&s", "category": "Games", "developer": "Moonton" },
-  { "id": "lol-wild-rift", "name": "League of Legends WC", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZfrzzNjopkpkdjOr5BIW8j_JWn2SI-7HIncA5zZ5aDg&s", "category": "Games", "developer": "Riot Games" },
-  { "id": "moonlight-blade", "name": "Moonlight Blade M", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnXnxGKfW8oCHvM_wtzxDavgYoEAEhncxCnLTMZupctgEIDe6f0uFAYEY&s", "category": "Games", "developer": "VNG" },
-  { "id": "night-crows", "name": "Night Crows", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-EyqA6RGbOTNZOAepLI5hlo0Qd6MtJkJtmF_f4Fa3Gg&s=10", "category": "Games", "developer": "Wemade" },
-  { "id": "pulsa-indosat", "name": "Pulsa Indosat", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTM5Q9oR5hxSeKjs0WCZ60792UxJxvhmoSx1iwkZ9wm8A&s", "category": "Pulsa", "developer": "Indosat" },
-  { "id": "pulsa-tri", "name": "Pulsa Tri", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAdfV3XNjwTp5uMgx2Bt5QGV9nMKf3h1jlxE6WFyfBzA&s", "category": "Pulsa", "developer": "Three" },
-  { "id": "pulsa-telkomsel", "name": "Pulsa Telkomsel", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1Eg-QzhOShwLZDAXPe4MPwItAX9zATmRWT-38vraG7g&s", "category": "Pulsa", "developer": "Telkomsel" },
-  { "id": "pulsa-xl", "name": "Pulsa XL", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_uyCvd76Qo2rtlrK63RSmd0Rewhq4_7uYLS4V0SmV1A&s", "category": "Pulsa", "developer": "XL Axiata" },
-  { "id": "pulsa-axis", "name": "Pulsa Axis", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKqFv1_DNi7WtcJOcHEWiupXhwwDvhPsUtbl4IFSlyrOo33z9sI-v5fsA&s", "category": "Pulsa", "developer": "Axis" },
-  { "id": "pulsa-smartfren", "name": "Pulsa Smartfren", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQobQYhok1QXOo1UkArzTY5EQWAywwlkRN9CnPnlYap5A&s", "category": "Pulsa", "developer": "Smartfren" },
-  { "id": "dana", "name": "DANA", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAirayPWuAR7xOP6ewQEDLDA7vIaW2KraNQRRCm93yUA&s", "category": "E-Wallet", "developer": "DANA" },
-  { "id": "ovo", "name": "OVO", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXxN6Yo9gReuYd54DjGvqhhpeLH6xveBIPCZd_VOZXWg&s", "category": "E-Wallet", "developer": "OVO" },
-  { "id": "gopay", "name": "GoPay", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSk2VNTh_y7qAFD3RctrDzelcsx7_mCP3MPJgHDinlPAw&s", "category": "E-Wallet", "developer": "Gojek" },
-  { "id": "shopeepay", "name": "ShopeePay", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHa2u4zHXUM413-vtJLTrEKVMymrirO_DwWsFMgUC1CA&s", "category": "E-Wallet", "developer": "Shopee" },
-  { "id": "candy-crush", "name": "Candy Crush Saga", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3yUVZpUf4dJ1upa4iLsjtJDbP-z-yp7N7wJFzgW3f2A&s=10", "category": "Games", "developer": "King" },
-  { "id": "tinder", "name": "Tinder Plus/Gold", "image": "https://pngate.com/wp-content/uploads/2025/04/tinder-main-logo-icon-gradient-flame-1.png", "category": "Hiburan", "developer": "Tinder" },
-  { "id": "steam", "name": "Steam Wallet Code IDR", "image": "https://e7.pngegg.com/pngimages/308/733/png-clipart-steam-computer-icons-killer-queen-black-valve-corporation-video-game-load-the-animation-logo-video-game.png", "category": "Voucher", "developer": "Valve" },
-  { "id": "google-play", "name": "Google Play Voucher", "image": "https://www.freepnglogos.com/uploads/google-play-png-logo/media-google-play-png-logo-5.png", "category": "Voucher", "developer": "Google" },
-  { "id": "psn", "name": "PlayStation Network (PSN)", "image": "https://www.vhv.rs/dpng/d/477-4776929_psn-logo-w-title-playstation-network-logo-png.png", "category": "Voucher", "developer": "Sony" },
-  { "id": "vision", "name": "Vision+ Voucher", "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Logo_Univision_2019.svg/250px-Logo_Univision_2019.svg.png", "category": "Hiburan", "developer": "Vision+" },
-  { "id": "vidio", "name": "Vidio Voucher", "image": "https://www.vhv.rs/dpng/d/17-176969_music-video-icon-png-transparent-png.png", "category": "Hiburan", "developer": "Vidio" },
-  { "id": "pln", "name": "Token PLN", "image": "https://thumbs.dreamstime.com/b/september-brazil-photo-illustration-perusahaan-listrik-negara-pln-logo-seen-displayed-smartphone-256461831.jpg", "category": "Layanan", "developer": "PLN" },
-  { "id": "fortnite", "name": "Fortnite V Bucks", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTV0ISVsoMmcea1KBh4aUBUs6qpJW-FFZIz0fCKj--7iQ&s", "category": "Games", "developer": "Epic Games" },
-  { "id": "twitch", "name": "Twitch Gift Cards", "image": "https://www.freeiconspng.com/uploads/twitch-tv-symbol-transparent-background-6.jpg", "category": "Hiburan", "developer": "Twitch" },
-  { "id": "garena-shell", "name": "Garena Shell Voucher", "image": "https://www.pngfind.com/pngs/m/392-3928798_logo-point-blank-garena-png-logo-garena-free.png", "category": "Voucher", "developer": "Garena" },
-  { "id": "xbox", "name": "XBOX Gift Cards", "image": "https://1000logos.net/wp-content/uploads/2021/11/logo-Xbox.png", "category": "Voucher", "developer": "Microsoft" },
-  { "id": "tiktok", "name": "TikTok Live Koin", "image": "https://1000logos.net/wp-content/uploads/2019/06/Tiktok_Logo.png", "category": "Hiburan", "developer": "TikTok" },
-  { "id": "minecraft", "name": "Minecraft Minecoins", "image": "https://cdn.freebiesupply.com/logos/thumbs/2x/minecraft-1-logo.png", "category": "Games", "developer": "Mojang" },
-  { "id": "razer-gold", "name": "Razer Gold Voucher", "image": "https://media.gold.razer.com/goldweb/site/images/logo/razer-gold-silver.png", "category": "Voucher", "developer": "Razer" }
+  {
+    "id": 1,
+    "game": "Mobile Legends",
+    "product": "86 Diamonds",
+    "price": "Rp 20.000",
+    "image": "https://pic.bittopup.com/apiUpload/8de2e802db1b8a576937844d943537ff.jpg"
+  },
+  {
+    "id": 2,
+    "game": "Mobile Legends",
+    "product": "172 Diamonds",
+    "price": "Rp 40.000",
+    "image": "https://cdn.mobilelegends.com/wp-content/uploads/2023/03/MLBB-Diamonds.jpg"
+  },
+  {
+    "id": 3,
+    "game": "Mobile Legends",
+    "product": "Starlight Member",
+    "price": "Rp 120.000",
+    "image": "https://www.tokogame.com/images/starlight-ml.jpg"
+  },
+  {
+    "id": 4,
+    "game": "Mobile Legends",
+    "product": "Weekly Diamond Pass",
+    "price": "Rp 50.000",
+    "image": "https://www.tokogame.com/images/weekly-pass-ml.jpg"
+  },
+  {
+    "id": 5,
+    "game": "Free Fire",
+    "product": "100 Diamonds",
+    "price": "Rp 15.000",
+    "image": "https://cdn-www.bluestacks.com/bs-images/Free-Fire-Codashop_EN_8.jpg"
+  },
+  {
+    "id": 6,
+    "game": "Free Fire",
+    "product": "210 Diamonds",
+    "price": "Rp 30.000",
+    "image": "https://www.tokogame.com/images/ff-210dm.jpg"
+  },
+  {
+    "id": 7,
+    "game": "Free Fire",
+    "product": "Weekly Membership",
+    "price": "Rp 35.000",
+    "image": "https://www.tokogame.com/images/ff-weekly.jpg"
+  },
+  {
+    "id": 8,
+    "game": "Free Fire",
+    "product": "Monthly Membership",
+    "price": "Rp 130.000",
+    "image": "https://www.tokogame.com/images/ff-monthly.jpg"
+  },
+  {
+    "id": 9,
+    "game": "PUBG Mobile",
+    "product": "60 UC",
+    "price": "Rp 15.000",
+    "image": "https://cdn.topuplive.com/uploads/images/goods/20251120/1763618210_qxUZ7vchTb.jpg"
+  },
+  {
+    "id": 10,
+    "game": "PUBG Mobile",
+    "product": "325 UC",
+    "price": "Rp 70.000",
+    "image": "https://www.tokogame.com/images/pubg-uc.jpg"
+  },
+  {
+    "id": 11,
+    "game": "Valorant",
+    "product": "425 Points",
+    "price": "Rp 70.000",
+    "image": "https://cdn.turbosmurfs.gg/Valorant_Points_Featured_Image_f732d6cd71.webp"
+  },
+  {
+    "id": 12,
+    "game": "Genshin Impact",
+    "product": "980 Genesis Crystals",
+    "price": "Rp 200.000",
+    "image": "https://pic.bittopup.com/apiUpload/157ac0273afdeddaf2911fa716573b62.jpg"
+  },
+  {
+    "id": 13,
+    "game": "Honkai: Star Rail",
+    "product": "Oneiric Shard Pack",
+    "price": "Rp 150.000",
+    "image": "https://interfaceingame.com/wp-content/uploads/honkai-star-rail/honkai-star-rail-logo.png"
+  },
+  {
+    "id": 14,
+    "game": "Bigo Live",
+    "product": "210 Diamonds",
+    "price": "Rp 30.000",
+    "image": "https://logowik.com/content/uploads/images/bigo-live2708.jpg"
+  },
+  {
+    "id": 15,
+    "game": "Higgs Domino",
+    "product": "1B Chips MD",
+    "price": "Rp 50.000",
+    "image": "https://www.tokogame.com/images/higgs-domino.jpg"
+  },
+  {
+    "id": 16,
+    "game": "Google Play",
+    "product": "Voucher Rp 150.000",
+    "price": "Rp 155.000",
+    "image": "https://www.freepnglogos.com/uploads/google-play-png-logo/media-google-play-png-logo-5.png"
+  },
+  {
+    "id": 17,
+    "game": "Steam Wallet",
+    "product": "Rp 100.000",
+    "price": "Rp 105.000",
+    "image": "https://img.gg.deals/27/7b/7ad1964154c3a37f3cd3bd93eb310159f2fa_1232xr706_Q100.png"
+  },
+  {
+    "id": 18,
+    "game": "Call of Duty Mobile",
+    "product": "420 CP",
+    "price": "Rp 80.000",
+    "image": "https://www.pngarts.com/files/8/Call-of-Duty-Mobile-Logo-PNG-Image-Background.png"
+  }
 ]
