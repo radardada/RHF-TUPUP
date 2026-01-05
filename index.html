@@ -3,24 +3,113 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RHF SETORS - Top Up Game, Voucher, Pulsa Murah & Cepat</title>
-  <link rel="stylesheet" href="style.css"> <!-- Jika ada style.css terpisah -->
+  <title>RHF SETORS - Top Up Game Murah & Cepat</title>
   <style>
-    body { margin: 0; font-family: 'Segoe UI', Arial, sans-serif; background: linear-gradient(to bottom, #007bff, #00c853); color: white; }
-    header { text-align: center; padding: 20px; background: rgba(0,0,0,0.2); }
-    .logo { font-size: 36px; font-weight: bold; }
-    .search-bar { max-width: 600px; margin: 20px auto; }
-    .search-bar input { width: 100%; padding: 15px; border-radius: 50px; border: none; font-size: 18px; text-align: center; }
-    .tabs { display: flex; justify-content: center; margin: 20px 0; }
-    .tabs button { background: rgba(255,255,255,0.2); border: none; padding: 15px 30px; margin: 0 10px; border-radius: 50px; font-size: 18px; cursor: pointer; }
-    .tabs button.active { background: white; color: #007bff; }
-    .section-title { text-align: center; font-size: 28px; margin: 40px 0 20px; }
-    .game-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 20px; padding: 20px; max-width: 1200px; margin: 0 auto; }
-    .game-card { background: white; color: black; border-radius: 20px; text-align: center; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: all 0.3s; }
-    .game-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.3); }
-    .game-card img { width: 80px; height: 80px; object-fit: contain; margin-bottom: 10px; background: #f0f0f0; border-radius: 15px; }
-    .game-card p { margin: 10px 0 0; font-weight: bold; }
-    footer { text-align: center; padding: 20px; background: rgba(0,0,0,0.3); margin-top: 50px; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(to bottom, #007bff, #00c853);
+      color: white;
+      min-height: 100vh;
+    }
+    header {
+      text-align: center;
+      padding: 30px 20px;
+    }
+    .logo {
+      font-size: 48px;
+      font-weight: bold;
+      text-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+    .search-bar {
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 0 20px;
+    }
+    .search-bar input {
+      width: 100%;
+      padding: 16px;
+      border-radius: 50px;
+      border: none;
+      font-size: 18px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+    .tabs {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin: 20px 0;
+      flex-wrap: wrap;
+    }
+    .tabs button {
+      background: rgba(255,255,255,0.2);
+      border: none;
+      padding: 12px 30px;
+      border-radius: 50px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .tabs button:hover, .tabs button.active {
+      background: white;
+      color: #007bff;
+    }
+    .section-title {
+      text-align: center;
+      font-size: 28px;
+      margin: 40px 0 20px;
+    }
+    .game-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .game-card {
+      background: white;
+      color: #333;
+      border-radius: 20px;
+      overflow: hidden;
+      text-align: center;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+      transition: all 0.4s ease;
+      cursor: pointer;
+    }
+    .game-card:hover {
+      transform: translateY(-12px) scale(1.05);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    }
+    .game-card img {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+      margin: 20px auto;
+      background: #f8f9fa;
+      border-radius: 15px;
+      padding: 10px;
+    }
+    .game-card p {
+      padding: 15px;
+      font-weight: bold;
+      font-size: 15px;
+      background: #f8f9fa;
+    }
+    footer {
+      text-align: center;
+      padding: 30px;
+      margin-top: 50px;
+      background: rgba(0,0,0,0.2);
+    }
+    @media (max-width: 992px) {
+      .game-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .game-grid { grid-template-columns: 1fr; }
+      .logo { font-size: 36px; }
+    }
   </style>
 </head>
 <body>
@@ -42,41 +131,65 @@
 
 <div class="section-title">Game Populer & Semua Game</div>
 
-<div class="game-grid">
-  <!-- Card Game - Akan diganti otomatis oleh script.js -->
-  <div class="game-card">
-    <img src="" alt="{name}">
-    <p>{name}</p>
-  </div>
-  <div class="game-card">
-    <img src="" alt="{name}">
-    <p>{name}</p>
-  </div>
-  <div class="game-card">
-    <img src="" alt="{name}">
-    <p>{name}</p>
-  </div>
-  <!-- Tambah lebih banyak card placeholder jika perlu (minimal 12-20 untuk grid penuh) -->
-  <div class="game-card"><img src="" alt="{name}"><p>{name}</p></div>
-  <div class="game-card"><img src="" alt="{name}"><p>{name}</p></div>
-  <div class="game-card"><img src="" alt="{name}"><p>{name}</p></div>
-  <div class="game-card"><img src="" alt="{name}"><p>{name}</p></div>
-  <div class="game-card"><img src="" alt="{name}"><p>{name}</p></div>
-  <div class="game-card"><img src="" alt="{name}"><p>{name}</p></div>
-  <div class="game-card"><img src="" alt="{name}"><p>{name}</p></div>
-  <div class="game-card"><img src="" alt="{name}"><p>{name}</p></div>
-  <div class="game-card"><img src="" alt="{name}"><p>{name}</p></div>
-  <div class="game-card"><img src="" alt="{name}"><p>{name}</p></div>
-  <div class="game-card"><img src="" alt="{name}"><p>{name}</p></div>
-  <div class="game-card"><img src="" alt="{name}"><p>{name}</p></div>
-  <div class="game-card"><img src="" alt="{name}"><p>{name}</p></div>
-  <!-- Section lain seperti Pulsa, E-Wallet, Voucher bisa ditambah dengan grid serupa -->
+<div class="game-grid" id="gameContainer">
+  <!-- Card akan digenerate otomatis oleh script.js -->
 </div>
 
 <footer>
   <p>&copy; 2026 RHF SETORS - Top Up Game Murah, Cepat & Terpercaya</p>
 </footer>
 
-<script src="script.js"></script>
+<script>
+  // Daftar game + URL logo dari kamu
+  const games = [
+    { name: "Mobile Legends Diamonds", url: "https://img.esports.id/img/article/637920200914081250.png" },
+    { name: "Free Fire Diamonds", url: "https://iconlogovector.com/uploads/images/2025/08/lg-6893f81b6ef79-FREE-FIRE.webp" },
+    { name: "PUBG Mobile UC", url: "https://images.seeklogo.com/logo-png/35/1/pubg-logo-png_seeklogo-352312.png" },
+    { name: "Higgs Domino Island MD", url: "https://liputangampongnews.id/assets/img/berita/20210920_183731.jpg" },
+    { name: "Honor of Kings Tokens", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMmZxVql5rDkrf9F18ENUODNWfWn96_ZDfGyAD3gUC8g&s=10" },
+    { name: "Bigo Live Diamonds", url: "https://images.seeklogo.com/logo-png/47/1/bigo-live-logo-png_seeklogo-477968.png" },
+    { name: "Honkai: Star Rail Shard", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSd4h06YHJT_hOpOlNoiQndwaOYC6ImQCvEkA3QQXnh1g&s" },
+    { name: "Valorant Points", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSPUSKwrosbcLh6qXmw79qz-Dl1vMOvBmP1ydujtvIsA&s" },
+    { name: "Genshin Impact Crystals", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4z_craukzS9fmSpRGHgqF8gxc34428E8fryReuCt6Nw&s" },
+    { name: "King's Choice Diamonds", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwurfDWmyuVtOqh1MSuTZk8hHdttjx3tr6micedK_LAVLwOPv7a0T154A&s" },
+    { name: "Arena Breakout Bonds", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZsQWTUmJWzDmBbIDtIylQtCUu67sSijV5LnGs7z1f1Q&s" },
+    { name: "Metal Slug: Awakening", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkx8fy5MOauLsJ6EykHXc4aBMEnc1TICvPGJGwvAtuMg&s" },
+    { name: "Blood Strike Gold", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRq9pYFjRHDLvalONft0-XU0zvD-YW0Yz7FSCRqwhRhUwCtavJwUT4hrRU&s" },
+    { name: "Ragnarok M Eternal Love", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPwJ1R2Md7xwE3-UZ27Xqa121fWSQJUE0rtoghQat8NA&s=10" },
+    { name: "Zepeto Zems", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTw_v_bpWtV0UF40usl8jVpGrCheXlZKRY_fs-HmakMww&s" },
+    { name: "Call of Duty Mobile CP", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnwzWUCFxQedyh3-5jhoqvfTswF8xMFQmuSdh_WAt85w&s" },
+    { name: "Super SUS Golden Stars", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_pGNtWaMmaAItQJjmSPhVyDahJiYpszdrInYNrC-Yyg&s" },
+    { name: "Pokemon UNITE AeosGems", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvjLby7OJSpIcP8upLPAgxYfVZc1bKfKou330TGdXa6g&s" },
+    { name: "The Ragnarok SEA", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrcdmKKwR3iN_RpnDb9jimkXT2AQ70DJlTk1I_1z1Wdg&s=10" },
+    { name: "AFK Journey", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAFTHPN8BvO-mUbIoOfrlWfpS5-wdH8wGT-xWhskPHdw&s" },
+    { name: "Soul Land: New World", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTw9ylpkI1T1heleXtDVIFR_c-B6mAL7PgRFK3qIBKLFXeDVeXGqonUOFc&s" },
+    { name: "Ragnarok M Classic", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIXyEdqq66V1IUmmrzWjCjAEIe6wPPta4MWnuvAM1-MA&s" },
+    { name: "Delta Force - Garena", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlKe9bxwc1562t3P1x3wOkmEDCH-t2YAz5O3VJ_n6JmN78ghi0x1IPUyc&s" },
+    { name: "Tokogame Credits", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFyrqhAKVXR8tmBGa4_SB2tIxCimcmWWt8EhDmtBSDNA&s" },
+    { name: "Mobile Legends Adventure", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRre4dsofyUejGWVpqParhe7Or-93YkNPkEu6Vju6Es-PoALqam13CnCVI&s" },
+    { name: "League of Legends WC", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZfrzzNjopkpkdjOr5BIW8j_JWn2SI-7HIncA5zZ5aDg&s" },
+    { name: "Moonlight Blade M", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnXnxGKfW8oCHvM_wtzxDavgYoEAEhncxCnLTMZupctgEIDe6f0uFAYEY&s" },
+    { name: "Night Crows", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-EyqA6RGbOTNZOAepLI5hlo0Qd6MtJkJtmF_f4Fa3Gg&s=10" }
+    // Tambah Pulsa, E-Wallet, Voucher kalau mau (bisa di section terpisah)
+  ];
+
+  const container = document.getElementById('gameContainer');
+
+  games.forEach(game => {
+    const card = document.createElement('div');
+    card.className = 'game-card';
+    card.innerHTML = `
+      <img src="\( {game.url}" alt=" \){game.name}">
+      <p>${game.name}</p>
+    `;
+    // Klik card pindah ke halaman top up
+    card.onclick = () => {
+      const encodedName = encodeURIComponent(game.name);
+      window.location.href = `topup.html?game=${encodedName}`;
+    };
+    container.appendChild(card);
+  });
+</script>
+
 </body>
 </html>
