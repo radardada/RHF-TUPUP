@@ -168,7 +168,7 @@
   <div class="container">
     <div class="topup-card">
 
-      <!-- Game Banner - Logo langsung dari data di bawah (tidak dari games.js) -->
+      <!-- Game Banner -->
       <div class="game-banner">
         <img id="game-logo" class="game-logo" src="" alt="Game Logo">
         <h1 id="game-title">Top Up Game</h1>
@@ -181,7 +181,6 @@
         <div class="step">
           <div class="step-title">1. Masukkan Data Akun</div>
           <div class="input-grid" id="input-fields">
-            <!-- Diisi otomatis oleh JS -->
           </div>
           <p class="input-note">Pastikan data akun benar. Tidak dapat diubah setelah pembayaran.</p>
         </div>
@@ -190,7 +189,6 @@
         <div class="step">
           <div class="step-title">2. Pilih Nominal</div>
           <div class="nominal-grid" id="nominal-options">
-            <!-- Diisi otomatis oleh JS -->
           </div>
         </div>
 
@@ -236,7 +234,7 @@
             <div class="payment-item">
               <input type="radio" name="payment" id="bank">
               <label for="bank">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/7/72/Bank_Transfer_logo.png" alt="Bank Transfer">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/7/72/Bank_Transfer_logo.png" alt="Transfer Bank">
                 Transfer Bank
               </label>
             </div>
@@ -261,41 +259,55 @@
   </div>
 
   <script>
-    // Data game dengan logo langsung di sini (tidak dari games.js)
+    // Semua data logo & game langsung di sini (tidak dari games.js)
     const gamesData = {
       ml: {
         name: "Mobile Legends",
         logo: "https://seeklogo.com/images/M/mobile-legends-logo-7E6A5E6D9B-seeklogo.com.png",
-        inputs: [{ label: "User ID", placeholder: "Contoh: 123456789" }, { label: "Zone ID", placeholder: "Contoh: 1234" }],
+        inputs: [
+          { label: "User ID", placeholder: "Contoh: 123456789" },
+          { label: "Zone ID", placeholder: "Contoh: 1234" }
+        ],
         nominals: [
           { name: "86 Diamonds", price: "Rp 20.000", bonus: "+8 Bonus" },
           { name: "172 Diamonds", price: "Rp 40.000", bonus: "+17 Bonus" },
-          { name: "Starlight Member", price: "Rp 120.000", bonus: "Skin Eksklusif" }
+          { name: "257 Diamonds", price: "Rp 60.000", bonus: "+28 Bonus" },
+          { name: "Starlight Member", price: "Rp 120.000", bonus: "Skin Eksklusif" },
+          { name: "Weekly Diamond Pass", price: "Rp 50.000", bonus: "Diamond Harian" }
         ]
       },
       ff: {
         name: "Free Fire",
         logo: "https://upload.wikimedia.org/wikipedia/en/c/c5/Logo_of_Garena_Free_Fire.png",
-        inputs: [{ label: "User ID", placeholder: "Contoh: 123456789" }],
+        inputs: [
+          { label: "User ID", placeholder: "Contoh: 123456789" }
+        ],
         nominals: [
           { name: "100 Diamonds", price: "Rp 15.000", bonus: "+10 Bonus" },
           { name: "210 Diamonds", price: "Rp 30.000", bonus: "+21 Bonus" },
-          { name: "Membership Mingguan", price: "Rp 35.000", bonus: "Privilege" }
+          { name: "355 Diamonds", price: "Rp 50.000", bonus: "+46 Bonus" },
+          { name: "Weekly Membership", price: "Rp 35.000", bonus: "Privilege" },
+          { name: "Monthly Membership", price: "Rp 130.000", bonus: "Skin Eksklusif" }
         ]
       },
       pubg: {
         name: "PUBG Mobile",
         logo: "https://seeklogo.com/images/P/pubg-mobile-logo-2F3D6E0E4B-seeklogo.com.png",
-        inputs: [{ label: "User ID", placeholder: "Contoh: 5123456789" }],
+        inputs: [
+          { label: "User ID", placeholder: "Contoh: 5123456789" }
+        ],
         nominals: [
           { name: "60 UC", price: "Rp 15.000", bonus: "" },
-          { name: "325 UC", price: "Rp 70.000", bonus: "+25 Bonus" }
+          { name: "325 UC", price: "Rp 70.000", bonus: "+25 Bonus" },
+          { name: "660 UC", price: "Rp 140.000", bonus: "+66 Bonus" }
         ]
       },
       valorant: {
         name: "Valorant",
         logo: "https://upload.wikimedia.org/wikipedia/commons/f/fc/Valorant_logo_-_pink_color_version.svg",
-        inputs: [{ label: "Riot ID", placeholder: "Nama#Tag" }],
+        inputs: [
+          { label: "Riot ID", placeholder: "Nama#TAG" }
+        ],
         nominals: [
           { name: "425 Points", price: "Rp 70.000", bonus: "" },
           { name: "875 Points", price: "Rp 140.000", bonus: "+50 Bonus" }
@@ -304,36 +316,46 @@
       genshin: {
         name: "Genshin Impact",
         logo: "https://www.freepnglogos.com/uploads/genshin-impact-logo-png/hd-transparent-logo-genshin-impact-free-download-2.png",
-        inputs: [{ label: "User ID", placeholder: "Contoh: 812345678" }, { label: "Server", placeholder: "Asia/Europe" }],
+        inputs: [
+          { label: "User ID", placeholder: "Contoh: 812345678" },
+          { label: "Server", placeholder: "Asia" }
+        ],
         nominals: [
-          { name: "980 Crystals", price: "Rp 200.000", bonus: "+110 Bonus" }
+          { name: "60 Genesis Crystals", price: "Rp 15.000", bonus: "+60 Bonus" },
+          { name: "980 Genesis Crystals", price: "Rp 200.000", bonus: "+110 Bonus" }
         ]
       },
       bigo: {
         name: "Bigo Live",
         logo: "https://images.seeklogo.com/logo-png/47/1/bigo-live-logo-png_seeklogo-477968.png",
-        inputs: [{ label: "User ID", placeholder: "Contoh: 123456789" }],
+        inputs: [
+          { label: "User ID", placeholder: "Contoh: 123456789" }
+        ],
         nominals: [
-          { name: "210 Diamonds", price: "Rp 30.000", bonus: "" }
+          { name: "210 Diamonds", price: "Rp 30.000", bonus: "" },
+          { name: "420 Diamonds", price: "Rp 60.000", bonus: "" }
         ]
       },
       hsr: {
         name: "Honkai: Star Rail",
-        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSd4h06YHJT_hOpOlNoiQndwaOYC6ImQCvEkA3QQXnh1g&s",
-        inputs: [{ label: "User ID", placeholder: "Contoh: 812345678" }],
+        logo: "https://interfaceingame.com/wp-content/uploads/honkai-star-rail/honkai-star-rail-logo.png",
+        inputs: [
+          { label: "User ID", placeholder: "Contoh: 812345678" }
+        ],
         nominals: [
+          { name: "60 Oneiric Shard", price: "Rp 15.000", bonus: "+60 Bonus" },
           { name: "980 Oneiric Shard", price: "Rp 200.000", bonus: "+110 Bonus" }
         ]
       }
-      // Tambah game lain dari list logo kamu sesuai kebutuhan
+      // Tambah game lain dari list kamu kalau perlu
     };
 
     // Ambil parameter game dari URL
     const urlParams = new URLSearchParams(window.location.search);
-    const gameCode = urlParams.get('game') || 'ml'; // default Mobile Legends
+    const gameCode = urlParams.get('game') || 'ml';
     const game = gamesData[gameCode] || gamesData.ml;
 
-    // Update banner & title
+    // Update banner
     document.getElementById('game-logo').src = game.logo;
     document.getElementById('game-title').textContent = `Top Up ${game.name}`;
 
@@ -378,11 +400,9 @@
     });
 
     function processPayment() {
-      const selectedMethod = document.querySelector('input[name="payment"]:checked + label').textContent.trim();
-      alert(`Pembayaran dengan ${selectedMethod} sedang diproses...\nTerima kasih telah top up di RHF!`);
-      // Bisa redirect ke WhatsApp atau payment gateway
+      alert('Pembayaran sedang diproses dengan metode: ' + document.querySelector('input[name="payment"]:checked + label').textContent.trim());
     }
   </script>
 
 </body>
-  </html>
+</html>
