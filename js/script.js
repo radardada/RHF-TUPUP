@@ -1,106 +1,195 @@
-// script.js - Versi SAMA PERSIS TOKOGAME.COM (Full Update Januari 2026)
-document.addEventListener("DOMContentLoaded", function () {
-  // Daftar produk PERSIS urutan & nama di Tokogame.com
-  const products = [
-    // GAMES POPULER (Urutan persis Tokogame)
-    { name: "Mobile Legends Diamonds", icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Mobile_Legends_Bang_Bang_Logo.svg/1200px-Mobile_Legends_Bang_Bang_Logo.svg.png" },
-    { name: "Free Fire Diamonds", icon: "https://upload.wikimedia.org/wikipedia/en/thumb/5/5f/Free_Fire_logo.svg/1200px-Free_Fire_logo.svg.png" },
-    { name: "PUBG Mobile UC", icon: "https://upload.wikimedia.org/wikipedia/en/thumb/1/14/PUBG_Mobile_logo.svg/1200px-PUBG_Mobile_logo.svg.png" },
-    { name: "Higgs Games Island MD", icon: "https://play-lh.googleusercontent.com/5mT50hhy1M7QJGf4b8z3oT2o5p0aK1oD5wE5p5o5p0aK1oD5wE" },
-    { name: "Honor of Kings Tokens", icon: "https://upload.wikimedia.org/wikipedia/en/thumb/3/3f/Honor_of_Kings_logo.svg/1200px-Honor_of_Kings_logo.svg.png" },
-    { name: "Bigo Live Diamonds", icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Bigo_Live_logo.svg/1200px-Bigo_Live_logo.svg.png" },
-    { name: "Honkai: Star Rail Shard", icon: "https://upload.wikimedia.org/wikipedia/en/thumb/8/8f/Honkai_Star_Rail_logo.svg/1200px-Honkai_Star_Rail_logo.svg.png" },
-    { name: "Valorant Points", icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Valorant_logo_-_pink_color_version.svg/1200px-Valorant_logo_-_pink_color_version.svg.png" },
-    { name: "Genshin Impact Crystals", icon: "https://upload.wikimedia.org/wikipedia/en/thumb/1/1f/Genshin_Impact_logo.svg/1200px-Genshin_Impact_logo.svg.png" },
-    { name: "King's Choice Diamonds", icon: "https://play-lh.googleusercontent.com/0zJ8e0p0e0zJ8e0p0e0zJ8e0p0e0zJ8e0p0e" },
-    { name: "Arena Breakout Bonds", icon: "https://play-lh.googleusercontent.com/ABCDE/arena-breakout-icon" },
-    { name: "Metal Slug: Awakening", icon: "https://play-lh.googleusercontent.com/metal-slug-awakening-icon" },
-    { name: "Blood Strike Gold", icon: "https://play-lh.googleusercontent.com/blood-strike-icon" },
-    { name: "Ragnarok M Eternal Love", icon: "https://play-lh.googleusercontent.com/ragnarok-m-icon" },
-    { name: "Zepeto Zems", icon: "https://play-lh.googleusercontent.com/zepeto-icon" },
-    { name: "Call of Duty Mobile CP", icon: "https://upload.wikimedia.org/wikipedia/en/thumb/4/4f/Call_of_Duty_Mobile_logo.svg/1200px-Call_of_Duty_Mobile_logo.svg.png" },
-    { name: "Super SUS Golden Stars", icon: "https://play-lh.googleusercontent.com/super-sus-icon" },
-    { name: "Pokemon UNITE AeosGems", icon: "https://upload.wikimedia.org/wikipedia/en/thumb/9/9e/Pok%C3%A9mon_Unite_logo.svg/1200px-Pok%C3%A9mon_Unite_logo.svg.png" },
-    { name: "The Ragnarok SEA", icon: "https://play-lh.googleusercontent.com/ragnarok-sea-icon" },
-    { name: "AFK Journey", icon: "https://play-lh.googleusercontent.com/afk-journey-icon" },
-    { name: "Soul Land: New World", icon: "https://play-lh.googleusercontent.com/soul-land-icon" },
-    { name: "Ragnarok M Classic", icon: "https://play-lh.googleusercontent.com/ragnarok-classic-icon" },
-    { name: "Delta Force - Garena", icon: "https://play-lh.googleusercontent.com/delta-force-garena-icon" },
-    { name: "Tokogame Credits", icon: "https://www.tokogame.com/assets/images/logo.png" },
-    { name: "Mobile Legends Adventure", icon: "https://play-lh.googleusercontent.com/mobile-legends-adventure-icon" },
-    { name: "League of Legends WC", icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/League_of_Legends_Wild_Rift_logo.svg/1200px-League_of_Legends_Wild_Rift_logo.svg.png" },
-    { name: "Moonlight Blade M", icon: "https://play-lh.googleusercontent.com/moonlight-blade-icon" },
-    { name: "Night Crows", icon: "https://play-lh.googleusercontent.com/night-crows-icon" },
+// js/script.js
+// Super Lengkap & Mirip Persis dengan JavaScript Utama TokoGame.com
+// Fitur: Lazy load images, carousel promo/slider, modal login/register, cart system sederhana, toast notification, live chat bubble, auto currency format, dan banyak interaksi premium lainnya
 
-    // PULSA (Urutan persis Tokogame)
-    { name: "Pulsa Indosat", icon: "https://upload.wikimedia.org/wikipedia/id/thumb/1/14/Indosat_Ooredoo_logo.svg/1200px-Indosat_Ooredoo_logo.svg.png" },
-    { name: "Pulsa Tri", icon: "https://upload.wikimedia.org/wikipedia/id/thumb/5/53/Tri_Indonesia_Logo.svg/1200px-Tri_Indonesia_Logo.svg.png" },
-    { name: "Pulsa Telkomsel", icon: "https://upload.wikimedia.org/wikipedia/id/thumb/3/3a/Telkomsel_logo.svg/1200px-Telkomsel_logo.svg.png" },
-    { name: "Pulsa XL", icon: "https://upload.wikimedia.org/wikipedia/id/thumb/9/98/XL_Axiata_logo.svg/1200px-XL_Axiata_logo.svg.png" },
-    { name: "Pulsa Axis", icon: "https://upload.wikimedia.org/wikipedia/id/thumb/0/0f/Axis_logo.svg/1200px-Axis_logo.svg.png" },
-    { name: "Pulsa Smartfren", icon: "https://upload.wikimedia.org/wikipedia/id/thumb/9/9f/Smartfren_logo.svg/1200px-Smartfren_logo.svg.png" },
+document.addEventListener('DOMContentLoaded', () => {
 
-    // E-WALLET / E-MONEY
-    { name: "ShopeePay", icon: "https://upload.wikimedia.org/wikipedia/id/thumb/5/5e/ShopeePay_Logo.svg/1200px-ShopeePay_Logo.svg.png" },
-    { name: "DANA", icon: "https://upload.wikimedia.org/wikipedia/id/thumb/8/8f/DANA_Indonesia_Logo.svg/1200px-DANA_Indonesia_Logo.svg.png" },
-    { name: "GoPay", icon: "https://upload.wikimedia.org/wikipedia/id/thumb/1/1e/GoPay_Logo.svg/1200px-GoPay_Logo.svg.png" },
-    { name: "OVO", icon: "https://upload.wikimedia.org/wikipedia/id/thumb/3/3b/OVO_Logo.svg/1200px-OVO_Logo.svg.png" },
-
-    // VOUCHER (Persis Tokogame)
-    { name: "Steam Wallet Code IDR", icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Steam_icon_logo.svg/1200px-Steam_icon_logo.svg.png" },
-    { name: "Google Play Voucher", icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Google_Play_Store_logo.svg/1200px-Google_Play_Store_logo.svg.png" },
-    { name: "PlayStation Network (PSN)", icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/PlayStation_Network_logo.svg/1200px-PlayStation_Network_logo.svg.png" },
-    { name: "Vision+ Voucher", icon: "https://upload.wikimedia.org/wikipedia/id/thumb/6/6f/Vision%2B_Logo.svg/1200px-Vision%2B_Logo.svg.png" },
-    { name: "Vidio Voucher", icon: "https://upload.wikimedia.org/wikipedia/id/thumb/5/5c/Vidio_logo.svg/1200px-Vidio_logo.svg.png" },
-    { name: "Token PLN", icon: "https://upload.wikimedia.org/wikipedia/id/thumb/2/20/Logo_PLN.svg/1200px-Logo_PLN.svg.png" },
-    { name: "Tinder Plus/Gold", icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Tinder_logo.svg/1200px-Tinder_logo.svg.png" },
-    { name: "Candy Crush Saga", icon: "https://upload.wikimedia.org/wikipedia/en/thumb/2/2f/Candy_Crush_Saga_logo.svg/1200px-Candy_Crush_Saga_logo.svg.png" },
-    { name: "Fortnite V Bucks", icon: "https://upload.wikimedia.org/wikipedia/en/thumb/5/5f/Fortnite_logo.svg/1200px-Fortnite_logo.svg.png" },
-    { name: "Twitch Gift Cards", icon: "https://upload.wikimedia.org/wikipedia/en/thumb/c/ce/Twitch_logo_%282019%29.svg/1200px-Twitch_logo_%282019%29.svg.png" },
-    { name: "Garena Shell Voucher", icon: "https://upload.wikimedia.org/wikipedia/en/thumb/9/9f/Garena_logo.svg/1200px-Garena_logo.svg.png" },
-    { name: "XBOX Gift Cards", icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Xbox_logo_%282019%29.svg/1200px-Xbox_logo_%282019%29.svg.png" },
-    { name: "TikTok Live Koin", icon: "https://upload.wikimedia.org/wikipedia/en/thumb/a/a9/TikTok_logo.svg/1200px-TikTok_logo.svg.png" },
-    { name: "Minecraft Minecoins", icon: "https://upload.wikimedia.org/wikipedia/en/thumb/9/9a/Minecraft_Java_Edition_Icon.svg/1200px-Minecraft_Java_Edition_Icon.svg.png" },
-    { name: "Razer Gold Voucher", icon: "https://upload.wikimedia.org/wikipedia/en/thumb/3/3b/Razer_Gold_logo.svg/1200px-Razer_Gold_logo.svg.png" }
-  ];
-
-  // Proses ganti nama & icon (akurat & cepat)
-  products.forEach(product => {
-    document.querySelectorAll('.game-card, .card, .product-item, .game-item, .voucher-card, img, p, span, h3, h4, div').forEach(el => {
-      // Ganti nama produk
-      if (el.textContent.includes("{name}") || el.textContent.includes("name") || el.textContent.trim() === "" || el.textContent.toLowerCase().includes(product.name.toLowerCase().substring(0, 8))) {
-        el.textContent = product.name;
+  // 1. Lazy Load Images (mirip TokoGame untuk hemat bandwidth)
+  const lazyImages = document.querySelectorAll('img[data-src]');
+  const lazyLoadObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const img = entry.target;
+        img.src = img.dataset.src;
+        img.removeAttribute('data-src');
+        img.classList.add('loaded');
+        observer.unobserve(img);
       }
+    });
+  }, { rootMargin: '50px' });
 
-      // Ganti icon gambar
-      if (el.tagName === "IMG") {
-        if (el.src.includes("{") || el.src.includes("name") || el.src.includes("placeholder") || el.alt.includes("name") || el.src === "") {
-          el.src = product.icon;
-          el.alt = product.name;
-          el.style.width = "80px";
-          el.style.height = "80px";
-          el.style.objectFit = "contain";
-          el.style.padding = "8px";
-          el.style.background = "white";
-          el.style.borderRadius = "16px";
-          el.style.boxShadow = "0 4px 12px rgba(0,0,0,0.15)";
-        }
-      }
+  lazyImages.forEach(img => lazyLoadObserver.observe(img));
+
+  // 2. Promo Carousel / Slider (mirip banner promo berjalan di TokoGame)
+  const carousel = document.querySelector('.promo-carousel');
+  if (carousel) {
+    let currentSlide = 0;
+    const slides = carousel.querySelectorAll('.carousel-slide');
+    const totalSlides = slides.length;
+    const prevBtn = carousel.querySelector('.carousel-prev');
+    const nextBtn = carousel.querySelector('.carousel-next');
+    const dotsContainer = carousel.querySelector('.carousel-dots');
+
+    // Buat dots
+    for (let i = 0; i < totalSlides; i++) {
+      const dot = document.createElement('span');
+      dot.classList.add('dot');
+      if (i === 0) dot.classList.add('active');
+      dot.addEventListener('click', () => goToSlide(i));
+      dotsContainer.appendChild(dot);
+    }
+
+    const dots = dotsContainer.querySelectorAll('.dot');
+
+    function updateCarousel() {
+      carousel.querySelector('.carousel-inner').style.transform = `translateX(-${currentSlide * 100}%)`;
+      dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentSlide);
+      });
+    }
+
+    function goToSlide(n) {
+      currentSlide = (n + totalSlides) % totalSlides;
+      updateCarousel();
+    }
+
+    if (prevBtn) prevBtn.addEventListener('click', () => goToSlide(currentSlide - 1));
+    if (nextBtn) nextBtn.addEventListener('click', () => goToSlide(currentSlide + 1));
+
+    // Auto slide setiap 5 detik
+    setInterval(() => goToSlide(currentSlide + 1), 5000);
+    updateCarousel();
+  }
+
+  // 3. Cart System Sederhana (mirip keranjang TokoGame)
+  let cart = JSON.parse(localStorage.getItem('rhf_cart')) || [];
+
+  function updateCartCount() {
+    const cartCount = document.querySelectorAll('.cart-count');
+    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+    cartCount.forEach(el => el.textContent = totalItems);
+  }
+
+  function addToCart(product) {
+    const existing = cart.find(item => item.id === product.id);
+    if (existing) {
+      existing.quantity += 1;
+    } else {
+      cart.push({ ...product, quantity: 1 });
+    }
+    localStorage.setItem('rhf_cart', JSON.stringify(cart));
+    updateCartCount();
+    showToast(`${product.product} ditambahkan ke keranjang!`);
+  }
+
+  // Event untuk tombol "Beli Sekarang" atau "Add to Cart"
+  document.querySelectorAll('.btn-add-cart').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const card = btn.closest('.product-card');
+      const product = {
+        id: card.dataset.id || Math.random(),
+        game: card.querySelector('.game-name')?.textContent || 'Game',
+        product: card.querySelector('h3').textContent,
+        price: card.querySelector('.price').textContent,
+        image: card.querySelector('img').src
+      };
+      addToCart(product);
     });
   });
 
-  // Efek hover card mirip Tokogame (smooth & premium)
-  document.querySelectorAll('.game-card, .card, .product-card, .voucher-card').forEach(card => {
-    card.style.transition = "all 0.35s ease";
-    card.addEventListener("mouseenter", () => {
-      card.style.transform = "translateY(-15px) scale(1.06)";
-      card.style.boxShadow = "0 25px 50px rgba(0, 120, 255, 0.25)";
-    });
-    card.addEventListener("mouseleave", () => {
-      card.style.transform = "translateY(0) scale(1)";
-      card.style.boxShadow = "0 10px 25px rgba(0,0,0,0.12)";
+  updateCartCount();
+
+  // 4. Toast Notification (mirip popup sukses TokoGame)
+  function showToast(message, type = 'success') {
+    const toast = document.createElement('div');
+    toast.className = `toast toast-${type}`;
+    toast.textContent = message;
+    toast.style.cssText = `
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: ${type === 'success' ? '#28a745' : '#dc3545'};
+      color: #fff;
+      padding: 15px 30px;
+      border-radius: 50px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      z-index: 9999;
+      font-weight: bold;
+      opacity: 0;
+      transition: opacity 0.4s, transform 0.4s;
+    `;
+    document.body.appendChild(toast);
+
+    setTimeout(() => toast.style.opacity = '1', 100);
+    setTimeout(() => {
+      toast.style.opacity = '0';
+      toast.style.transform = 'translateX(-50%) translateY(20px)';
+      setTimeout(() => toast.remove(), 400);
+    }, 3000);
+  }
+
+  // 5. Live Chat Bubble (mirip WhatsApp CS di pojok kanan bawah TokoGame)
+  const chatBubble = document.createElement('div');
+  chatBubble.innerHTML = `
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="Chat WA" style="width:40px;">
+  `;
+  chatBubble.style.cssText = `
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background: #25D366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    cursor: pointer;
+    z-index: 998;
+    transition: transform 0.3s;
+  `;
+  chatBubble.addEventListener('click', () => {
+    window.open('https://wa.me/081234567890?text=Halo%20RHF%2C%20saya%20butuh%20bantuan%20top%20up', '_blank');
+  });
+  chatBubble.addEventListener('mouseenter', () => chatBubble.style.transform = 'scale(1.1)');
+  chatBubble.addEventListener('mouseleave', () => chatBubble.style.transform = 'scale(1)');
+  document.body.appendChild(chatBubble);
+
+  // 6. Format Currency Otomatis (Rp dengan titik)
+  document.querySelectorAll('.price').forEach(el => {
+    const text = el.textContent.trim();
+    if (text.startsWith('Rp')) {
+      const num = parseInt(text.replace(/\D/g, ''));
+      if (!isNaN(num)) {
+        el.textContent = 'Rp ' + num.toLocaleString('id-ID');
+      }
+    }
+  });
+
+  // 7. Modal Login / Register (mirip popup TokoGame)
+  const loginModal = document.querySelector('#login-modal');
+  const loginLinks = document.querySelectorAll('a[href="#login"]');
+
+  loginLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      // Bisa buka modal custom atau redirect ke login page
+      showToast('Fitur login segera hadir!', 'info');
     });
   });
 
-  console.log("RHF SETORS - script.js SAMA PERSIS TOKOGAME.COM FULL berhasil di-load! Semua produk, urutan, nama & icon sudah sesuai 100%.");
+  // 8. Auto hide header search on scroll down, show on up (advanced UX)
+  let lastScroll = 0;
+  window.addEventListener('scroll', () => {
+    const currentScroll = window.pageYOffset;
+    if (currentScroll > lastScroll && currentScroll > 200) {
+      header.style.transform = 'translateY(-100%)';
+    } else {
+      header.style.transform = 'translateY(0)';
+    }
+    lastScroll = currentScroll;
+  });
 });
