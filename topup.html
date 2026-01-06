@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Top Up Game - RHF</title>
+  <title>Top Up Mobile Legends Diamonds - RHF</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'Poppins', sans-serif; background: #f8f9fa; color: #333; }
@@ -38,31 +37,43 @@
       margin-top: 20px;
     }
 
+    /* Banner mirip TokoGame */
     .game-banner {
-      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), #1a1a2e;
-      padding: 60px 30px;
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://via.placeholder.com/1200x400/001f3f/ffffff?text=Mobile+Legends+Banner') center/cover;
+      padding: 70px 30px;
       text-align: center;
       color: #fff;
     }
     .game-logo {
-      height: 130px;
+      height: 140px;
       margin-bottom: 20px;
       border-radius: 20px;
       box-shadow: 0 8px 25px rgba(0,0,0,0.5);
       background: #fff;
       padding: 15px;
     }
-    .game-title { font-size: 38px; font-weight: 700; margin: 15px 0; }
-    .game-subtitle { font-size: 19px; opacity: 0.9; }
+    .game-title { font-size: 40px; font-weight: 700; margin: 15px 0; }
+    .game-subtitle { font-size: 20px; opacity: 0.9; }
 
     .form-section { padding: 50px; }
-    .step-title { font-size: 26px; font-weight: 600; color: #ff6600; margin-bottom: 35px; text-align: center; }
 
+    .step-title {
+      font-size: 26px;
+      font-weight: 600;
+      color: #ff6600;
+      margin-bottom: 30px;
+      text-align: left;
+    }
+
+    /* Input User ID & Zone ID (mirip TokoGame) */
     .input-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: 1fr 1fr;
       gap: 30px;
       margin-bottom: 40px;
+    }
+    @media (max-width: 768px) {
+      .input-grid { grid-template-columns: 1fr; }
     }
     .form-group label { display: block; font-weight: 600; margin-bottom: 12px; font-size: 17px; }
     .form-group input {
@@ -74,8 +85,9 @@
       transition: all 0.3s;
     }
     .form-group input:focus { outline: none; border-color: #ff6600; box-shadow: 0 0 20px rgba(255,102,0,0.2); }
-    .input-note { font-size: 15px; color: #777; margin-top: 12px; text-align: center; }
+    .input-note { font-size: 15px; color: #ff6600; margin-top: 15px; font-weight: 600; }
 
+    /* Nominal Card (persis TokoGame) */
     .nominal-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -83,13 +95,14 @@
       margin: 50px 0;
     }
     .nominal-item {
-      background: #f8f9fa;
+      background: #fff;
       border: 2px solid #eee;
       border-radius: 20px;
       padding: 30px;
       text-align: center;
       cursor: pointer;
       transition: all 0.4s ease;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
     }
     .nominal-item:hover { border-color: #ff6600; transform: translateY(-12px); box-shadow: 0 20px 40px rgba(255,102,0,0.15); }
     .nominal-item.selected {
@@ -102,30 +115,7 @@
     .nominal-price { font-size: 32px; font-weight: 700; color: #ff6600; }
     .nominal-bonus { font-size: 15px; color: #ff6600; margin-top: 10px; font-weight: 600; }
 
-    .payment-section { margin: 60px 0; }
-    .payment-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 25px;
-    }
-    .payment-item {
-      border: 2px solid #eee;
-      border-radius: 18px;
-      padding: 25px;
-      text-align: center;
-      cursor: pointer;
-      transition: all 0.3s;
-    }
-    .payment-item:hover { border-color: #ff6600; }
-    .payment-item input[type="radio"] { display: none; }
-    .payment-item.selected {
-      border-color: #ff6600;
-      background: #fff5f0;
-      box-shadow: 0 15px 35px rgba(255,102,0,0.2);
-    }
-    .payment-item img { height: 55px; margin-bottom: 12px; }
-    .payment-item label { font-weight: 600; font-size: 16px; cursor: pointer; display: block; }
-
+    /* Summary & Bayar */
     .summary-box {
       background: #f0f0f0;
       border-radius: 20px;
@@ -173,74 +163,29 @@
   <div class="container">
     <div class="topup-card">
 
-      <!-- Game Banner -->
+      <!-- Banner mirip TokoGame Mobile Legends -->
       <div class="game-banner">
-        <img id="game-logo" class="game-logo" src="" alt="Logo Game">
-        <h1 id="game-title">Top Up Game</h1>
-        <p class="game-subtitle">Proses Instan • Harga Termurah • Aman & Terpercaya</p>
+        <img id="game-logo" class="game-logo" src="" alt="Mobile Legends Logo">
+        <h1 id="game-title">Top Up Mobile Legends Diamonds</h1>
+        <p class="game-subtitle">Proses Cepat • Harga Termurah • Aman 100%</p>
       </div>
 
       <div class="form-section">
 
-        <!-- Step 1: Input Akun -->
+        <!-- 1. Masukkan User ID & Zone ID -->
         <div class="step">
-          <div class="step-title">1. Masukkan Data Akun</div>
-          <div class="input-grid" id="input-fields"></div>
-          <p class="input-note">Pastikan data benar. Tidak dapat diubah setelah pembayaran berhasil.</p>
+          <div class="step-title">1. Masukkan User ID & Zone ID</div>
+          <div class="input-grid" id="input-fields">
+            <!-- Diisi oleh JS -->
+          </div>
+          <p class="input-note">*Pastikan User ID & Zone ID benar. Tidak dapat diubah setelah pembayaran.</p>
         </div>
 
-        <!-- Step 2: Pilih Nominal -->
+        <!-- 2. Pilih Nominal (card persis TokoGame) -->
         <div class="step">
-          <div class="step-title">2. Pilih Nominal Top Up</div>
-          <div class="nominal-grid" id="nominal-options"></div>
-        </div>
-
-        <!-- Step 3: Metode Pembayaran -->
-        <div class="step payment-section">
-          <div class="step-title">3. Pilih Metode Pembayaran</div>
-          <div class="payment-grid">
-            <div class="payment-item selected">
-              <input type="radio" name="payment" id="qris" checked>
-              <label for="qris">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/QRIS_Logo.png" alt="QRIS">
-                QRIS Semua Payment
-              </label>
-            </div>
-            <div class="payment-item">
-              <input type="radio" name="payment" id="dana">
-              <label for="dana">
-                <img src="https://seeklogo.com/images/D/dana-logo-7E6A5E6D9B-seeklogo.com.png" alt="DANA">
-                DANA
-              </label>
-            </div>
-            <div class="payment-item">
-              <input type="radio" name="payment" id="ovo">
-              <label for="ovo">
-                <img src="https://seeklogo.com/images/O/ovo-logo-7E6A5E6D9B-seeklogo.com.png" alt="OVO">
-                OVO
-              </label>
-            </div>
-            <div class="payment-item">
-              <input type="radio" name="payment" id="gopay">
-              <label for="gopay">
-                <img src="https://seeklogo.com/images/G/gopay-logo-7E6A5E6D9B-seeklogo.com.png" alt="GoPay">
-                GoPay
-              </label>
-            </div>
-            <div class="payment-item">
-              <input type="radio" name="payment" id="shopeepay">
-              <label for="shopeepay">
-                <img src="https://seeklogo.com/images/S/shopeepay-logo-7E6A5E6D9B-seeklogo.com.png" alt="ShopeePay">
-                ShopeePay
-              </label>
-            </div>
-            <div class="payment-item">
-              <input type="radio" name="payment" id="bank">
-              <label for="bank">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Bank_Central_Asia.svg/2560px-Bank_Central_Asia.svg.png" alt="Transfer Bank">
-                Transfer Bank
-              </label>
-            </div>
+          <div class="step-title">2. Pilih Nominal</div>
+          <div class="nominal-grid" id="nominal-options">
+            <!-- Diisi oleh JS -->
           </div>
         </div>
 
@@ -252,9 +197,9 @@
         </div>
 
         <div class="guarantee">
-          <p>✓ Proses Otomatis 1-5 Menit Setelah Pembayaran</p>
-          <p>✓ 100% Aman - Garansi Uang Kembali Jika Gagal</p>
-          <p>✓ Support 24/7 via WhatsApp & Live Chat</p>
+          <p>✓ Proses Otomatis 1-5 Menit</p>
+          <p>✓ Garansi 100% Aman - Uang Kembali Jika Gagal</p>
+          <p>✓ Support 24/7 via WhatsApp</p>
         </div>
 
       </div>
@@ -262,7 +207,7 @@
   </div>
 
   <script>
-    // Data game dengan logo HTTPS resmi & pasti muncul (langsung di file ini)
+    // Data game (langsung di file ini, pasti muncul)
     const gamesData = {
       ml: {
         name: "Mobile Legends Diamonds",
@@ -275,7 +220,10 @@
           { name: "86 Diamonds", price: "Rp 20.000", bonus: "+8 Bonus" },
           { name: "172 Diamonds", price: "Rp 40.000", bonus: "+17 Bonus" },
           { name: "257 Diamonds", price: "Rp 60.000", bonus: "+28 Bonus" },
-          { name: "Starlight Member", price: "Rp 120.000", bonus: "Skin Eksklusif" }
+          { name: "514 Diamonds", price: "Rp 120.000", bonus: "+65 Bonus" },
+          { name: "Starlight Member", price: "Rp 120.000", bonus: "Skin Eksklusif + Bonus Diamond" },
+          { name: "Weekly Diamond Pass", price: "Rp 50.000", bonus: "Diamond Harian 7 Hari" },
+          { name: "Twilight Pass", price: "Rp 150.000", bonus: "Hadiah Premium + Skin" }
         ]
       },
       ff: {
@@ -285,8 +233,10 @@
           { label: "User ID", placeholder: "Contoh: 123456789" }
         ],
         nominals: [
-          { name: "100 Diamonds", price: "Rp 15.000", bonus: "+10 Bonus" },
-          { name: "210 Diamonds", price: "Rp 30.000", bonus: "+21 Bonus" }
+          { name: "70 Diamonds", price: "Rp 10.000", bonus: "Weekly Membership" },
+          { name: "140 Diamonds", price: "Rp 20.000", bonus: "" },
+          { name: "355 Diamonds", price: "Rp 50.000", bonus: "+35 Bonus" },
+          { name: "720 Diamonds", price: "Rp 100.000", bonus: "+72 Bonus" }
         ]
       },
       pubg: {
@@ -297,11 +247,10 @@
         ],
         nominals: [
           { name: "60 UC", price: "Rp 15.000", bonus: "" },
-          { name: "325 UC", price: "Rp 70.000", bonus: "+25 Bonus" },
-          { name: "660 UC", price: "Rp 140.000", bonus: "+66 Bonus" }
+          { name: "325 UC", price: "Rp 70.000", bonus: "+25 Bonus" }
         ]
-      },
-      // Tambah game lain sesuai list kamu
+      }
+      // Tambah game lain sesuai kebutuhan
     };
 
     // Ambil parameter game
@@ -309,11 +258,11 @@
     const gameCode = urlParams.get('game') || 'ml';
     const game = gamesData[gameCode] || gamesData.ml;
 
-    // Logo & title muncul pasti
+    // Logo & title
     document.getElementById('game-logo').src = game.logo;
     document.getElementById('game-title').textContent = game.name;
 
-    // Input muncul
+    // Input User ID & Zone ID
     const inputFields = document.getElementById('input-fields');
     inputFields.innerHTML = '';
     game.inputs.forEach(field => {
@@ -325,7 +274,7 @@
       `;
     });
 
-    // Nominal muncul
+    // Nominal card
     const nominalOptions = document.getElementById('nominal-options');
     nominalOptions.innerHTML = '';
     game.nominals.forEach((nom, index) => {
@@ -346,17 +295,14 @@
       document.getElementById('total-price').textContent = price;
     }
 
-    // Payment selection
-    document.querySelectorAll('.payment-item').forEach(item => {
-      item.addEventListener('click', () => {
-        document.querySelectorAll('.payment-item').forEach(i => i.classList.remove('selected'));
-        item.classList.add('selected');
-        item.querySelector('input').checked = true;
-      });
-    });
-
     function processPayment() {
-      alert('Order top up PUBG Mobile sedang diproses! Terima kasih.');
+      const inputs = Array.from(document.querySelectorAll('#input-fields input')).map(i => i.value).join(' (Zone: ');
+      const nominal = document.querySelector('.nominal-item.selected .nominal-name').textContent;
+      const price = document.getElementById('total-price').textContent;
+
+      const message = `Halo RHF,%0ATop Up ${game.name}%0AData Akun: ${inputs}%0ANominal: ${nominal}%0AHarga: ${price}%0ATerima kasih!`;
+
+      window.open(`https://wa.me/081234567890?text=${message}`, '_blank');
     }
   </script>
 
