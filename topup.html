@@ -266,7 +266,7 @@
   </div>
 
   <script>
-    // Semua data game & logo langsung di file ini (TIDAK dari games.js)
+    // Data game & logo langsung di file ini (100% pasti muncul, no external dependency)
     const gamesData = {
       ml: {
         name: "Mobile Legends",
@@ -311,7 +311,7 @@
       },
       valorant: {
         name: "Valorant",
-        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSPUSKwrosbcLh6qXmw79qz-Dl1vMOvBmP1ydujtvIsA&s",
+        logo: "https://upload.wikimedia.org/wikipedia/commons/f/fc/Valorant_logo_-_pink_color_version.svg",
         inputs: [
           { label: "Riot ID", placeholder: "Nama#TAG" }
         ],
@@ -322,7 +322,7 @@
       },
       genshin: {
         name: "Genshin Impact",
-        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4z_craukzS9fmSpRGHgqF8gxc34428E8fryReuCt6Nw&s",
+        logo: "https://www.freepnglogos.com/uploads/genshin-impact-logo-png/hd-transparent-logo-genshin-impact-free-download-2.png",
         inputs: [
           { label: "User ID", placeholder: "Contoh: 812345678" },
           { label: "Server", placeholder: "Asia / Europe / America" }
@@ -345,7 +345,7 @@
       },
       hsr: {
         name: "Honkai: Star Rail",
-        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSd4h06YHJT_hOpOlNoiQndwaOYC6ImQCvEkA3QQXnh1g&s",
+        logo: "https://interfaceingame.com/wp-content/uploads/honkai-star-rail/honkai-star-rail-logo.png",
         inputs: [
           { label: "User ID", placeholder: "Contoh: 812345678" }
         ],
@@ -354,7 +354,6 @@
           { name: "980 Oneiric Shard", price: "Rp 200.000", bonus: "+110 Bonus" }
         ]
       }
-      // Tambah game lain kalau perlu
     };
 
     // Ambil kode game dari URL
@@ -362,14 +361,12 @@
     const gameCode = urlParams.get('game') || 'ml';
     const game = gamesData[gameCode] || gamesData.ml;
 
-    // Pastikan logo muncul 100%
+    // Logo & title pasti muncul
     const logoImg = document.getElementById('game-logo');
     logoImg.src = game.logo;
     logoImg.alt = game.name + " Logo";
-    logoImg.onload = () => console.log('Logo berhasil dimuat:', game.logo);
     logoImg.onerror = () => {
       logoImg.src = 'https://via.placeholder.com/200x130/333333/ffffff?text=' + encodeURIComponent(game.name);
-      console.log('Logo gagal, pakai placeholder');
     };
 
     document.getElementById('game-title').textContent = 'Top Up ' + game.name;
@@ -417,7 +414,14 @@
     });
 
     function processPayment() {
-      alert('Pembayaran sedang diproses...\nTerima kasih telah top up di RHF!');
+      const userData = Array.from(document.querySelectorAll('#input-fields input')).map(input => input.value).join(' | ');
+      const nominal = document.querySelector('.nominal-item.selected .nominal-name').textContent;
+      const price = document.getElementById('total-price').textContent;
+      const method = document.querySelector('input[name="payment"]:checked + label').textContent.trim();
+
+      const message = `Halo RHF,%0ASaya ingin top up:%0A%0AGame: ${game.name}%0AData Akun: ${userData}%0ANominal: ${nominal}%0AHarga: ${price}%0AMetode Pembayaran: ${method}%0A%0ATerima kasih!`;
+
+      window.open(`https://wa.me/081234567890?text=${message}`, '_blank');
     }
   </script>
 
