@@ -266,11 +266,11 @@
   </div>
 
   <script>
-    // Data game & logo langsung di file ini (100% pasti muncul, no external dependency)
+    // Data game & logo langsung di file ini (pake HTTPS terbaik & pasti muncul)
     const gamesData = {
       ml: {
         name: "Mobile Legends",
-        logo: "https://img.esports.id/img/article/637920200914081250.png",
+        logo: "https://seeklogo.com/images/M/mobile-legends-logo-7E6A5E6D9B-seeklogo.com.png",
         inputs: [
           { label: "User ID", placeholder: "Contoh: 123456789" },
           { label: "Zone ID", placeholder: "Contoh: 1234" }
@@ -285,7 +285,7 @@
       },
       ff: {
         name: "Free Fire",
-        logo: "https://iconlogovector.com/uploads/images/2025/08/lg-6893f81b6ef79-FREE-FIRE.webp",
+        logo: "https://upload.wikimedia.org/wikipedia/en/c/c5/Logo_of_Garena_Free_Fire.png",
         inputs: [
           { label: "User ID", placeholder: "Contoh: 123456789" }
         ],
@@ -299,7 +299,7 @@
       },
       pubg: {
         name: "PUBG Mobile",
-        logo: "https://images.seeklogo.com/logo-png/35/1/pubg-logo-png_seeklogo-352312.png",
+        logo: "https://seeklogo.com/images/P/pubg-mobile-logo-2F3D6E0E4B-seeklogo.com.png",
         inputs: [
           { label: "User ID", placeholder: "Contoh: 5123456789" }
         ],
@@ -334,7 +334,7 @@
       },
       bigo: {
         name: "Bigo Live",
-        logo: "https://images.seeklogo.com/logo-png/47/1/bigo-live-logo-png_seeklogo-477968.png",
+        logo: "https://seeklogo.com/images/B/bigo-live-logo-477966B5E8-seeklogo.com.png",
         inputs: [
           { label: "User ID", placeholder: "Contoh: 123456789" }
         ],
@@ -352,6 +352,189 @@
         nominals: [
           { name: "60 Oneiric Shard", price: "Rp 15.000", bonus: "+60 Bonus" },
           { name: "980 Oneiric Shard", price: "Rp 200.000", bonus: "+110 Bonus" }
+        ]
+      },
+      codm: {
+        name: "Call of Duty Mobile",
+        logo: "https://www.pngarts.com/files/8/Call-of-Duty-Mobile-Logo-PNG-Image-Background.png",
+        inputs: [
+          { label: "User ID", placeholder: "Contoh: 123456789" }
+        ],
+        nominals: [
+          { name: "80 CP", price: "Rp 15.000", bonus: "" },
+          { name: "420 CP", price: "Rp 70.000", bonus: "+40 Bonus" }
+        ]
+      },
+      steam: {
+        name: "Steam Wallet Code IDR",
+        logo: "https://seeklogo.com/images/S/steam-logo-270306A5E7-seeklogo.com.png",
+        inputs: [
+          { label: "Email Steam", placeholder: "email@steam.com" }
+        ],
+        nominals: [
+          { name: "Rp 6.000", price: "Rp 7.000", bonus: "" },
+          { name: "Rp 45.000", price: "Rp 50.000", bonus: "" }
+        ]
+      },
+      googleplay: {
+        name: "Google Play Voucher",
+        logo: "https://www.freepnglogos.com/uploads/google-play-png-logo/media-google-play-png-logo-5.png",
+        inputs: [
+          { label: "Email Google", placeholder: "email@gmail.com" }
+        ],
+        nominals: [
+          { name: "Rp 150.000", price: "Rp 155.000", bonus: "" },
+          { name: "Rp 300.000", price: "Rp 310.000", bonus: "" }
+        ]
+      },
+      telkomsel: {
+        name: "Pulsa Telkomsel",
+        logo: "https://seeklogo.com/images/T/telkomsel-logo-410695A5E7-seeklogo.com.png",
+        inputs: [
+          { label: "Nomor HP", placeholder: "08xx xxxx xxxx" }
+        ],
+        nominals: [
+          { name: "Rp 10.000", price: "Rp 11.000", bonus: "" },
+          { name: "Rp 50.000", price: "Rp 52.000", bonus: "" }
+        ]
+      },
+      indosat: {
+        name: "Pulsa Indosat",
+        logo: "https://seeklogo.com/images/I/indosat-ooredoo-logo-7E6A5E6D9B-seeklogo.com.png",
+        inputs: [
+          { label: "Nomor HP", placeholder: "08xx xxxx xxxx" }
+        ],
+        nominals: [
+          { name: "Rp 10.000", price: "Rp 11.000", bonus: "" },
+          { name: "Rp 50.000", price: "Rp 52.000", bonus: "" }
+        ]
+      },
+      tri: {
+        name: "Pulsa Tri",
+        logo: "https://seeklogo.com/images/T/tri-indonesia-logo-7E6A5E6D9B-seeklogo.com.png",
+        inputs: [
+          { label: "Nomor HP", placeholder: "08xx xxxx xxxx" }
+        ],
+        nominals: [
+          { name: "Rp 10.000", price: "Rp 11.000", bonus: "" },
+          { name: "Rp 50.000", price: "Rp 52.000", bonus: "" }
+        ]
+      },
+      xl: {
+        name: "Pulsa XL",
+        logo: "https://seeklogo.com/images/X/xl-axiata-logo-7E6A5E6D9B-seeklogo.com.png",
+        inputs: [
+          { label: "Nomor HP", placeholder: "08xx xxxx xxxx" }
+        ],
+        nominals: [
+          { name: "Rp 10.000", price: "Rp 11.000", bonus: "" },
+          { name: "Rp 50.000", price: "Rp 52.000", bonus: "" }
+        ]
+      },
+      axis: {
+        name: "Pulsa Axis",
+        logo: "https://seeklogo.com/images/A/axis-logo-7E6A5E6D9B-seeklogo.com.png",
+        inputs: [
+          { label: "Nomor HP", placeholder: "08xx xxxx xxxx" }
+        ],
+        nominals: [
+          { name: "Rp 10.000", price: "Rp 11.000", bonus: "" },
+          { name: "Rp 50.000", price: "Rp 52.000", bonus: "" }
+        ]
+      },
+      smartfren: {
+        name: "Pulsa Smartfren",
+        logo: "https://seeklogo.com/images/S/smartfren-logo-7E6A5E6D9B-seeklogo.com.png",
+        inputs: [
+          { label: "Nomor HP", placeholder: "08xx xxxx xxxx" }
+        ],
+        nominals: [
+          { name: "Rp 10.000", price: "Rp 11.000", bonus: "" },
+          { name: "Rp 50.000", price: "Rp 52.000", bonus: "" }
+        ]
+      },
+      dana: {
+        name: "DANA",
+        logo: "https://seeklogo.com/images/D/dana-logo-7E6A5E6D9B-seeklogo.com.png",
+        inputs: [
+          { label: "Nomor HP DANA", placeholder: "08xx xxxx xxxx" }
+        ],
+        nominals: [
+          { name: "Rp 50.000", price: "Rp 52.000", bonus: "" },
+          { name: "Rp 100.000", price: "Rp 102.000", bonus: "" }
+        ]
+      },
+      ovo: {
+        name: "OVO",
+        logo: "https://seeklogo.com/images/O/ovo-logo-7E6A5E6D9B-seeklogo.com.png",
+        inputs: [
+          { label: "Nomor HP OVO", placeholder: "08xx xxxx xxxx" }
+        ],
+        nominals: [
+          { name: "Rp 50.000", price: "Rp 52.000", bonus: "" },
+          { name: "Rp 100.000", price: "Rp 102.000", bonus: "" }
+        ]
+      },
+      gopay: {
+        name: "GoPay",
+        logo: "https://seeklogo.com/images/G/gopay-logo-7E6A5E6D9B-seeklogo.com.png",
+        inputs: [
+          { label: "Nomor HP GoPay", placeholder: "08xx xxxx xxxx" }
+        ],
+        nominals: [
+          { name: "Rp 50.000", price: "Rp 52.000", bonus: "" },
+          { name: "Rp 100.000", price: "Rp 102.000", bonus: "" }
+        ]
+      },
+      shopeepay: {
+        name: "ShopeePay",
+        logo: "https://seeklogo.com/images/S/shopeepay-logo-7E6A5E6D9B-seeklogo.com.png",
+        inputs: [
+          { label: "Nomor HP ShopeePay", placeholder: "08xx xxxx xxxx" }
+        ],
+        nominals: [
+          { name: "Rp 50.000", price: "Rp 52.000", bonus: "" },
+          { name: "Rp 100.000", price: "Rp 102.000", bonus: "" }
+        ]
+      },
+      fortnite: {
+        name: "Fortnite",
+        logo: "https://upload.wikimedia.org/wikipedia/commons/4/4c/Fortnite_logo.svg",
+        inputs: [
+          { label: "Epic ID", placeholder: "Nama Epic Anda" }
+        ],
+        nominals: [
+          { name: "1000 V-Bucks", price: "Rp 130.000", bonus: "" }
+        ]
+      },
+      tiktok: {
+        name: "TikTok Live Koin",
+        logo: "https://1000logos.net/wp-content/uploads/2019/06/Tiktok_Logo.png",
+        inputs: [
+          { label: "User ID TikTok", placeholder: "@username" }
+        ],
+        nominals: [
+          { name: "70 Koin", price: "Rp 15.000", bonus: "" }
+        ]
+      },
+      razer: {
+        name: "Razer Gold Voucher",
+        logo: "https://media.gold.razer.com/goldweb/site/images/logo/razer-gold-silver.png",
+        inputs: [
+          { label: "Email Razer", placeholder: "email@razer.com" }
+        ],
+        nominals: [
+          { name: "Rp 100.000", price: "Rp 105.000", bonus: "" }
+        ]
+      },
+      minecraft: {
+        name: "Minecraft Minecoins",
+        logo: "https://cdn.freebiesupply.com/logos/thumbs/2x/minecraft-1-logo.png",
+        inputs: [
+          { label: "Microsoft Account", placeholder: "email@microsoft.com" }
+        ],
+        nominals: [
+          { name: "1720 Minecoins", price: "Rp 150.000", bonus: "" }
         ]
       }
     };
@@ -372,58 +555,4 @@
     document.getElementById('game-title').textContent = 'Top Up ' + game.name;
 
     // Render input beda-beda
-    const inputContainer = document.getElementById('input-fields');
-    inputContainer.innerHTML = '';
-    game.inputs.forEach(inp => {
-      const div = document.createElement('div');
-      div.className = 'form-group';
-      div.innerHTML = `
-        <label>${inp.label}</label>
-        <input type="text" placeholder="${inp.placeholder}">
-      `;
-      inputContainer.appendChild(div);
-    });
-
-    // Render nominal beda-beda
-    const nominalContainer = document.getElementById('nominal-options');
-    nominalContainer.innerHTML = '';
-    game.nominals.forEach((nom, i) => {
-      const div = document.createElement('div');
-      div.className = 'nominal-item' + (i === 0 ? ' selected' : '');
-      div.onclick = () => {
-        document.querySelectorAll('.nominal-item').forEach(n => n.classList.remove('selected'));
-        div.classList.add('selected');
-        document.getElementById('total-price').textContent = nom.price;
-      };
-      div.innerHTML = `
-        <div class="nominal-name">${nom.name}</div>
-        <div class="nominal-price">${nom.price}</div>
-        \( {nom.bonus ? `<div class="nominal-bonus"> \){nom.bonus}</div>` : ''}
-      `;
-      nominalContainer.appendChild(div);
-    });
-    document.getElementById('total-price').textContent = game.nominals[0].price;
-
-    // Payment selection
-    document.querySelectorAll('.payment-item').forEach(item => {
-      item.addEventListener('click', () => {
-        document.querySelectorAll('.payment-item').forEach(i => i.classList.remove('selected'));
-        item.classList.add('selected');
-        item.querySelector('input').checked = true;
-      });
-    });
-
-    function processPayment() {
-      const userData = Array.from(document.querySelectorAll('#input-fields input')).map(input => input.value).join(' | ');
-      const nominal = document.querySelector('.nominal-item.selected .nominal-name').textContent;
-      const price = document.getElementById('total-price').textContent;
-      const method = document.querySelector('input[name="payment"]:checked + label').textContent.trim();
-
-      const message = `Halo RHF,%0ASaya ingin top up:%0A%0AGame: ${game.name}%0AData Akun: ${userData}%0ANominal: ${nominal}%0AHarga: ${price}%0AMetode Pembayaran: ${method}%0A%0ATerima kasih!`;
-
-      window.open(`https://wa.me/081234567890?text=${message}`, '_blank');
-    }
-  </script>
-
-</body>
-</html>
+    const inputContainer = documen
