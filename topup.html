@@ -39,7 +39,7 @@
     }
 
     .game-banner {
-      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), #1a1a2e;
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://via.placeholder.com/1200x400/1a1a2e/1a1a2e?text=Game+Banner') center/cover;
       padding: 60px 30px;
       text-align: center;
       color: #fff;
@@ -173,7 +173,7 @@
   <div class="container">
     <div class="topup-card">
 
-      <!-- Game Banner -->
+      <!-- Game Banner dengan Logo & Nama Game langsung muncul -->
       <div class="game-banner">
         <img id="game-logo" class="game-logo" src="" alt="Logo Game">
         <h1 id="game-title">Top Up Game</h1>
@@ -182,7 +182,7 @@
 
       <div class="form-section">
 
-        <!-- Step 1: Input Akun -->
+        <!-- Step 1: Input Akun (langsung muncul beda-beda) -->
         <div class="step">
           <div class="step-title">1. Masukkan Data Akun</div>
           <div class="input-grid" id="input-fields">
@@ -266,11 +266,11 @@
   </div>
 
   <script>
-    // Data game & logo langsung di file ini (pake HTTPS terbaik & pasti muncul)
+    // Semua data game & logo langsung di file ini (pasti muncul, no games.js)
     const gamesData = {
       ml: {
-        name: "Mobile Legends",
-        logo: "https://seeklogo.com/images/M/mobile-legends-logo-7E6A5E6D9B-seeklogo.com.png",
+        name: "Mobile Legends Diamonds",
+        logo: "https://img.esports.id/img/article/637920200914081250.png",
         inputs: [
           { label: "User ID", placeholder: "Contoh: 123456789" },
           { label: "Zone ID", placeholder: "Contoh: 1234" }
@@ -279,280 +279,274 @@
           { name: "86 Diamonds", price: "Rp 20.000", bonus: "+8 Bonus" },
           { name: "172 Diamonds", price: "Rp 40.000", bonus: "+17 Bonus" },
           { name: "257 Diamonds", price: "Rp 60.000", bonus: "+28 Bonus" },
-          { name: "Starlight Member", price: "Rp 120.000", bonus: "Skin Eksklusif" },
-          { name: "Twilight Pass", price: "Rp 150.000", bonus: "Hadiah Premium" }
+          { name: "Starlight Member", price: "Rp 120.000", bonus: "Skin Eksklusif" }
         ]
       },
       ff: {
-        name: "Free Fire",
-        logo: "https://upload.wikimedia.org/wikipedia/en/c/c5/Logo_of_Garena_Free_Fire.png",
+        name: "Free Fire Diamonds",
+        logo: "https://iconlogovector.com/uploads/images/2025/08/lg-6893f81b6ef79-FREE-FIRE.webp",
         inputs: [
           { label: "User ID", placeholder: "Contoh: 123456789" }
         ],
         nominals: [
           { name: "100 Diamonds", price: "Rp 15.000", bonus: "+10 Bonus" },
-          { name: "210 Diamonds", price: "Rp 30.000", bonus: "+21 Bonus" },
-          { name: "355 Diamonds", price: "Rp 50.000", bonus: "+46 Bonus" },
-          { name: "720 Diamonds", price: "Rp 100.000", bonus: "+108 Bonus" },
-          { name: "Weekly Membership", price: "Rp 35.000", bonus: "Privilege" }
+          { name: "210 Diamonds", price: "Rp 30.000", bonus: "+21 Bonus" }
         ]
       },
       pubg: {
-        name: "PUBG Mobile",
-        logo: "https://seeklogo.com/images/P/pubg-mobile-logo-2F3D6E0E4B-seeklogo.com.png",
+        name: "PUBG Mobile UC",
+        logo: "https://images.seeklogo.com/logo-png/35/1/pubg-logo-png_seeklogo-352312.png",
         inputs: [
           { label: "User ID", placeholder: "Contoh: 5123456789" }
         ],
         nominals: [
           { name: "60 UC", price: "Rp 15.000", bonus: "" },
-          { name: "325 UC", price: "Rp 70.000", bonus: "+25 Bonus" },
-          { name: "660 UC", price: "Rp 140.000", bonus: "+66 Bonus" }
+          { name: "325 UC", price: "Rp 70.000", bonus: "+25 Bonus" }
         ]
       },
-      valorant: {
-        name: "Valorant",
-        logo: "https://upload.wikimedia.org/wikipedia/commons/f/fc/Valorant_logo_-_pink_color_version.svg",
-        inputs: [
-          { label: "Riot ID", placeholder: "Nama#TAG" }
-        ],
-        nominals: [
-          { name: "425 Points", price: "Rp 70.000", bonus: "" },
-          { name: "875 Points", price: "Rp 140.000", bonus: "+50 Bonus" }
-        ]
-      },
-      genshin: {
-        name: "Genshin Impact",
-        logo: "https://www.freepnglogos.com/uploads/genshin-impact-logo-png/hd-transparent-logo-genshin-impact-free-download-2.png",
-        inputs: [
-          { label: "User ID", placeholder: "Contoh: 812345678" },
-          { label: "Server", placeholder: "Asia / Europe / America" }
-        ],
-        nominals: [
-          { name: "60 Genesis Crystals", price: "Rp 15.000", bonus: "+60 Bonus" },
-          { name: "980 Genesis Crystals", price: "Rp 200.000", bonus: "+110 Bonus" }
-        ]
-      },
-      bigo: {
-        name: "Bigo Live",
-        logo: "https://seeklogo.com/images/B/bigo-live-logo-477966B5E8-seeklogo.com.png",
+      hok: {
+        name: "Honor of Kings Tokens",
+        logo: "https://liputangampongnews.id/assets/img/berita/20210920_183731.jpg",
         inputs: [
           { label: "User ID", placeholder: "Contoh: 123456789" }
         ],
         nominals: [
-          { name: "210 Diamonds", price: "Rp 30.000", bonus: "" },
-          { name: "420 Diamonds", price: "Rp 60.000", bonus: "" }
+          { name: "100 Tokens", price: "Rp 20.000", bonus: "" }
+        ]
+      },
+      bleach: {
+        name: "Bleach Tokens",
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMmZxVql5rDkrf9F18ENUODNWfWn96_ZDfGyAD3gUC8g&s=10",
+        inputs: [
+          { label: "User ID", placeholder: "Contoh: 123456789" }
+        ],
+        nominals: [
+          { name: "100 Tokens", price: "Rp 20.000", bonus: "" }
+        ]
+      },
+      bigo: {
+        name: "Bigo Live Diamonds",
+        logo: "https://images.seeklogo.com/logo-png/47/1/bigo-live-logo-png_seeklogo-477968.png",
+        inputs: [
+          { label: "User ID", placeholder: "Contoh: 123456789" }
+        ],
+        nominals: [
+          { name: "210 Diamonds", price: "Rp 30.000", bonus: "" }
         ]
       },
       hsr: {
-        name: "Honkai: Star Rail",
-        logo: "https://interfaceingame.com/wp-content/uploads/honkai-star-rail/honkai-star-rail-logo.png",
+        name: "Honkai: Star Rail Shard",
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSd4h06YHJT_hOpOlNoiQndwaOYC6ImQCvEkA3QQXnh1g&s",
         inputs: [
           { label: "User ID", placeholder: "Contoh: 812345678" }
         ],
         nominals: [
-          { name: "60 Oneiric Shard", price: "Rp 15.000", bonus: "+60 Bonus" },
-          { name: "980 Oneiric Shard", price: "Rp 200.000", bonus: "+110 Bonus" }
+          { name: "980 Shard", price: "Rp 200.000", bonus: "+110 Bonus" }
         ]
       },
-      codm: {
-        name: "Call of Duty Mobile",
-        logo: "https://www.pngarts.com/files/8/Call-of-Duty-Mobile-Logo-PNG-Image-Background.png",
+      valorant: {
+        name: "Valorant Points",
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSPUSKwrosbcLh6qXmw79qz-Dl1vMOvBmP1ydujtvIsA&s",
+        inputs: [
+          { label: "Riot ID", placeholder: "Nama#TAG" }
+        ],
+        nominals: [
+          { name: "425 Points", price: "Rp 70.000", bonus: "" }
+        ]
+      },
+      genshin: {
+        name: "Genshin Impact Crystals",
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4z_craukzS9fmSpRGHgqF8gxc34428E8fryReuCt6Nw&s",
+        inputs: [
+          { label: "User ID", placeholder: "Contoh: 812345678" },
+          { label: "Server", placeholder: "Asia" }
+        ],
+        nominals: [
+          { name: "980 Crystals", price: "Rp 200.000", bonus: "+110 Bonus" }
+        ]
+      },
+      kingschoice: {
+        name: "King's Choice Diamonds",
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwurfDWmyuVtOqh1MSuTZk8hHdttjx3tr6micedK_LAVLwOPv7a0T154A&s",
         inputs: [
           { label: "User ID", placeholder: "Contoh: 123456789" }
         ],
         nominals: [
-          { name: "80 CP", price: "Rp 15.000", bonus: "" },
-          { name: "420 CP", price: "Rp 70.000", bonus: "+40 Bonus" }
+          { name: "100 Diamonds", price: "Rp 20.000", bonus: "" }
         ]
       },
-      steam: {
-        name: "Steam Wallet Code IDR",
-        logo: "https://seeklogo.com/images/S/steam-logo-270306A5E7-seeklogo.com.png",
+      arena: {
+        name: "Arena Breakout Bonds",
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZsQWTUmJWzDmBbIDtIylQtCUu67sSijV5LnGs7z1f1Q&s",
         inputs: [
-          { label: "Email Steam", placeholder: "email@steam.com" }
+          { label: "User ID", placeholder: "Contoh: 123456789" }
         ],
         nominals: [
-          { name: "Rp 6.000", price: "Rp 7.000", bonus: "" },
-          { name: "Rp 45.000", price: "Rp 50.000", bonus: "" }
+          { name: "100 Bonds", price: "Rp 20.000", bonus: "" }
         ]
       },
-      googleplay: {
-        name: "Google Play Voucher",
-        logo: "https://www.freepnglogos.com/uploads/google-play-png-logo/media-google-play-png-logo-5.png",
+      metalslug: {
+        name: "Metal Slug: Awakening",
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkx8fy5MOauLsJ6EykHXc4aBMEnc1TICvPGJGwvAtuMg&s",
         inputs: [
-          { label: "Email Google", placeholder: "email@gmail.com" }
+          { label: "User ID", placeholder: "Contoh: 123456789" }
         ],
         nominals: [
-          { name: "Rp 150.000", price: "Rp 155.000", bonus: "" },
-          { name: "Rp 300.000", price: "Rp 310.000", bonus: "" }
+          { name: "100 Coins", price: "Rp 20.000", bonus: "" }
         ]
       },
-      telkomsel: {
-        name: "Pulsa Telkomsel",
-        logo: "https://seeklogo.com/images/T/telkomsel-logo-410695A5E7-seeklogo.com.png",
+      bloodstrike: {
+        name: "Blood Strike Gold",
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRq9pYFjRHDLvalONft0-XU0zvD-YW0Yz7FSCRqwhRhUwCtavJwUT4hrRU&s",
         inputs: [
-          { label: "Nomor HP", placeholder: "08xx xxxx xxxx" }
+          { label: "User ID", placeholder: "Contoh: 123456789" }
         ],
         nominals: [
-          { name: "Rp 10.000", price: "Rp 11.000", bonus: "" },
-          { name: "Rp 50.000", price: "Rp 52.000", bonus: "" }
+          { name: "100 Gold", price: "Rp 20.000", bonus: "" }
         ]
       },
-      indosat: {
-        name: "Pulsa Indosat",
-        logo: "https://seeklogo.com/images/I/indosat-ooredoo-logo-7E6A5E6D9B-seeklogo.com.png",
+      ragnarokm: {
+        name: "Ragnarok M Eternal Love",
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPwJ1R2Md7xwE3-UZ27Xqa121fWSQJUE0rtoghQat8NA&s=10",
         inputs: [
-          { label: "Nomor HP", placeholder: "08xx xxxx xxxx" }
+          { label: "User ID", placeholder: "Contoh: 123456789" }
         ],
         nominals: [
-          { name: "Rp 10.000", price: "Rp 11.000", bonus: "" },
-          { name: "Rp 50.000", price: "Rp 52.000", bonus: "" }
+          { name: "100 Zeny", price: "Rp 20.000", bonus: "" }
         ]
       },
-      tri: {
-        name: "Pulsa Tri",
-        logo: "https://seeklogo.com/images/T/tri-indonesia-logo-7E6A5E6D9B-seeklogo.com.png",
+      zepeto: {
+        name: "Zepeto Zems",
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTw_v_bpWtV0UF40usl8jVpGrCheXlZKRY_fs-HmakMww&s",
         inputs: [
-          { label: "Nomor HP", placeholder: "08xx xxxx xxxx" }
+          { label: "User ID", placeholder: "Contoh: 123456789" }
         ],
         nominals: [
-          { name: "Rp 10.000", price: "Rp 11.000", bonus: "" },
-          { name: "Rp 50.000", price: "Rp 52.000", bonus: "" }
+          { name: "100 Zems", price: "Rp 20.000", bonus: "" }
         ]
       },
-      xl: {
-        name: "Pulsa XL",
-        logo: "https://seeklogo.com/images/X/xl-axiata-logo-7E6A5E6D9B-seeklogo.com.png",
+      codm: {
+        name: "Call of Duty Mobile CP",
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnwzWUCFxQedyh3-5jhoqvfTswF8xMFQmuSdh_WAt85w&s",
         inputs: [
-          { label: "Nomor HP", placeholder: "08xx xxxx xxxx" }
+          { label: "User ID", placeholder: "Contoh: 123456789" }
         ],
         nominals: [
-          { name: "Rp 10.000", price: "Rp 11.000", bonus: "" },
-          { name: "Rp 50.000", price: "Rp 52.000", bonus: "" }
+          { name: "80 CP", price: "Rp 15.000", bonus: "" }
         ]
       },
-      axis: {
-        name: "Pulsa Axis",
-        logo: "https://seeklogo.com/images/A/axis-logo-7E6A5E6D9B-seeklogo.com.png",
+      supersus: {
+        name: "Super SUS Golden Stars",
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_pGNtWaMmaAItQJjmSPhVyDahJiYpszdrInYNrC-Yyg&s",
         inputs: [
-          { label: "Nomor HP", placeholder: "08xx xxxx xxxx" }
+          { label: "User ID", placeholder: "Contoh: 123456789" }
         ],
         nominals: [
-          { name: "Rp 10.000", price: "Rp 11.000", bonus: "" },
-          { name: "Rp 50.000", price: "Rp 52.000", bonus: "" }
+          { name: "100 Stars", price: "Rp 20.000", bonus: "" }
         ]
       },
-      smartfren: {
-        name: "Pulsa Smartfren",
-        logo: "https://seeklogo.com/images/S/smartfren-logo-7E6A5E6D9B-seeklogo.com.png",
+      pokemonunite: {
+        name: "Pokemon UNITE AeosGems",
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvjLby7OJSpIcP8upLPAgxYfVZc1bKfKou330TGdXa6g&s",
         inputs: [
-          { label: "Nomor HP", placeholder: "08xx xxxx xxxx" }
+          { label: "User ID", placeholder: "Contoh: 123456789" }
         ],
         nominals: [
-          { name: "Rp 10.000", price: "Rp 11.000", bonus: "" },
-          { name: "Rp 50.000", price: "Rp 52.000", bonus: "" }
+          { name: "100 Gems", price: "Rp 20.000", bonus: "" }
         ]
       },
-      dana: {
-        name: "DANA",
-        logo: "https://seeklogo.com/images/D/dana-logo-7E6A5E6D9B-seeklogo.com.png",
+      ragnaroksea: {
+        name: "The Ragnarok SEA",
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrcdmKKwR3iN_RpnDb9jimkXT2AQ70DJlTk1I_1z1Wdg&s=10",
         inputs: [
-          { label: "Nomor HP DANA", placeholder: "08xx xxxx xxxx" }
+          { label: "User ID", placeholder: "Contoh: 123456789" }
         ],
         nominals: [
-          { name: "Rp 50.000", price: "Rp 52.000", bonus: "" },
-          { name: "Rp 100.000", price: "Rp 102.000", bonus: "" }
+          { name: "100 Zeny", price: "Rp 20.000", bonus: "" }
         ]
       },
-      ovo: {
-        name: "OVO",
-        logo: "https://seeklogo.com/images/O/ovo-logo-7E6A5E6D9B-seeklogo.com.png",
+      afkjourney: {
+        name: "AFK Journey",
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAFTHPN8BvO-mUbIoOfrlWfpS5-wdH8wGT-xWhskPHdw&s",
         inputs: [
-          { label: "Nomor HP OVO", placeholder: "08xx xxxx xxxx" }
+          { label: "User ID", placeholder: "Contoh: 123456789" }
         ],
         nominals: [
-          { name: "Rp 50.000", price: "Rp 52.000", bonus: "" },
-          { name: "Rp 100.000", price: "Rp 102.000", bonus: "" }
+          { name: "100 Diamonds", price: "Rp 20.000", bonus: "" }
         ]
       },
-      gopay: {
-        name: "GoPay",
-        logo: "https://seeklogo.com/images/G/gopay-logo-7E6A5E6D9B-seeklogo.com.png",
+      soulland: {
+        name: "Soul Land: New World",
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTw9ylpkI1T1heleXtDVIFR_c-B6mAL7PgRFK3qIBKLFXeDVeXGqonUOFc&s",
         inputs: [
-          { label: "Nomor HP GoPay", placeholder: "08xx xxxx xxxx" }
+          { label: "User ID", placeholder: "Contoh: 123456789" }
         ],
         nominals: [
-          { name: "Rp 50.000", price: "Rp 52.000", bonus: "" },
-          { name: "Rp 100.000", price: "Rp 102.000", bonus: "" }
+          { name: "100 Diamonds", price: "Rp 20.000", bonus: "" }
         ]
       },
-      shopeepay: {
-        name: "ShopeePay",
-        logo: "https://seeklogo.com/images/S/shopeepay-logo-7E6A5E6D9B-seeklogo.com.png",
+      ragnarokclassic: {
+        name: "Ragnarok M Classic",
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIXyEdqq66V1IUmmrzWjCjAEIe6wPPta4MWnuvAM1-MA&s",
         inputs: [
-          { label: "Nomor HP ShopeePay", placeholder: "08xx xxxx xxxx" }
+          { label: "User ID", placeholder: "Contoh: 123456789" }
         ],
         nominals: [
-          { name: "Rp 50.000", price: "Rp 52.000", bonus: "" },
-          { name: "Rp 100.000", price: "Rp 102.000", bonus: "" }
+          { name: "100 Zeny", price: "Rp 20.000", bonus: "" }
         ]
       },
-      fortnite: {
-        name: "Fortnite",
-        logo: "https://upload.wikimedia.org/wikipedia/commons/4/4c/Fortnite_logo.svg",
+      deltaforce: {
+        name: "Delta Force - Garena",
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlKe9bxwc1562t3P1x3wOkmEDCH-t2YAz5O3VJ_n6JmN78ghi0x1IPUyc&s",
         inputs: [
-          { label: "Epic ID", placeholder: "Nama Epic Anda" }
+          { label: "User ID", placeholder: "Contoh: 123456789" }
         ],
         nominals: [
-          { name: "1000 V-Bucks", price: "Rp 130.000", bonus: "" }
+          { name: "100 Coins", price: "Rp 20.000", bonus: "" }
         ]
       },
-      tiktok: {
-        name: "TikTok Live Koin",
-        logo: "https://1000logos.net/wp-content/uploads/2019/06/Tiktok_Logo.png",
+      tokogamecredits: {
+        name: "Tokogame Credits",
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFyrqhAKVXR8tmBGa4_SB2tIxCimcmWWt8EhDmtBSDNA&s",
         inputs: [
-          { label: "User ID TikTok", placeholder: "@username" }
+          { label: "User ID", placeholder: "Contoh: 123456789" }
         ],
         nominals: [
-          { name: "70 Koin", price: "Rp 15.000", bonus: "" }
+          { name: "Rp 50.000 Credits", price: "Rp 52.000", bonus: "" }
         ]
       },
-      razer: {
-        name: "Razer Gold Voucher",
-        logo: "https://media.gold.razer.com/goldweb/site/images/logo/razer-gold-silver.png",
+      mladventure: {
+        name: "Mobile Legends Adventure",
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRre4dsofyUejGWVpqParhe7Or-93YkNPkEu6Vju6Es-PoALqam13CnCVI&s",
         inputs: [
-          { label: "Email Razer", placeholder: "email@razer.com" }
+          { label: "User ID", placeholder: "Contoh: 123456789" }
         ],
         nominals: [
-          { name: "Rp 100.000", price: "Rp 105.000", bonus: "" }
+          { name: "100 Diamonds", price: "Rp 20.000", bonus: "" }
         ]
       },
-      minecraft: {
-        name: "Minecraft Minecoins",
-        logo: "https://cdn.freebiesupply.com/logos/thumbs/2x/minecraft-1-logo.png",
+      lolwc: {
+        name: "League of Legends WC",
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZfrzzNjopkpkdjOr5BIW8j_JWn2SI-7HIncA5zZ5aDg&s",
         inputs: [
-          { label: "Microsoft Account", placeholder: "email@microsoft.com" }
+          { label: "User ID", placeholder: "Contoh: 123456789" }
         ],
         nominals: [
-          { name: "1720 Minecoins", price: "Rp 150.000", bonus: "" }
+          { name: "100 WC", price: "Rp 20.000", bonus: "" }
         ]
-      }
-    };
-
-    // Ambil kode game dari URL
-    const urlParams = new URLSearchParams(window.location.search);
-    const gameCode = urlParams.get('game') || 'ml';
-    const game = gamesData[gameCode] || gamesData.ml;
-
-    // Logo & title pasti muncul
-    const logoImg = document.getElementById('game-logo');
-    logoImg.src = game.logo;
-    logoImg.alt = game.name + " Logo";
-    logoImg.onerror = () => {
-      logoImg.src = 'https://via.placeholder.com/200x130/333333/ffffff?text=' + encodeURIComponent(game.name);
-    };
-
-    document.getElementById('game-title').textContent = 'Top Up ' + game.name;
-
-    // Render input beda-beda
-    const inputContainer = documen
+      },
+      moonlightblade: {
+        name: "Moonlight Blade M",
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnXnxGKfW8oCHvM_wtzxDavgYoEAEhncxCnLTMZupctgEIDe6f0uFAYEY&s",
+        inputs: [
+          { label: "User ID", placeholder: "Contoh: 123456789" }
+        ],
+        nominals: [
+          { name: "100 Coins", price: "Rp 20.000", bonus: "" }
+        ]
+      },
+      nightcrows: {
+        name: "Night Crows",
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-EyqA6RGbOTNZOAepLI5hlo0Qd6MtJkJtmF_f4Fa3Gg&s=10",
+        inputs: [
+          { label: "User ID", placeholder: "Contoh: 123456789" }
