@@ -9,12 +9,12 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'Poppins', sans-serif; background: #fff; color: #333; }
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 15px; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
     header {
       background: #fff;
       box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      padding: 10px 0;
+      padding: 15px 0;
       position: sticky;
       top: 0;
       z-index: 1000;
@@ -24,16 +24,16 @@
       align-items: center;
       justify-content: space-between;
     }
-    .header-logo img { height: 50px; }
+    .header-logo img { height: 55px; }
     .search-bar {
       flex: 1;
       max-width: 600px;
-      margin: 0 20px;
+      margin: 0 30px;
       position: relative;
     }
     .search-bar input {
       width: 100%;
-      padding: 12px 50px 12px 20px;
+      padding: 14px 55px 14px 25px;
       border: 1px solid #ddd;
       border-radius: 30px;
       font-size: 16px;
@@ -45,113 +45,122 @@
       transform: translateY(-50%);
       background: #ff6600;
       border: none;
-      width: 40px;
-      height: 40px;
+      width: 45px;
+      height: 45px;
       border-radius: 50%;
       color: #fff;
-      font-size: 18px;
+      font-size: 20px;
       cursor: pointer;
     }
-    .header-right a { margin-left: 20px; color: #333; font-weight: 600; text-decoration: none; }
+    .header-right a { margin-left: 25px; color: #333; font-weight: 600; text-decoration: none; font-size: 16px; }
 
     .game-header {
       text-align: center;
-      margin: 40px 0 30px;
+      margin: 60px 0 50px;
     }
     .game-header img {
-      width: 160px;
-      height: 160px;
-      border-radius: 28px;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.18);
+      width: 200px;
+      height: 200px;
+      border-radius: 35px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.25);
       object-fit: cover;
-      border: 4px solid #ff6600;
+      border: 6px solid #ff6600;
     }
     .game-header h1 {
-      font-size: 36px;
-      margin: 20px 0 10px;
+      font-size: 42px;
+      margin: 30px 0 15px;
       color: #333;
     }
     .game-header p {
-      font-size: 18px;
+      font-size: 20px;
       color: #666;
+      max-width: 800px;
+      margin: 0 auto;
     }
 
     .order-form {
-      background: #f9f9f9;
-      border-radius: 16px;
-      padding: 35px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-      margin: 20px 0 40px;
+      background: linear-gradient(to bottom, #fffaf5, #f9f9f9);
+      border-radius: 20px;
+      padding: 45px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+      margin: 40px 0 60px;
     }
     .form-group {
-      margin-bottom: 20px;
+      margin-bottom: 30px;
     }
     .form-group label {
       display: block;
-      font-weight: 600;
-      margin-bottom: 8px;
+      font-weight: 700;
+      margin-bottom: 12px;
       color: #333;
+      font-size: 20px;
     }
     .form-group input {
       width: 100%;
-      padding: 16px;
-      border: 1px solid #ddd;
-      border-radius: 12px;
-      font-size: 16px;
+      padding: 20px;
+      border: 2px solid #ddd;
+      border-radius: 15px;
+      font-size: 18px;
+      transition: border 0.3s;
+    }
+    .form-group input:focus {
+      border-color: #ff6600;
+      outline: none;
     }
     .note {
-      font-size: 14px;
+      font-size: 16px;
       color: #ff6600;
-      margin-top: 8px;
-      line-height: 1.5;
+      margin-top: 12px;
+      line-height: 1.6;
+      font-weight: 500;
     }
 
     .section-title {
-      font-size: 30px;
+      font-size: 36px;
       font-weight: 700;
       text-align: center;
-      margin: 40px 0 30px;
+      margin: 60px 0 40px;
       color: #333;
     }
 
     .products-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 25px;
-      margin-bottom: 60px;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 35px;
+      margin-bottom: 80px;
     }
     .product-item {
       background: #fff;
-      border: 2px solid #eee;
-      border-radius: 18px;
-      padding: 30px;
+      border: 3px solid #eee;
+      border-radius: 25px;
+      padding: 40px;
       text-align: center;
       cursor: pointer;
-      transition: all 0.3s;
+      transition: all 0.4s ease;
     }
     .product-item:hover {
       border-color: #ff6600;
-      transform: translateY(-10px);
-      box-shadow: 0 15px 35px rgba(255,102,0,0.2);
+      transform: translateY(-15px);
+      box-shadow: 0 20px 50px rgba(255,102,0,0.3);
     }
     .product-item.selected {
       border-color: #ff6600;
-      background: #fffaf5;
-      box-shadow: 0 15px 35px rgba(255,102,0,0.3);
+      background: linear-gradient(to bottom, #fffaf5, #fff);
+      box-shadow: 0 20px 50px rgba(255,102,0,0.4);
     }
     .amount {
-      font-size: 30px;
+      font-size: 36px;
       font-weight: 700;
       color: #ff6600;
     }
     .bonus {
-      font-size: 16px;
+      font-size: 18px;
       color: #28a745;
-      font-weight: 600;
-      margin: 12px 0;
+      font-weight: 700;
+      margin: 15px 0;
     }
     .price {
-      font-size: 26px;
+      font-size: 32px;
       font-weight: 700;
       color: #333;
     }
@@ -159,31 +168,34 @@
     .proceed-btn {
       display: block;
       width: 100%;
-      max-width: 550px;
-      margin: 60px auto;
-      padding: 22px;
-      background: #ff6600;
+      max-width: 700px;
+      margin: 80px auto;
+      padding: 28px;
+      background: linear-gradient(to right, #ff6600, #ff8800);
       color: #fff;
-      font-size: 22px;
-      font-weight: 600;
+      font-size: 26px;
+      font-weight: 700;
       border: none;
-      border-radius: 14px;
+      border-radius: 20px;
       cursor: pointer;
-      transition: background 0.3s;
+      box-shadow: 0 10px 30px rgba(255,102,0,0.4);
+      transition: all 0.3s;
     }
-    .proceed-btn:hover { background: #e55a00; }
+    .proceed-btn:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(255,102,0,0.5); }
     .proceed-btn:disabled {
       background: #ccc;
       cursor: not-allowed;
+      transform: none;
     }
 
     footer {
       background: #333;
       color: #fff;
       text-align: center;
-      padding: 40px 20px;
-      margin-top: 60px;
+      padding: 60px 20px;
+      margin-top: 100px;
     }
+    footer p { font-size: 16px; margin: 10px 0; }
   </style>
 </head>
 <body>
@@ -194,34 +206,34 @@
         <img src="images/logo.png" alt="RHF">
       </div>
       <div class="search-bar">
-        <input type="text" placeholder="Cari di RHF...">
+        <input type="text" placeholder="Cari game atau produk...">
         <button>🔍</button>
       </div>
       <div class="header-right">
-        <a href="index.html">Home</a>
-        <a href="#">🛒</a>
+        <a href="index.html">🏠 Home</a>
+        <a href="#">🛒 Keranjang</a>
       </div>
     </div>
   </header>
 
   <div class="container">
 
-    <div class="game-header" id="gameHeader">
+    <div class="game-header">
       <img id="gameIcon" src="" alt="Game Icon">
-      <h1 id="gameTitle">Loading...</h1>
-      <p id="gameDesc">Top Up Termurah & Tercepat - Proses Instan 24/7</p>
+      <h1 id="gameTitle">Mobile Legends Diamonds</h1>
+      <p id="gameDesc">Top Up Termurah, Tercepat & Terpercaya - Proses Instan 24 Jam Nonstop</p>
     </div>
 
     <div class="order-form">
       <div class="form-group">
         <label id="idLabel">Masukkan User ID</label>
-        <input type="text" id="userId" placeholder="Contoh: 123456789">
-        <div class="note" id="idNote">Cara menemukan User ID: Buka game → Klik avatar/profile → Salin ID.</div>
+        <input type="text" id="userId" placeholder="Contoh: 123456789(1234)">
+        <div class="note" id="idNote">Cara cek ID: Buka game → Profile → Salin User ID & Zone ID jika ada.</div>
       </div>
       <div class="form-group" id="serverGroup" style="display:none;">
         <label>Zone / Server ID</label>
-        <input type="text" id="serverId" placeholder="Contoh: 10001 (jika diperlukan)">
-        <div class="note">Hanya untuk game tertentu seperti Genshin Impact atau Valorant.</div>
+        <input type="text" id="serverId" placeholder="Contoh: 1234">
+        <div class="note">Wajib untuk game seperti Genshin Impact atau Valorant.</div>
       </div>
     </div>
 
@@ -229,85 +241,124 @@
 
     <div class="products-grid" id="productsGrid"></div>
 
-    <button class="proceed-btn" id="proceedBtn" disabled>Lanjut ke Pembayaran</button>
+    <button class="proceed-btn" id="proceedBtn" disabled>Lanjut Pembayaran via WhatsApp</button>
 
   </div>
 
   <footer>
     <p>&copy; 2026 RHF - Dibuat oleh RHF SETORS. All Rights Reserved.</p>
-    <p>Support 24/7: wa.me/081234567890</p>
+    <p>Support 24/7: wa.me/081234567890 | Proses Cepat & Aman</p>
   </footer>
 
   <script>
     const gamesData = {
-      ml: { title: "Mobile Legends Diamonds", icon: "https://img.esports.id/img/article/637920200914081250.png", needServer: false, note: "Buka game → Klik avatar pojok kiri atas → Salin User ID (dan Zone ID jika ada).", products: [{amount:"86 Diamonds",bonus:"+7 Bonus",price:"Rp 22.000"},{amount:"172 Diamonds",bonus:"+14 Bonus",price:"Rp 44.000"},{amount:"257 Diamonds",bonus:"+31 Bonus",price:"Rp 66.000"},{amount:"344 Diamonds",bonus:"+45 Bonus",price:"Rp 88.000"},{amount:"429 Diamonds",bonus:"+66 Bonus",price:"Rp 110.000"},{amount:"568 Diamonds",bonus:"+92 Bonus",price:"Rp 132.000"},{amount:"706 Diamonds",bonus:"+129 Bonus",price:"Rp 176.000"},{amount:"878 Diamonds",bonus:"+181 Bonus",price:"Rp 220.000"},{amount:"1412 Diamonds",bonus:"+338 Bonus",price:"Rp 352.000"},{amount:"2195 Diamonds",bonus:"+569 Bonus",price:"Rp 550.000"},{amount:"3568 Diamonds",bonus:"+932 Bonus",price:"Rp 880.000"}] },
-      ff: { title: "Free Fire Diamonds", icon: "https://iconlogovector.com/uploads/images/2025/08/lg-6893f81b6ef79-FREE-FIRE.webp", needServer: false, note: "Buka game → Klik profile → Salin Player ID.", products: [{amount:"70 Diamonds",bonus:"",price:"Rp 10.000"},{amount:"140 Diamonds",bonus:"",price:"Rp 20.000"},{amount:"355 Diamonds",bonus:"",price:"Rp 50.000"},{amount:"720 Diamonds",bonus:"",price:"Rp 100.000"},{amount:"1450 Diamonds",bonus:"",price:"Rp 200.000"},{amount:"2180 Diamonds",bonus:"",price:"Rp 300.000"},{amount:"3640 Diamonds",bonus:"",price:"Rp 500.000"},{amount:"7290 Diamonds",bonus:"",price:"Rp 1.000.000"},{amount:"Weekly Membership",bonus:"",price:"Rp 35.000"},{amount:"Monthly Membership",bonus:"",price:"Rp 120.000"}] },
-      pubg: { title: "PUBG Mobile UC", icon: "https://images.seeklogo.com/logo-png/35/1/pubg-logo-png_seeklogo-352312.png", needServer: false, note: "Buka game → Profile → Salin Player ID.", products: [{amount:"60 UC",bonus:"",price:"Rp 13.000"},{amount:"325 UC",bonus:"+25 Bonus",price:"Rp 65.000"},{amount:"660 UC",bonus:"+60 Bonus",price:"Rp 130.000"},{amount:"1625 UC",bonus:"+325 Bonus",price:"Rp 320.000"},{amount:"3850 UC",bonus:"+850 Bonus",price:"Rp 750.000"}] },
-      hok: { title: "Honor of Kings Tokens", icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMmZxVql5rDkrf9F18ENUODNWfWn96_ZDfGyAD3gUC8g&s=10", needServer: false, note: "Buka game → Profile → Salin ID.", products: [{amount:"60 Tokens",bonus:"",price:"Rp 12.000"},{amount:"300 Tokens",bonus:"+30 Bonus",price:"Rp 60.000"},{amount:"980 Tokens",bonus:"+110 Bonus",price:"Rp 195.000"},{amount:"1980 Tokens",bonus:"+280 Bonus",price:"Rp 390.000"}] },
-      bleach: { title: "Bleach Tokens", icon: "https://liputangampongnews.id/assets/img/berita/20210920_183731.jpg", needServer: false, note: "Masukkan User ID game.", products: [{amount:"100 Tokens",bonus:"",price:"Rp 15.000"},{amount:"500 Tokens",bonus:"+50 Bonus",price:"Rp 75.000"},{amount:"1000 Tokens",bonus:"+150 Bonus",price:"Rp 150.000"}] },
-      bigo: { title: "Bigo Live Diamonds", icon: "https://images.seeklogo.com/logo-png/47/1/bigo-live-logo-png_seeklogo-477968.png", needServer: false, note: "Masukkan User ID Bigo Live.", products: [{amount:"100 Diamonds",bonus:"",price:"Rp 20.000"},{amount:"500 Diamonds",bonus:"",price:"Rp 100.000"},{amount:"1000 Diamonds",bonus:"",price:"Rp 200.000"}] },
-      hsr: { title: "Honkai: Star Rail Shard", icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSd4h06YHJT_hOpOlNoiQndwaOYC6ImQCvEkA3QQXnh1g&s", needServer: false, note: "Masukkan UID (lihat di profile game).", products: [{amount:"60 Oneiric Shard",bonus:"",price:"Rp 15.000"},{amount:"300 +30 Shard",bonus:"",price:"Rp 75.000"},{amount:"980 +110 Shard",bonus:"",price:"Rp 240.000"},{amount:"1980 +260 Shard",bonus:"",price:"Rp 480.000"},{amount:"3280 +600 Shard",bonus:"",price:"Rp 790.000"}] },
-      valorant: { title: "Valorant Points", icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSPUSKwrosbcLh6qXmw79qz-Dl1vMOvBmP1ydujtvIsA&s", needServer: true, note: "Masukkan Riot ID + Tagline (contoh: player#ID123).", products: [{amount:"475 VP",bonus:"",price:"Rp 60.000"},{amount:"1000 VP",bonus:"",price:"Rp 120.000"},{amount:"2100 VP",bonus:"",price:"Rp 240.000"},{amount:"3600 VP",bonus:"",price:"Rp 400.000"},{amount:"5350 VP",bonus:"",price:"Rp 600.000"}] },
-      genshin: { title: "Genshin Impact Crystals", icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4z_craukzS9fmSpRGHgqF8gxc34428E8fryReuCt6Nw&s", needServer: true, note: "Masukkan UID (lihat di pojok kiri bawah game).", products: [{amount:"60 Crystals",bonus:"",price:"Rp 15.000"},{amount:"300 +30 Crystals",bonus:"",price:"Rp 75.000"},{amount:"980 +110 Crystals",bonus:"",price:"Rp 240.000"},{amount:"1980 +260 Crystals",bonus:"",price:"Rp 480.000"},{amount:"3280 +600 Crystals",bonus:"",price:"Rp 790.000"},{amount:"6480 +1600 Crystals",bonus:"",price:"Rp 1.550.000"}] },
-      kingschoice: { title: "King's Choice Diamonds", icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwurfDWmyuVtOqh1MSuTZk8hHdttjx3tr6micedK_LAVLwOPv7a0T154A&s", needServer: false, note: "Masukkan User ID.", products: [{amount:"100 Diamonds",bonus:"",price:"Rp 15.000"},{amount:"500 Diamonds",bonus:"+50 Bonus",price:"Rp 75.000"}] },
-      arena: { title: "Arena Breakout Bonds", icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZsQWTUmJWzDmBbIDtIylQtCUu67sSijV5LnGs7z1f1Q&s", needServer: false, note: "Masukkan Player ID.", products: [{amount:"60 Bonds",bonus:"",price:"Rp 12.000"},{amount:"300 Bonds",bonus:"+30",price:"Rp 60.000"}] },
-      metalslug: { title: "Metal Slug: Awakening", icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkx8fy5MOauLsJ6EykHXc4aBMEnc1TICvPGJGwvAtuMg&s", needServer: false, note: "Masukkan ID.", products: [{amount:"100 Coins",bonus:"",price:"Rp 15.000"},{amount:"500 Coins",bonus:"+50",price:"Rp 75.000"}] },
-      bloodstrike: { title: "Blood Strike Gold", icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRq9pYFjRHDLvalONft0-XU0zvD-YW0Yz7FSCRqwhRhUwCtavJwUT4hrRU&s", needServer: false, note: "Masukkan ID.", products: [{amount:"100 Gold",bonus:"",price:"Rp 15.000"},{amount:"500 Gold",bonus:"",price:"Rp 75.000"}] },
-      ragnarokm: { title: "Ragnarok M Eternal Love", icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPwJ1R2Md7xwE3-UZ27Xqa121fWSQJUE0rtoghQat8NA&s=10", needServer: false, note: "Masukkan ID.", products: [{amount:"Big Cat Coin Pack",bonus:"",price:"Rp 50.000"}] },
-      zepeto: { title: "Zepeto Zems", icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTw_v_bpWtV0UF40usl8jVpGrCheXlZKRY_fs-HmakMww&s", needServer: false, note: "Masukkan ID.", products: [{amount:"100 Zems",bonus:"",price:"Rp 20.000"}] },
-      codm: { title: "Call of Duty Mobile CP", icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnwzWUCFxQedyh3-5jhoqvfTswF8xMFQmuSdh_WAt85w&s", needServer: false, note: "Masukkan Player ID.", products: [{amount:"80 CP",bonus:"",price:"Rp 12.000"},{amount:"420 CP",bonus:"+40 Bonus",price:"Rp 60.000"},{amount:"880 CP",bonus:"+120 Bonus",price:"Rp 120.000"}] },
-      supersus: { title: "Super SUS Golden Stars", icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_pGNtWaMmaAItQJjmSPhVyDahJiYpszdrInYNrC-Yyg&s", needServer: false, note: "Masukkan ID.", products: [{amount:"100 Stars",bonus:"",price:"Rp 15.000"}] },
-      pokemonunite: { title: "Pokemon UNITE AeosGems", icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvjLby7OJSpIcP8upLPAgxYfVZc1bKfKou330TGdXa6g&s", needServer: false, note: "Masukkan ID.", products: [{amount:"60 Gems",bonus:"",price:"Rp 12.000"},{amount:"300 Gems",bonus:"",price:"Rp 60.000"}] },
-      // Untuk pulsa & voucher lain, fallback ke contoh sederhana atau tambah kalau perlu
-      indosat: { title: "Pulsa Indosat", icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTM5Q9oR5hxSeKjs0WCZ60792UxJxvhmoSx1iwkZ9wm8A&s", needServer: false, note: "Masukkan nomor HP Indosat.", products: [{amount:"Rp 10.000",bonus:"",price:"Rp 11.000"},{amount:"Rp 25.000",bonus:"",price:"Rp 26.000"},{amount:"Rp 50.000",bonus:"",price:"Rp 51.000"},{amount:"Rp 100.000",bonus:"",price:"Rp 101.000"}] },
-      // Tambah lebih banyak kalau mau, atau biarkan fallback ke ML
+      ml: { title: "Mobile Legends Diamonds", icon: "https://img.esports.id/img/article/637920200914081250.png", needServer: false, note: "Buka Mobile Legends → Klik avatar pojok kiri atas → Salin User ID (dan Zone ID di dalam kurung jika ada).", products: [
+        {amount:"86 Diamonds", bonus:"+8 Bonus", price:"Rp 22.000"},
+        {amount:"172 Diamonds", bonus:"+17 Bonus", price:"Rp 44.000"},
+        {amount:"257 Diamonds", bonus:"+34 Bonus", price:"Rp 65.000"},
+        {amount:"344 Diamonds", bonus:"+52 Bonus", price:"Rp 87.000"},
+        {amount:"429 Diamonds", bonus:"+71 Bonus", price:"Rp 109.000"},
+        {amount:"568 Diamonds", bonus:"+97 Bonus", price:"Rp 143.000"},
+        {amount:"706 Diamonds", bonus:"+134 Bonus", price:"Rp 177.000"},
+        {amount:"878 Diamonds", bonus:"+178 Bonus", price:"Rp 221.000"},
+        {amount:"963 Diamonds", bonus:"+213 Bonus", price:"Rp 242.000"},
+        {amount:"1412 Diamonds", bonus:"+338 Bonus", price:"Rp 354.000"},
+        {amount:"2195 Diamonds", bonus:"+569 Bonus", price:"Rp 550.000"},
+        {amount:"3074 Diamonds", bonus:"+856 Bonus", price:"Rp 770.000"}
+      ]},
+      ff: { title: "Free Fire Diamonds", icon: "https://iconlogovector.com/uploads/images/2025/08/lg-6893f81b6ef79-FREE-FIRE.webp", needServer: false, note: "Buka Free Fire → Klik profile → Salin Player ID.", products: [
+        {amount:"70 Diamonds", bonus:"", price:"Rp 10.000"},
+        {amount:"140 Diamonds", bonus:"", price:"Rp 20.000"},
+        {amount:"355 Diamonds", bonus:"", price:"Rp 50.000"},
+        {amount:"720 Diamonds", bonus:"", price:"Rp 100.000"},
+        {amount:"1450 Diamonds", bonus:"", price:"Rp 200.000"},
+        {amount:"2180 Diamonds", bonus:"", price:"Rp 300.000"},
+        {amount:"Weekly Membership", bonus:"", price:"Rp 35.000"},
+        {amount:"Monthly Membership", bonus:"", price:"Rp 120.000"}
+      ]},
+      pubg: { title: "PUBG Mobile UC", icon: "https://images.seeklogo.com/logo-png/35/1/pubg-logo-png_seeklogo-352312.png", needServer: false, note: "Buka PUBG Mobile → Profile → Salin Player ID.", products: [
+        {amount:"60 UC", bonus:"", price:"Rp 13.000"},
+        {amount:"325 UC", bonus:"+35 Bonus", price:"Rp 65.000"},
+        {amount:"660 UC", bonus:"+70 Bonus", price:"Rp 130.000"},
+        {amount:"1625 UC", bonus:"+375 Bonus", price:"Rp 325.000"}
+      ]},
+      hok: { title: "Honor of Kings Tokens", icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMmZxVql5rDkrf9F18ENUODNWfWn96_ZDfGyAD3gUC8g&s=10", needServer: false, note: "Buka game → Profile → Salin ID.", products: [
+        {amount:"60 Tokens", bonus:"", price:"Rp 12.000"},
+        {amount:"300 Tokens", bonus:"+30 Bonus", price:"Rp 60.000"},
+        {amount:"980 Tokens", bonus:"+140 Bonus", price:"Rp 195.000"}
+      ]},
+      valorant: { title: "Valorant Points", icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSPUSKwrosbcLh6qXmw79qz-Dl1vMOvBmP1ydujtvIsA&s", needServer: true, note: "Masukkan Riot ID + Tagline (contoh: player#SEA).", products: [
+        {amount:"475 Points", bonus:"", price:"Rp 60.000"},
+        {amount:"1000 Points", bonus:"", price:"Rp 120.000"},
+        {amount:"2050 Points", bonus:"", price:"Rp 240.000"},
+        {amount:"3600 Points", bonus:"", price:"Rp 420.000"}
+      ]},
+      genshin: { title: "Genshin Impact Genesis Crystals", icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4z_craukzS9fmSpRGHgqF8gxc34428E8fryReuCt6Nw&s", needServer: true, note: "Masukkan UID (lihat pojok kiri bawah in-game).", products: [
+        {amount:"60 Crystals", bonus:"", price:"Rp 15.000"},
+        {amount:"300 +30 Crystals", bonus:"", price:"Rp 75.000"},
+        {amount:"980 +110 Crystals", bonus:"", price:"Rp 240.000"},
+        {amount:"1980 +260 Crystals", bonus:"", price:"Rp 480.000"},
+        {amount:"3280 +600 Crystals", bonus:"", price:"Rp 790.000"}
+      ]},
+      hsr: { title: "Honkai: Star Rail Oneiric Shard", icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSd4h06YHJT_hOpOlNoiQndwaOYC6ImQCvEkA3QQXnh1g&s", needServer: false, note: "Masukkan UID dari profile game.", products: [
+        {amount:"60 Shard", bonus:"", price:"Rp 15.000"},
+        {amount:"300 +30 Shard", bonus:"", price:"Rp 75.000"},
+        {amount:"980 +110 Shard", bonus:"", price:"Rp 240.000"}
+      ]},
+      codm: { title: "Call of Duty Mobile CP", icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnwzWUCFxQedyh3-5jhoqvfTswF8xMFQmuSdh_WAt85w&s", needServer: false, note: "Masukkan Player ID.", products: [
+        {amount:"80 CP", bonus:"", price:"Rp 12.000"},
+        {amount:"400 +40 CP", bonus:"", price:"Rp 60.000"},
+        {amount:"800 +120 CP", bonus:"", price:"Rp 120.000"}
+      ]},
+      // Tambah game lain kalau perlu, fallback ke ML
     };
 
-    const urlParams = new URLSearchParams(window.location.search);
-    const gameKey = urlParams.get('game') || 'ml';
-    const gameData = gamesData[gameKey] || gamesData.ml; // fallback ke ML jika game tidak ada
+    // Ambil game dari URL
+    const params = new URLSearchParams(window.location.search);
+    const game = params.get('game') || 'ml';
+    const data = gamesData[game] || gamesData.ml;
 
-    // Update tampilan
-    document.getElementById('gameIcon').src = gameData.icon;
-    document.getElementById('gameIcon').onerror = () => { document.getElementById('gameIcon').src = 'https://via.placeholder.com/160?text=No+Image'; }; // fallback jika icon error
-    document.getElementById('gameTitle').textContent = gameData.title;
-    document.getElementById('idLabel').textContent = `Masukkan User ID / Nomor (${gameData.title})`;
-    document.getElementById('idNote').textContent = gameData.note;
+    // Update halaman
+    document.getElementById('gameIcon').src = data.icon;
+    document.getElementById('gameTitle').textContent = data.title;
+    document.getElementById('gameDesc').textContent = `Top Up ${data.title} Termurah & Tercepat - Proses Instan 24/7`;
+    document.getElementById('idLabel').textContent = `Masukkan User ID (${data.title.split(' ')[0]})`;
+    document.getElementById('idNote').textContent = data.note;
 
-    if (gameData.needServer) {
+    if (data.needServer) {
       document.getElementById('serverGroup').style.display = 'block';
     }
 
-    // Load products
+    // Render produk
     const grid = document.getElementById('productsGrid');
-    gameData.products.forEach(prod => {
-      const item = document.createElement('div');
-      item.className = 'product-item';
-      item.innerHTML = `
-        <div class="amount">${prod.amount}</div>
-        \( {prod.bonus ? `<div class="bonus"> \){prod.bonus}</div>` : ''}
-        <div class="price">${prod.price}</div>
+    data.products.forEach(p => {
+      const card = document.createElement('div');
+      card.className = 'product-item';
+      card.innerHTML = `
+        <div class="amount">${p.amount}</div>
+        \( {p.bonus ? `<div class="bonus"> \){p.bonus}</div>` : ''}
+        <div class="price">${p.price}</div>
       `;
-      item.onclick = () => {
-        document.querySelectorAll('.product-item').forEach(el => el.classList.remove('selected'));
-        item.classList.add('selected');
+      card.addEventListener('click', () => {
+        document.querySelectorAll('.product-item').forEach(c => c.classList.remove('selected'));
+        card.classList.add('selected');
         document.getElementById('proceedBtn').disabled = false;
-      };
-      grid.appendChild(item);
+      });
+      grid.appendChild(card);
     });
 
-    // Proceed button
-    document.getElementById('proceedBtn').onclick = () => {
-      const userId = document.getElementById('userId').value.trim();
-      if (!userId) return alert('Masukkan User ID / Nomor dulu ya!');
+    // Tombol lanjut
+    document.getElementById('proceedBtn').addEventListener('click', () => {
+      const id = document.getElementById('userId').value.trim();
+      if (!id) return alert('User ID harus diisi!');
       const selected = document.querySelector('.product-item.selected');
-      if (!selected) return alert('Pilih nominal dulu!');
+      if (!selected) return alert('Pilih nominal top up dulu!');
 
-      const amount = selected.querySelector('.amount').textContent;
-      const price = selected.querySelector('.price').textContent;
+      const nominal = selected.querySelector('.amount').textContent;
+      const harga = selected.querySelector('.price').textContent;
 
-      alert(`Pesanan Siap!\n\nGame: ${gameData.title}\nID: ${userId}\nNominal: ${amount}\nHarga: ${price}\n\nHubungi Admin WhatsApp untuk konfirmasi pembayaran & proses instan!`);
-    };
+      alert(`✅ Pesanan Berhasil!\n\nGame: ${data.title}\nUser ID: ${id}\nNominal: ${nominal}\nHarga: ${harga}\n\nSilakan hubungi Admin WhatsApp untuk pembayaran & proses instan!`);
+    });
   </script>
 
 </body>
