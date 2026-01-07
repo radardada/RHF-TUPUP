@@ -207,11 +207,11 @@
       </div>
       <div class="search-bar">
         <input type="text" placeholder="Cari game atau produk...">
-        <button>🔍</button>
+        <button><i class="fas fa-search"></i></button>
       </div>
       <div class="header-right">
-        <a href="index.html">🏠 Home</a>
-        <a href="#">🛒 Keranjang</a>
+        <a href="index.html">Home</a>
+        <a href="#">Keranjang</a>
       </div>
     </div>
   </header>
@@ -220,20 +220,20 @@
 
     <div class="game-header">
       <img id="gameIcon" src="" alt="Game Icon">
-      <h1 id="gameTitle">Mobile Legends Diamonds</h1>
-      <p id="gameDesc">Top Up Termurah, Tercepat & Terpercaya - Proses Instan 24 Jam Nonstop</p>
+      <h1 id="gameTitle">Loading...</h1>
+      <p id="gameDesc">Top Up Termurah dan Tercepat - Proses Instan 24 Jam</p>
     </div>
 
     <div class="order-form">
       <div class="form-group">
         <label id="idLabel">Masukkan User ID</label>
-        <input type="text" id="userId" placeholder="Contoh: 123456789(1234)">
-        <div class="note" id="idNote">Cara cek ID: Buka game → Profile → Salin User ID & Zone ID jika ada.</div>
+        <input type="text" id="userId" placeholder="Contoh: 123456789">
+        <div class="note" id="idNote">Cara menemukan User ID: Buka game > Profile > Salin ID yang tertera.</div>
       </div>
       <div class="form-group" id="serverGroup" style="display:none;">
         <label>Zone / Server ID</label>
         <input type="text" id="serverId" placeholder="Contoh: 1234">
-        <div class="note">Wajib untuk game seperti Genshin Impact atau Valorant.</div>
+        <div class="note">Diperlukan untuk game tertentu seperti Genshin Impact atau Valorant.</div>
       </div>
     </div>
 
@@ -241,125 +241,260 @@
 
     <div class="products-grid" id="productsGrid"></div>
 
-    <button class="proceed-btn" id="proceedBtn" disabled>Lanjut Pembayaran via WhatsApp</button>
+    <button class="proceed-btn" id="proceedBtn" disabled>Lanjut ke Pembayaran</button>
 
   </div>
 
   <footer>
-    <p>&copy; 2026 RHF - Dibuat oleh RHF SETORS. All Rights Reserved.</p>
-    <p>Support 24/7: wa.me/081234567890 | Proses Cepat & Aman</p>
+    <p>© 2026 RHF - Dibuat oleh RHF SETORS. All Rights Reserved.</p>
+    <p>Support 24/7: wa.me/081234567890</p>
   </footer>
 
   <script>
     const gamesData = {
-      ml: { title: "Mobile Legends Diamonds", icon: "https://img.esports.id/img/article/637920200914081250.png", needServer: false, note: "Buka Mobile Legends → Klik avatar pojok kiri atas → Salin User ID (dan Zone ID di dalam kurung jika ada).", products: [
-        {amount:"86 Diamonds", bonus:"+8 Bonus", price:"Rp 22.000"},
-        {amount:"172 Diamonds", bonus:"+17 Bonus", price:"Rp 44.000"},
-        {amount:"257 Diamonds", bonus:"+34 Bonus", price:"Rp 65.000"},
-        {amount:"344 Diamonds", bonus:"+52 Bonus", price:"Rp 87.000"},
-        {amount:"429 Diamonds", bonus:"+71 Bonus", price:"Rp 109.000"},
-        {amount:"568 Diamonds", bonus:"+97 Bonus", price:"Rp 143.000"},
-        {amount:"706 Diamonds", bonus:"+134 Bonus", price:"Rp 177.000"},
-        {amount:"878 Diamonds", bonus:"+178 Bonus", price:"Rp 221.000"},
-        {amount:"963 Diamonds", bonus:"+213 Bonus", price:"Rp 242.000"},
-        {amount:"1412 Diamonds", bonus:"+338 Bonus", price:"Rp 354.000"},
-        {amount:"2195 Diamonds", bonus:"+569 Bonus", price:"Rp 550.000"},
-        {amount:"3074 Diamonds", bonus:"+856 Bonus", price:"Rp 770.000"}
-      ]},
-      ff: { title: "Free Fire Diamonds", icon: "https://iconlogovector.com/uploads/images/2025/08/lg-6893f81b6ef79-FREE-FIRE.webp", needServer: false, note: "Buka Free Fire → Klik profile → Salin Player ID.", products: [
-        {amount:"70 Diamonds", bonus:"", price:"Rp 10.000"},
-        {amount:"140 Diamonds", bonus:"", price:"Rp 20.000"},
-        {amount:"355 Diamonds", bonus:"", price:"Rp 50.000"},
-        {amount:"720 Diamonds", bonus:"", price:"Rp 100.000"},
-        {amount:"1450 Diamonds", bonus:"", price:"Rp 200.000"},
-        {amount:"2180 Diamonds", bonus:"", price:"Rp 300.000"},
-        {amount:"Weekly Membership", bonus:"", price:"Rp 35.000"},
-        {amount:"Monthly Membership", bonus:"", price:"Rp 120.000"}
-      ]},
-      pubg: { title: "PUBG Mobile UC", icon: "https://images.seeklogo.com/logo-png/35/1/pubg-logo-png_seeklogo-352312.png", needServer: false, note: "Buka PUBG Mobile → Profile → Salin Player ID.", products: [
-        {amount:"60 UC", bonus:"", price:"Rp 13.000"},
-        {amount:"325 UC", bonus:"+35 Bonus", price:"Rp 65.000"},
-        {amount:"660 UC", bonus:"+70 Bonus", price:"Rp 130.000"},
-        {amount:"1625 UC", bonus:"+375 Bonus", price:"Rp 325.000"}
-      ]},
-      hok: { title: "Honor of Kings Tokens", icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMmZxVql5rDkrf9F18ENUODNWfWn96_ZDfGyAD3gUC8g&s=10", needServer: false, note: "Buka game → Profile → Salin ID.", products: [
-        {amount:"60 Tokens", bonus:"", price:"Rp 12.000"},
-        {amount:"300 Tokens", bonus:"+30 Bonus", price:"Rp 60.000"},
-        {amount:"980 Tokens", bonus:"+140 Bonus", price:"Rp 195.000"}
-      ]},
-      valorant: { title: "Valorant Points", icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSPUSKwrosbcLh6qXmw79qz-Dl1vMOvBmP1ydujtvIsA&s", needServer: true, note: "Masukkan Riot ID + Tagline (contoh: player#SEA).", products: [
-        {amount:"475 Points", bonus:"", price:"Rp 60.000"},
-        {amount:"1000 Points", bonus:"", price:"Rp 120.000"},
-        {amount:"2050 Points", bonus:"", price:"Rp 240.000"},
-        {amount:"3600 Points", bonus:"", price:"Rp 420.000"}
-      ]},
-      genshin: { title: "Genshin Impact Genesis Crystals", icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4z_craukzS9fmSpRGHgqF8gxc34428E8fryReuCt6Nw&s", needServer: true, note: "Masukkan UID (lihat pojok kiri bawah in-game).", products: [
-        {amount:"60 Crystals", bonus:"", price:"Rp 15.000"},
-        {amount:"300 +30 Crystals", bonus:"", price:"Rp 75.000"},
-        {amount:"980 +110 Crystals", bonus:"", price:"Rp 240.000"},
-        {amount:"1980 +260 Crystals", bonus:"", price:"Rp 480.000"},
-        {amount:"3280 +600 Crystals", bonus:"", price:"Rp 790.000"}
-      ]},
-      hsr: { title: "Honkai: Star Rail Oneiric Shard", icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSd4h06YHJT_hOpOlNoiQndwaOYC6ImQCvEkA3QQXnh1g&s", needServer: false, note: "Masukkan UID dari profile game.", products: [
-        {amount:"60 Shard", bonus:"", price:"Rp 15.000"},
-        {amount:"300 +30 Shard", bonus:"", price:"Rp 75.000"},
-        {amount:"980 +110 Shard", bonus:"", price:"Rp 240.000"}
-      ]},
-      codm: { title: "Call of Duty Mobile CP", icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnwzWUCFxQedyh3-5jhoqvfTswF8xMFQmuSdh_WAt85w&s", needServer: false, note: "Masukkan Player ID.", products: [
-        {amount:"80 CP", bonus:"", price:"Rp 12.000"},
-        {amount:"400 +40 CP", bonus:"", price:"Rp 60.000"},
-        {amount:"800 +120 CP", bonus:"", price:"Rp 120.000"}
-      ]},
-      // Tambah game lain kalau perlu, fallback ke ML
-    };
-
-    // Ambil game dari URL
-    const params = new URLSearchParams(window.location.search);
-    const game = params.get('game') || 'ml';
-    const data = gamesData[game] || gamesData.ml;
-
-    // Update halaman
-    document.getElementById('gameIcon').src = data.icon;
-    document.getElementById('gameTitle').textContent = data.title;
-    document.getElementById('gameDesc').textContent = `Top Up ${data.title} Termurah & Tercepat - Proses Instan 24/7`;
-    document.getElementById('idLabel').textContent = `Masukkan User ID (${data.title.split(' ')[0]})`;
-    document.getElementById('idNote').textContent = data.note;
-
-    if (data.needServer) {
-      document.getElementById('serverGroup').style.display = 'block';
-    }
-
-    // Render produk
-    const grid = document.getElementById('productsGrid');
-    data.products.forEach(p => {
-      const card = document.createElement('div');
-      card.className = 'product-item';
-      card.innerHTML = `
-        <div class="amount">${p.amount}</div>
-        \( {p.bonus ? `<div class="bonus"> \){p.bonus}</div>` : ''}
-        <div class="price">${p.price}</div>
-      `;
-      card.addEventListener('click', () => {
-        document.querySelectorAll('.product-item').forEach(c => c.classList.remove('selected'));
-        card.classList.add('selected');
-        document.getElementById('proceedBtn').disabled = false;
-      });
-      grid.appendChild(card);
-    });
-
-    // Tombol lanjut
-    document.getElementById('proceedBtn').addEventListener('click', () => {
-      const id = document.getElementById('userId').value.trim();
-      if (!id) return alert('User ID harus diisi!');
-      const selected = document.querySelector('.product-item.selected');
-      if (!selected) return alert('Pilih nominal top up dulu!');
-
-      const nominal = selected.querySelector('.amount').textContent;
-      const harga = selected.querySelector('.price').textContent;
-
-      alert(`✅ Pesanan Berhasil!\n\nGame: ${data.title}\nUser ID: ${id}\nNominal: ${nominal}\nHarga: ${harga}\n\nSilakan hubungi Admin WhatsApp untuk pembayaran & proses instan!`);
-    });
-  </script>
-
-</body>
-</html>
+      ml: { 
+        title: "Mobile Legends Diamonds", 
+        icon: "https://img.esports.id/img/article/637920200914081250.png", 
+        needServer: false, 
+        note: "Buka Mobile Legends > Klik avatar pojok kiri atas > Salin User ID dan Zone ID jika diperlukan.",
+        products: [
+          {amount:"86 Diamonds", bonus:"+8 Bonus", price:"Rp 22.000"},
+          {amount:"172 Diamonds", bonus:"+17 Bonus", price:"Rp 44.000"},
+          {amount:"257 Diamonds", bonus:"+34 Bonus", price:"Rp 65.000"},
+          {amount:"344 Diamonds", bonus:"+52 Bonus", price:"Rp 87.000"},
+          {amount:"429 Diamonds", bonus:"+71 Bonus", price:"Rp 109.000"},
+          {amount:"568 Diamonds", bonus:"+97 Bonus", price:"Rp 143.000"},
+          {amount:"706 Diamonds", bonus:"+134 Bonus", price:"Rp 177.000"},
+          {amount:"878 Diamonds", bonus:"+178 Bonus", price:"Rp 221.000"},
+          {amount:"1412 Diamonds", bonus:"+338 Bonus", price:"Rp 354.000"},
+          {amount:"2195 Diamonds", bonus:"+569 Bonus", price:"Rp 550.000"}
+        ]
+      },
+      ff: { 
+        title: "Free Fire Diamonds", 
+        icon: "https://iconlogovector.com/uploads/images/2025/08/lg-6893f81b6ef79-FREE-FIRE.webp", 
+        needServer: false, 
+        note: "Buka Free Fire > Klik profile > Salin Player ID.",
+        products: [
+          {amount:"70 Diamonds", bonus:"", price:"Rp 10.000"},
+          {amount:"140 Diamonds", bonus:"", price:"Rp 20.000"},
+          {amount:"355 Diamonds", bonus:"", price:"Rp 50.000"},
+          {amount:"720 Diamonds", bonus:"", price:"Rp 100.000"},
+          {amount:"1450 Diamonds", bonus:"", price:"Rp 200.000"},
+          {amount:"2180 Diamonds", bonus:"", price:"Rp 300.000"},
+          {amount:"Weekly Membership", bonus:"", price:"Rp 35.000"},
+          {amount:"Monthly Membership", bonus:"", price:"Rp 120.000"}
+        ]
+      },
+      pubg: { 
+        title: "PUBG Mobile UC", 
+        icon: "https://images.seeklogo.com/logo-png/35/1/pubg-logo-png_seeklogo-352312.png", 
+        needServer: false, 
+        note: "Buka PUBG Mobile > Profile > Salin Player ID.",
+        products: [
+          {amount:"60 UC", bonus:"", price:"Rp 13.000"},
+          {amount:"325 UC", bonus:"+35 Bonus", price:"Rp 65.000"},
+          {amount:"660 UC", bonus:"+70 Bonus", price:"Rp 130.000"},
+          {amount:"1625 UC", bonus:"+375 Bonus", price:"Rp 325.000"}
+        ]
+      },
+      hok: { 
+        title: "Honor of Kings Tokens", 
+        icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMmZxVql5rDkrf9F18ENUODNWfWn96_ZDfGyAD3gUC8g&s=10", 
+        needServer: false, 
+        note: "Buka Honor of Kings > Profile > Salin ID.",
+        products: [
+          {amount:"60 Tokens", bonus:"", price:"Rp 12.000"},
+          {amount:"300 Tokens", bonus:"+30 Bonus", price:"Rp 60.000"},
+          {amount:"980 Tokens", bonus:"+140 Bonus", price:"Rp 195.000"}
+        ]
+      },
+      bleach: { 
+        title: "Bleach Tokens", 
+        icon: "https://liputangampongnews.id/assets/img/berita/20210920_183731.jpg", 
+        needServer: false, 
+        note: "Masukkan User ID Bleach.",
+        products: [
+          {amount:"100 Tokens", bonus:"", price:"Rp 15.000"},
+          {amount:"500 Tokens", bonus:"+50 Bonus", price:"Rp 75.000"},
+          {amount:"1000 Tokens", bonus:"+150 Bonus", price:"Rp 150.000"}
+        ]
+      },
+      bigo: { 
+        title: "Bigo Live Diamonds", 
+        icon: "https://images.seeklogo.com/logo-png/47/1/bigo-live-logo-png_seeklogo-477968.png", 
+        needServer: false, 
+        note: "Masukkan User ID Bigo Live.",
+        products: [
+          {amount:"100 Diamonds", bonus:"", price:"Rp 20.000"},
+          {amount:"500 Diamonds", bonus:"+50 Bonus", price:"Rp 100.000"},
+          {amount:"1000 Diamonds", bonus:"+100 Bonus", price:"Rp 200.000"}
+        ]
+      },
+      hsr: { 
+        title: "Honkai: Star Rail Shard", 
+        icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSd4h06YHJT_hOpOlNoiQndwaOYC6ImQCvEkA3QQXnh1g&s", 
+        needServer: false, 
+        note: "Masukkan UID Honkai: Star Rail dari profile game.",
+        products: [
+          {amount:"60 Oneiric Shard", bonus:"", price:"Rp 15.000"},
+          {amount:"300 +30 Shard", bonus:"", price:"Rp 75.000"},
+          {amount:"980 +110 Shard", bonus:"", price:"Rp 240.000"},
+          {amount:"1980 +260 Shard", bonus:"", price:"Rp 480.000"}
+        ]
+      },
+      valorant: { 
+        title: "Valorant Points", 
+        icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSPUSKwrosbcLh6qXmw79qz-Dl1vMOvBmP1ydujtvIsA&s", 
+        needServer: true, 
+        note: "Masukkan Riot ID dan Tagline (contoh: nama#ID123).",
+        products: [
+          {amount:"475 Points", bonus:"", price:"Rp 60.000"},
+          {amount:"1000 Points", bonus:"", price:"Rp 120.000"},
+          {amount:"2050 Points", bonus:"", price:"Rp 240.000"},
+          {amount:"3600 Points", bonus:"", price:"Rp 420.000"}
+        ]
+      },
+      genshin: { 
+        title: "Genshin Impact Crystals", 
+        icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4z_craukzS9fmSpRGHgqF8gxc34428E8fryReuCt6Nw&s", 
+        needServer: true, 
+        note: "Masukkan UID Genshin Impact (lihat pojok kiri bawah in-game).",
+        products: [
+          {amount:"60 Crystals", bonus:"", price:"Rp 15.000"},
+          {amount:"300 +30 Crystals", bonus:"", price:"Rp 75.000"},
+          {amount:"980 +110 Crystals", bonus:"", price:"Rp 240.000"},
+          {amount:"1980 +260 Crystals", bonus:"", price:"Rp 480.000"},
+          {amount:"3280 +600 Crystals", bonus:"", price:"Rp 790.000"}
+        ]
+      },
+      kingschoice: { 
+        title: "King's Choice Diamonds", 
+        icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwurfDWmyuVtOqh1MSuTZk8hHdttjx3tr6micedK_LAVLwOPv7a0T154A&s", 
+        needServer: false, 
+        note: "Masukkan User ID King's Choice.",
+        products: [
+          {amount:"100 Diamonds", bonus:"", price:"Rp 15.000"},
+          {amount:"500 Diamonds", bonus:"+50 Bonus", price:"Rp 75.000"},
+          {amount:"1000 Diamonds", bonus:"+100 Bonus", price:"Rp 150.000"}
+        ]
+      },
+      arena: { 
+        title: "Arena Breakout Bonds", 
+        icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZsQWTUmJWzDmBbIDtIylQtCUu67sSijV5LnGs7z1f1Q&s", 
+        needServer: false, 
+        note: "Masukkan Player ID Arena Breakout.",
+        products: [
+          {amount:"60 Bonds", bonus:"", price:"Rp 12.000"},
+          {amount:"300 Bonds", bonus:"+30 Bonus", price:"Rp 60.000"},
+          {amount:"600 Bonds", bonus:"+60 Bonus", price:"Rp 120.000"}
+        ]
+      },
+      metalslug: { 
+        title: "Metal Slug: Awakening", 
+        icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkx8fy5MOauLsJ6EykHXc4aBMEnc1TICvPGJGwvAtuMg&s", 
+        needServer: false, 
+        note: "Masukkan User ID Metal Slug: Awakening.",
+        products: [
+          {amount:"100 Coins", bonus:"", price:"Rp 15.000"},
+          {amount:"500 Coins", bonus:"+50 Bonus", price:"Rp 75.000"}
+        ]
+      },
+      bloodstrike: { 
+        title: "Blood Strike Gold", 
+        icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRq9pYFjRHDLvalONft0-XU0zvD-YW0Yz7FSCRqwhRhUwCtavJwUT4hrRU&s", 
+        needServer: false, 
+        note: "Masukkan User ID Blood Strike.",
+        products: [
+          {amount:"100 Gold", bonus:"", price:"Rp 15.000"},
+          {amount:"500 Gold", bonus:"+50 Bonus", price:"Rp 75.000"}
+        ]
+      },
+      ragnarokm: { 
+        title: "Ragnarok M Eternal Love", 
+        icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPwJ1R2Md7xwE3-UZ27Xqa121fWSQJUE0rtoghQat8NA&s=10", 
+        needServer: false, 
+        note: "Masukkan User ID Ragnarok M Eternal Love.",
+        products: [
+          {amount:"Big Cat Coin Pack", bonus:"", price:"Rp 50.000"},
+          {amount:"2000 Zeny Pack", bonus:"", price:"Rp 100.000"}
+        ]
+      },
+      zepeto: { 
+        title: "Zepeto Zems", 
+        icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTw_v_bpWtV0UF40usl8jVpGrCheXlZKRY_fs-HmakMww&s", 
+        needServer: false, 
+        note: "Masukkan User ID Zepeto.",
+        products: [
+          {amount:"100 Zems", bonus:"", price:"Rp 20.000"},
+          {amount:"500 Zems", bonus:"+50 Bonus", price:"Rp 100.000"}
+        ]
+      },
+      codm: { 
+        title: "Call of Duty Mobile CP", 
+        icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnwzWUCFxQedyh3-5jhoqvfTswF8xMFQmuSdh_WAt85w&s", 
+        needServer: false, 
+        note: "Masukkan Player ID Call of Duty Mobile.",
+        products: [
+          {amount:"80 CP", bonus:"", price:"Rp 12.000"},
+          {amount:"400 +40 CP", bonus:"", price:"Rp 60.000"},
+          {amount:"800 +120 CP", bonus:"", price:"Rp 120.000"}
+        ]
+      },
+      supersus: { 
+        title: "Super SUS Golden Stars", 
+        icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_pGNtWaMmaAItQJjmSPhVyDahJiYpszdrInYNrC-Yyg&s", 
+        needServer: false, 
+        note: "Masukkan User ID Super SUS.",
+        products: [
+          {amount:"100 Golden Stars", bonus:"", price:"Rp 15.000"},
+          {amount:"500 Golden Stars", bonus:"+50 Bonus", price:"Rp 75.000"}
+        ]
+      },
+      pokemonunite: { 
+        title: "Pokemon UNITE AeosGems", 
+        icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvjLby7OJSpIcP8upLPAgxYfVZc1bKfKou330TGdXa6g&s", 
+        needServer: false, 
+        note: "Masukkan User ID Pokemon UNITE.",
+        products: [
+          {amount:"60 Aeos Gems", bonus:"", price:"Rp 12.000"},
+          {amount:"300 Aeos Gems", bonus:"+30 Bonus", price:"Rp 60.000"}
+        ]
+      },
+      ragnaroksea: { 
+        title: "The Ragnarok SEA", 
+        icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrcdmKKwR3iN_RpnDb9jimkXT2AQ70DJlTk1I_1z1Wdg&s=10", 
+        needServer: false, 
+        note: "Masukkan User ID The Ragnarok SEA.",
+        products: [
+          {amount:"Standard Pack", bonus:"", price:"Rp 50.000"}
+        ]
+      },
+      afkjourney: { 
+        title: "AFK Journey", 
+        icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAFTHPN8BvO-mUbIoOfrlWfpS5-wdH8wGT-xWhskPHdw&s", 
+        needServer: false, 
+        note: "Masukkan User ID AFK Journey.",
+        products: [
+          {amount:"100 Diamonds", bonus:"", price:"Rp 15.000"}
+        ]
+      },
+      soulland: { 
+        title: "Soul Land: New World", 
+        icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTw9ylpkI1T1heleXtDVIFR_c-B6mAL7PgRFK3qIBKLFXeDVeXGqonUOFc&s", 
+        needServer: false, 
+        note: "Masukkan User ID Soul Land: New World.",
+        products: [
+          {amount:"100 Diamonds", bonus:"", price:"Rp 15.000"}
+        ]
+      },
+      // Untuk game lain yang kurang populer, gunakan produk umum
+      // Untuk pulsa dan e-money, produk contoh
+      indosat: { title: "Pulsa Indosat", icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTM5Q9oR5hxSeKjs0WCZ60792UxJxvhmoSx1iwkZ9wm8A&s", needServer: false, note: "Masukkan nomor HP Indosat.", products: [{amount:"Rp 5.000", bonus:"", price:"Rp 6.000"},{amount:"Rp 10.000", bonus:"", price:"Rp 11.000"},{amount:"Rp 25.000", bonus:"", price:"Rp 26.000"},{amount:"Rp 50.000", bonus:"", price:"Rp 51.000"},{amount:"Rp 100.000", bonus:"", price:"Rp 101.000"}] },
+      tri: { title: "Pulsa Tri", icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAdfV3XNjwTp5uMgx2Bt5QGV9nMKf3h1jlxE6WFyfBzA&s", needServer: false, note: "Masukkan nomor HP Tri.", products: [{amount:"Rp 5.000", bonus:"", price:"Rp 6.000"},{amount:"Rp 10.000", bonus:"", price:"Rp 11.000"},{amount:"Rp 50.000", bonus:"", price:"Rp 51.000"}] },
+      telkomsel: { title: "Pulsa Telkomsel", icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1Eg-QzhOShwLZDAXPe4MPwItAX9zATmRWT-38vraG7g&s", needServer: false, note: "Masukkan nomor HP Telkomsel.", products: [{amount:"Rp 10.000", bonus:"", price:"Rp 11.000"},{amount:"Rp 25.000", bonus:"", price:"Rp 26.000"},{amount:"Rp 50.000", bonus:"", price:"Rp 51.000"}] },
+      xl: { title: "Pulsa XL", icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_uyCvd76Qo2rtlrK63RSmd0Rewhq4_7uYLS4V0SmV1A&s", needServer: false, note: "Masukkan nomor HP XL.", products: [{amount:"Rp 10.000", bonus:"", price:"Rp 11.000"},{amount:"Rp 50.000", bonus:"", price:"Rp 51.000"}] },
+      axis: { title: "Pulsa Axis", icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKqFv1_DNi7WtcJOcHEWiupXhwwDvhPsUtbl4IFSlyrOo33z9sI-v5fsA&s", needServer: false, note: "Masukkan nomor HP Axis.", products: [{amount:"Rp 10.000", bonus:"", price:"Rp 11.000"}] },
+      smartfren: { title: "Pulsa Smartfren", icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQobQYhok1QXOo1UkArzTY5EQWAywwlkRN9CnPnlYap5A&s", needServer: false, note: "Masukkan nomor HP Smartfren.", products: [{amount:"Rp 10.000", bonus:"", price:"Rp 11.000"}] },
+      dana: { title: "DANA", icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAirayPWuAR7xOP6ewQEDLDA7vIaW2KraNQRRCm93yUA&s", needServer: false, note: "Masukkan nomor HP terdaftar DANA.", products: [{amount:"Rp 10.000", bonus:"", price:"Rp 11.000"},{amount:"Rp 50.000", bonus:"", price:"Rp 51.000"},{amount:"Rp 100.000", bonus:"", price:"Rp 101.000"}] },
+      ovo: { title: "OVO", icon: "https://encrypted-
