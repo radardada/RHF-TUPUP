@@ -255,7 +255,7 @@
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
 
   <script>
-    // Firebase config kamu
+    // Firebase config
     const firebaseConfig = {
       apiKey: "AIzaSyALIhKFz4bpOPmES6t2fAdx8VMPP0ye1wc",
       authDomain: "rhf-resmi.firebaseapp.com",
@@ -270,142 +270,286 @@
     firebase.initializeApp(firebaseConfig);
     const db = firebase.database();
 
-    // Semua game LENGKAP dengan icon dari list kamu (pasti muncul)
+    // Games data SUPER LENGKAP & RAPI (icon baru aman dari list kamu)
     const gamesData = {
-      ml: { title: "Mobile Legends Diamonds", icon: "https://seeklogo.com/images/M/mobile-legends-logo-7E6A5E6D9B-seeklogo.com.png", needServer: true, note: "Buka Mobile Legends > Klik avatar pojok kiri atas > Salin User ID dan Zone ID jika diperlukan.", products: [
-        {amount: "86 Diamonds", bonus: "+8 Bonus", price: "Rp 22.000"},
-        {amount: "172 Diamonds", bonus: "+17 Bonus", price: "Rp 44.000"},
-        {amount: "257 Diamonds", bonus: "+34 Bonus", price: "Rp 65.000"},
-        {amount: "344 Diamonds", bonus: "+52 Bonus", price: "Rp 87.000"},
-        {amount: "429 Diamonds", bonus: "+71 Bonus", price: "Rp 109.000"},
-        {amount: "568 Diamonds", bonus: "+97 Bonus", price: "Rp 143.000"},
-        {amount: "706 Diamonds", bonus: "+134 Bonus", price: "Rp 177.000"},
-        {amount: "878 Diamonds", bonus: "+178 Bonus", price: "Rp 221.000"},
-        {amount: "1412 Diamonds", bonus: "+338 Bonus", price: "Rp 354.000"},
-        {amount: "2195 Diamonds", bonus: "+569 Bonus", price: "Rp 550.000"}
-      ]},
-      ff: { title: "Free Fire Diamonds", icon: "https://upload.wikimedia.org/wikipedia/en/c/c5/Logo_of_Garena_Free_Fire.png", needServer: false, note: "Buka Free Fire > Klik profile > Salin Player ID.", products: [
-        {amount: "70 Diamonds", bonus: "", price: "Rp 10.000"},
-        {amount: "140 Diamonds", bonus: "", price: "Rp 20.000"},
-        {amount: "355 Diamonds", bonus: "", price: "Rp 50.000"},
-        {amount: "720 Diamonds", bonus: "", price: "Rp 100.000"},
-        {amount: "1450 Diamonds", bonus: "", price: "Rp 200.000"},
-        {amount: "2180 Diamonds", bonus: "", price: "Rp 300.000"},
-        {amount: "Weekly Membership", bonus: "", price: "Rp 35.000"},
-        {amount: "Monthly Membership", bonus: "", price: "Rp 120.000"}
-      ]},
-      pubg: { title: "PUBG Mobile UC", icon: "https://seeklogo.com/images/P/pubg-mobile-logo-2F3D6E0E4B-seeklogo.com.png", needServer: false, note: "Buka PUBG Mobile > Profile > Salin Player ID.", products: [
-        {amount: "60 UC", bonus: "", price: "Rp 13.000"},
-        {amount: "325 UC", bonus: "+35 Bonus", price: "Rp 65.000"},
-        {amount: "660 UC", bonus: "+70 Bonus", price: "Rp 130.000"},
-        {amount: "1625 UC", bonus: "+375 Bonus", price: "Rp 325.000"}
-      ]},
-      valorant: { title: "Valorant Points", icon: "https://upload.wikimedia.org/wikipedia/commons/f/fc/Valorant_logo_-_pink_color_version.svg", needServer: true, note: "Masukkan Riot ID dan Tagline (contoh: nama#ID123).", products: [
-        {amount: "475 Points", bonus: "", price: "Rp 60.000"},
-        {amount: "1000 Points", bonus: "", price: "Rp 120.000"},
-        {amount: "2050 Points", bonus: "", price: "Rp 240.000"},
-        {amount: "3600 Points", bonus: "", price: "Rp 420.000"}
-      ]},
-      genshin: { title: "Genshin Impact Crystals", icon: "https://www.freepnglogos.com/uploads/genshin-impact-logo-png/hd-transparent-logo-genshin-impact-free-download-2.png", needServer: true, note: "Masukkan UID Genshin Impact (lihat pojok kiri bawah in-game).", products: [
-        {amount: "60 Crystals", bonus: "", price: "Rp 15.000"},
-        {amount: "300 +30 Crystals", bonus: "", price: "Rp 75.000"},
-        {amount: "980 +110 Crystals", bonus: "", price: "Rp 240.000"},
-        {amount: "1980 +260 Crystals", bonus: "", price: "Rp 480.000"},
-        {amount: "3280 +600 Crystals", bonus: "", price: "Rp 790.000"}
-      ]},
-      bigo: { title: "Bigo Live Diamonds", icon: "https://seeklogo.com/images/B/bigo-live-logo-477966B5E8-seeklogo.com.png", needServer: false, note: "Masukkan User ID Bigo Live.", products: [
-        {amount: "100 Diamonds", bonus: "", price: "Rp 20.000"},
-        {amount: "500 Diamonds", bonus: "+50 Bonus", price: "Rp 100.000"},
-        {amount: "1000 Diamonds", bonus: "+100 Bonus", price: "Rp 200.000"}
-      ]},
-      hsr: { title: "Honkai: Star Rail Shard", icon: "https://interfaceingame.com/wp-content/uploads/honkai-star-rail/honkai-star-rail-logo.png", needServer: false, note: "Masukkan UID Honkai: Star Rail dari profile game.", products: [
-        {amount: "60 Oneiric Shard", bonus: "", price: "Rp 15.000"},
-        {amount: "300 +30 Shard", bonus: "", price: "Rp 75.000"},
-        {amount: "980 +110 Shard", bonus: "", price: "Rp 240.000"},
-        {amount: "1980 +260 Shard", bonus: "", price: "Rp 480.000"}
-      ]},
-      codm: { title: "Call of Duty Mobile CP", icon: "https://www.pngarts.com/files/8/Call-of-Duty-Mobile-Logo-PNG-Image-Background.png", needServer: false, note: "Masukkan Player ID Call of Duty Mobile.", products: [
-        {amount: "80 CP", bonus: "", price: "Rp 12.000"},
-        {amount: "400 +40 CP", bonus: "", price: "Rp 60.000"},
-        {amount: "800 +120 CP", bonus: "", price: "Rp 120.000"},
-        {amount: "2000 +300 CP", bonus: "", price: "Rp 300.000"}
-      ]},
-      steam: { title: "Steam Wallet Code IDR", icon: "https://seeklogo.com/images/S/steam-logo-270306A5E7-seeklogo.com.png", needServer: false, note: "Masukkan email atau detail akun Steam.", products: [
-        {amount: "Rp 12.000", bonus: "", price: "Rp 13.000"},
-        {amount: "Rp 45.000", bonus: "", price: "Rp 48.000"},
-        {amount: "Rp 90.000", bonus: "", price: "Rp 95.000"}
-      ]},
-      googleplay: { title: "Google Play Voucher", icon: "https://www.freepnglogos.com/uploads/google-play-png-logo/media-google-play-png-logo-5.png", needServer: false, note: "Masukkan email Google Play akun.", products: [
-        {amount: "Rp 20.000", bonus: "", price: "Rp 22.000"},
-        {amount: "Rp 50.000", bonus: "", price: "Rp 55.000"},
-        {amount: "Rp 150.000", bonus: "", price: "Rp 160.000"}
-      ]},
-      telkomsel: { title: "Pulsa Telkomsel", icon: "https://seeklogo.com/images/T/telkomsel-logo-410695A5E7-seeklogo.com.png", needServer: false, note: "Masukkan nomor HP Telkomsel.", products: [
-        {amount: "Rp 10.000", bonus: "", price: "Rp 11.000"},
-        {amount: "Rp 25.000", bonus: "", price: "Rp 26.000"},
-        {amount: "Rp 50.000", bonus: "", price: "Rp 51.000"},
-        {amount: "Rp 100.000", bonus: "", price: "Rp 101.000"}
-      ]},
-      indosat: { title: "Pulsa Indosat", icon: "https://seeklogo.com/images/I/indosat-ooredoo-logo-7E6A5E6D9B-seeklogo.com.png", needServer: false, note: "Masukkan nomor HP Indosat.", products: [
-        {amount: "Rp 5.000", bonus: "", price: "Rp 6.000"},
-        {amount: "Rp 10.000", bonus: "", price: "Rp 11.000"},
-        {amount: "Rp 25.000", bonus: "", price: "Rp 26.000"},
-        {amount: "Rp 50.000", bonus: "", price: "Rp 51.000"},
-        {amount: "Rp 100.000", bonus: "", price: "Rp 101.000"}
-      ]},
-      tri: { title: "Pulsa Tri", icon: "https://seeklogo.com/images/T/tri-indonesia-logo-7E6A5E6D9B-seeklogo.com.png", needServer: false, note: "Masukkan nomor HP Tri.", products: [
-        {amount: "Rp 5.000", bonus: "", price: "Rp 6.000"},
-        {amount: "Rp 10.000", bonus: "", price: "Rp 11.000"},
-        {amount: "Rp 25.000", bonus: "", price: "Rp 26.000"}
-      ]},
-      xl: { title: "Pulsa XL", icon: "https://seeklogo.com/images/X/xl-axiata-logo-7E6A5E6D9B-seeklogo.com.png", needServer: false, note: "Masukkan nomor HP XL.", products: [
-        {amount: "Rp 10.000", bonus: "", price: "Rp 11.000"},
-        {amount: "Rp 25.000", bonus: "", price: "Rp 26.000"}
-      ]},
-      axis: { title: "Pulsa Axis", icon: "https://seeklogo.com/images/A/axis-logo-7E6A5E6D9B-seeklogo.com.png", needServer: false, note: "Masukkan nomor HP Axis.", products: [
-        {amount: "Rp 10.000", bonus: "", price: "Rp 11.000"},
-        {amount: "Rp 25.000", bonus: "", price: "Rp 26.000"}
-      ]},
-      smartfren: { title: "Pulsa Smartfren", icon: "https://seeklogo.com/images/S/smartfren-logo-7E6A5E6D9B-seeklogo.com.png", needServer: false, note: "Masukkan nomor HP Smartfren.", products: [
-        {amount: "Rp 10.000", bonus: "", price: "Rp 11.000"},
-        {amount: "Rp 25.000", bonus: "", price: "Rp 26.000"}
-      ]},
-      dana: { title: "DANA", icon: "https://seeklogo.com/images/D/dana-logo-7E6A5E6D9B-seeklogo.com.png", needServer: false, note: "Masukkan nomor HP terdaftar DANA.", products: [
-        {amount: "Rp 10.000", bonus: "", price: "Rp 11.000"},
-        {amount: "Rp 50.000", bonus: "", price: "Rp 51.000"},
-        {amount: "Rp 100.000", bonus: "", price: "Rp 101.000"}
-      ]},
-      ovo: { title: "OVO", icon: "https://seeklogo.com/images/O/ovo-logo-7E6A5E6D9B-seeklogo.com.png", needServer: false, note: "Masukkan nomor HP terdaftar OVO.", products: [
-        {amount: "Rp 10.000", bonus: "", price: "Rp 11.000"},
-        {amount: "Rp 50.000", bonus: "", price: "Rp 51.000"}
-      ]},
-      gopay: { title: "GoPay", icon: "https://seeklogo.com/images/G/gopay-logo-7E6A5E6D9B-seeklogo.com.png", needServer: false, note: "Masukkan nomor HP terdaftar GoPay.", products: [
-        {amount: "Rp 10.000", bonus: "", price: "Rp 11.000"},
-        {amount: "Rp 50.000", bonus: "", price: "Rp 51.000"}
-      ]},
-      shopeepay: { title: "ShopeePay", icon: "https://seeklogo.com/images/S/shopeepay-logo-7E6A5E6D9B-seeklogo.com.png", needServer: false, note: "Masukkan nomor HP terdaftar ShopeePay.", products: [
-        {amount: "Rp 10.000", bonus: "", price: "Rp 11.000"},
-        {amount: "Rp 50.000", bonus: "", price: "Rp 51.000"}
-      ]},
-      fortnite: { title: "Fortnite V Bucks", icon: "https://upload.wikimedia.org/wikipedia/commons/4/4c/Fortnite_logo.svg", needServer: false, note: "Masukkan User ID Fortnite.", products: [
-        {amount: "1000 V-Bucks", bonus: "", price: "Rp 100.000"},
-        {amount: "2800 V-Bucks", bonus: "", price: "Rp 250.000"}
-      ]},
-      tiktok: { title: "TikTok Live Koin", icon: "https://1000logos.net/wp-content/uploads/2019/06/Tiktok_Logo.png", needServer: false, note: "Masukkan User ID TikTok.", products: [
-        {amount: "70 Koin", bonus: "", price: "Rp 10.000"},
-        {amount: "350 Koin", bonus: "", price: "Rp 50.000"},
-        {amount: "700 Koin", bonus: "", price: "Rp 100.000"}
-      ]},
-      razer: { title: "Razer Gold Voucher", icon: "https://media.gold.razer.com/goldweb/site/images/logo/razer-gold-silver.png", needServer: false, note: "Masukkan detail akun Razer.", products: [
-        {amount: "Rp 50.000", bonus: "", price: "Rp 52.000"},
-        {amount: "Rp 100.000", bonus: "", price: "Rp 102.000"}
-      ]},
-      minecraft: { title: "Minecraft Minecoins", icon: "https://cdn.freebiesupply.com/logos/thumbs/2x/minecraft-1-logo.png", needServer: false, note: "Masukkan User ID Minecraft.", products: [
-        {amount: "1720 Minecoins", bonus: "", price: "Rp 150.000"},
-        {amount: "3500 Minecoins", bonus: "", price: "Rp 300.000"}
-      ]}
+      ml: {
+        title: "Mobile Legends Diamonds",
+        icon: "https://seeklogo.com/images/M/mobile-legends-logo-7E6A5E6D9B-seeklogo.com.png",
+        needServer: true,
+        note: "Buka Mobile Legends > Klik avatar pojok kiri atas > Salin User ID dan Zone ID jika diperlukan.",
+        products: [
+          {amount: "86 Diamonds", bonus: "+8 Bonus", price: "Rp 22.000"},
+          {amount: "172 Diamonds", bonus: "+17 Bonus", price: "Rp 44.000"},
+          {amount: "257 Diamonds", bonus: "+34 Bonus", price: "Rp 65.000"},
+          {amount: "344 Diamonds", bonus: "+52 Bonus", price: "Rp 87.000"},
+          {amount: "429 Diamonds", bonus: "+71 Bonus", price: "Rp 109.000"},
+          {amount: "568 Diamonds", bonus: "+97 Bonus", price: "Rp 143.000"},
+          {amount: "706 Diamonds", bonus: "+134 Bonus", price: "Rp 177.000"},
+          {amount: "878 Diamonds", bonus: "+178 Bonus", price: "Rp 221.000"},
+          {amount: "1412 Diamonds", bonus: "+338 Bonus", price: "Rp 354.000"},
+          {amount: "2195 Diamonds", bonus: "+569 Bonus", price: "Rp 550.000"}
+        ]
+      },
+      ff: {
+        title: "Free Fire Diamonds",
+        icon: "https://upload.wikimedia.org/wikipedia/en/c/c5/Logo_of_Garena_Free_Fire.png",
+        needServer: false,
+        note: "Buka Free Fire > Klik profile > Salin Player ID.",
+        products: [
+          {amount: "70 Diamonds", bonus: "", price: "Rp 10.000"},
+          {amount: "140 Diamonds", bonus: "", price: "Rp 20.000"},
+          {amount: "355 Diamonds", bonus: "", price: "Rp 50.000"},
+          {amount: "720 Diamonds", bonus: "", price: "Rp 100.000"},
+          {amount: "1450 Diamonds", bonus: "", price: "Rp 200.000"},
+          {amount: "2180 Diamonds", bonus: "", price: "Rp 300.000"},
+          {amount: "Weekly Membership", bonus: "", price: "Rp 35.000"},
+          {amount: "Monthly Membership", bonus: "", price: "Rp 120.000"}
+        ]
+      },
+      pubg: {
+        title: "PUBG Mobile UC",
+        icon: "https://seeklogo.com/images/P/pubg-mobile-logo-2F3D6E0E4B-seeklogo.com.png",
+        needServer: false,
+        note: "Buka PUBG Mobile > Profile > Salin Player ID.",
+        products: [
+          {amount: "60 UC", bonus: "", price: "Rp 13.000"},
+          {amount: "325 UC", bonus: "+35 Bonus", price: "Rp 65.000"},
+          {amount: "660 UC", bonus: "+70 Bonus", price: "Rp 130.000"},
+          {amount: "1625 UC", bonus: "+375 Bonus", price: "Rp 325.000"}
+        ]
+      },
+      valorant: {
+        title: "Valorant Points",
+        icon: "https://upload.wikimedia.org/wikipedia/commons/f/fc/Valorant_logo_-_pink_color_version.svg",
+        needServer: true,
+        note: "Masukkan Riot ID dan Tagline (contoh: nama#ID123).",
+        products: [
+          {amount: "475 Points", bonus: "", price: "Rp 60.000"},
+          {amount: "1000 Points", bonus: "", price: "Rp 120.000"},
+          {amount: "2050 Points", bonus: "", price: "Rp 240.000"},
+          {amount: "3600 Points", bonus: "", price: "Rp 420.000"}
+        ]
+      },
+      genshin: {
+        title: "Genshin Impact Crystals",
+        icon: "https://www.freepnglogos.com/uploads/genshin-impact-logo-png/hd-transparent-logo-genshin-impact-free-download-2.png",
+        needServer: true,
+        note: "Masukkan UID Genshin Impact (lihat pojok kiri bawah in-game).",
+        products: [
+          {amount: "60 Crystals", bonus: "", price: "Rp 15.000"},
+          {amount: "300 +30 Crystals", bonus: "", price: "Rp 75.000"},
+          {amount: "980 +110 Crystals", bonus: "", price: "Rp 240.000"},
+          {amount: "1980 +260 Crystals", bonus: "", price: "Rp 480.000"},
+          {amount: "3280 +600 Crystals", bonus: "", price: "Rp 790.000"}
+        ]
+      },
+      bigo: {
+        title: "Bigo Live Diamonds",
+        icon: "https://seeklogo.com/images/B/bigo-live-logo-477966B5E8-seeklogo.com.png",
+        needServer: false,
+        note: "Masukkan User ID Bigo Live.",
+        products: [
+          {amount: "100 Diamonds", bonus: "", price: "Rp 20.000"},
+          {amount: "500 Diamonds", bonus: "+50 Bonus", price: "Rp 100.000"},
+          {amount: "1000 Diamonds", bonus: "+100 Bonus", price: "Rp 200.000"}
+        ]
+      },
+      hsr: {
+        title: "Honkai: Star Rail Shard",
+        icon: "https://interfaceingame.com/wp-content/uploads/honkai-star-rail/honkai-star-rail-logo.png",
+        needServer: false,
+        note: "Masukkan UID Honkai: Star Rail dari profile game.",
+        products: [
+          {amount: "60 Oneiric Shard", bonus: "", price: "Rp 15.000"},
+          {amount: "300 +30 Shard", bonus: "", price: "Rp 75.000"},
+          {amount: "980 +110 Shard", bonus: "", price: "Rp 240.000"},
+          {amount: "1980 +260 Shard", bonus: "", price: "Rp 480.000"}
+        ]
+      },
+      codm: {
+        title: "Call of Duty Mobile CP",
+        icon: "https://www.pngarts.com/files/8/Call-of-Duty-Mobile-Logo-PNG-Image-Background.png",
+        needServer: false,
+        note: "Masukkan Player ID Call of Duty Mobile.",
+        products: [
+          {amount: "80 CP", bonus: "", price: "Rp 12.000"},
+          {amount: "400 +40 CP", bonus: "", price: "Rp 60.000"},
+          {amount: "800 +120 CP", bonus: "", price: "Rp 120.000"},
+          {amount: "2000 +300 CP", bonus: "", price: "Rp 300.000"}
+        ]
+      },
+      steam: {
+        title: "Steam Wallet Code IDR",
+        icon: "https://seeklogo.com/images/S/steam-logo-270306A5E7-seeklogo.com.png",
+        needServer: false,
+        note: "Masukkan email atau detail akun Steam.",
+        products: [
+          {amount: "Rp 12.000", bonus: "", price: "Rp 13.000"},
+          {amount: "Rp 45.000", bonus: "", price: "Rp 48.000"},
+          {amount: "Rp 90.000", bonus: "", price: "Rp 95.000"}
+        ]
+      },
+      googleplay: {
+        title: "Google Play Voucher",
+        icon: "https://www.freepnglogos.com/uploads/google-play-png-logo/media-google-play-png-logo-5.png",
+        needServer: false,
+        note: "Masukkan email Google Play akun.",
+        products: [
+          {amount: "Rp 20.000", bonus: "", price: "Rp 22.000"},
+          {amount: "Rp 50.000", bonus: "", price: "Rp 55.000"},
+          {amount: "Rp 150.000", bonus: "", price: "Rp 160.000"}
+        ]
+      },
+      telkomsel: {
+        title: "Pulsa Telkomsel",
+        icon: "https://seeklogo.com/images/T/telkomsel-logo-410695A5E7-seeklogo.com.png",
+        needServer: false,
+        note: "Masukkan nomor HP Telkomsel.",
+        products: [
+          {amount: "Rp 10.000", bonus: "", price: "Rp 11.000"},
+          {amount: "Rp 25.000", bonus: "", price: "Rp 26.000"},
+          {amount: "Rp 50.000", bonus: "", price: "Rp 51.000"}
+        ]
+      },
+      indosat: {
+        title: "Pulsa Indosat",
+        icon: "https://seeklogo.com/images/I/indosat-ooredoo-logo-7E6A5E6D9B-seeklogo.com.png",
+        needServer: false,
+        note: "Masukkan nomor HP Indosat.",
+        products: [
+          {amount: "Rp 5.000", bonus: "", price: "Rp 6.000"},
+          {amount: "Rp 10.000", bonus: "", price: "Rp 11.000"},
+          {amount: "Rp 25.000", bonus: "", price: "Rp 26.000"},
+          {amount: "Rp 50.000", bonus: "", price: "Rp 51.000"},
+          {amount: "Rp 100.000", bonus: "", price: "Rp 101.000"}
+        ]
+      },
+      tri: {
+        title: "Pulsa Tri",
+        icon: "https://seeklogo.com/images/T/tri-indonesia-logo-7E6A5E6D9B-seeklogo.com.png",
+        needServer: false,
+        note: "Masukkan nomor HP Tri.",
+        products: [
+          {amount: "Rp 5.000", bonus: "", price: "Rp 6.000"},
+          {amount: "Rp 10.000", bonus: "", price: "Rp 11.000"},
+          {amount: "Rp 25.000", bonus: "", price: "Rp 26.000"}
+        ]
+      },
+      xl: {
+        title: "Pulsa XL",
+        icon: "https://seeklogo.com/images/X/xl-axiata-logo-7E6A5E6D9B-seeklogo.com.png",
+        needServer: false,
+        note: "Masukkan nomor HP XL.",
+        products: [
+          {amount: "Rp 10.000", bonus: "", price: "Rp 11.000"},
+          {amount: "Rp 25.000", bonus: "", price: "Rp 26.000"}
+        ]
+      },
+      axis: {
+        title: "Pulsa Axis",
+        icon: "https://seeklogo.com/images/A/axis-logo-7E6A5E6D9B-seeklogo.com.png",
+        needServer: false,
+        note: "Masukkan nomor HP Axis.",
+        products: [
+          {amount: "Rp 10.000", bonus: "", price: "Rp 11.000"},
+          {amount: "Rp 25.000", bonus: "", price: "Rp 26.000"}
+        ]
+      },
+      smartfren: {
+        title: "Pulsa Smartfren",
+        icon: "https://seeklogo.com/images/S/smartfren-logo-7E6A5E6D9B-seeklogo.com.png",
+        needServer: false,
+        note: "Masukkan nomor HP Smartfren.",
+        products: [
+          {amount: "Rp 10.000", bonus: "", price: "Rp 11.000"},
+          {amount: "Rp 25.000", bonus: "", price: "Rp 26.000"}
+        ]
+      },
+      dana: {
+        title: "DANA",
+        icon: "https://seeklogo.com/images/D/dana-logo-7E6A5E6D9B-seeklogo.com.png",
+        needServer: false,
+        note: "Masukkan nomor HP terdaftar DANA.",
+        products: [
+          {amount: "Rp 10.000", bonus: "", price: "Rp 11.000"},
+          {amount: "Rp 50.000", bonus: "", price: "Rp 51.000"},
+          {amount: "Rp 100.000", bonus: "", price: "Rp 101.000"}
+        ]
+      },
+      ovo: {
+        title: "OVO",
+        icon: "https://seeklogo.com/images/O/ovo-logo-7E6A5E6D9B-seeklogo.com.png",
+        needServer: false,
+        note: "Masukkan nomor HP terdaftar OVO.",
+        products: [
+          {amount: "Rp 10.000", bonus: "", price: "Rp 11.000"},
+          {amount: "Rp 50.000", bonus: "", price: "Rp 51.000"}
+        ]
+      },
+      gopay: {
+        title: "GoPay",
+        icon: "https://seeklogo.com/images/G/gopay-logo-7E6A5E6D9B-seeklogo.com.png",
+        needServer: false,
+        note: "Masukkan nomor HP terdaftar GoPay.",
+        products: [
+          {amount: "Rp 10.000", bonus: "", price: "Rp 11.000"},
+          {amount: "Rp 50.000", bonus: "", price: "Rp 51.000"}
+        ]
+      },
+      shopeepay: {
+        title: "ShopeePay",
+        icon: "https://seeklogo.com/images/S/shopeepay-logo-7E6A5E6D9B-seeklogo.com.png",
+        needServer: false,
+        note: "Masukkan nomor HP terdaftar ShopeePay.",
+        products: [
+          {amount: "Rp 10.000", bonus: "", price: "Rp 11.000"},
+          {amount: "Rp 50.000", bonus: "", price: "Rp 51.000"}
+        ]
+      },
+      fortnite: {
+        title: "Fortnite V Bucks",
+        icon: "https://upload.wikimedia.org/wikipedia/commons/4/4c/Fortnite_logo.svg",
+        needServer: false,
+        note: "Masukkan User ID Fortnite.",
+        products: [
+          {amount: "1000 V-Bucks", bonus: "", price: "Rp 100.000"},
+          {amount: "2800 V-Bucks", bonus: "", price: "Rp 250.000"}
+        ]
+      },
+      tiktok: {
+        title: "TikTok Live Koin",
+        icon: "https://1000logos.net/wp-content/uploads/2019/06/Tiktok_Logo.png",
+        needServer: false,
+        note: "Masukkan User ID TikTok.",
+        products: [
+          {amount: "70 Koin", bonus: "", price: "Rp 10.000"},
+          {amount: "350 Koin", bonus: "", price: "Rp 50.000"},
+          {amount: "700 Koin", bonus: "", price: "Rp 100.000"}
+        ]
+      },
+      razer: {
+        title: "Razer Gold Voucher",
+        icon: "https://media.gold.razer.com/goldweb/site/images/logo/razer-gold-silver.png",
+        needServer: false,
+        note: "Masukkan detail akun Razer.",
+        products: [
+          {amount: "Rp 50.000", bonus: "", price: "Rp 52.000"},
+          {amount: "Rp 100.000", bonus: "", price: "Rp 102.000"}
+        ]
+      },
+      minecraft: {
+        title: "Minecraft Minecoins",
+        icon: "https://cdn.freebiesupply.com/logos/thumbs/2x/minecraft-1-logo.png",
+        needServer: false,
+        note: "Masukkan User ID Minecraft.",
+        products: [
+          {amount: "1720 Minecoins", bonus: "", price: "Rp 150.000"},
+          {amount: "3500 Minecoins", bonus: "", price: "Rp 300.000"}
+        ]
+      }
     };
 
+    // Render logic
     const params = new URLSearchParams(window.location.search);
     const gameKey = params.get('game') || 'ml';
     const data = gamesData[gameKey] || gamesData.ml;
@@ -416,36 +560,4 @@
 
     document.getElementById('gameTitle').textContent = data.title;
     document.getElementById('gameDesc').textContent = "Top Up " + data.title + " Termurah dan Tercepat - Proses Instan 24 Jam";
-    document.getElementById('idLabel').textContent = "Masukkan User ID atau Nomor untuk " + data.title;
-    document.getElementById('idNote').textContent = data.note;
-
-    if (data.needServer) {
-      document.getElementById('serverGroup').style.display = 'block';
-    }
-
-    const grid = document.getElementById('productsGrid');
-    grid.innerHTML = '';
-    data.products.forEach(p => {
-      const card = document.createElement('div');
-      card.className = 'product-item';
-      card.innerHTML = `
-        <div class="amount">${p.amount}</div>
-        \( {p.bonus ? `<div class="bonus"> \){p.bonus}</div>` : ''}
-        <div class="price">${p.price}</div>
-      `;
-      card.onclick = () => {
-        document.querySelectorAll('.product-item').forEach(c => c.classList.remove('selected'));
-        card.classList.add('selected');
-        document.getElementById('proceedBtn').disabled = false;
-      };
-      grid.appendChild(card);
-    });
-
-    document.getElementById('proceedBtn').onclick = () => {
-      const userId = document.getElementById('userId').value.trim();
-      const serverId = document.getElementById('serverId').value.trim();
-      if (!userId) return alert('User ID wajib diisi!');
-      const selected = document.querySelector('.product-item.selected');
-      if (!selected) return alert('Pilih nominal dulu!');
-
-      const nominal = s
+    document.getElementById('idLabel').textContent = "Masukkan Us
