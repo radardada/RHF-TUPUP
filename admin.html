@@ -61,6 +61,16 @@
     .btn-add:hover { background: #218838; }
     .btn-status { background: #007bff; }
     .btn-status:hover { background: #0056b3; }
+    .btn-success { background: #28a745; }
+    .btn-success:hover { background: #218838; }
+    .btn-fail { background: #dc3545; }
+    .btn-fail:hover { background: #c82333; }
+    .btn-freeze { background: #ffc107; color: #333; }
+    .btn-freeze:hover { background: #e0a800; }
+    .btn-add-saldo { background: #17a2b8; }
+    .btn-add-saldo:hover { background: #138496; }
+    .btn-cut-saldo { background: #6c757d; }
+    .btn-cut-saldo:hover { background: #5a6268; }
 
     form { 
       display: flex; 
@@ -106,7 +116,7 @@
 
   <header>
     <h1>Admin Dashboard RHF</h1>
-    <p>Kelola User, Event, dan Pesanan Top Up Secara Real-Time</p>
+    <p>Kelola User, Saldo, Pesanan, dan Event Carousel Secara Real-Time</p>
   </header>
 
   <div class="container">
@@ -120,8 +130,8 @@
           <tr>
             <th>No</th>
             <th>Waktu</th>
-            <th>Produk</th>
             <th>User ID</th>
+            <th>Produk</th>
             <th>Nominal</th>
             <th>Harga</th>
             <th>Status</th>
@@ -132,9 +142,9 @@
       </table>
     </div>
 
-    <!-- Kelola User -->
+    <!-- Kelola User (dengan fitur tambah/potong/beku saldo, detail nama/ID, real-time) -->
     <div class="admin-section">
-      <div class="section-title">Kelola User</div>
+      <div class="section-title">Kelola User & Saldo</div>
       <button class="btn btn-add" onclick="toggleUserForm()">Tambah User Baru</button>
       <div id="userForm" style="display:none;">
         <input type="text" id="newUsername" placeholder="Username" required>
@@ -149,6 +159,7 @@
             <th>Username</th>
             <th>Password</th>
             <th>Saldo (Rp)</th>
+            <th>Status Saldo</th>
             <th>Aksi</th>
           </tr>
         </thead>
@@ -161,7 +172,7 @@
       <div class="section-title">Kelola Event Carousel</div>
       <button class="btn btn-add" onclick="toggleEventForm()">Tambah Event Baru</button>
       <div id="eventForm" style="display:none;">
-        <input type="text" id="eventDate" placeholder="Tanggal (contoh: 08 JAN 2026)" required>
+        <input type="text" id="eventDate" placeholder="Tanggal (contoh: 01 JAN 2026)" required>
         <input type="text" id="eventTitle" placeholder="Judul Event" required>
         <textarea id="eventDesc" placeholder="Deskripsi Event" required></textarea>
         <input type="url" id="eventLogo" placeholder="URL Logo Event (wajib HTTPS)" required>
@@ -195,7 +206,6 @@
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
 
   <script>
-    // Firebase config kamu (sudah terpasang permanen)
     const firebaseConfig = {
       apiKey: "AIzaSyALIhKFz4bpOPmES6t2fAdx8VMPP0ye1wc",
       authDomain: "rhf-resmi.firebaseapp.com",
@@ -229,14 +239,14 @@
           row.innerHTML = `
             <td>${no--}</td>
             <td>${date}</td>
-            <td>${ord.game || '-'}</td>
             <td>${ord.userId || '-'}</td>
+            <td>${ord.game || '-'}</td>
             <td>${ord.nominal || '-'}</td>
             <td>${ord.harga || '-'}</td>
             <td><strong>${ord.status || 'Menunggu'}</strong></td>
             <td>
-              <button class="btn btn-status" onclick="updateStatus('${key}', 'Sudah Dibayar')">Bayar</button>
-              <button class="btn btn-status" onclick="updateStatus('${key}', 'Diproses')">Proses</button>
+              <button class="btn btn-success" onclick="updateStatus('${key}', 'BERHASIL')">BERHASIL</button>
+              <button class="btn btn-fail" onclick="updateStatus('${key}', 'GAGAL')">GAGAL</button>
               <button class="btn btn-delete" onclick="deleteOrder('${key}')">Hapus</button>
             </td>
           `;
@@ -255,7 +265,7 @@
       }
     }
 
-    // === KELOLA USER ===
+    // === KELOLA USER (fitur tambah/potong/beku saldo, detail nama/ID, keamanan ekstra) ===
     function loadUsers() {
       db.ref('users').on('value', (snapshot) => {
         const users = snapshot.val() || {};
@@ -264,14 +274,19 @@
         let no = 1;
         Object.keys(users).forEach(key => {
           const user = users[key];
+          const frozen = user.frozen || false;
           const row = document.createElement('tr');
           row.innerHTML = `
             <td>${no++}</td>
             <td>${user.username || '-'}</td>
             <td>${user.password || '-'}</td>
             <td>Rp ${(user.saldo || 0).toLocaleString()}</td>
+            <td>${frozen ? 'Dibekukan' : 'Aktif'}</td>
             <td>
-              <button class="btn" onclick="editUser('${key}')">Ubah</button>
+              <button class="btn" onclick="editUser('${key}')">Ubah Password</button>
+              <button class="btn btn-add-saldo" onclick="addSaldo('${key}')">Tambah Saldo</button>
+              <button class="btn btn-cut-saldo" onclick="cutSaldo('${key}')">Potong Saldo</button>
+              <button class="btn btn-freeze" onclick="toggleFreeze('${key}', \( {frozen})"> \){frozen ? 'Aktifkan' : 'Bekukan'}</button>
               <button class="btn btn-delete" onclick="deleteUser('${key}')">Hapus</button>
             </td>
           `;
@@ -291,16 +306,34 @@
       const saldo = parseInt(document.getElementById('newSaldo').value) || 0;
       if (!username || !password) return alert('Username dan Password wajib!');
 
-      db.ref('users').push({ username, password, saldo })
+      db.ref('users').push({ username, password, saldo, frozen: false })
         .then(() => alert('User ditambahkan!'))
         .catch(err => alert('Error: ' + err.message));
     }
 
     function editUser(key) {
-      const newSaldo = prompt('Saldo baru (Rp):');
-      if (newSaldo !== null) db.ref('users/' + key + '/saldo').set(parseInt(newSaldo) || 0);
       const newPass = prompt('Password baru (kosongkan jika tidak ubah):');
-      if (newPass !== null && newPass !== '') db.ref('users/' + key + '/password').set(newPass);
+      if (newPass !== null && newPass !== '') {
+        db.ref('users/' + key + '/password').set(newPass);
+      }
+    }
+
+    function addSaldo(key) {
+      const amount = prompt('Tambah saldo berapa (Rp):');
+      if (amount !== null && !isNaN(parseInt(amount))) {
+        db.ref('users/' + key + '/saldo').transaction(saldo => (saldo || 0) + parseInt(amount));
+      }
+    }
+
+    function cutSaldo(key) {
+      const amount = prompt('Potong saldo berapa (Rp):');
+      if (amount !== null && !isNaN(parseInt(amount))) {
+        db.ref('users/' + key + '/saldo').transaction(saldo => (saldo || 0) - parseInt(amount));
+      }
+    }
+
+    function toggleFreeze(key, frozen) {
+      db.ref('users/' + key + '/frozen').set(!frozen);
     }
 
     function deleteUser(key) {
@@ -392,4 +425,4 @@
   </script>
 
 </body>
-</html>
+          </html>
