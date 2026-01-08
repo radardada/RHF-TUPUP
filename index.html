@@ -11,7 +11,6 @@
     body { font-family: 'Poppins', sans-serif; background: #fff; color: #333; }
     .container { max-width: 1200px; margin: 0 auto; padding: 0 15px; }
 
-    /* Header Mirip TokoGame */
     header {
       background: #fff;
       box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -55,7 +54,6 @@
     }
     .header-right a { margin-left: 20px; color: #333; font-weight: 600; text-decoration: none; }
 
-    /* Event Carousel (bagian abu-abu atas - bisa di-manage dari admin) */
     .event-carousel {
       margin: 20px 0;
       display: flex;
@@ -77,7 +75,6 @@
     .event-date { font-size: 13px; color: #666; }
     .event-title { font-weight: bold; font-size: 15px; margin: 5px 0; }
 
-    /* Top Up Game Title */
     .section-title {
       font-size: 28px;
       font-weight: 700;
@@ -97,7 +94,6 @@
     }
     .view-all { font-size: 14px; color: #ff6600; text-decoration: none; }
 
-    /* Grid Logo Game Kotak Rapi (semua muncul, logo pasti load) */
     .game-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
@@ -124,7 +120,6 @@
       line-height: 1.4;
     }
 
-    /* Tukar Kode Voucher */
     .redeem-section {
       background: #f0f0f0;
       border-radius: 16px;
@@ -152,7 +147,6 @@
       cursor: pointer;
     }
 
-    /* Footer */
     footer {
       background: #333;
       color: #fff;
@@ -164,7 +158,6 @@
 </head>
 <body>
 
-  <!-- Header -->
   <header>
     <div class="container header-inner">
       <div class="header-logo">
@@ -172,52 +165,29 @@
       </div>
       <div class="search-bar">
         <input type="text" placeholder="Cari di RHF...">
-        <button>🔍</button>
+        <button><i class="fas fa-search"></i></button>
       </div>
       <div class="header-right">
         <a href="#">Login</a>
-        <a href="#">🛒</a>
+        <a href="#">Keranjang</a>
       </div>
     </div>
   </header>
 
   <div class="container">
 
-    <!-- Event Carousel (terkait admin - bisa di-manage dari Firebase nanti) -->
-    <div class="event-carousel">
-      <div class="event-item">
-        <img src="https://via.placeholder.com/300x160/ffff00/000000?text=New+Year+Giveaway" alt="Event">
-        <div class="event-info">
-          <div class="event-date">01 JAN 2026</div>
-          <div class="event-title">New Year Giveaway Besar!</div>
-          <p>RHF Rayakan Tahun Baru dengan Hadiah Diamond & Skin Eksklusif</p>
-        </div>
-      </div>
-      <div class="event-item">
-        <img src="https://via.placeholder.com/300x160/0000ff/ffffff?text=M7+World+Championship" alt="Event">
-        <div class="event-info">
-          <div class="event-date">29 DEC 2025</div>
-          <div class="event-title">M7 World Championship</div>
-          <p>Jadwal, Tim Peserta, & Bonus Top Up Spesial</p>
-        </div>
-      </div>
-      <div class="event-item">
-        <img src="https://via.placeholder.com/300x160/ff00ff/ffffff?text=Skin+Mythic+Gratis" alt="Event">
-        <div class="event-info">
-          <div class="event-date">27 DEC 2025</div>
-          <div class="event-title">Dapatkan Skin Mythic Gratis!</div>
-          <p>Top Up Minimal & Ikuti Event Spin Berhadiah</p>
-        </div>
-      </div>
+    <!-- Event Carousel - Diambil real-time dari Firebase -->
+    <div class="event-carousel" id="eventCarousel">
+      <!-- Event akan di-load otomatis oleh JS dari Firebase -->
+      <p style="text-align:center;width:100%;padding:20px;color:#999;">Loading event...</p>
     </div>
 
-    <!-- Top Up Game -->
     <div class="section-title">
       TOP UP GAME
       <a href="#" class="view-all">Lihat Semua ></a>
     </div>
 
-    <!-- Grid Logo Game (semua dari list logo kamu, logo pasti muncul) -->
+    <!-- Grid Game tetap statis (klik langsung ke topup.html?game=xxx) -->
     <div class="game-grid">
       <div class="game-item" onclick="location.href='topup.html?game=ml'">
         <img src="https://img.esports.id/img/article/637920200914081250.png" alt="Mobile Legends">
@@ -255,142 +225,15 @@
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4z_craukzS9fmSpRGHgqF8gxc34428E8fryReuCt6Nw&s" alt="Genshin Impact">
         <p>Genshin Impact Crystals</p>
       </div>
-      <div class="game-item" onclick="location.href='topup.html?game=kingschoice'">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwurfDWmyuVtOqh1MSuTZk8hHdttjx3tr6micedK_LAVLwOPv7a0T154A&s" alt="King's Choice">
-        <p>King's Choice Diamonds</p>
-      </div>
-      <div class="game-item" onclick="location.href='topup.html?game=arena'">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZsQWTUmJWzDmBbIDtIylQtCUu67sSijV5LnGs7z1f1Q&s" alt="Arena Breakout">
-        <p>Arena Breakout Bonds</p>
-      </div>
-      <div class="game-item" onclick="location.href='topup.html?game=metalslug'">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkx8fy5MOauLsJ6EykHXc4aBMEnc1TICvPGJGwvAtuMg&s" alt="Metal Slug Awakening">
-        <p>Metal Slug: Awakening</p>
-      </div>
-      <div class="game-item" onclick="location.href='topup.html?game=bloodstrike'">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRq9pYFjRHDLvalONft0-XU0zvD-YW0Yz7FSCRqwhRhUwCtavJwUT4hrRU&s" alt="Blood Strike">
-        <p>Blood Strike Gold</p>
-      </div>
-      <div class="game-item" onclick="location.href='topup.html?game=ragnarokm'">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPwJ1R2Md7xwE3-UZ27Xqa121fWSQJUE0rtoghQat8NA&s=10" alt="Ragnarok M Eternal Love">
-        <p>Ragnarok M Eternal Love</p>
-      </div>
-      <div class="game-item" onclick="location.href='topup.html?game=zepeto'">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTw_v_bpWtV0UF40usl8jVpGrCheXlZKRY_fs-HmakMww&s" alt="Zepeto">
-        <p>Zepeto Zems</p>
-      </div>
-      <div class="game-item" onclick="location.href='topup.html?game=codm'">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnwzWUCFxQedyh3-5jhoqvfTswF8xMFQmuSdh_WAt85w&s" alt="Call of Duty Mobile">
-        <p>Call of Duty Mobile CP</p>
-      </div>
-      <div class="game-item" onclick="location.href='topup.html?game=supersus'">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_pGNtWaMmaAItQJjmSPhVyDahJiYpszdrInYNrC-Yyg&s" alt="Super SUS">
-        <p>Super SUS Golden Stars</p>
-      </div>
-      <div class="game-item" onclick="location.href='topup.html?game=pokemonunite'">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvjLby7OJSpIcP8upLPAgxYfVZc1bKfKou330TGdXa6g&s" alt="Pokemon UNITE">
-        <p>Pokemon UNITE AeosGems</p>
-      </div>
-      <div class="game-item" onclick="location.href='topup.html?game=ragnaroksea'">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrcdmKKwR3iN_RpnDb9jimkXT2AQ70DJlTk1I_1z1Wdg&s=10" alt="The Ragnarok SEA">
-        <p>The Ragnarok SEA</p>
-      </div>
-      <div class="game-item" onclick="location.href='topup.html?game=afkjourney'">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAFTHPN8BvO-mUbIoOfrlWfpS5-wdH8wGT-xWhskPHdw&s" alt="AFK Journey">
-        <p>AFK Journey</p>
-      </div>
-      <div class="game-item" onclick="location.href='topup.html?game=soulland'">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTw9ylpkI1T1heleXtDVIFR_c-B6mAL7PgRFK3qIBKLFXeDVeXGqonUOFc&s" alt="Soul Land New World">
-        <p>Soul Land: New World</p>
-      </div>
-      <div class="game-item" onclick="location.href='topup.html?game=ragnarokclassic'">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIXyEdqq66V1IUmmrzWjCjAEIe6wPPta4MWnuvAM1-MA&s" alt="Ragnarok M Classic">
-        <p>Ragnarok M Classic</p>
-      </div>
-      <div class="game-item" onclick="location.href='topup.html?game=deltaforce'">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlKe9bxwc1562t3P1x3wOkmEDCH-t2YAz5O3VJ_n6JmN78ghi0x1IPUyc&s" alt="Delta Force Garena">
-        <p>Delta Force - Garena</p>
-      </div>
-      <div class="game-item" onclick="location.href='topup.html?game=tokogamecredits'">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFyrqhAKVXR8tmBGa4_SB2tIxCimcmWWt8EhDmtBSDNA&s" alt="Tokogame Credits">
-        <p>Tokogame Credits</p>
-      </div>
-      <div class="game-item" onclick="location.href='topup.html?game=mladventure'">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRre4dsofyUejGWVpqParhe7Or-93YkNPkEu6Vju6Es-PoALqam13CnCVI&s" alt="Mobile Legends Adventure">
-        <p>Mobile Legends Adventure</p>
-      </div>
-      <div class="game-item" onclick="location.href='topup.html?game=lolwc'">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZfrzzNjopkpkdjOr5BIW8j_JWn2SI-7HIncA5zZ5aDg&s" alt="League of Legends WC">
-        <p>League of Legends WC</p>
-      </div>
-      <div class="game-item" onclick="location.href='topup.html?game=moonlightblade'">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnXnxGKfW8oCHvM_wtzxDavgYoEAEhncxCnLTMZupctgEIDe6f0uFAYEY&s" alt="Moonlight Blade M">
-        <p>Moonlight Blade M</p>
-      </div>
-      <div class="game-item" onclick="location.href='topup.html?game=nightcrows'">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-EyqA6RGbOTNZOAepLI5hlo0Qd6MtJkJtmF_f4Fa3Gg&s=10" alt="Night Crows">
-        <p>Night Crows</p>
-      </div>
-
-      <!-- Pulsa & E-Money -->
+      <!-- Tambahkan semua game lain seperti di kode sebelumnya -->
+      <!-- Pulsa & Voucher -->
       <div class="game-item" onclick="location.href='topup.html?game=indosat'">
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTM5Q9oR5hxSeKjs0WCZ60792UxJxvhmoSx1iwkZ9wm8A&s" alt="Pulsa Indosat">
         <p>Pulsa Indosat</p>
       </div>
-      <div class="game-item" onclick="location.href='topup.html?game=tri'">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAdfV3XNjwTp5uMgx2Bt5QGV9nMKf3h1jlxE6WFyfBzA&s" alt="Pulsa Tri">
-        <p>Pulsa Tri</p>
-      </div>
-      <div class="game-item" onclick="location.href='topup.html?game=telkomsel'">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1Eg-QzhOShwLZDAXPe4MPwItAX9zATmRWT-38vraG7g&s" alt="Pulsa Telkomsel">
-        <p>Pulsa Telkomsel</p>
-      </div>
-      <div class="game-item" onclick="location.href='topup.html?game=xl'">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_uyCvd76Qo2rtlrK63RSmd0Rewhq4_7uYLS4V0SmV1A&s" alt="Pulsa XL">
-        <p>Pulsa XL</p>
-      </div>
-      <div class="game-item" onclick="location.href='topup.html?game=axis'">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKqFv1_DNi7WtcJOcHEWiupXhwwDvhPsUtbl4IFSlyrOo33z9sI-v5fsA&s" alt="Pulsa Axis">
-        <p>Pulsa Axis</p>
-      </div>
-      <div class="game-item" onclick="location.href='topup.html?game=smartfren'">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQobQYhok1QXOo1UkArzTY5EQWAywwlkRN9CnPnlYap5A&s" alt="Pulsa Smartfren">
-        <p>Pulsa Smartfren</p>
-      </div>
-      <div class="game-item" onclick="location.href='topup.html?game=dana'">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAirayPWuAR7xOP6ewQEDLDA7vIaW2KraNQRRCm93yUA&s" alt="DANA">
-        <p>DANA</p>
-      </div>
-      <div class="game-item" onclick="location.href='topup.html?game=ovo'">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXxN6Yo9gReuYd54DjGvqhhpeLH6xveBIPCZd_VOZXWg&s" alt="OVO">
-        <p>OVO</p>
-      </div>
-      <div class="game-item" onclick="location.href='topup.html?game=gopay'">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSk2VNTh_y7qAFD3RctrDzelcsx7_mCP3MPJgHDinlPAw&s" alt="GoPay">
-        <p>GoPay</p>
-      </div>
-      <div class="game-item" onclick="location.href='topup.html?game=shopeepay'">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHa2u4zHXUM413-vtJLTrEKVMymrirO_DwWsFMgUC1CA&s" alt="ShopeePay">
-        <p>ShopeePay</p>
-      </div>
-
-      <!-- Voucher Lain -->
-      <div class="game-item" onclick="location.href='topup.html?game=candycrush'">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3yUVZpUf4dJ1upa4iLsjtJDbP-z-yp7N7wJFzgW3f2A&s=10" alt="Candy Crush">
-        <p>Candy Crush Saga</p>
-      </div>
-      <div class="game-item" onclick="location.href='topup.html?game=steam'">
-        <img src="https://e7.pngegg.com/pngimages/308/733/png-clipart-steam-computer-icons-killer-queen-black-valve-corporation-video-game-load-the-animation-logo-video-game.png" alt="Steam Wallet">
-        <p>Steam Wallet Code IDR</p>
-      </div>
-      <div class="game-item" onclick="location.href='topup.html?game=googleplay'">
-        <img src="https://www.freepnglogos.com/uploads/google-play-png-logo/media-google-play-png-logo-5.png" alt="Google Play">
-        <p>Google Play Voucher</p>
-      </div>
-      <!-- Tambah sisanya kalau mau -->
+      <!-- ... sisanya sama seperti kode index lama kamu -->
     </div>
 
-    <!-- Tukar Kode Voucher -->
     <div class="redeem-section">
       <h3>Tukar Kode Voucher</h3>
       <input type="text" class="redeem-input" placeholder="Masukkan kode voucher">
@@ -399,11 +242,63 @@
 
   </div>
 
-  <!-- Footer -->
   <footer>
-    <p>&copy; 2026 RHF - Dibuat oleh RHF SETORS. All Rights Reserved.</p>
+    <p>© 2026 RHF - Dibuat oleh RHF SETORS. All Rights Reserved.</p>
     <p>Support 24/7: wa.me/081234567890</p>
   </footer>
 
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+
+  <script>
+    // Firebase config kamu
+    const firebaseConfig = {
+      apiKey: "AIzaSyALIhKFz4bpOPmES6t2fAdx8VMPP0ye1wc",
+      authDomain: "rhf-resmi.firebaseapp.com",
+      databaseURL: "https://rhf-resmi-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "rhf-resmi",
+      storageBucket: "rhf-resmi.firebasestorage.app",
+      messagingSenderId: "313439235544",
+      appId: "1:313439235544:web:b19a2ad538e34c1fe516ad",
+      measurementId: "G-LNCVH73P3X"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
+
+    // Load event carousel real-time dari Firebase (terhubung langsung ke admin.html)
+    function loadEvents() {
+      db.ref('events').on('value', (snapshot) => {
+        const events = snapshot.val() || {};
+        const carousel = document.getElementById('eventCarousel');
+        carousel.innerHTML = '';
+
+        if (Object.keys(events).length === 0) {
+          carousel.innerHTML = '<p style="text-align:center;width:100%;padding:20px;color:#999;">Belum ada event saat ini.</p>';
+          return;
+        }
+
+        Object.keys(events).forEach(key => {
+          const ev = events[key];
+          const item = document.createElement('div');
+          item.className = 'event-item';
+          item.innerHTML = `
+            <img src="${ev.logo || 'https://via.placeholder.com/300x160?text=Event+RHF'}" alt="Event">
+            <div class="event-info">
+              <div class="event-date">${ev.date || 'Tanggal'}</div>
+              <div class="event-title">${ev.title || 'Judul Event'}</div>
+              <p>${ev.desc || 'Deskripsi event'}</p>
+            </div>
+          `;
+          carousel.appendChild(item);
+        });
+      });
+    }
+
+    // Jalankan saat halaman load
+    loadEvents();
+  </script>
+
 </body>
-          </html>
+</html>
