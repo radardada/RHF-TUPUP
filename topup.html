@@ -3,245 +3,152 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Top Up Game - RHF</title>
+  <title>Admin Dashboard - RHF</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Poppins', sans-serif; background: #fff; color: #333; }
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+    body { font-family: 'Poppins', sans-serif; background: #f4f4f4; color: #333; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
 
     header {
-      background: #fff;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      padding: 15px 0;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-    .header-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .header-logo img { height: 55px; }
-    .search-bar {
-      flex: 1;
-      max-width: 600px;
-      margin: 0 30px;
-      position: relative;
-    }
-    .search-bar input {
-      width: 100%;
-      padding: 14px 55px 14px 25px;
-      border: 1px solid #ddd;
-      border-radius: 30px;
-      font-size: 16px;
-    }
-    .search-bar button {
-      position: absolute;
-      right: 10px;
-      top: 50%;
-      transform: translateY(-50%);
-      background: #ff6600;
-      border: none;
-      width: 45px;
-      height: 45px;
-      border-radius: 50%;
-      color: #fff;
-      font-size: 20px;
-      cursor: pointer;
-    }
-    .header-right a { margin-left: 25px; color: #333; font-weight: 600; text-decoration: none; font-size: 16px; }
-
-    .game-header {
-      text-align: center;
-      margin: 60px 0 50px;
-    }
-    .game-header img {
-      width: 200px;
-      height: 200px;
-      border-radius: 35px;
-      box-shadow: 0 12px 40px rgba(0,0,0,0.25);
-      object-fit: cover;
-      border: 6px solid #ff6600;
-    }
-    .game-header h1 {
-      font-size: 42px;
-      margin: 30px 0 15px;
-      color: #333;
-    }
-    .game-header p {
-      font-size: 20px;
-      color: #666;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    .order-form {
-      background: linear-gradient(to bottom, #fffaf5, #f9f9f9);
-      border-radius: 20px;
-      padding: 45px;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.12);
-      margin: 40px 0 60px;
-    }
-    .form-group {
-      margin-bottom: 30px;
-    }
-    .form-group label {
-      display: block;
-      font-weight: 700;
-      margin-bottom: 12px;
-      color: #333;
-      font-size: 20px;
-    }
-    .form-group input {
-      width: 100%;
-      padding: 20px;
-      border: 2px solid #ddd;
-      border-radius: 15px;
-      font-size: 18px;
-      transition: border 0.3s;
-    }
-    .form-group input:focus {
-      border-color: #ff6600;
-      outline: none;
-    }
-    .note {
-      font-size: 16px;
-      color: #ff6600;
-      margin-top: 12px;
-      line-height: 1.6;
-      font-weight: 500;
-    }
-
-    .section-title {
-      font-size: 36px;
-      font-weight: 700;
-      text-align: center;
-      margin: 60px 0 40px;
-      color: #333;
-    }
-
-    .products-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 35px;
-      margin-bottom: 80px;
-    }
-    .product-item {
-      background: #fff;
-      border: 3px solid #eee;
-      border-radius: 25px;
-      padding: 40px;
-      text-align: center;
-      cursor: pointer;
-      transition: all 0.4s ease;
-    }
-    .product-item:hover {
-      border-color: #ff6600;
-      transform: translateY(-15px);
-      box-shadow: 0 20px 50px rgba(255,102,0,0.3);
-    }
-    .product-item.selected {
-      border-color: #ff6600;
-      background: linear-gradient(to bottom, #fffaf5, #fff);
-      box-shadow: 0 20px 50px rgba(255,102,0,0.4);
-    }
-    .amount {
-      font-size: 36px;
-      font-weight: 700;
-      color: #ff6600;
-    }
-    .bonus {
-      font-size: 18px;
-      color: #28a745;
-      font-weight: 700;
-      margin: 15px 0;
-    }
-    .price {
-      font-size: 32px;
-      font-weight: 700;
-      color: #333;
-    }
-
-    .proceed-btn {
-      display: block;
-      width: 100%;
-      max-width: 700px;
-      margin: 80px auto;
-      padding: 28px;
       background: linear-gradient(to right, #ff6600, #ff8800);
       color: #fff;
-      font-size: 26px;
-      font-weight: 700;
-      border: none;
-      border-radius: 20px;
-      cursor: pointer;
-      box-shadow: 0 10px 30px rgba(255,102,0,0.4);
-      transition: all 0.3s;
+      padding: 40px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     }
-    .proceed-btn:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(255,102,0,0.5); }
-    .proceed-btn:disabled {
-      background: #ccc;
-      cursor: not-allowed;
-      transform: none;
+    header h1 { font-size: 38px; margin-bottom: 10px; }
+
+    .admin-section {
+      background: #fff;
+      border-radius: 15px;
+      padding: 35px;
+      margin: 30px 0;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    }
+    .section-title { 
+      font-size: 30px; 
+      margin-bottom: 25px; 
+      color: #ff6600; 
+      border-bottom: 3px solid #ff6600; 
+      padding-bottom: 12px; 
     }
 
-    footer {
-      background: #333;
-      color: #fff;
-      text-align: center;
-      padding: 60px 20px;
-      margin-top: 100px;
+    table { width: 100%; border-collapse: collapse; margin-bottom: 30px; }
+    th, td { padding: 18px; text-align: left; border-bottom: 1px solid #ddd; font-size: 16px; }
+    th { background: #f9f9f9; font-weight: 600; color: #555; }
+    tr:hover { background: #fffaf5; }
+
+    .btn { 
+      padding: 12px 25px; 
+      background: #ff6600; 
+      color: #fff; 
+      border: none; 
+      border-radius: 10px; 
+      cursor: pointer; 
+      font-size: 16px; 
+      margin: 8px 5px; 
+      transition: background 0.3s; 
     }
-    footer p { font-size: 16px; margin: 10px 0; }
+    .btn:hover { background: #e55a00; }
+    .btn-delete { background: #dc3545; }
+    .btn-delete:hover { background: #c82333; }
+    .btn-add { background: #28a745; display: inline-block; margin-bottom: 20px; }
+    .btn-add:hover { background: #218838; }
+
+    form { 
+      display: flex; 
+      flex-direction: column; 
+      gap: 18px; 
+      max-width: 600px; 
+      margin-bottom: 30px; 
+    }
+    input, textarea { 
+      padding: 16px; 
+      border: 1px solid #ddd; 
+      border-radius: 10px; 
+      font-size: 16px; 
+    }
+    textarea { height: 100px; resize: vertical; }
+
+    .event-logo-preview { 
+      width: 200px; 
+      height: auto; 
+      border-radius: 12px; 
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+      margin-top: 15px; 
+    }
+
+    footer { 
+      background: #333; 
+      color: #fff; 
+      text-align: center; 
+      padding: 50px 20px; 
+      margin-top: 80px; 
+      font-size: 16px; 
+    }
   </style>
 </head>
 <body>
 
   <header>
-    <div class="container header-inner">
-      <div class="header-logo">
-        <img src="images/logo.png" alt="RHF">
-      </div>
-      <div class="search-bar">
-        <input type="text" placeholder="Cari game atau produk...">
-        <button><i class="fas fa-search"></i></button>
-      </div>
-      <div class="header-right">
-        <a href="index.html">Home</a>
-        <a href="#">Keranjang</a>
-      </div>
-    </div>
+    <h1>Admin Dashboard RHF</h1>
+    <p>Kelola User, Saldo, Password, dan Event Carousel</p>
   </header>
 
   <div class="container">
 
-    <div class="game-header">
-      <img id="gameIcon" src="" alt="Game Icon">
-      <h1 id="gameTitle">Loading...</h1>
-      <p id="gameDesc">Top Up Termurah dan Tercepat - Proses Instan 24 Jam</p>
+    <!-- Kelola User -->
+    <div class="admin-section">
+      <div class="section-title">Kelola User</div>
+      <button class="btn btn-add" onclick="toggleUserForm()">Tambah User Baru</button>
+      <form id="userForm" style="display:none;">
+        <input type="text" id="newUsername" placeholder="Username" required>
+        <input type="password" id="newPassword" placeholder="Password" required>
+        <input type="number" id="newSaldo" placeholder="Saldo Awal (Rp)" value="0">
+        <button class="btn" type="button" onclick="addUser()">Simpan User</button>
+      </form>
+      <table id="userTable">
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>Username</th>
+            <th>Password</th>
+            <th>Saldo (Rp)</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
     </div>
 
-    <div class="order-form">
-      <div class="form-group">
-        <label id="idLabel">Masukkan User ID</label>
-        <input type="text" id="userId" placeholder="Contoh: 123456789">
-        <div class="note" id="idNote">Cara menemukan User ID: Buka game > Profile > Salin ID yang tertera.</div>
-      </div>
-      <div class="form-group" id="serverGroup" style="display:none;">
-        <label>Zone / Server ID</label>
-        <input type="text" id="serverId" placeholder="Contoh: 1234">
-        <div class="note">Diperlukan untuk game tertentu seperti Genshin Impact atau Valorant.</div>
-      </div>
+    <!-- Kelola Event -->
+    <div class="admin-section">
+      <div class="section-title">Kelola Event Carousel</div>
+      <button class="btn btn-add" onclick="toggleEventForm()">Tambah Event Baru</button>
+      <form id="eventForm" style="display:none;">
+        <input type="text" id="eventDate" placeholder="Tanggal (contoh: 01 JAN 2026)" required>
+        <input type="text" id="eventTitle" placeholder="Judul Event" required>
+        <textarea id="eventDesc" placeholder="Deskripsi Event" required></textarea>
+        <input type="url" id="eventLogo" placeholder="URL Logo Event (wajib HTTPS)" required>
+        <img id="eventLogoPreview" class="event-logo-preview" src="" alt="Preview Logo" style="display:none;">
+        <button class="btn" type="button" onclick="addEvent()">Simpan Event</button>
+      </form>
+      <table id="eventTable">
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>Tanggal</th>
+            <th>Judul</th>
+            <th>Deskripsi</th>
+            <th>Logo</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
     </div>
-
-    <h2 class="section-title">Pilih Nominal Top Up</h2>
-
-    <div class="products-grid" id="productsGrid"></div>
-
-    <button class="proceed-btn" id="proceedBtn" disabled>Lanjut ke Pembayaran</button>
 
   </div>
 
@@ -250,154 +157,177 @@
     <p>Support 24/7: wa.me/081234567890</p>
   </footer>
 
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+
   <script>
-    const gamesData = {
-      ml: { title: "Mobile Legends Diamonds", icon: "https://img.esports.id/img/article/637920200914081250.png", needServer: true, note: "Buka Mobile Legends > Klik avatar pojok kiri atas > Salin User ID dan Zone ID jika diperlukan.", products: [
-        {amount: "86 Diamonds", bonus: "+8 Bonus", price: "Rp 22.000"},
-        {amount: "172 Diamonds", bonus: "+17 Bonus", price: "Rp 44.000"},
-        {amount: "257 Diamonds", bonus: "+34 Bonus", price: "Rp 65.000"},
-        {amount: "344 Diamonds", bonus: "+52 Bonus", price: "Rp 87.000"},
-        {amount: "429 Diamonds", bonus: "+71 Bonus", price: "Rp 109.000"},
-        {amount: "568 Diamonds", bonus: "+97 Bonus", price: "Rp 143.000"},
-        {amount: "706 Diamonds", bonus: "+134 Bonus", price: "Rp 177.000"},
-        {amount: "878 Diamonds", bonus: "+178 Bonus", price: "Rp 221.000"},
-        {amount: "1412 Diamonds", bonus: "+338 Bonus", price: "Rp 354.000"},
-        {amount: "2195 Diamonds", bonus: "+569 Bonus", price: "Rp 550.000"}
-      ]},
-      ff: { title: "Free Fire Diamonds", icon: "https://iconlogovector.com/uploads/images/2025/08/lg-6893f81b6ef79-FREE-FIRE.webp", needServer: false, note: "Buka Free Fire > Klik profile > Salin Player ID.", products: [
-        {amount: "70 Diamonds", bonus: "", price: "Rp 10.000"},
-        {amount: "140 Diamonds", bonus: "", price: "Rp 20.000"},
-        {amount: "355 Diamonds", bonus: "", price: "Rp 50.000"},
-        {amount: "720 Diamonds", bonus: "", price: "Rp 100.000"},
-        {amount: "1450 Diamonds", bonus: "", price: "Rp 200.000"},
-        {amount: "2180 Diamonds", bonus: "", price: "Rp 300.000"},
-        {amount: "Weekly Membership", bonus: "", price: "Rp 35.000"},
-        {amount: "Monthly Membership", bonus: "", price: "Rp 120.000"}
-      ]},
-      pubg: { title: "PUBG Mobile UC", icon: "https://images.seeklogo.com/logo-png/35/1/pubg-logo-png_seeklogo-352312.png", needServer: false, note: "Buka PUBG Mobile > Profile > Salin Player ID.", products: [
-        {amount: "60 UC", bonus: "", price: "Rp 13.000"},
-        {amount: "325 UC", bonus: "+35 Bonus", price: "Rp 65.000"},
-        {amount: "660 UC", bonus: "+70 Bonus", price: "Rp 130.000"},
-        {amount: "1625 UC", bonus: "+375 Bonus", price: "Rp 325.000"}
-      ]},
-      hok: { title: "Honor of Kings Tokens", icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMmZxVql5rDkrf9F18ENUODNWfWn96_ZDfGyAD3gUC8g&s=10", needServer: false, note: "Buka Honor of Kings > Profile > Salin ID.", products: [
-        {amount: "60 Tokens", bonus: "", price: "Rp 12.000"},
-        {amount: "300 Tokens", bonus: "+30 Bonus", price: "Rp 60.000"},
-        {amount: "980 Tokens", bonus: "+140 Bonus", price: "Rp 195.000"}
-      ]},
-      bleach: { title: "Bleach Tokens", icon: "https://liputangampongnews.id/assets/img/berita/20210920_183731.jpg", needServer: false, note: "Masukkan User ID Bleach.", products: [
-        {amount: "100 Tokens", bonus: "", price: "Rp 15.000"},
-        {amount: "500 Tokens", bonus: "+50 Bonus", price: "Rp 75.000"},
-        {amount: "1000 Tokens", bonus: "+150 Bonus", price: "Rp 150.000"}
-      ]},
-      bigo: { title: "Bigo Live Diamonds", icon: "https://images.seeklogo.com/logo-png/47/1/bigo-live-logo-png_seeklogo-477968.png", needServer: false, note: "Masukkan User ID Bigo Live.", products: [
-        {amount: "100 Diamonds", bonus: "", price: "Rp 20.000"},
-        {amount: "500 Diamonds", bonus: "+50 Bonus", price: "Rp 100.000"},
-        {amount: "1000 Diamonds", bonus: "+100 Bonus", price: "Rp 200.000"}
-      ]},
-      hsr: { title: "Honkai: Star Rail Shard", icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSd4h06YHJT_hOpOlNoiQndwaOYC6ImQCvEkA3QQXnh1g&s", needServer: false, note: "Masukkan UID Honkai: Star Rail dari profile game.", products: [
-        {amount: "60 Oneiric Shard", bonus: "", price: "Rp 15.000"},
-        {amount: "300 +30 Shard", bonus: "", price: "Rp 75.000"},
-        {amount: "980 +110 Shard", bonus: "", price: "Rp 240.000"},
-        {amount: "1980 +260 Shard", bonus: "", price: "Rp 480.000"}
-      ]},
-      valorant: { title: "Valorant Points", icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSPUSKwrosbcLh6qXmw79qz-Dl1vMOvBmP1ydujtvIsA&s", needServer: true, note: "Masukkan Riot ID dan Tagline (contoh: nama#ID123).", products: [
-        {amount: "475 Points", bonus: "", price: "Rp 60.000"},
-        {amount: "1000 Points", bonus: "", price: "Rp 120.000"},
-        {amount: "2050 Points", bonus: "", price: "Rp 240.000"},
-        {amount: "3600 Points", bonus: "", price: "Rp 420.000"}
-      ]},
-      genshin: { title: "Genshin Impact Crystals", icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4z_craukzS9fmSpRGHgqF8gxc34428E8fryReuCt6Nw&s", needServer: true, note: "Masukkan UID Genshin Impact (lihat pojok kiri bawah in-game).", products: [
-        {amount: "60 Crystals", bonus: "", price: "Rp 15.000"},
-        {amount: "300 +30 Crystals", bonus: "", price: "Rp 75.000"},
-        {amount: "980 +110 Crystals", bonus: "", price: "Rp 240.000"},
-        {amount: "1980 +260 Crystals", bonus: "", price: "Rp 480.000"},
-        {amount: "3280 +600 Crystals", bonus: "", price: "Rp 790.000"}
-      ]},
-      kingschoice: { title: "King's Choice Diamonds", icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwurfDWmyuVtOqh1MSuTZk8hHdttjx3tr6micedK_LAVLwOPv7a0T154A&s", needServer: false, note: "Masukkan User ID King's Choice.", products: [
-        {amount: "100 Diamonds", bonus: "", price: "Rp 15.000"},
-        {amount: "500 Diamonds", bonus: "+50 Bonus", price: "Rp 75.000"},
-        {amount: "1000 Diamonds", bonus: "+100 Bonus", price: "Rp 150.000"}
-      ]},
-      arena: { title: "Arena Breakout Bonds", icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZsQWTUmJWzDmBbIDtIylQtCUu67sSijV5LnGs7z1f1Q&s", needServer: false, note: "Masukkan Player ID Arena Breakout.", products: [
-        {amount: "60 Bonds", bonus: "", price: "Rp 12.000"},
-        {amount: "300 Bonds", bonus: "+30 Bonus", price: "Rp 60.000"},
-        {amount: "600 Bonds", bonus: "+60 Bonus", price: "Rp 120.000"}
-      ]},
-      metalslug: { title: "Metal Slug: Awakening", icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkx8fy5MOauLsJ6EykHXc4aBMEnc1TICvPGJGwvAtuMg&s", needServer: false, note: "Masukkan User ID Metal Slug: Awakening.", products: [
-        {amount: "100 Coins", bonus: "", price: "Rp 15.000"},
-        {amount: "500 Coins", bonus: "+50 Bonus", price: "Rp 75.000"},
-        {amount: "1000 Coins", bonus: "+100 Bonus", price: "Rp 150.000"}
-      ]},
-      bloodstrike: { title: "Blood Strike Gold", icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRq9pYFjRHDLvalONft0-XU0zvD-YW0Yz7FSCRqwhRhUwCtavJwUT4hrRU&s", needServer: false, note: "Masukkan User ID Blood Strike.", products: [
-        {amount: "100 Gold", bonus: "", price: "Rp 15.000"},
-        {amount: "500 Gold", bonus: "+50 Bonus", price: "Rp 75.000"},
-        {amount: "1000 Gold", bonus: "+100 Bonus", price: "Rp 150.000"}
-      ]},
-      ragnarokm: { title: "Ragnarok M Eternal Love", icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPwJ1R2Md7xwE3-UZ27Xqa121fWSQJUE0rtoghQat8NA&s=10", needServer: false, note: "Masukkan User ID Ragnarok M Eternal Love.", products: [
-        {amount: "Big Cat Coin Pack", bonus: "", price: "Rp 50.000"},
-        {amount: "2000 Zeny Pack", bonus: "", price: "Rp 100.000"},
-        {amount: "5000 Zeny Pack", bonus: "", price: "Rp 250.000"}
-      ]},
-      zepeto: { title: "Zepeto Zems", icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTw_v_bpWtV0UF40usl8jVpGrCheXlZKRY_fs-HmakMww&s", needServer: false, note: "Masukkan User ID Zepeto.", products: [
-        {amount: "100 Zems", bonus: "", price: "Rp 20.000"},
-        {amount: "500 Zems", bonus: "+50 Bonus", price: "Rp 100.000"},
-        {amount: "1000 Zems", bonus: "+100 Bonus", price: "Rp 200.000"}
-      ]},
-      codm: { title: "Call of Duty Mobile CP", icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnwzWUCFxQedyh3-5jhoqvfTswF8xMFQmuSdh_WAt85w&s", needServer: false, note: "Masukkan Player ID Call of Duty Mobile.", products: [
-        {amount: "80 CP", bonus: "", price: "Rp 12.000"},
-        {amount: "400 +40 CP", bonus: "", price: "Rp 60.000"},
-        {amount: "800 +120 CP", bonus: "", price: "Rp 120.000"},
-        {amount: "2000 +300 CP", bonus: "", price: "Rp 300.000"}
-      ]},
-      supersus: { title: "Super SUS Golden Stars", icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_pGNtWaMmaAItQJjmSPhVyDahJiYpszdrInYNrC-Yyg&s", needServer: false, note: "Masukkan User ID Super SUS.", products: [
-        {amount: "100 Golden Stars", bonus: "", price: "Rp 15.000"},
-        {amount: "500 Golden Stars", bonus: "+50 Bonus", price: "Rp 75.000"},
-        {amount: "1000 Golden Stars", bonus: "+100 Bonus", price: "Rp 150.000"}
-      ]},
-      pokemonunite: { title: "Pokemon UNITE AeosGems", icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvjLby7OJSpIcP8upLPAgxYfVZc1bKfKou330TGdXa6g&s", needServer: false, note: "Masukkan User ID Pokemon UNITE.", products: [
-        {amount: "60 Aeos Gems", bonus: "", price: "Rp 12.000"},
-        {amount: "300 Aeos Gems", bonus: "+30 Bonus", price: "Rp 60.000"},
-        {amount: "600 Aeos Gems", bonus: "+60 Bonus", price: "Rp 120.000"}
-      ]},
-      ragnaroksea: { title: "The Ragnarok SEA", icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrcdmKKwR3iN_RpnDb9jimkXT2AQ70DJlTk1I_1z1Wdg&s=10", needServer: false, note: "Masukkan User ID The Ragnarok SEA.", products: [
-        {amount: "Standard Pack", bonus: "", price: "Rp 50.000"},
-        {amount: "Premium Pack", bonus: "", price: "Rp 100.000"}
-      ]},
-      afkjourney: { title: "AFK Journey", icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAFTHPN8BvO-mUbIoOfrlWfpS5-wdH8wGT-xWhskPHdw&s", needServer: false, note: "Masukkan User ID AFK Journey.", products: [
-        {amount: "100 Diamonds", bonus: "", price: "Rp 15.000"},
-        {amount: "500 Diamonds", bonus: "+50 Bonus", price: "Rp 75.000"}
-      ]},
-      soulland: { title: "Soul Land: New World", icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTw9ylpkI1T1heleXtDVIFR_c-B6mAL7PgRFK3qIBKLFXeDVeXGqonUOFc&s", needServer: false, note: "Masukkan User ID Soul Land: New World.", products: [
-        {amount: "100 Diamonds", bonus: "", price: "Rp 15.000"},
-        {amount: "500 Diamonds", bonus: "+50 Bonus", price: "Rp 75.000"}
-      ]},
-      ragnarokclassic: { title: "Ragnarok M Classic", icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIXyEdqq66V1IUmmrzWjCjAEIe6wPPta4MWnuvAM1-MA&s", needServer: false, note: "Masukkan User ID Ragnarok M Classic.", products: [
-        {amount: "Standard Pack", bonus: "", price: "Rp 50.000"}
-      ]},
-      deltaforce: { title: "Delta Force - Garena", icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlKe9bxwc1562t3P1x3wOkmEDCH-t2YAz5O3VJ_n6JmN78ghi0x1IPUyc&s", needServer: false, note: "Masukkan User ID Delta Force - Garena.", products: [
-        {amount: "100 Credits", bonus: "", price: "Rp 15.000"}
-      ]},
-      tokogamecredits: { title: "Tokogame Credits", icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFyrqhAKVXR8tmBGa4_SB2tIxCimcmWWt8EhDmtBSDNA&s", needServer: false, note: "Masukkan User ID Tokogame.", products: [
-        {amount: "100 Credits", bonus: "", price: "Rp 15.000"}
-      ]},
-      mladventure: { title: "Mobile Legends Adventure", icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRre4dsofyUejGWVpqParhe7Or-93YkNPkEu6Vju6Es-PoALqam13CnCVI&s", needServer: false, note: "Masukkan User ID Mobile Legends Adventure.", products: [
-        {amount: "100 Diamonds", bonus: "", price: "Rp 15.000"}
-      ]},
-      lolwc: { title: "League of Legends WC", icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZfrzzNjopkpkdjOr5BIW8j_JWn2SI-7HIncA5zZ5aDg&s", needServer: false, note: "Masukkan User ID League of Legends WC.", products: [
-        {amount: "100 Points", bonus: "", price: "Rp 15.000"}
-      ]},
-      moonlightblade: { title: "Moonlight Blade M", icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnXnxGKfW8oCHvM_wtzxDavgYoEAEhncxCnLTMZupctgEIDe6f0uFAYEY&s", needServer: false, note: "Masukkan User ID Moonlight Blade M.", products: [
-        {amount: "100 Diamonds", bonus: "", price: "Rp 15.000"}
-      ]},
-      nightcrows: { title: "Night Crows", icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-EyqA6RGbOTNZOAepLI5hlo0Qd6MtJkJtmF_f4Fa3Gg&s=10", needServer: false, note: "Masukkan User ID Night Crows.", products: [
-        {amount: "100 Gems", bonus: "", price: "Rp 15.000"}
-      ]},
-      indosat: { title: "Pulsa Indosat", icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTM5Q9oR5hxSeKjs0WCZ60792UxJxvhmoSx1iwkZ9wm8A&s", needServer: false, note: "Masukkan nomor HP Indosat.", products: [
-        {amount: "Rp 5.000", bonus: "", price: "Rp 6.000"},
-        {amount: "Rp 10.000", bonus: "", price: "Rp 11.000"},
-        {amount: "Rp 25.000", bonus: "", price: "Rp 26.000"},
-        {amount: "Rp 50.000", bonus: "", price: "Rp 51.000"},
-        {amount: "Rp 100.000", bonus: "", price: "Rp 101.000"}
-      ]},
-      tri: { title: "Pulsa Tri", icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAdfV3XNjwTp5uMgx2Bt5QGV9nMKf3h1jlxE6WFyfBzA&s", needServer: false, note: "Masuk
+    // Firebase Config kamu
+    const firebaseConfig = {
+      apiKey: "AIzaSyALIhKFz4bpOPmES6t2fAdx8VMPP0ye1wc",
+      authDomain: "rhf-resmi.firebaseapp.com",
+      databaseURL: "https://rhf-resmi-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "rhf-resmi",
+      storageBucket: "rhf-resmi.firebasestorage.app",
+      messagingSenderId: "313439235544",
+      appId: "1:313439235544:web:b19a2ad538e34c1fe516ad",
+      measurementId: "G-LNCVH73P3X"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
+
+    // === USER MANAGEMENT ===
+    function loadUsers() {
+      db.ref('users').on('value', (snapshot) => {
+        const users = snapshot.val() || {};
+        const tableBody = document.querySelector('#userTable tbody');
+        tableBody.innerHTML = '';
+        let no = 1;
+        Object.keys(users).forEach(key => {
+          const user = users[key];
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td>${no++}</td>
+            <td>${user.username}</td>
+            <td>${user.password}</td>
+            <td>Rp ${parseInt(user.saldo).toLocaleString()}</td>
+            <td>
+              <button class="btn" onclick="editUser('${key}')">Ubah</button>
+              <button class="btn btn-delete" onclick="deleteUser('${key}')">Hapus</button>
+            </td>
+          `;
+          tableBody.appendChild(row);
+        });
+      });
+    }
+
+    function toggleUserForm() {
+      const form = document.getElementById('userForm');
+      form.style.display = form.style.display === 'none' ? 'block' : 'none';
+    }
+
+    function addUser() {
+      const username = document.getElementById('newUsername').value.trim();
+      const password = document.getElementById('newPassword').value;
+      const saldo = parseInt(document.getElementById('newSaldo').value) || 0;
+      if (!username || !password) return alert('Username dan Password wajib diisi!');
+
+      db.ref('users').push({
+        username, password, saldo
+      }).then(() => {
+        alert('User berhasil ditambahkan!');
+        document.getElementById('userForm').style.display = 'none';
+        document.getElementById('newUsername').value = '';
+        document.getElementById('newPassword').value = '';
+        document.getElementById('newSaldo').value = '';
+      }).catch(err => alert('Error: ' + err.message));
+    }
+
+    function editUser(key) {
+      const newSaldo = prompt('Masukkan saldo baru:');
+      if (newSaldo !== null) {
+        db.ref('users/' + key + '/saldo').set(parseInt(newSaldo) || 0);
+      }
+      const newPass = prompt('Masukkan password baru (kosongkan jika tidak ubah):');
+      if (newPass !== null && newPass !== '') {
+        db.ref('users/' + key + '/password').set(newPass);
+      }
+    }
+
+    function deleteUser(key) {
+      if (confirm('Yakin hapus user ini?')) {
+        db.ref('users/' + key).remove();
+      }
+    }
+
+    // === EVENT MANAGEMENT ===
+    function loadEvents() {
+      db.ref('events').on('value', (snapshot) => {
+        const events = snapshot.val() || {};
+        const tableBody = document.querySelector('#eventTable tbody');
+        tableBody.innerHTML = '';
+        let no = 1;
+        Object.keys(events).forEach(key => {
+          const ev = events[key];
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td>${no++}</td>
+            <td>${ev.date}</td>
+            <td>${ev.title}</td>
+            <td>${ev.desc}</td>
+            <td><img src="${ev.logo}" alt="Logo" style="width:120px;height:auto;border-radius:8px;"></td>
+            <td>
+              <button class="btn" onclick="editEvent('${key}')">Ubah</button>
+              <button class="btn btn-delete" onclick="deleteEvent('${key}')">Hapus</button>
+            </td>
+          `;
+          tableBody.appendChild(row);
+        });
+      });
+    }
+
+    function toggleEventForm() {
+      const form = document.getElementById('eventForm');
+      form.style.display = form.style.display === 'none' ? 'block' : 'none';
+    }
+
+    function addEvent() {
+      const date = document.getElementById('eventDate').value.trim();
+      const title = document.getElementById('eventTitle').value.trim();
+      const desc = document.getElementById('eventDesc').value.trim();
+      const logo = document.getElementById('eventLogo').value.trim();
+
+      if (!date || !title || !desc || !logo) return alert('Semua field wajib diisi!');
+      if (!logo.startsWith('https://')) return alert('URL logo harus dimulai dengan https://');
+
+      db.ref('events').push({
+        date, title, desc, logo
+      }).then(() => {
+        alert('Event berhasil ditambahkan!');
+        document.getElementById('eventForm').style.display = 'none';
+        document.getElementById('eventDate').value = '';
+        document.getElementById('eventTitle').value = '';
+        document.getElementById('eventDesc').value = '';
+        document.getElementById('eventLogo').value = '';
+        document.getElementById('eventLogoPreview').style.display = 'none';
+      }).catch(err => alert('Error: ' + err.message));
+    }
+
+    function editEvent(key) {
+      const newDate = prompt('Ubah tanggal:');
+      if (newDate) db.ref('events/' + key + '/date').set(newDate);
+      const newTitle = prompt('Ubah judul:');
+      if (newTitle) db.ref('events/' + key + '/title').set(newTitle);
+      const newDesc = prompt('Ubah deskripsi:');
+      if (newDesc) db.ref('events/' + key + '/desc').set(newDesc);
+      const newLogo = prompt('Ubah URL logo (https://...):');
+      if (newLogo && newLogo.startsWith('https://')) db.ref('events/' + key + '/logo').set(newLogo);
+    }
+
+    function deleteEvent(key) {
+      if (confirm('Yakin hapus event ini?')) {
+        db.ref('events/' + key).remove();
+      }
+    }
+
+    // Preview logo event
+    document.getElementById('eventLogo').addEventListener('input', function() {
+      const url = this.value.trim();
+      const preview = document.getElementById('eventLogoPreview');
+      if (url.startsWith('https://')) {
+        preview.src = url;
+        preview.style.display = 'block';
+      } else {
+        preview.style.display = 'none';
+      }
+    });
+
+    // Load data saat halaman dibuka
+    loadUsers();
+    loadEvents();
+  </script>
+
+</body>
+</html>
