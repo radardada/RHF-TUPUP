@@ -3,475 +3,258 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Panel RHF - Super Lengkap & Real-Time</title>
+  <title>Admin Dashboard - RHF</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Poppins', sans-serif; background: #f0f2f5; color: #333; }
-    .container { max-width: 1400px; margin: 0 auto; padding: 20px; }
+    body { font-family: 'Poppins', sans-serif; background: #f4f4f4; color: #333; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
 
-    header { background: #fff; box-shadow: 0 4px 15px rgba(0,0,0,0.1); padding: 20px 0; border-radius: 12px; margin-bottom: 30px; }
-    .header-content { display: flex; justify-content: space-between; align-items: center; }
-    .header-logo img { height: 60px; }
-    .admin-info h2 { color: #ff6600; font-size: 24px; }
+    header {
+      background: linear-gradient(to right, #ff6600, #ff8800);
+      color: #fff;
+      padding: 30px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    header h1 { font-size: 36px; margin-bottom: 10px; }
 
-    .dashboard { display: grid; grid-template-columns: 280px 1fr; gap: 30px; }
-    .sidebar { background: #fff; border-radius: 16px; padding: 20px; box-shadow: 0 8px 25px rgba(0,0,0,0.1); height: fit-content; }
-    .menu-title { font-size: 18px; font-weight: 600; margin-bottom: 20px; color: #ff6600; }
-    .menu-item { display: flex; align-items: center; padding: 15px 20px; margin-bottom: 10px; border-radius: 12px; cursor: pointer; transition: all 0.3s; }
-    .menu-item i { font-size: 20px; margin-right: 15px; color: #ff6600; }
-    .menu-item:hover, .menu-item.active { background: #ff6600; color: #fff; }
-    .menu-item:hover i, .menu-item.active i { color: #fff; }
+    .admin-section {
+      background: #fff;
+      border-radius: 15px;
+      padding: 30px;
+      margin: 30px 0;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    }
+    .section-title { font-size: 28px; margin-bottom: 25px; color: #ff6600; border-bottom: 2px solid #ff6600; padding-bottom: 10px; }
 
-    .main-content { background: #fff; border-radius: 16px; padding: 30px; box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
-    .content-section { display: none; }
-    .content-section.active { display: block; }
-    .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
-    .section-title { font-size: 28px; font-weight: 700; color: #ff6600; }
-
-    .form-group { margin-bottom: 25px; }
-    .form-group label { display: block; margin-bottom: 10px; font-weight: 600; font-size: 16px; }
-    .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 10px; font-size: 16px; }
-    .form-group textarea { height: 120px; }
-    .btn { background: #28a745; color: #fff; padding: 15px 30px; border: none; border-radius: 10px; font-size: 18px; cursor: pointer; transition: 0.3s; margin-right: 10px; }
-    .btn:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(40,167,69,0.3); }
+    table { width: 100%; border-collapse: collapse; margin-bottom: 30px; }
+    th, td { padding: 15px; text-align: left; border-bottom: 1px solid #ddd; }
+    th { background: #f9f9f9; font-weight: 600; }
+    .btn { padding: 10px 20px; background: #ff6600; color: #fff; border: none; border-radius: 8px; cursor: pointer; font-size: 16px; margin: 5px; transition: background 0.3s; }
+    .btn:hover { background: #e55a00; }
     .btn-delete { background: #dc3545; }
+    .btn-delete:hover { background: #c82333; }
+    .btn-add { background: #28a745; margin-bottom: 20px; }
+    .btn-add:hover { background: #218838; }
 
-    table { width: 100%; border-collapse: collapse; margin-top: 30px; }
-    th, td { padding: 15px; text-align: left; border-bottom: 1px solid #eee; }
-    th { background: #f8f9fa; font-weight: 600; color: #ff6600; }
-    .action-btn { padding: 8px 15px; border: none; border-radius: 8px; cursor: pointer; margin-right: 8px; }
-    .edit-btn { background: #ff6600; color: #fff; }
-    .delete-btn { background: #dc3545; color: #fff; }
+    form { display: flex; flex-direction: column; gap: 15px; }
+    input { padding: 15px; border: 1px solid #ddd; border-radius: 8px; font-size: 16px; }
 
-    .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 200; align-items: center; justify-content: center; }
-    .modal-content { background: #fff; border-radius: 16px; padding: 30px; width: 90%; max-width: 800px; box-shadow: 0 10px 40px rgba(0,0,0,0.2); position: relative; }
-    .modal-close { position: absolute; top: 15px; right: 15px; font-size: 28px; color: #666; cursor: pointer; }
+    .event-logo-preview { width: 150px; height: auto; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); margin-top: 10px; }
+
+    footer { background: #333; color: #fff; text-align: center; padding: 40px 20px; margin-top: 60px; }
   </style>
 </head>
 <body>
 
+  <header>
+    <h1>Admin Dashboard RHF</h1>
+  </header>
+
   <div class="container">
-    <header>
-      <div class="header-content">
-        <div class="header-logo">
-          <img src="images/logo.png" alt="RHF Admin">
-        </div>
-        <div class="admin-info">
-          <h2>Admin Panel RHF</h2>
-          <p>Super Lengkap - Kelola Semua Real-Time</p>
-        </div>
-      </div>
-    </header>
 
-    <div class="dashboard">
-      <!-- Sidebar -->
-      <div class="sidebar">
-        <div class="menu-title">Menu Admin</div>
-        <div class="menu-item active" onclick="showSection('events')">
-          <i class="fas fa-trophy"></i> Kelola Event & Promo
-        </div>
-        <div class="menu-item" onclick="showSection('vouchers')">
-          <i class="fas fa-ticket-alt"></i> Kelola Voucher / Kode
-        </div>
-        <div class="menu-item" onclick="showSection('products')">
-          <i class="fas fa-gamepad"></i> Kelola Produk & Harga
-        </div>
-        <div class="menu-item" onclick="showSection('discounts')">
-          <i class="fas fa-percent"></i> Kelola Potongan Harga
-        </div>
-        <div class="menu-item" onclick="showSection('leaderboard')">
-          <i class="fas fa-medal"></i> Kelola Leaderboard Pemenang
-        </div>
-        <div class="menu-item" onclick="alert('Logout berhasil!'); window.location.href = 'index.html';">
-          <i class="fas fa-sign-out-alt"></i> Logout
-        </div>
-      </div>
-
-      <!-- Main Content -->
-      <div class="main-content">
-
-        <!-- Kelola Event & Promo (banyak input) -->
-        <div id="events" class="content-section active">
-          <div class="section-header">
-            <h2 class="section-title">Kelola Event & Promo</h2>
-            <button class="btn" onclick="openModal('events', 'add')">+ Tambah Event</button>
-          </div>
-          <table id="events-table">
-            <thead>
-              <tr>
-                <th>Nama Event</th>
-                <th>Gambar URL</th>
-                <th>Tanggal Mulai</th>
-                <th>Tanggal Selesai</th>
-                <th>Deskripsi</th>
-                <th>Keterangan Pemenang</th>
-                <th>URL Detail</th>
-                <th>Aksi</th>
-              </tr>
-            </thead>
-            <tbody></tbody>
-          </table>
-        </div>
-
-        <!-- Kelola Voucher / Kode (kode untuk game spesifik atau all) -->
-        <div id="vouchers" class="content-section">
-          <div class="section-header">
-            <h2 class="section-title">Kelola Voucher & Kode Promo</h2>
-            <button class="btn" onclick="openModal('vouchers', 'add')">+ Tambah Voucher</button>
-          </div>
-          <table id="vouchers-table">
-            <thead>
-              <tr>
-                <th>Kode</th>
-                <th>Diskon (%)</th>
-                <th>Minimal Beli</th>
-                <th>Masa Berlaku</th>
-                <th>Game (All/Spesifik)</th>
-                <th>Aksi</th>
-              </tr>
-            </thead>
-            <tbody></tbody>
-          </table>
-        </div>
-
-        <!-- Kelola Produk & Harga -->
-        <div id="products" class="content-section">
-          <div class="section-header">
-            <h2 class="section-title">Kelola Produk & Harga</h2>
-            <button class="btn" onclick="openModal('products', 'add')">+ Tambah Produk</button>
-          </div>
-          <table id="products-table">
-            <thead>
-              <tr>
-                <th>Game</th>
-                <th>Produk</th>
-                <th>Harga</th>
-                <th>Aksi</th>
-              </tr>
-            </thead>
-            <tbody></tbody>
-          </table>
-        </div>
-
-        <!-- Kelola Potongan Harga -->
-        <div id="discounts" class="content-section">
-          <div class="section-header">
-            <h2 class="section-title">Kelola Potongan Harga</h2>
-            <button class="btn" onclick="openModal('discounts', 'add')">+ Tambah Potongan</button>
-          </div>
-          <table id="discounts-table">
-            <thead>
-              <tr>
-                <th>Nama Promo</th>
-                <th>Potongan (%)</th>
-                <th>Minimal Beli</th>
-                <th>Berlaku untuk Event</th>
-                <th>Aksi</th>
-              </tr>
-            </thead>
-            <tbody></tbody>
-          </table>
-        </div>
-
-        <!-- Kelola Leaderboard Pemenang (random nama untuk top spender 1jt) -->
-        <div id="leaderboard" class="content-section">
-          <div class="section-header">
-            <h2 class="section-title">Kelola Leaderboard Pemenang (Hadiah 1jt)</h2>
-            <button class="btn" onclick="generateRandomWinner()">Generate Pemenang Random</button>
-          </div>
-          <table id="leaderboard-table">
-            <thead>
-              <tr>
-                <th>Rank</th>
-                <th>Nama Pemenang</th>
-                <th>Hadiah</th>
-                <th>Top Up Amount</th>
-                <th>Aksi</th>
-              </tr>
-            </thead>
-            <tbody></tbody>
-          </table>
-        </div>
-
-      </div>
+    <!-- Kelola User -->
+    <div class="admin-section">
+      <div class="section-title">Kelola User</div>
+      <button class="btn btn-add" onclick="showUserForm()">Tambah User Baru</button>
+      <form id="userForm" style="display:none;">
+        <input type="text" id="userName" placeholder="Username">
+        <input type="password" id="userPassword" placeholder="Password">
+        <input type="number" id="userSaldo" placeholder="Saldo Awal (Rp)">
+        <button class="btn" type="button" onclick="addUser()">Simpan User</button>
+      </form>
+      <table id="userTable">
+        <thead>
+          <tr>
+            <th>Username</th>
+            <th>Password</th>
+            <th>Saldo (Rp)</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
     </div>
+
+    <!-- Kelola Event -->
+    <div class="admin-section">
+      <div class="section-title">Kelola Event</div>
+      <button class="btn btn-add" onclick="showEventForm()">Tambah Event Baru</button>
+      <form id="eventForm" style="display:none;">
+        <input type="text" id="eventDate" placeholder="Tanggal Event (contoh: 01 JAN 2026)">
+        <input type="text" id="eventTitle" placeholder="Judul Event">
+        <input type="text" id="eventDesc" placeholder="Deskripsi Event">
+        <input type="text" id="eventLogo" placeholder="URL Logo Event (https://...)">
+        <img id="eventLogoPreview" class="event-logo-preview" src="" alt="Preview Logo" style="display:none;">
+        <button class="btn" type="button" onclick="addEvent()">Simpan Event</button>
+      </form>
+      <table id="eventTable">
+        <thead>
+          <tr>
+            <th>Tanggal</th>
+            <th>Judul</th>
+            <th>Deskripsi</th>
+            <th>Logo</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
   </div>
 
-  <!-- Modal Universal (banyak input) -->
-  <div id="modal" class="modal">
-    <div class="modal-content">
-      <span class="modal-close" onclick="closeModal()">&times;</span>
-      <h2 id="modal-title" class="section-title">Tambah Baru</h2>
-      <div id="modal-form"></div>
-      <button class="btn" onclick="saveData()">Simpan</button>
-    </div>
-  </div>
+  <footer>
+    <p>© 2026 RHF - Dibuat oleh RHF SETORS. All Rights Reserved.</p>
+    <p>Support 24/7: wa.me/081234567890</p>
+  </footer>
 
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-    import { getDatabase, ref, onValue, set, push, update, remove } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
-
-    const firebaseConfig = {
-      apiKey: "AIzaSyALIhKFz4bpOPmES6t2fAdx8VMPP0ye1wc",
-      authDomain: "rhf-resmi.firebaseapp.com",
-      databaseURL: "https://rhf-resmi-default-rtdb.asia-southeast1.firebasedatabase.app",
-      projectId: "rhf-resmi",
-      storageBucket: "rhf-resmi.firebasestorage.app",
-      messagingSenderId: "313439235544",
-      appId: "1:313439235544:web:b19a2ad538e34c1fe516ad",
-      measurementId: "G-LNCVH73P3X"
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const database = getDatabase(app);
-
-    const refs = {
-      events: ref(database, 'events'),
-      vouchers: ref(database, 'vouchers'),
-      products: ref(database, 'products'),
-      discounts: ref(database, 'discounts'),
-      leaderboard: ref(database, 'leaderboard')
-    };
-
-    let currentSection = 'events';
-    let currentMode = 'add';
-    let currentEditKey = null;
-
-    // Load Data Real-Time for All Sections
-    function loadData(section) {
-      const tbody = document.querySelector(`#${section}-table tbody`);
-      onValue(refs[section], (snapshot) => {
-        tbody.innerHTML = '';
-        const data = snapshot.val() || {};
-        Object.keys(data).forEach(key => {
-          const item = data[key];
-          const tr = document.createElement('tr');
-          let rowHTML = '';
-          if (section === 'events') {
-            rowHTML = `
-              <td>${item.name || ''}</td>
-              <td>${item.image || ''}</td>
-              <td>${item.startDate || ''}</td>
-              <td>${item.endDate || ''}</td>
-              <td>${item.desc || ''}</td>
-              <td>${item.winner || 'Belum ada'}</td>
-              <td>${item.url || ''}</td>
-              <td>
-                <button class="action-btn edit-btn" onclick="openModal('events', 'edit', '${key}')"><i class="fas fa-edit"></i></button>
-                <button class="action-btn delete-btn" onclick="deleteData('events', '${key}')"><i class="fas fa-trash"></i></button>
-              </td>
-            `;
-          } else if (section === 'vouchers') {
-            rowHTML = `
-              <td>${item.code || ''}</td>
-              <td>${item.discount || ''}%</td>
-              <td>Rp ${item.minPurchase || 0}</td>
-              <td>${item.expiry || ''}</td>
-              <td>${item.game || 'All'}</td>
-              <td>
-                <button class="action-btn edit-btn" onclick="openModal('vouchers', 'edit', '${key}')"><i class="fas fa-edit"></i></button>
-                <button class="action-btn delete-btn" onclick="deleteData('vouchers', '${key}')"><i class="fas fa-trash"></i></button>
-              </td>
-            `;
-          } else if (section === 'products') {
-            rowHTML = `
-              <td>${item.game || ''}</td>
-              <td>${item.product || ''}</td>
-              <td contenteditable="true" class="editable-price" data-key="\( {key}"> \){item.price || ''}</td>
-              <td>
-                <button class="action-btn edit-btn" onclick="openModal('products', 'edit', '${key}')"><i class="fas fa-edit"></i></button>
-                <button class="action-btn delete-btn" onclick="deleteData('products', '${key}')"><i class="fas fa-trash"></i></button>
-              </td>
-            `;
-          } else if (section === 'discounts') {
-            rowHTML = `
-              <td>${item.name || ''}</td>
-              <td>${item.percent || ''}%</td>
-              <td>Rp ${item.minPurchase || 0}</td>
-              <td>${item.eventName || ''}</td>
-              <td>
-                <button class="action-btn edit-btn" onclick="openModal('discounts', 'edit', '${key}')"><i class="fas fa-edit"></i></button>
-                <button class="action-btn delete-btn" onclick="deleteData('discounts', '${key}')"><i class="fas fa-trash"></i></button>
-              </td>
-            `;
-          } else if (section === 'leaderboard') {
-            rowHTML = `
-              <td>${item.rank || ''}</td>
-              <td>${item.name || ''}</td>
-              <td>Rp ${item.amount || 0}</td>
-              <td>${item.prize || ''}</td>
-              <td>
-                <button class="action-btn edit-btn" onclick="openModal('leaderboard', 'edit', '${key}')"><i class="fas fa-edit"></i></button>
-                <button class="action-btn delete-btn" onclick="deleteData('leaderboard', '${key}')"><i class="fas fa-trash"></i></button>
-              </td>
-            `;
-          }
-          tr.innerHTML = rowHTML;
-          tbody.appendChild(tr);
-        });
-
-        // Editable price for products
-        if (section === 'products') {
-          document.querySelectorAll('.editable-price').forEach(cell => {
-            cell.addEventListener('blur', function() {
-              const key = this.dataset.key;
-              const newPrice = this.textContent.trim();
-              update(ref(database, `\( {section}/ \){key}`), { price: newPrice });
-            });
-          });
-        }
+  <script>
+    // Fungsi untuk kelola user (simpan di localStorage untuk demo)
+    function loadUsers() {
+      const users = JSON.parse(localStorage.getItem('users')) || [];
+      const tableBody = document.querySelector('#userTable tbody');
+      tableBody.innerHTML = '';
+      users.forEach((user, index) => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${user.username}</td>
+          <td>${user.password}</td>
+          <td>Rp ${user.saldo.toLocaleString()}</td>
+          <td>
+            <button class="btn" onclick="editUser(${index})">Ubah</button>
+            <button class="btn btn-delete" onclick="deleteUser(${index})">Hapus</button>
+          </td>
+        `;
+        tableBody.appendChild(row);
       });
     }
 
-    // Open Modal with Many Inputs
-    window.openModal = function(section, mode, key = null) {
-      currentSection = section;
-      currentMode = mode;
-      currentEditKey = key;
-      document.getElementById('modal-title').textContent = mode === 'edit' ? 'Edit ' + section.charAt(0).toUpperCase() + section.slice(1) : 'Tambah ' + section.charAt(0).toUpperCase() + section.slice(1) + ' Baru';
-      document.getElementById('modal').style.display = 'flex';
+    function addUser() {
+      const username = document.getElementById('userName').value;
+      const password = document.getElementById('userPassword').value;
+      const saldo = parseInt(document.getElementById('userSaldo').value) || 0;
+      if (!username || !password) return alert('Username dan Password wajib diisi.');
 
-      const form = document.getElementById('modal-form');
-      form.innerHTML = '';
+      const users = JSON.parse(localStorage.getItem('users')) || [];
+      users.push({ username, password, saldo });
+      localStorage.setItem('users', JSON.stringify(users));
+      loadUsers();
+      document.getElementById('userForm').style.display = 'none';
+      document.getElementById('userName').value = '';
+      document.getElementById('userPassword').value = '';
+      document.getElementById('userSaldo').value = '';
+    }
 
-      if (section === 'events') {
-        form.innerHTML = `
-          <div class="form-group">
-            <label>Nama Event</label>
-            <input type="text" id="event-name">
-          </div>
-          <div class="form-group">
-            <label>Gambar Event (URL)</label>
-            <input type="text" id="event-image">
-          </div>
-          <div class="form-group">
-            <label>Tanggal Mulai</label>
-            <input type="date" id="event-start-date">
-          </div>
-          <div class="form-group">
-            <label>Tanggal Selesai</label>
-            <input type="date" id="event-end-date">
-          </div>
-          <div class="form-group">
-            <label>Deskripsi Event</label>
-            <textarea id="event-desc" rows="5"></textarea>
-          </div>
-          <div class="form-group">
-            <label>Keterangan Pemenang (agak banyak, opsional)</label>
-            <textarea id="event-winner" rows="4"></textarea>
-          </div>
-          <div class="form-group">
-            <label>URL Detail Event</label>
-            <input type="text" id="event-url">
-          </div>
-          <div class="form-group">
-            <label>Syarat & Ketentuan</label>
-            <textarea id="event-terms" rows="4"></textarea>
-          </div>
-        `;
-      } else if (section === 'vouchers') {
-        form.innerHTML = `
-          <div class="form-group">
-            <label>Kode Voucher</label>
-            <input type="text" id="voucher-code">
-          </div>
-          <div class="form-group">
-            <label>Diskon (%)</label>
-            <input type="number" id="voucher-discount">
-          </div>
-          <div class="form-group">
-            <label>Minimal Pembelian (Rp)</label>
-            <input type="number" id="voucher-min">
-          </div>
-          <div class="form-group">
-            <label>Masa Berlaku (Tanggal Selesai)</label>
-            <input type="date" id="voucher-expiry">
-          </div>
-          <div class="form-group">
-            <label>Limit Pemakaian</label>
-            <input type="number" id="voucher-limit" placeholder="Kosongkan untuk unlimited">
-          </div>
-          <div class="form-group">
-            <label>Berlaku untuk Game</label>
-            <select id="voucher-game">
-              <option value="all">Semua Game</option>
-              <option value="ml">Mobile Legends</option>
-              <option value="ff">Free Fire</option>
-              <option value="pubg">PUBG Mobile</option>
-              <!-- Tambah game lain -->
-            </select>
-          </div>
-        `;
-      } else if (section === 'products') {
-        form.innerHTML = `
-          <div class="form-group">
-            <label>Nama Game</label>
-            <input type="text" id="product-game">
-          </div>
-          <div class="form-group">
-            <label>Nama Produk</label>
-            <input type="text" id="product-name">
-          </div>
-          <div class="form-group">
-            <label>Harga (Rp)</label>
-            <input type="text" id="product-price">
-          </div>
-          <div class="form-group">
-            <label>Gambar Produk (URL)</label>
-            <input type="text" id="product-image">
-          </div>
-        `;
-      } else if (section === 'discounts') {
-        form.innerHTML = `
-          <div class="form-group">
-            <label>Nama Promo</label>
-            <input type="text" id="discount-name">
-          </div>
-          <div class="form-group">
-            <label>Potongan (%) </label>
-            <input type="number" id="discount-percent">
-          </div>
-          <div class="form-group">
-            <label>Minimal Pembelian (Rp)</label>
-            <input type="number" id="discount-min">
-          </div>
-          <div class="form-group">
-            <label>Berlaku untuk Event</label>
-            <input type="text" id="discount-event" placeholder="Nama Event atau All">
-          </div>
-          <div class="form-group">
-            <label>Masa Berlaku</label>
-            <input type="date" id="discount-expiry">
-          </div>
-        `;
-      } else if (section === 'leaderboard') {
-        form.innerHTML = `
-          <div class="form-group">
-            <label>Rank</label>
-            <input type="number" id="leader-rank">
-          </div>
-          <div class="form-group">
-            <label>Nama Pemenang (Random atau Manual)</label>
-            <input type="text" id="leader-name">
-          </div>
-          <div class="form-group">
-            <label>Top Up Amount (Rp)</label>
-            <input type="number" id="leader-amount">
-          </div>
-          <div class="form-group">
-            <label>Hadiah (contoh: Rp 1.000.000)</label>
-            <input type="text" id="leader-prize">
-          </div>
-        `;
+    function editUser(index) {
+      const users = JSON.parse(localStorage.getItem('users'));
+      const user = users[index];
+      const newSaldo = prompt('Ubah saldo user ' + user.username, user.saldo);
+      if (newSaldo !== null) {
+        users[index].saldo = parseInt(newSaldo) || user.saldo;
+        localStorage.setItem('users', JSON.stringify(users));
+        loadUsers();
       }
+      const newPassword = prompt('Ubah password user ' + user.username, user.password);
+      if (newPassword !== null) {
+        users[index].password = newPassword || user.password;
+        localStorage.setItem('users', JSON.stringify(users));
+        loadUsers();
+      }
+    }
 
-      if (mode === 'edit') {
-        onValue(ref(database, `\( {section}/ \){key}`), (snapshot) => {
-          const item = snapshot.val();
-          if (section === 'events') {
-            document.getElementById('event-name').value = item.name || '';
-            document.getElementById('event-image').value = item.image || '';
-            document.getElementById('event-start-date').value = item.startDate || '';
-            document.getElementById('eve
+    function deleteUser(index) {
+      if (confirm('Yakin hapus user ini?')) {
+        const users = JSON.parse(localStorage.getItem('users'));
+        users.splice(index, 1);
+        localStorage.setItem('users', JSON.stringify(users));
+        loadUsers();
+      }
+    }
+
+    function showUserForm() {
+      document.getElementById('userForm').style.display = 'block';
+    }
+
+    // Fungsi untuk kelola event
+    function loadEvents() {
+      const events = JSON.parse(localStorage.getItem('events')) || [];
+      const tableBody = document.querySelector('#eventTable tbody');
+      tableBody.innerHTML = '';
+      events.forEach((event, index) => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${event.date}</td>
+          <td>${event.title}</td>
+          <td>${event.desc}</td>
+          <td><img src="${event.logo}" alt="Logo Event" style="width:100px;height:auto;border-radius:10px;"></td>
+          <td>
+            <button class="btn" onclick="editEvent(${index})">Ubah</button>
+            <button class="btn btn-delete" onclick="deleteEvent(${index})">Hapus</button>
+          </td>
+        `;
+        tableBody.appendChild(row);
+      });
+    }
+
+    function addEvent() {
+      const date = document.getElementById('eventDate').value;
+      const title = document.getElementById('eventTitle').value;
+      const desc = document.getElementById('eventDesc').value;
+      const logo = document.getElementById('eventLogo').value;
+      if (!date || !title || !desc || !logo.startsWith('https://')) return alert('Semua field wajib diisi dan logo harus URL https.');
+
+      const events = JSON.parse(localStorage.getItem('events')) || [];
+      events.push({ date, title, desc, logo });
+      localStorage.setItem('events', JSON.stringify(events));
+      loadEvents();
+      document.getElementById('eventForm').style.display = 'none';
+      document.getElementById('eventDate').value = '';
+      document.getElementById('eventTitle').value = '';
+      document.getElementById('eventDesc').value = '';
+      document.getElementById('eventLogo').value = '';
+      document.getElementById('eventLogoPreview').style.display = 'none';
+    }
+
+    function editEvent(index) {
+      const events = JSON.parse(localStorage.getItem('events'));
+      const event = events[index];
+      const newTitle = prompt('Ubah judul event', event.title);
+      if (newTitle) events[index].title = newTitle;
+      const newDesc = prompt('Ubah deskripsi event', event.desc);
+      if (newDesc) events[index].desc = newDesc;
+      const newLogo = prompt('Ubah URL logo event (https://...)', event.logo);
+      if (newLogo && newLogo.startsWith('https://')) events[index].logo = newLogo;
+      localStorage.setItem('events', JSON.stringify(events));
+      loadEvents();
+    }
+
+    function deleteEvent(index) {
+      if (confirm('Yakin hapus event ini?')) {
+        const events = JSON.parse(localStorage.getItem('events'));
+        events.splice(index, 1);
+        localStorage.setItem('events', JSON.stringify(events));
+        loadEvents();
+      }
+    }
+
+    function showEventForm() {
+      document.getElementById('eventForm').style.display = 'block';
+    }
+
+    // Preview logo event
+    document.getElementById('eventLogo').addEventListener('input', function() {
+      const preview = document.getElementById('eventLogoPreview');
+      preview.src = this.value;
+      preview.style.display = 'block';
+    });
+
+    // Load data on page load
+    loadUsers();
+    loadEvents();
+  </script>
+
+</body>
+</html>
