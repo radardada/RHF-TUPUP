@@ -250,10 +250,29 @@
     <p>Support 24/7: wa.me/081234567890</p>
   </footer>
 
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+
   <script>
-    // Data game super lengkap dari index.html kamu (key, title, icon persis)
+    // Firebase config
+    const firebaseConfig = {
+      apiKey: "AIzaSyALIhKFz4bpOPmES6t2fAdx8VMPP0ye1wc",
+      authDomain: "rhf-resmi.firebaseapp.com",
+      databaseURL: "https://rhf-resmi-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "rhf-resmi",
+      storageBucket: "rhf-resmi.firebasestorage.app",
+      messagingSenderId: "313439235544",
+      appId: "1:313439235544:web:b19a2ad538e34c1fe516ad",
+      measurementId: "G-LNCVH73P3X"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
+
+    // Data game SUPER LENGKAP (semua dari index.html kamu)
     const gamesData = {
-      ml: { title: "Mobile Legends Diamonds", icon: "https://img.esports.id/img/article/637920200914081250.png", needServer: true, note: "Buka Mobile Legends > Klik avatar pojok kiri atas > Salin User ID dan Zone ID jika diperlukan.", products: [
+      ml: { title: "Mobile Legends Diamonds", icon: "https://upload.wikimedia.org/wikipedia/id/thumb/b/ba/Mobile_Legends_Bang_Bang_logo.svg/1200px-Mobile_Legends_Bang_Bang_logo.svg.png", needServer: true, note: "Buka Mobile Legends > Klik avatar pojok kiri atas > Salin User ID dan Zone ID.", products: [
         {amount: "86 Diamonds", bonus: "+8 Bonus", price: "Rp 22.000"},
         {amount: "172 Diamonds", bonus: "+17 Bonus", price: "Rp 44.000"},
         {amount: "257 Diamonds", bonus: "+34 Bonus", price: "Rp 65.000"},
@@ -373,61 +392,22 @@
         {amount: "100 Diamonds", bonus: "", price: "Rp 15.000"},
         {amount: "500 Diamonds", bonus: "+50 Bonus", price: "Rp 75.000"}
       ]},
-      indosat: { title: "Pulsa Indosat", icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTM5Q9oR5hxSeKjs0WCZ60792UxJxvhmoSx1iwkZ9wm8A&s", needServer: false, note: "Masukkan nomor HP Indosat.", products: [
-        {amount: "Rp 5.000", bonus: "", price: "Rp 6.000"},
-        {amount: "Rp 10.000", bonus: "", price: "Rp 11.000"},
-        {amount: "Rp 25.000", bonus: "", price: "Rp 26.000"},
-        {amount: "Rp 50.000", bonus: "", price: "Rp 51.000"},
-        {amount: "Rp 100.000", bonus: "", price: "Rp 101.000"}
+      ragnarokclassic: { title: "Ragnarok M Classic", icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIXyEdqq66V1IUmmrzWjCjAEIe6wPPta4MWnuvAM1-MA&s", needServer: false, note: "Masukkan User ID Ragnarok M Classic.", products: [
+        {amount: "Standard Pack", bonus: "", price: "Rp 50.000"}
       ]},
-      // Tambahkan game lain sesuai kebutuhan (sudah lengkap untuk utama)
-    };
-
-    const params = new URLSearchParams(window.location.search);
-    const gameKey = params.get('game') || 'ml';
-    const data = gamesData[gameKey] || gamesData.ml;
-
-    const iconImg = document.getElementById('gameIcon');
-    iconImg.src = data.icon;
-    iconImg.onerror = () => { iconImg.src = 'https://via.placeholder.com/200/orange/white?text=' + data.title; };
-
-    document.getElementById('gameTitle').textContent = data.title;
-    document.getElementById('gameDesc').textContent = "Top Up " + data.title + " Termurah dan Tercepat - Proses Instan 24 Jam";
-    document.getElementById('idLabel').textContent = "Masukkan User ID atau Nomor untuk " + data.title;
-    document.getElementById('idNote').textContent = data.note;
-
-    if (data.needServer) {
-      document.getElementById('serverGroup').style.display = 'block';
-    }
-
-    const grid = document.getElementById('productsGrid');
-    grid.innerHTML = '';
-    data.products.forEach(p => {
-      const card = document.createElement('div');
-      card.className = 'product-item';
-      card.innerHTML = `
-        <div class="amount">${p.amount}</div>
-        \( {p.bonus ? `<div class="bonus"> \){p.bonus}</div>` : ''}
-        <div class="price">${p.price}</div>
-      `;
-      card.onclick = () => {
-        document.querySelectorAll('.product-item').forEach(c => c.classList.remove('selected'));
-        card.classList.add('selected');
-        document.getElementById('proceedBtn').disabled = false;
-      };
-      grid.appendChild(card);
-    });
-
-    document.getElementById('proceedBtn').onclick = () => {
-      const userId = document.getElementById('userId').value.trim();
-      if (!userId) return alert('User ID atau nomor harus diisi!');
-      const selected = document.querySelector('.product-item.selected');
-      if (!selected) return alert('Pilih nominal dulu!');
-      const nominal = selected.querySelector('.amount').textContent;
-      const harga = selected.querySelector('.price').textContent;
-      alert(`Pesanan siap!\nGame: ${data.title}\nID: ${userId}\nNominal: ${nominal}\nHarga: ${harga}\nHubungi Admin WA untuk bayar.`);
-    };
-  </script>
-
-</body>
-</html>
+      deltaforce: { title: "Delta Force - Garena", icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlKe9bxwc1562t3P1x3wOkmEDCH-t2YAz5O3VJ_n6JmN78ghi0x1IPUyc&s", needServer: false, note: "Masukkan User ID Delta Force - Garena.", products: [
+        {amount: "100 Credits", bonus: "", price: "Rp 15.000"}
+      ]},
+      tokogamecredits: { title: "Tokogame Credits", icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFyrqhAKVXR8tmBGa4_SB2tIxCimcmWWt8EhDmtBSDNA&s", needServer: false, note: "Masukkan User ID Tokogame.", products: [
+        {amount: "100 Credits", bonus: "", price: "Rp 15.000"}
+      ]},
+      mladventure: { title: "Mobile Legends Adventure", icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRre4dsofyUejGWVpqParhe7Or-93YkNPkEu6Vju6Es-PoALqam13CnCVI&s", needServer: false, note: "Masukkan User ID Mobile Legends Adventure.", products: [
+        {amount: "100 Diamonds", bonus: "", price: "Rp 15.000"}
+      ]},
+      lolwc: { title: "League of Legends WC", icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZfrzzNjopkpkdjOr5BIW8j_JWn2SI-7HIncA5zZ5aDg&s", needServer: false, note: "Masukkan User ID League of Legends WC.", products: [
+        {amount: "100 Points", bonus: "", price: "Rp 15.000"}
+      ]},
+      moonlightblade: { title: "Moonlight Blade M", icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnXnxGKfW8oCHvM_wtzxDavgYoEAEhncxCnLTMZupctgEIDe6f0uFAYEY&s", needServer: false, note: "Masukkan User ID Moonlight Blade M.", products: [
+        {amount: "100 Diamonds", bonus: "", price: "Rp 15.000"}
+      ]},
+      nightcrows: { title: "Night Crows", icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-EyqA6RGbOTNZOAepL
