@@ -270,7 +270,7 @@
     firebase.initializeApp(firebaseConfig);
     const db = firebase.database();
 
-    // Games data SUPER LENGKAP & RAPI (icon baru aman dari list kamu)
+    // Games data SUPER LENGKAP (rapi per baris agar aman paste)
     const gamesData = {
       ml: {
         title: "Mobile Legends Diamonds",
@@ -549,7 +549,6 @@
       }
     };
 
-    // Render logic
     const params = new URLSearchParams(window.location.search);
     const gameKey = params.get('game') || 'ml';
     const data = gamesData[gameKey] || gamesData.ml;
@@ -560,4 +559,4 @@
 
     document.getElementById('gameTitle').textContent = data.title;
     document.getElementById('gameDesc').textContent = "Top Up " + data.title + " Termurah dan Tercepat - Proses Instan 24 Jam";
-    document.getElementById('idLabel').textContent = "Masukkan Us
+    document.getElementById('idLabel').textContent = "Masukkan User ID atau Nomor untuk " +
