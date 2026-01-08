@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RHF - Top Up Game Termurah & Tercepat 2026</title>
+  <title>RHF - Top Up Game Termurah & Tercepat</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Poppins', sans-serif; background: #fff; color: #333; }
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 15px; }
+    body { font-family: 'Poppins', sans-serif; background: #f8f9fa; color: #333; }
+    .container { max-width: 1300px; margin: 0 auto; padding: 0 20px; }
 
     header {
       background: #fff;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      padding: 10px 0;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      padding: 20px 0;
       position: sticky;
       top: 0;
       z-index: 1000;
@@ -24,17 +24,17 @@
       align-items: center;
       justify-content: space-between;
     }
-    .header-logo img { height: 50px; }
+    .logo img { height: 60px; }
     .search-bar {
       flex: 1;
       max-width: 600px;
-      margin: 0 20px;
+      margin: 0 30px;
       position: relative;
     }
     .search-bar input {
       width: 100%;
-      padding: 12px 50px 12px 20px;
-      border: 1px solid #ddd;
+      padding: 16px 60px 16px 25px;
+      border: 2px solid #ddd;
       border-radius: 30px;
       font-size: 16px;
     }
@@ -45,199 +45,164 @@
       transform: translateY(-50%);
       background: #ff6600;
       border: none;
-      width: 40px;
-      height: 40px;
+      width: 50px;
+      height: 50px;
       border-radius: 50%;
       color: #fff;
-      font-size: 18px;
+      font-size: 20px;
       cursor: pointer;
     }
-    .header-right a { margin-left: 20px; color: #333; font-weight: 600; text-decoration: none; }
-
-    .event-carousel {
-      margin: 20px 0;
-      display: flex;
-      overflow-x: auto;
-      gap: 15px;
-      padding: 10px 0;
-      scrollbar-width: none;
-    }
-    .event-carousel::-webkit-scrollbar { display: none; }
-    .event-item {
-      min-width: 280px;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      background: #f5f5f5;
-    }
-    .event-item img { width: 100%; height: 160px; object-fit: cover; }
-    .event-info { padding: 12px; }
-    .event-date { font-size: 13px; color: #666; }
-    .event-title { font-weight: bold; font-size: 15px; margin: 5px 0; }
-
-    .section-title {
-      font-size: 28px;
-      font-weight: 700;
-      text-align: left;
-      margin: 30px 0 20px;
-      color: #333;
+    .user-menu {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-    }
-    .section-title::after {
-      content: '';
-      flex: 1;
-      height: 3px;
-      background: linear-gradient(to right, #ff6600, transparent);
-      margin-left: 20px;
-    }
-    .view-all { font-size: 14px; color: #ff6600; text-decoration: none; }
-
-    .game-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
       gap: 20px;
-      padding: 20px 0;
     }
-    .game-item {
-      text-align: center;
-      cursor: pointer;
-      transition: transform 0.3s;
-    }
-    .game-item:hover { transform: scale(1.08); }
-    .game-item img {
-      width: 100px;
-      height: 100px;
-      object-fit: cover;
-      border-radius: 18px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.12);
-    }
-    .game-item p {
-      margin-top: 10px;
-      font-size: 13px;
+    .user-menu a {
+      color: #333;
       font-weight: 600;
-      line-height: 1.4;
+      text-decoration: none;
+      font-size: 16px;
     }
-
-    .redeem-section {
-      background: #f0f0f0;
-      border-radius: 16px;
-      padding: 30px;
-      text-align: center;
-      margin: 50px 0;
+    .user-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
     }
-    .redeem-section h3 { font-size: 24px; margin-bottom: 20px; color: #ff6600; }
-    .redeem-input {
-      width: 60%;
-      max-width: 400px;
-      padding: 15px;
-      border: 2px solid #ddd;
-      border-radius: 12px;
-      font-size: 18px;
-      margin-right: 10px;
-    }
-    .redeem-btn {
-      padding: 15px 30px;
+    .saldo {
       background: #ff6600;
       color: #fff;
-      border: none;
-      border-radius: 12px;
-      font-size: 18px;
+      padding: 8px 15px;
+      border-radius: 20px;
+      font-size: 14px;
+    }
+    .logout-btn {
+      background: #dc3545;
+      color: #fff;
+      padding: 8px 15px;
+      border-radius: 20px;
       cursor: pointer;
+    }
+
+    .carousel {
+      position: relative;
+      margin: 50px 0;
+      height: 400px;
+      overflow: hidden;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+    .carousel-slide {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+    .carousel-slide.active { opacity: 1; }
+    .carousel-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .carousel-overlay {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0,0,0,0.6);
+      color: #fff;
+      padding: 15px 30px;
+      border-radius: 15px;
+      text-align: center;
+    }
+    .carousel-overlay h2 { font-size: 28px; margin-bottom: 5px; }
+    .carousel-overlay p { font-size: 18px; }
+
+    .section-title {
+      font-size: 36px;
+      font-weight: 700;
+      text-align: center;
+      margin: 60px 0 40px;
+      color: #333;
+    }
+
+    .games-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-bottom: 80px;
+    }
+    .game-item {
+      background: #fff;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+      transition: all 0.4s ease;
+      cursor: pointer;
+    }
+    .game-item:hover {
+      transform: translateY(-15px);
+      box-shadow: 0 20px 40px rgba(255,102,0,0.3);
+    }
+    .game-item img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+    .game-item p {
+      padding: 20px;
+      text-align: center;
+      font-size: 18px;
+      font-weight: 600;
+      color: #333;
     }
 
     footer {
       background: #333;
       color: #fff;
       text-align: center;
-      padding: 40px 20px;
-      margin-top: 60px;
+      padding: 60px 20px;
+      margin-top: 100px;
     }
+    footer p { font-size: 16px; margin: 10px 0; }
   </style>
 </head>
 <body>
 
   <header>
     <div class="container header-inner">
-      <div class="header-logo">
-        <img src="images/logo.png" alt="RHF">
+      <div class="logo">
+        <img src="images/logo.png" alt="RHF Logo">
       </div>
       <div class="search-bar">
-        <input type="text" placeholder="Cari di RHF...">
+        <input type="text" placeholder="Cari game atau produk...">
         <button><i class="fas fa-search"></i></button>
       </div>
-      <div class="header-right">
-        <a href="#">Login</a>
-        <a href="#">Keranjang</a>
+      <div class="user-menu" id="userMenu">
+        <!-- Akan diisi JS: kalau login tampil username + saldo + logout, kalau belum tampil login/register -->
       </div>
     </div>
   </header>
 
   <div class="container">
 
-    <!-- Event Carousel - Diambil real-time dari Firebase -->
-    <div class="event-carousel" id="eventCarousel">
-      <!-- Event akan di-load otomatis oleh JS dari Firebase -->
-      <p style="text-align:center;width:100%;padding:20px;color:#999;">Loading event...</p>
+    <!-- Carousel Event dari Firebase -->
+    <div class="carousel" id="carousel">
+      <!-- Slide akan diisi JS dari /events -->
+      <div class="carousel-slide active">
+        <img src="https://via.placeholder.com/1300x400/orange/white?text=Selamat+Datang+di+RHF" alt="Welcome">
+        <div class="carousel-overlay">
+          <h2>Selamat Datang di RHF</h2>
+          <p>Top Up Termurah & Tercepat 24 Jam</p>
+        </div>
+      </div>
     </div>
 
-    <div class="section-title">
-      TOP UP GAME
-      <a href="#" class="view-all">Lihat Semua ></a>
-    </div>
+    <h2 class="section-title">Pilih Game atau Produk</h2>
 
-    <!-- Grid Game tetap statis (klik langsung ke topup.html?game=xxx) -->
-    <div class="game-grid">
-      <div class="game-item" onclick="location.href='topup.html?game=ml'">
-        <img src="https://img.esports.id/img/article/637920200914081250.png" alt="Mobile Legends">
-        <p>Mobile Legends Diamonds</p>
-      </div>
-      <div class="game-item" onclick="location.href='topup.html?game=ff'">
-        <img src="https://iconlogovector.com/uploads/images/2025/08/lg-6893f81b6ef79-FREE-FIRE.webp" alt="Free Fire">
-        <p>Free Fire Diamonds</p>
-      </div>
-      <div class="game-item" onclick="location.href='topup.html?game=pubg'">
-        <img src="https://images.seeklogo.com/logo-png/35/1/pubg-logo-png_seeklogo-352312.png" alt="PUBG Mobile">
-        <p>PUBG Mobile UC</p>
-      </div>
-      <div class="game-item" onclick="location.href='topup.html?game=hok'">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMmZxVql5rDkrf9F18ENUODNWfWn96_ZDfGyAD3gUC8g&s=10" alt="Honor of Kings">
-        <p>Honor of Kings Tokens</p>
-      </div>
-      <div class="game-item" onclick="location.href='topup.html?game=bleach'">
-        <img src="https://liputangampongnews.id/assets/img/berita/20210920_183731.jpg" alt="Bleach">
-        <p>Bleach Tokens</p>
-      </div>
-      <div class="game-item" onclick="location.href='topup.html?game=bigo'">
-        <img src="https://images.seeklogo.com/logo-png/47/1/bigo-live-logo-png_seeklogo-477968.png" alt="Bigo Live">
-        <p>Bigo Live Diamonds</p>
-      </div>
-      <div class="game-item" onclick="location.href='topup.html?game=hsr'">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSd4h06YHJT_hOpOlNoiQndwaOYC6ImQCvEkA3QQXnh1g&s" alt="Honkai Star Rail">
-        <p>Honkai: Star Rail Shard</p>
-      </div>
-      <div class="game-item" onclick="location.href='topup.html?game=valorant'">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSPUSKwrosbcLh6qXmw79qz-Dl1vMOvBmP1ydujtvIsA&s" alt="Valorant">
-        <p>Valorant Points</p>
-      </div>
-      <div class="game-item" onclick="location.href='topup.html?game=genshin'">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4z_craukzS9fmSpRGHgqF8gxc34428E8fryReuCt6Nw&s" alt="Genshin Impact">
-        <p>Genshin Impact Crystals</p>
-      </div>
-      <!-- Tambahkan semua game lain seperti di kode sebelumnya -->
-      <!-- Pulsa & Voucher -->
-      <div class="game-item" onclick="location.href='topup.html?game=indosat'">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTM5Q9oR5hxSeKjs0WCZ60792UxJxvhmoSx1iwkZ9wm8A&s" alt="Pulsa Indosat">
-        <p>Pulsa Indosat</p>
-      </div>
-      <!-- ... sisanya sama seperti kode index lama kamu -->
-    </div>
-
-    <div class="redeem-section">
-      <h3>Tukar Kode Voucher</h3>
-      <input type="text" class="redeem-input" placeholder="Masukkan kode voucher">
-      <button class="redeem-btn">Tukar Sekarang</button>
+    <div class="games-grid" id="gamesGrid">
+      <!-- Game card akan diisi JS dari data bawah -->
     </div>
 
   </div>
@@ -252,7 +217,6 @@
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
 
   <script>
-    // Firebase config kamu
     const firebaseConfig = {
       apiKey: "AIzaSyALIhKFz4bpOPmES6t2fAdx8VMPP0ye1wc",
       authDomain: "rhf-resmi.firebaseapp.com",
@@ -267,37 +231,110 @@
     firebase.initializeApp(firebaseConfig);
     const db = firebase.database();
 
-    // Load event carousel real-time dari Firebase (terhubung langsung ke admin.html)
-    function loadEvents() {
-      db.ref('events').on('value', (snapshot) => {
-        const events = snapshot.val() || {};
-        const carousel = document.getElementById('eventCarousel');
-        carousel.innerHTML = '';
+    // Data game super lengkap dari list kamu (icon & link persis)
+    const gamesList = [
+      { name: "Mobile Legends Diamonds", url: "https://seeklogo.com/images/M/mobile-legends-logo-7E6A5E6D9B-seeklogo.com.png", link: "topup.html?game=ml" },
+      { name: "Free Fire Diamonds", url: "https://upload.wikimedia.org/wikipedia/en/c/c5/Logo_of_Garena_Free_Fire.png", link: "topup.html?game=ff" },
+      { name: "PUBG Mobile UC", url: "https://seeklogo.com/images/P/pubg-mobile-logo-2F3D6E0E4B-seeklogo.com.png", link: "topup.html?game=pubg" },
+      { name: "Valorant Points", url: "https://upload.wikimedia.org/wikipedia/commons/f/fc/Valorant_logo_-_pink_color_version.svg", link: "topup.html?game=valorant" },
+      { name: "Genshin Impact Crystals", url: "https://www.freepnglogos.com/uploads/genshin-impact-logo-png/hd-transparent-logo-genshin-impact-free-download-2.png", link: "topup.html?game=genshin" },
+      { name: "Bigo Live Diamonds", url: "https://seeklogo.com/images/B/bigo-live-logo-477966B5E8-seeklogo.com.png", link: "topup.html?game=bigo" },
+      { name: "Honkai: Star Rail Shard", url: "https://interfaceingame.com/wp-content/uploads/honkai-star-rail/honkai-star-rail-logo.png", link: "topup.html?game=hsr" },
+      { name: "Call of Duty Mobile CP", url: "https://www.pngarts.com/files/8/Call-of-Duty-Mobile-Logo-PNG-Image-Background.png", link: "topup.html?game=codm" },
+      { name: "Steam Wallet Code IDR", url: "https://seeklogo.com/images/S/steam-logo-270306A5E7-seeklogo.com.png", link: "topup.html?game=steam" },
+      { name: "Google Play Voucher", url: "https://www.freepnglogos.com/uploads/google-play-png-logo/media-google-play-png-logo-5.png", link: "topup.html?game=googleplay" },
+      { name: "Pulsa Telkomsel", url: "https://seeklogo.com/images/T/telkomsel-logo-410695A5E7-seeklogo.com.png", link: "topup.html?game=telkomsel" },
+      { name: "Pulsa Indosat", url: "https://seeklogo.com/images/I/indosat-ooredoo-logo-7E6A5E6D9B-seeklogo.com.png", link: "topup.html?game=indosat" },
+      { name: "Pulsa Tri", url: "https://seeklogo.com/images/T/tri-indonesia-logo-7E6A5E6D9B-seeklogo.com.png", link: "topup.html?game=tri" },
+      { name: "Pulsa XL", url: "https://seeklogo.com/images/X/xl-axiata-logo-7E6A5E6D9B-seeklogo.com.png", link: "topup.html?game=xl" },
+      { name: "Pulsa Axis", url: "https://seeklogo.com/images/A/axis-logo-7E6A5E6D9B-seeklogo.com.png", link: "topup.html?game=axis" },
+      { name: "Pulsa Smartfren", url: "https://seeklogo.com/images/S/smartfren-logo-7E6A5E6D9B-seeklogo.com.png", link: "topup.html?game=smartfren" },
+      { name: "DANA", url: "https://seeklogo.com/images/D/dana-logo-7E6A5E6D9B-seeklogo.com.png", link: "topup.html?game=dana" },
+      { name: "OVO", url: "https://seeklogo.com/images/O/ovo-logo-7E6A5E6D9B-seeklogo.com.png", link: "topup.html?game=ovo" },
+      { name: "GoPay", url: "https://seeklogo.com/images/G/gopay-logo-7E6A5E6D9B-seeklogo.com.png", link: "topup.html?game=gopay" },
+      { name: "ShopeePay", url: "https://seeklogo.com/images/S/shopeepay-logo-7E6A5E6D9B-seeklogo.com.png", link: "topup.html?game=shopeepay" },
+      { name: "Fortnite V Bucks", url: "https://upload.wikimedia.org/wikipedia/commons/4/4c/Fortnite_logo.svg", link: "topup.html?game=fortnite" },
+      { name: "TikTok Live Koin", url: "https://1000logos.net/wp-content/uploads/2019/06/Tiktok_Logo.png", link: "topup.html?game=tiktok" },
+      { name: "Razer Gold Voucher", url: "https://media.gold.razer.com/goldweb/site/images/logo/razer-gold-silver.png", link: "topup.html?game=razer" },
+      { name: "Minecraft Minecoins", url: "https://cdn.freebiesupply.com/logos/thumbs/2x/minecraft-1-logo.png", link: "topup.html?game=minecraft" }
+    ];
 
-        if (Object.keys(events).length === 0) {
-          carousel.innerHTML = '<p style="text-align:center;width:100%;padding:20px;color:#999;">Belum ada event saat ini.</p>';
-          return;
-        }
+    // Render game grid
+    const gamesGrid = document.getElementById('gamesGrid');
+    gamesList.forEach(game => {
+      const item = document.createElement('a');
+      item.href = game.link;
+      item.className = 'game-item';
+      item.innerHTML = `
+        <img src="\( {game.url}" alt=" \){game.name}" onerror="this.src='https://via.placeholder.com/250/orange/white?text=${game.name}'">
+        <p>${game.name}</p>
+      `;
+      gamesGrid.appendChild(item);
+    });
 
-        Object.keys(events).forEach(key => {
-          const ev = events[key];
-          const item = document.createElement('div');
-          item.className = 'event-item';
-          item.innerHTML = `
-            <img src="${ev.logo || 'https://via.placeholder.com/300x160?text=Event+RHF'}" alt="Event">
-            <div class="event-info">
-              <div class="event-date">${ev.date || 'Tanggal'}</div>
-              <div class="event-title">${ev.title || 'Judul Event'}</div>
-              <p>${ev.desc || 'Deskripsi event'}</p>
-            </div>
-          `;
-          carousel.appendChild(item);
-        });
+    // Load carousel event dari Firebase real-time
+    db.ref('events').orderByChild('date').on('value', snapshot => {
+      const carousel = document.getElementById('carousel');
+      carousel.innerHTML = '';
+      const events = snapshot.val() || {};
+      let first = true;
+      Object.keys(events).reverse().forEach(key => {
+        const ev = events[key];
+        const slide = document.createElement('div');
+        slide.className = 'carousel-slide' + (first ? ' active' : '');
+        first = false;
+        slide.innerHTML = `
+          <img src="\( {ev.logo || 'https://via.placeholder.com/1300x400'}" alt=" \){ev.title}">
+          <div class="carousel-overlay">
+            <h2>${ev.title || 'Event RHF'}</h2>
+            <p>${ev.desc || 'Top Up Sekarang & Dapatkan Bonus!'}</p>
+          </div>
+        `;
+        carousel.appendChild(slide);
       });
+
+      // Auto slide setiap 5 detik
+      let current = 0;
+      const slides = document.querySelectorAll('.carousel-slide');
+      if (slides.length > 1) {
+        setInterval(() => {
+          slides[current].classList.remove('active');
+          current = (current + 1) % slides.length;
+          slides[current].classList.add('active');
+        }, 5000);
+      }
+    });
+
+    // Cek login & tampilkan user menu
+    function updateUserMenu() {
+      const userMenu = document.getElementById('userMenu');
+      const username = localStorage.getItem('username');
+      const saldo = localStorage.getItem('saldo') || 0;
+
+      if (username) {
+        userMenu.innerHTML = `
+          <div class="user-info">
+            <span>Selamat datang, <strong>${username}</strong></span>
+            <span class="saldo">Saldo: Rp ${parseInt(saldo).toLocaleString()}</span>
+          </div>
+          <span class="logout-btn" onclick="logout()">Logout</span>
+        `;
+      } else {
+        userMenu.innerHTML = `
+          <a href="login.html">Login</a>
+          <a href="register.html">Register</a>
+        `;
+      }
     }
 
-    // Jalankan saat halaman load
-    loadEvents();
+    function logout() {
+      localStorage.clear();
+      alert('Logout berhasil!');
+      window.location.reload();
+    }
+
+    // Jalankan saat load
+    updateUserMenu();
   </script>
 
 </body>
