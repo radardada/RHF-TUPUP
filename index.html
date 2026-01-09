@@ -44,18 +44,44 @@
     .section-title a { font-size: 18px; color: #4caf50; text-decoration: none; font-weight: 600; }
 
     .games-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 15px; margin-bottom: 100px; }
-    .game-item { background: #fff; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: 0.3s; text-decoration: none; color: inherit; cursor: pointer; height: 180px; display: flex; flex-direction: column; }
+    .game-item { background: #fff; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: 0.3s; text-decoration: none; color: inherit; cursor: pointer; height: 180px; display: flex; flex-direction: column; position: relative; }
     .game-item:hover { transform: translateY(-8px); box-shadow: 0 12px 25px rgba(0,0,0,0.2); }
     .game-item img { width: 100%; height: 120px; object-fit: contain; background: #f8f9fa; padding: 10px; flex-grow: 1; }
     .game-item p { padding: 8px 5px; font-weight: 600; font-size: 13px; line-height: 1.3; text-align: center; }
 
+    /* Overlay logo metode pembayaran - hanya muncul saat game diklik */
+    .payment-overlay { 
+      display: none; 
+      position: fixed; 
+      top: 0; left: 0; width: 100%; height: 100%; 
+      background: rgba(0,0,0,0.7); 
+      z-index: 9999; 
+      align-items: center; 
+      justify-content: center; 
+    }
+    .payment-overlay.show { display: flex; }
+    .payment-methods { 
+      background: #fff; 
+      border-radius: 20px; 
+      padding: 30px; 
+      width: 90%; 
+      max-width: 500px; 
+      text-align: center; 
+    }
+    .payment-methods h3 { font-size: 24px; margin-bottom: 20px; color: #ff5722; }
+    .methods-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 20px; }
+    .method-item { cursor: pointer; padding: 15px; border-radius: 12px; border: 2px solid #eee; transition: 0.3s; }
+    .method-item:hover { border-color: #ff5722; }
+    .method-item img { width: 80px; height: 80px; object-fit: contain; }
+
     .modal { display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); align-items: center; justify-content: center; }
+    .modal.show { display: flex; }
     .modal-content { background: #fff; border-radius: 20px; padding: 35px; width: 90%; max-width: 420px; box-shadow: 0 15px 40px rgba(0,0,0,0.3); text-align: center; }
     .modal-content h3 { font-size: 26px; margin-bottom: 20px; color: #ff6600; }
     .modal-content input, .modal-content button { width: 100%; padding: 15px; margin: 12px 0; border-radius: 12px; font-size: 16px; }
     .modal-content input { border: 1px solid #ddd; }
     .modal-content button { background: linear-gradient(to right, #ff6600, #ff8800); color: #fff; border: none; cursor: pointer; font-weight: 600; }
-    .close { float: right; font-size: 32px; cursor: pointer; color: #aaa; }
+    .close { position: absolute; top: 15px; right: 25px; font-size: 32px; cursor: pointer; color: #aaa; }
 
     footer { background: #222; color: #aaa; text-align: center; padding: 60px 20px; }
   </style>
@@ -92,72 +118,126 @@
       <a href="#">Lihat Semua ></a>
     </div>
 
-    <!-- Grid game langsung di index.html -->
-    <div class="games-grid">
+    <!-- Grid game -->
+    <div class="games-grid" id="gamesGrid">
       <!-- Mobile Legends -->
-      <a href="topup.html?game=ml" class="game-item">
+      <div class="game-item" data-game="ml" data-id="user_id_ml">
         <img src="https://assets.stickpng.com/images/62061920cdd94000043e3951.png" alt="Mobile Legends Diamonds" onerror="this.src='https://via.placeholder.com/120x120?text=ML'">
         <p>Mobile Legends Diamonds</p>
-      </a>
+      </div>
 
       <!-- Free Fire -->
-      <a href="topup.html?game=ff" class="game-item">
+      <div class="game-item" data-game="ff" data-id="user_id_ff">
         <img src="https://upload.wikimedia.org/wikipedia/en/c/c5/Logo_of_Garena_Free_Fire.png" alt="Free Fire Diamonds" onerror="this.src='https://via.placeholder.com/120x120?text=FF'">
         <p>Free Fire Diamonds</p>
-      </a>
+      </div>
 
       <!-- PUBG Mobile -->
-      <a href="topup.html?game=pubg" class="game-item">
+      <div class="game-item" data-game="pubg" data-id="user_id_pubg">
         <img src="https://upload.wikimedia.org/wikipedia/commons/4/43/PUBG_Mobile_simple_logo_black.png" alt="PUBG Mobile UC" onerror="this.src='https://via.placeholder.com/120x120?text=PUBG'">
         <p>PUBG Mobile UC</p>
-      </a>
+      </div>
 
       <!-- Valorant -->
-      <a href="topup.html?game=valorant" class="game-item">
+      <div class="game-item" data-game="valorant" data-id="user_id_valorant">
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Valorant_logo_-_pink_color_version.svg/2560px-Valorant_logo_-_pink_color_version.svg.png" alt="Valorant Points" onerror="this.src='https://via.placeholder.com/120x120?text=VALORANT'">
         <p>Valorant Points</p>
-      </a>
+      </div>
 
       <!-- Genshin Impact -->
-      <a href="topup.html?game=genshin" class="game-item">
+      <div class="game-item" data-game="genshin" data-id="user_id_genshin">
         <img src="https://www.freepnglogos.com/uploads/genshin-impact-logo-png/hd-transparent-logo-genshin-impact-free-download-2.png" alt="Genshin Impact Crystals" onerror="this.src='https://via.placeholder.com/120x120?text=GENSHIN'">
         <p>Genshin Impact Crystals</p>
-      </a>
+      </div>
 
       <!-- Bigo Live -->
-      <a href="topup.html?game=bigo" class="game-item">
+      <div class="game-item" data-game="bigo" data-id="user_id_bigo">
         <img src="https://logowik.com/content/uploads/images/bigo-live2708.jpg" alt="Bigo Live Diamonds" onerror="this.src='https://via.placeholder.com/120x120?text=BIGO'">
         <p>Bigo Live Diamonds</p>
-      </a>
+      </div>
 
       <!-- Honkai Star Rail -->
-      <a href="topup.html?game=hsr" class="game-item">
+      <div class="game-item" data-game="hsr" data-id="user_id_hsr">
         <img src="https://toppng.com/uploads/preview/official-logo-of-the-honkai-star-rail-game-11728656973tfuqkczxck.png" alt="Honkai Star Rail" onerror="this.src='https://via.placeholder.com/120x120?text=HSR'">
         <p>Honkai Star Rail</p>
-      </a>
+      </div>
 
       <!-- Call of Duty Mobile -->
-      <a href="topup.html?game=codm" class="game-item">
+      <div class="game-item" data-game="codm" data-id="user_id_codm">
         <img src="https://static.wikia.nocookie.net/logopedia/images/7/77/CODM_Logo_BlackYellow.png/revision/latest?cb=20200325111109" alt="COD Mobile" onerror="this.src='https://via.placeholder.com/120x120?text=CODM'">
         <p>Call of Duty Mobile</p>
-      </a>
+      </div>
 
       <!-- Steam -->
-      <a href="topup.html?game=steam" class="game-item">
+      <div class="game-item" data-game="steam" data-id="user_id_steam">
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Steam_icon_logo.svg/1200px-Steam_icon_logo.svg.png" alt="Steam Wallet" onerror="this.src='https://via.placeholder.com/120x120?text=STEAM'">
         <p>Steam Wallet</p>
-      </a>
-
-      <!-- Tambahkan game lain sesuai kebutuhan dengan format sama -->
+      </div>
     </div>
   </div>
 
-  <!-- Modal Tambah Saldo -->
+  <!-- Overlay Metode Pembayaran -->
+  <div id="paymentOverlay" class="payment-overlay">
+    <div class="payment-methods">
+      <span class="close" onclick="closePaymentOverlay()">&times;</span>
+      <h3>Pilih Metode Pembayaran</h3>
+      <div class="methods-grid">
+        <div class="method-item" data-method="saldo_rhf">
+          <img src="https://via.placeholder.com/80x80?text=RHF+Saldo" alt="Saldo RHF">
+          <p>Saldo RHF</p>
+        </div>
+        <div class="method-item" data-method="dana">
+          <img src="https://upload.wikimedia.org/wikipedia/id/9/90/Logo_DANA.png" alt="DANA">
+          <p>DANA</p>
+        </div>
+        <div class="method-item" data-method="gopay">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/4/4b/GoPay_Logo.png" alt="GoPay">
+          <p>GoPay</p>
+        </div>
+        <div class="method-item" data-method="ovo">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/1/1f/OVO_logo.png" alt="OVO">
+          <p>OVO</p>
+        </div>
+        <div class="method-item" data-method="shopeepay">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/5/57/ShopeePay_logo.png" alt="ShopeePay">
+          <p>ShopeePay</p>
+        </div>
+        <div class="method-item" data-method="qris">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/4/4f/QRIS_Logo.png" alt="QRIS">
+          <p>QRIS</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Input ID & Nominal -->
   <div id="topupModal" class="modal">
     <div class="modal-content">
-      <span class="close" onclick="document.getElementById('topupModal').style.display='none'">&times;</span>
+      <span class="close" onclick="closeTopupModal()">&times;</span>
+      <h3 id="modalTitle">Top Up Mobile Legends</h3>
+      <input type="text" id="playerId" placeholder="Masukkan ID (contoh: 123456789)" required>
+      <input type="number" id="nominalInput" placeholder="Pilih atau masukkan nominal (Rp)" min="10000" required>
+      <button id="prosesBtn" onclick="prosesPembayaran()">Proses Pembayaran</button>
+    </div>
+  </div>
+
+  <!-- Modal Saldo Tidak Cukup -->
+  <div id="insufficientModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeInsufficientModal()">&times;</span>
+      <h3 style="color:#dc3545;">Saldo Tidak Cukup</h3>
+      <p>Saldo Anda saat ini tidak mencukupi untuk melakukan transaksi ini.</p>
+      <button onclick="openTopupSaldoModal()">Tambah Saldo</button>
+      <button style="background:#666;margin-top:10px;" onclick="closeInsufficientModal()">Batal</button>
+    </div>
+  </div>
+
+  <!-- Modal Tambah Saldo (sebelumnya) -->
+  <div id="topupSaldoModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeTopupSaldoModal()">&times;</span>
       <h3>Tambah Saldo</h3>
-      <input type="number" id="nominalInput" placeholder="Nominal (Rp)" min="10000" required autofocus>
+      <input type="number" id="nominalSaldo" placeholder="Nominal (Rp)" min="10000" required>
       <p style="font-size:15px;margin:15px 0;">Transfer ke DANA:<br><strong>85124869641</strong></p>
       <input type="text" id="descInput" placeholder="Deskripsi (opsional)">
       <input type="file" id="buktiInput" accept="image/*" required>
@@ -191,27 +271,33 @@
 
     const userMenu = document.getElementById('userMenu');
     const carousel = document.getElementById('carousel');
+    const gamesGrid = document.getElementById('gamesGrid');
 
-    // Cek login
+    let currentGame = '';
+    let currentId = '';
+    let currentNominal = 0;
+    let selectedMethod = '';
+    let currentSaldo = 0;
+
+    // Cek login & saldo
     const userKey = localStorage.getItem('userKey');
     const username = localStorage.getItem('username');
-    const savedSaldo = localStorage.getItem('saldo');
 
     if (userKey && username) {
       db.ref('users/' + userKey).on('value', snap => {
         const data = snap.val() || {};
-        const saldo = data.saldo || savedSaldo || 0;
+        currentSaldo = data.saldo || 0;
         const initial = username.charAt(0).toUpperCase();
 
         userMenu.innerHTML = `
           <div onclick="toggleDropdown()">
             <div class="user-avatar">${initial}</div>
-            <div class="user-saldo">Rp ${Number(saldo).toLocaleString('id-ID')}</div>
+            <div class="user-saldo">Rp ${Number(currentSaldo).toLocaleString('id-ID')}</div>
           </div>
           <div id="dropdownMenu" class="dropdown">
             <div class="dropdown-item"><strong>${username}</strong></div>
             <div class="dropdown-item" onclick="location.href='saldo.html'">Saldo</div>
-            <div class="dropdown-item" onclick="openTopupModal()">Tambah Saldo</div>
+            <div class="dropdown-item" onclick="openTopupSaldoModal()">Tambah Saldo</div>
             <div class="dropdown-item" onclick="location.href='settings.html'">Pengaturan Akun</div>
             <div class="dropdown-item" onclick="alert('ID Akun: ${userKey}')">ID Akun: ${userKey}</div>
             <div class="dropdown-item" style="color:#dc3545;" onclick="logout()">Logout</div>
@@ -235,25 +321,84 @@
 
     function logout() {
       localStorage.clear();
-      location.href = 'login.html';
+      location.reload();
     }
 
-    function openTopupModal() {
-      document.getElementById('topupModal').style.display = 'flex';
+    // Klik game → tampilkan overlay metode pembayaran
+    gamesGrid.addEventListener('click', (e) => {
+      const gameItem = e.target.closest('.game-item');
+      if (!gameItem) return;
+
+      currentGame = gameItem.dataset.game;
+      currentId = gameItem.dataset.id; // contoh placeholder, bisa diganti sesuai game
+
+      document.getElementById('modalTitle').textContent = `Top Up ${gameItem.querySelector('p').textContent}`;
+      document.getElementById('paymentOverlay').classList.add('show');
+    });
+
+    // Pilih metode pembayaran
+    document.querySelectorAll('.method-item').forEach(item => {
+      item.addEventListener('click', () => {
+        selectedMethod = item.dataset.method;
+        document.getElementById('paymentOverlay').classList.remove('show');
+        document.getElementById('topupModal').classList.add('show');
+      });
+    });
+
+    function closePaymentOverlay() {
+      document.getElementById('paymentOverlay').classList.remove('show');
     }
 
+    function closeTopupModal() {
+      document.getElementById('topupModal').classList.remove('show');
+    }
+
+    function closeInsufficientModal() {
+      document.getElementById('insufficientModal').classList.remove('show');
+    }
+
+    function openTopupSaldoModal() {
+      document.getElementById('insufficientModal').classList.remove('show');
+      document.getElementById('topupSaldoModal').classList.add('show');
+    }
+
+    function closeTopupSaldoModal() {
+      document.getElementById('topupSaldoModal').classList.remove('show');
+    }
+
+    // Proses pembayaran
+    function prosesPembayaran() {
+      if (!userKey) return alert('Silakan login terlebih dahulu');
+
+      const playerId = document.getElementById('playerId').value.trim();
+      const nominal = parseInt(document.getElementById('nominalInput').value);
+
+      if (!playerId || !nominal || nominal < 10000) return alert('Isi ID dan nominal dengan benar');
+
+      currentNominal = nominal;
+
+      if (selectedMethod === 'saldo_rhf') {
+        if (currentSaldo < nominal) {
+          document.getElementById('insufficientModal').classList.add('show');
+          return;
+        }
+        // Jika cukup, langsung ke proses.html (tempat tunggu)
+        location.href = `proses.html?game=\( {currentGame}&id= \){playerId}&nominal=${nominal}&method=saldo_rhf`;
+      } else {
+        // Metode e-wallet lain → langsung ke proses.html
+        location.href = `proses.html?game=\( {currentGame}&id= \){playerId}&nominal=\( {nominal}&method= \){selectedMethod}`;
+      }
+    }
+
+    // Tambah saldo (seperti sebelumnya)
     function kirimTopup() {
       if (!userKey) return alert('Login dulu');
 
-      const nominal = document.getElementById('nominalInput').value;
+      const nominal = document.getElementById('nominalSaldo').value;
       const desc = document.getElementById('descInput').value;
       const file = document.getElementById('buktiInput').files[0];
 
       if (!nominal || !file) return alert('Isi nominal dan upload bukti');
-
-      localStorage.setItem('topupNominal', nominal);
-      localStorage.setItem('topupDesc', desc || '-');
-      localStorage.setItem('topupTime', new Date().toLocaleString('id-ID'));
 
       const ref = storage.ref(`bukti_topup/\( {userKey}/ \){Date.now()}_${file.name}`);
       ref.put(file).then(() => {
@@ -273,22 +418,4 @@
       }).catch(err => alert('Error: ' + err.message));
     }
 
-    // Event Carousel real-time
-    db.ref('events').on('value', snap => {
-      carousel.innerHTML = '';
-      if (snap.exists()) {
-        snap.forEach(child => {
-          const e = child.val();
-          carousel.innerHTML += `
-            <div class="banner-item">
-              <img src="\( {e.image}" alt=" \){e.title}">
-              <div class="banner-caption">\( {e.title}<br> \){e.desc}</div>
-            </div>`;
-        });
-      } else {
-        carousel.innerHTML = '<div class="banner-item"><p>Belum ada event promo saat ini</p></div>';
-      }
-    });
-  </script>
-</body>
-</html>
+ 
