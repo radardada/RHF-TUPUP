@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Saldo RHF - Dompet Digital</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Poppins', sans-serif; background: #f8f9fa; color: #333; min-height: 100vh; display: flex; flex-direction: column; }
+    .header { background: linear-gradient(to bottom, #008DFF, #007BFF); padding: 20px; color: #fff; text-align: center; position: sticky; top: 0; z-index: 1000; }
+    .saldo { font-size: 28px; font-weight: 700; margin-top: 10px; }
+
+    .buttons { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; padding: 20px; background: #008DFF; color: #fff; }
+    .button-item { text-align: center; cursor: pointer; }
+    .button-item i { font-size: 24px; margin-bottom: 5px; }
+    .button-item p { font-size: 12px; }
+
+    .banner { background: #fff; margin: 20px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden; position: relative; }
+    .banner img { width: 100%; height: auto; }
+    .banner-text { position: absolute; top: 20%; left: 10%; color: #333; font-size: 16px; font-weight: 600; }
+    .banner-btn { position: absolute; top: 50%; right: 10%; background: #ff0000; color: #fff; padding: 8px 20px; border-radius: 20px; font-size: 14px; font-weight: 600; }
+
+    .features { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; padding: 0 20px; margin-bottom: 20px; }
+    .feature-item { text-align: center; cursor: pointer; }
+    .feature-item i { font-size: 24px; color: #ff6600; margin-bottom: 5px; }
+    .feature-item p { font-size: 12px; }
+
+    .ads { padding: 0 20px; margin-bottom: 80px; }
+    .ad-item { background: #fff; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); padding: 15px; margin: 15px 0; display: flex; align-items: center; gap: 15px; }
+    .ad-icon { width: 40px; height: 40px; border-radius: 50%; background: #ff6600; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 20px; }
+    .ad-text { flex: 1; font-size: 14px; font-weight: 500; }
+
+    .bottom-nav { background: #fff; position: fixed; bottom: 0; width: 100%; display: flex; justify-content: space-around; padding: 10px 0; box-shadow: 0 -2px 10px rgba(0,0,0,0.1); z-index: 1000; }
+    .nav-item { text-align: center; color: #666; font-size: 12px; cursor: pointer; }
+    .nav-item i { font-size: 24px; margin-bottom: 5px; }
+    .nav-active { color: #008DFF; }
+
+    /* Modal & Fitur Lain */
+    .modal { display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); align-items: center; justify-content: center; }
+    .modal-content { background: #fff; border-radius: 15px; padding: 30px; width: 90%; max-width: 400px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+    .close { float: right; font-size: 28px; cursor: pointer; color: #aaa; }
+
+    .history-list { padding: 20px; background: #fff; margin: 20px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+    .history-item { border-bottom: 1px solid #ddd; padding: 15px 0; }
+    .history-item:last-child { border: none; }
+
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <div class="saldo" id="saldoDisplay">Rp 0</div>
+  </div>
+
+  <div class="buttons">
+    <div class="button-item" onclick="openIsiSaldo()">
+      <i class="fas fa-plus"></i>
+      <p>Isi Saldo</p>
+    </div>
+    <div class="button-item" onclick="openMinta()">
+      <i class="fas fa-hand-holding-usd"></i>
+      <p>Minta</p>
+    </div>
+    <div class="button-item" onclick="openKirim()">
+      <i class="fas fa-arrow-right"></i>
+      <p>Kirim</p>
+    </div>
+    <div class="button-item" onclick="openPesan()">
+      <i class="fas fa-envelope"></i>
+      <p>Pesan</p>
+    </div>
+  </div>
+
+  <div class="banner">
+    <img src="https://via.placeholder.com/800x200/008DFF/fff?text=Promo+Banner" alt="Promo">
+    <div class="banner-text">Kuotamu Habis? Masih Bisa Beli Pulsa!</div>
+    <button class="banner-btn">BELI YUK</button>
+  </div>
+
+  <div class="features">
+    <div class="feature-item" onclick="openRewards()">
+      <i class="fas fa-gift"></i>
+      <p>A+ Rewards</p>
+    </div>
+    <div class="feature-item" onclick="openDeals()">
+      <i class="fas fa-percentage"></i>
+      <p>DANA Deals</p>
+    </div>
+    <div class="feature-item" onclick="openPulsa()">
+      <i class="fas fa-phone"></i>
+      <p>Pulsa & Data</p>
+    </div>
+    <div class="feature-item" onclick="openTravel()">
+      <i class="fas fa-plane"></i>
+      <p>Travel</p>
+    </div>
+    <div class="feature-item" onclick="openListrik()">
+      <i class="fas fa-bolt"></i>
+      <p>Listrik</p>
+    </div>
+    <div class="feature-item" onclick="openGooglePlay()">
+      <i class="fab fa-google-play"></i>
+      <p>Google Play</p>
+    </div>
+    <div class="feature-item" onclick="openCicilan()">
+      <i class="fas fa-credit-card"></i>
+      <p>Cicilan</p>
+    </div>
+    <div class="feature-item" onclick="openLihatSemua()">
+      <i class="fas fa-ellipsis-h"></i>
+      <p>Lihat Semua</p>
+    </div>
+  </div>
+
+  <div class="ads">
+    <div class="ad-item">
+      <div class="ad-icon"><i class="fas fa-shopping-bag"></i></div>
+      <div class="ad-text">Auntie Annes Voucher Laris!</div>
+      <i class="fas fa-fire" style="color: #ff0000;"></i>
+    </div>
+    <div class="ad-item">
+      <div class="ad-icon"><i class="fab fa-lazada"></i></div>
+      <div class="ad-text">Lazada Terpantau banyak pake DANA...</div>
+      <i class="fas fa-megaphone" style="color: #ff6600;"></i>
+    </div>
+    <div class="ad-item">
+      <div class="ad-icon"><i class="fas fa-heart"></i></div>
+      <div class="ad-text">DANA Aktifin Feed, kasih</div>
+      <i class="fas fa-bell" style="color: #007bff;"></i>
+    </div>
+  </div>
+
+  <div class="banner">
+    <img src="https://via.placeholder.com/800x200/008DFF/fff?text=DANA+Protection" alt="DANA Protection">
+    <div class="banner-text">Jaminan 100%</div>
+  </div>
+
+  <!-- Bottom Nav -->
+  <div class="bottom-nav">
+    <div class="nav-item" onclick="location.href='index.html'">
+      <i class="fas fa-home"></i>
+      <p>Beranda</p>
+    </div>
+    <div class="nav-item" onclick="openAktivitas()">
+      <i class="fas fa-list"></i>
+      <p>Aktivitas</p>
+    </div>
+    <div class="nav-item nav-active">
+      <i class="fas fa-qrcode"></i>
+      <p>PAY</p>
+    </div>
+    <div class="nav-item" onclick="openDompet()">
+      <i class="fas fa-wallet"></i>
+      <p>Dompet</p>
+    </div>
+    <div class="nav-item" onclick="openSaya()">
+      <i class="fas fa-user"></i>
+      <p>Saya</p>
+    </div>
+  </div>
+
+  <!-- Modal Isi Saldo (super cepat) -->
+  <div id="isiSaldoModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="document.getElementById('isiSaldoModal').style.display='none'">&times;</span>
+      <h3>Isi Saldo</h3>
+      <input type="number" id="nominalInput" placeholder="Nominal (Rp)" min="10000" required autofocus>
+      <p style="font-size:15px;margin:15px 0;">Transfer ke DANA:<br><strong>85124869641</strong></p>
+      <input type="text" id="descInput" placeholder="Deskripsi (opsional)">
+      <input type="file" id="buktiInput" accept="image/*" required>
+      <button onclick="kirimTopup()">Kirim Bukti Transfer</button>
+    </div>
+  </div>
+
+  <!-- Modal Minta Saldo -->
+  <div id="mintaModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="document.getElementById('mintaModal').style.display='none'">&times;</span>
+      <h3>Minta Saldo</h3>
+      <input type="text" id="mintaUser" placeholder="Username Penerima">
+      <input type="number" id="mintaNominal" placeholder="Nominal (Rp)">
+      <button onclick="kirimMinta()">Kirim Permintaan</button>
+    </div>
+  </div>
+
+  <!-- Modal Kirim Saldo -->
+  <div id="kirimModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="document.getElementById('kirimModal').style.display='none'">&times;</span>
+      <h3>Kirim Saldo</h3>
+      <input type="text" id="kirimUser" placeholder="Username Penerima">
+      <input type="number" id="kirimNominal" placeholder="Nominal (Rp)">
+      <button onclick="kirimSaldo()">Kirim Saldo</button>
+    </div>
+  </div>
+
+  <!-- Modal Pesan -->
+  <div id="pesanModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="document.getElementById('pesanModal').style.display='none'">&times;</span>
+      <h3>Pesan</h3>
+      <p>Fitur chat sedang dikembangkan.</p>
+    </div>
+  </div>
+
+  <!-- Modal Aktivitas (History Transaksi) -->
+  <div id="aktivitasModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="document.getElementById('aktivitasModal').style.display='none'">&times;</span>
+      <h3>Aktivitas</h3>
+      <div class="history-list" id="historyList"></div>
+    </div>
+  </div>
+
+  <!-- Modal Dompet (Detail Saldo) -->
+  <div id="dompetModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="document.getElementById('dompetModal').style.display='none'">&times;</span>
+      <h3>Dompet RHF</h3>
+      <p>Saldo Saat Ini: <strong id="dompetSaldo">Rp 0</strong></p>
+      <p>Fitur lain: Limit, Riwayat, dll.</p>
+    </div>
+  </div>
+
+  <!-- Modal Saya (Profil) -->
+  <div id="sayaModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="document.getElementById('sayaModal').style.display='none'">&times;</span>
+      <h3>Profil Saya</h3>
+      <p>Username: <strong id="sayaUsername"></strong></p>
+      <p>Fitur profil sedang dikembangkan.</p>
+    </div>
+  </div>
+
+  <!-- Modal Rewards, Deals, Pulsa, dll. (simulasi) -->
+  <!-- Tambahkan modal serupa untuk setiap fitur grid jika diperlukan -->
+
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-storage-compat.js"></script>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyALIhKFz4bpOPmES6t2fAdx8VMPP0ye1wc",
+      authDomain: "rhf-resmi.firebaseapp.com",
+      databaseURL: "https://rhf-resmi-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "rhf-resmi",
+      storageBucket: "rhf-resmi.appspot.com",
+      messagingSenderId: "313439235544",
+      appId: "1:313439235544:web:b19a2ad538e34c1fe516ad",
+      measurementId: "G-LNCVH73P3X"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
+    const storage = firebase.storage();
+
+    const userKey = localStorage.getItem('userKey');
+    if (userKey) {
+      db.ref('users/' + userKey + '/saldo').on('value', snap => {
+        const saldo = snap.val() || 0;
+        document.getElementById('saldoDisplay').textContent = 'Rp ' + saldo.toLocaleString('id-ID');
+      });
+    } else {
+      document.getElementById('saldoDisplay').textContent = 'Rp 0';
+    }
+
+    function openIsiSaldo() {
+      document.getElementById('isiSaldoModal').style.display = 'flex';
+    }
+
+    function openMinta() {
+      document.getElementById('mintaModal').style.display = 'flex';
+    }
+
+    function openKirim() {
+      document.getElementById('kirimModal').style.display = 'flex';
+    }
+
+    function openPesan() {
+      document.getElementById('pesanModal').style.display = 'flex';
+    }
+
+    function openAktivitas() {
+      document.getElementById('aktivitasModal').style.display = 'flex';
+      loadHistory();
+    }
+
+    function openDompet() {
+      document.getElementById('dompetModal').style.display = 'flex';
+      document.getElementById('dompetSaldo').textContent = document.getElementById('saldoDisplay').textContent;
+    }
+
+    function openSaya() {
+      document.getElementById('sayaModal').style.display = 'flex';
+      document.getElementById('sayaUsername').textContent = localStorage.getItem('username') || 'Guest';
+    }
+
+    function openRewards() {
+      alert('Fitur A+ Rewards sedang dikembangkan');
+    }
+
+    function openDeals() {
+      alert('Fitur DANA Deals sedang dikembangkan');
+    }
+
+    function openPulsa() {
+      location.href = 'topup.html?type=pulsa';
+    }
+
+    // Tambahkan fungsi serupa untuk openTravel, openListrik, dll.
+
+    function openLihatSemua() {
+      alert('Lihat Semua fitur sedang dikembangkan');
+    }
+
+    function kirimTopup() {
+      const nominal = document.getElementById('nominalInput').value;
+      const desc = document.getElementById('descInput').value;
+      const file = document.getElementById('buktiInput').files[0];
+
+      if (!nominal || !file) return alert('Isi nominal dan bukti');
+
+      const ref = storage.ref(`bukti_topup/\( {userKey}/ \){Date.now()}_${file.name}`);
+      ref.put(file).then(() => {
+        ref.getDownloadURL().then(url => {
+          db.ref('topup_requests').push({
+            userKey: userKey,
+            nominal: parseInt(nominal),
+            desc: desc || '-',
+            bukti: url,
+            status: 'pending',
+            timestamp: Date.now()
+          }).then(() => {
+            alert('Topup dikirim, tunggu konfirmasi admin');
+            document.getElementById('isiSaldoModal').style.display = 'none';
+            addLog('Topup request dikirim: Rp ' + nominal);
+          });
+        });
+      });
+    }
+
+    function kirimMinta() {
+      const user = document.getElementById('mintaUser').value;
+      const nominal = document.getElementById('mintaNominal').value;
+      if (!user || !nominal) return alert('Isi semua');
+
+      db.ref('minta_requests').push({
+        from: userKey,
+        to: user,
+        nominal: parseInt(nominal),
+        timestamp: Date.now()
+      }).then(() => {
+        alert('Permintaan minta saldo dikirim');
+        document.getElementById('mintaModal').style.display = 'none';
+        addLog('Minta saldo ke ' + user + ': Rp ' + nominal);
+      });
+    }
+
+    function kirimSaldo() {
+      const user = document.getElementById('kirimUser').value;
+      const nominal = document.getElementById('kirimNominal').value;
+      if (!user || !nominal) return alert('Isi semua');
+
+      db.ref('users/' + userKey + '/saldo').transaction(s => {
+        if (s >= nominal) return s - parseInt(nominal);
+        alert('Saldo tidak cukup');
+        return s;
+      }).then(result => {
+        if (result.committed) {
+          db.ref('users/' + user + '/saldo').transaction(s => (s || 0) + parseInt(nominal));
+          db.ref('transfers').push({
+            from: userKey,
+            to: user,
+            nominal: parseInt(nominal),
+            timestamp: Date.now()
+          });
+          alert('Saldo dikirim');
+          document.getElementById('kirimModal').style.display = 'none';
+          addLog('Kirim saldo ke ' + user + ': Rp ' + nominal);
+        }
+      });
+    }
+
+    function loadHistory() {
+      const list = document.getElementById('historyList');
+      list.innerHTML = '<p>Memuat history...</p>';
+      db.ref('transfers').orderByChild('from').equalTo(userKey).on('value', snap => {
+        list.innerHTML = '';
+        snap.forEach(child => {
+          const t = child.val();
+          const date = new Date(t.timestamp).toLocaleString('id-ID');
+          list.innerHTML += `
+            <div class="history-item">
+              <p>Kirim ke ${t.to}: Rp ${t.nominal.toLocaleString('id-ID')}</p>
+              <p>${date}</p>
+            </div>`;
+        });
+      });
+      db.ref('transfers').orderByChild('to').equalTo(userKey).on('value', snap => {
+        snap.forEach(child => {
+          const t = child.val();
+          const date = new Date(t.timestamp).toLocaleString('id-ID');
+          list.innerHTML += `
+            <div class="history-item">
+              <p>Diterima dari ${t.from}: Rp ${t.nominal.toLocaleString('id-ID')}</p>
+              <p>${date}</p>
+            </div>`;
+        });
+      });
+    }
+
+    function addLog(activity) {
+      db.ref('logs').push({
+        userId: userKey,
+        activity: activity,
+        timestamp: Date.now()
+      });
+    }
+
+    // Load Carousel Event
+    db.ref('events').on('value', snap => {
+      carousel.innerHTML = '';
+      if (snap.exists()) {
+        snap.forEach(child => {
+          const e = child.val();
+          carousel.innerHTML += `
+            <div class="banner-item">
+              <img src="\( {e.image}" alt=" \){e.title}">
+              <div class="banner-caption">\( {e.title}<br> \){e.desc}</div>
+            </div>`;
+        });
+      } else {
+        carousel.innerHTML = '<div class="banner-item"><p>Belum ada event promo</p></div>';
+      }
+    });
+  </script>
+</body>
+    </html>
