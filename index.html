@@ -41,16 +41,26 @@
     .game-item img { width: 100%; height: 160px; object-fit: contain; background: #f8f9fa; padding: 20px; }
     .game-item p { padding: 10px 0; font-weight: 600; font-size: 15px; }
 
-    .user-menu { position: relative; }
-    .settings-icon { font-size: 28px; cursor: pointer; color: #333; }
-    .dropdown { display: none; position: absolute; top: 50px; right: 0; background: #fff; box-shadow: 0 10px 30px rgba(0,0,0,0.2); border-radius: 12px; min-width: 280px; z-index: 1000; }
+    /* User Menu & Dropdown */
+    .user-menu { position: relative; display: flex; align-items: center; flex-direction: column; cursor: pointer; }
+    .user-avatar { width: 50px; height: 50px; border-radius: 50%; background: #ff5722; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: bold; }
+    .user-saldo { font-size: 14px; font-weight: 600; color: #ff5722; margin-top: 5px; }
+    .settings-icon { font-size: 28px; color: #333; }
+    .dropdown { display: none; position: absolute; top: 80px; right: 0; background: #fff; box-shadow: 0 10px 30px rgba(0,0,0,0.2); border-radius: 12px; min-width: 280px; z-index: 1000; }
     .dropdown.show { display: block; }
-    .dropdown-item { padding: 15px 20px; border-bottom: 1px solid #eee; font-weight: 500; }
+    .dropdown-item { padding: 15px 20px; border-bottom: 1px solid #eee; font-weight: 500; cursor: pointer; }
     .dropdown-item:last-child { border: none; }
     .dropdown-item:hover { background: #f8f9fa; }
     .saldo-display { font-size: 20px; font-weight: 700; color: #ff5722; }
 
-    footer { background: #222; color: #aaa; text-align: center; padding: 60px 20px; }
+    /* Modal Tambah Saldo */
+    .modal { display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); align-items: center; justify-content: center; }
+    .modal-content { background: #fff; border-radius: 15px; padding: 30px; width: 400px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+    .modal-content h3 { font-size: 24px; margin-bottom: 20px; }
+    .modal-content input { width: 100%; padding: 15px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 10px; font-size: 16px; }
+    .modal-content p { font-size: 16px; margin-bottom: 20px; }
+    .modal-content button { background: #ff5722; color: #fff; padding: 15px; border: none; border-radius: 10px; font-size: 16px; cursor: pointer; width: 100%; }
+    .close { color: #aaa; float: right; font-size: 28px; cursor: pointer; }
   </style>
 </head>
 <body>
@@ -61,7 +71,7 @@
         <i class="fas fa-gamepad"></i> RHF
       </div>
       <div class="header-right">
-        <div class="user-menu" id="userMenu">
+        <div class="user-menu" id="userMenu" onclick="toggleDropdown()">
           <a href="login.html" class="login-btn">Login</a>
         </div>
         <i class="fas fa-share-alt share-icon"></i>
@@ -74,12 +84,150 @@
 
     <div class="carousel">
       <div class="banner-item">
-        <img src="https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3803107306507518319" alt="Event">
-        <div class="banner-caption">Orderan Masuk Terus dari Pelanggan Game</div>
+        <img src="https://via.placeholder.com/320x200/ff5722/white?text=New+Year+Giveaway" alt="Event">
+        <div class="banner-caption">01 JAN 2026<br>Tahun Baru Giveaway Spesial</div>
       </div>
       <div class="banner-item">
-        <img src="https://cdn.cheapoguides.com/wp-content/uploads/sites/2/2023/09/R5_8957-1024x600.jpg" alt="Event">
-        <div class="banner-caption">Tokyo Game Show 2026</div>
+        <img src="https://via.placeholder.com/320x200/4caf50/white?text=M7+Championship" alt="Event">
+        <div class="banner-caption">29 DEC 2025<br>M7 World Championship Jadwal & Tim Peserta</div>
       </div>
       <div class="banner-item">
-        <img src="https://thumb.viva.id/vivanewsgames/665x374/2025/09/22/68d117064697f
+        <img src="https://via.placeholder.com/320x200/2196f3/white?text=Skin+Mythic" alt="Event">
+        <div class="banner-caption">27 DEC 2025<br>Dapatkan Skin Mythic Terbaru</div>
+      </div>
+    </div>
+
+    <div class="search-bar">
+      <input type="text" placeholder="Cari di RHF...">
+      <button><i class="fas fa-search"></i></button>
+    </div>
+
+    <div class="section-title">
+      <h2>TOP UP GAME</h2>
+      <a href="#">Lihat Semua ></a>
+    </div>
+
+    <div class="games-grid" id="gamesGrid"></div>
+  </div>
+
+  <footer>
+    <p>© 2026 RHF - Top Up Game Termurah & Tercepat. All Rights Reserved.</p>
+  </footer>
+
+  <!-- Modal Tambah Saldo -->
+  <div id="topupModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h3>Tambah Saldo</h3>
+      <input type="number" id="nominalInput" placeholder="Masukkan nominal (Rp)" min="1000">
+      <p>Kirim ke DANA: 85124869641</p>
+      <input type="text" id="descInput" placeholder="Deskripsi (opsional)">
+      <input type="file" id="buktiInput" accept="image/*">
+      <button onclick="kirimTopup()">Kirim Bukti Transfer</button>
+    </div>
+  </div>
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-storage-compat.js"></script>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyALIhKFz4bpOPmES6t2fAdx8VMPP0ye1wc",
+      authDomain: "rhf-resmi.firebaseapp.com",
+      databaseURL: "https://rhf-resmi-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "rhf-resmi",
+      storageBucket: "rhf-resmi.appspot.com",
+      messagingSenderId: "313439235544",
+      appId: "1:313439235544:web:b19a2ad538e34c1fe516ad",
+      measurementId: "G-LNCVH73P3X"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+    const db = firebase.database();
+    const storage = firebase.storage();
+    auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL);
+
+    const userMenu = document.getElementById('userMenu');
+
+    function toggleDropdown() {
+      const dropdown = document.getElementById('dropdownMenu');
+      if (dropdown) dropdown.classList.toggle('show');
+    }
+
+    auth.onAuthStateChanged(user => {
+      if (user) {
+        const uid = user.uid;
+        db.ref('users/' + uid).on('value', snap => {
+          const data = snap.val() || {};
+          const saldo = data.saldo || 0;
+          const nama = data.nama || user.email.split('@')[0] || 'User';
+          const avatarInitial = nama.charAt(0).toUpperCase();
+
+          userMenu.innerHTML = `
+            <div class="user-avatar" onclick="toggleDropdown()">${avatarInitial}</div>
+            <div class="user-saldo">Rp ${saldo.toLocaleString('id-ID')}</div>
+            <div id="dropdownMenu" class="dropdown">
+              <div class="dropdown-item"><strong>Halo, ${nama}</strong></div>
+              <div class="dropdown-item saldo-display">Saldo: Rp ${saldo.toLocaleString('id-ID')}</div>
+              <div class="dropdown-item" onclick="openTopupModal()">Tambah Saldo</div>
+              <div class="dropdown-item" onclick="location.href='settings.html'">Pengaturan Akun</div>
+              <div class="dropdown-item" onclick="alert('ID Akun (UID): ${uid}')">ID Akun: ${uid}</div>
+              <div class="dropdown-item" style="color:#dc3545;" onclick="auth.signOut().then(()=>location.reload())">Logout</div>
+            </div>`;
+        });
+      } else {
+        userMenu.innerHTML = `<a href="login.html" class="login-btn">Login</a>`;
+      }
+    });
+
+    window.addEventListener('click', e => {
+      if (!e.target.closest('.user-menu') && !e.target.closest('.dropdown')) {
+        const dropdown = document.getElementById('dropdownMenu');
+        if (dropdown && dropdown.classList.contains('show')) dropdown.classList.remove('show');
+      }
+    });
+
+    function openTopupModal() {
+      document.getElementById('topupModal').style.display = 'flex';
+    }
+
+    function closeModal() {
+      document.getElementById('topupModal').style.display = 'none';
+    }
+
+    function kirimTopup() {
+      const user = auth.currentUser;
+      if (!user) return alert('Login terlebih dahulu');
+
+      const nominal = document.getElementById('nominalInput').value;
+      const desc = document.getElementById('descInput').value;
+      const buktiFile = document.getElementById('buktiInput').files[0];
+
+      if (!nominal || !buktiFile) return alert('Isi nominal dan bukti transfer');
+
+      const storageRef = storage.ref(`bukti_topup/\( {user.uid}/ \){Date.now()}.jpg`);
+      storageRef.put(buktiFile).then(() => {
+        storageRef.getDownloadURL().then(url => {
+          db.ref('topup_requests').push({
+            uid: user.uid,
+            nominal: parseInt(nominal),
+            desc: desc,
+            bukti_url: url,
+            timestamp: Date.now(),
+            status: 'pending'
+          }).then(() => {
+            alert('Permintaan topup dikirim, tunggu konfirmasi admin');
+            closeModal();
+          });
+        });
+      });
+    }
+  </script>
+
+  <script src="js/games.js"></script>
+</body>
+</html>
