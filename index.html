@@ -11,149 +11,33 @@
     body { font-family: 'Poppins', sans-serif; background: #fff; color: #333; }
     .container { max-width: 1300px; margin: 0 auto; padding: 0 20px; }
 
-    header {
-      background: #fff;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      padding: 15px 0;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-    .header-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
+    header { background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.1); padding: 15px 0; position: sticky; top: 0; z-index: 1000; }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; }
     .logo img { height: 50px; }
-    .search-bar {
-      flex: 1;
-      max-width: 600px;
-      margin: 0 30px;
-      position: relative;
-    }
-    .search-bar input {
-      width: 100%;
-      padding: 14px 60px 14px 25px;
-      border: 1px solid #ddd;
-      border-radius: 50px;
-      font-size: 16px;
-      background: #f8f9fa;
-    }
-    .search-bar button {
-      position: absolute;
-      right: 5px;
-      top: 50%;
-      transform: translateY(-50%);
-      background: #ff5722;
-      border: none;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      color: #fff;
-      font-size: 20px;
-      cursor: pointer;
-    }
+    .search-bar { flex: 1; max-width: 600px; margin: 0 30px; position: relative; }
+    .search-bar input { width: 100%; padding: 14px 60px 14px 25px; border: 1px solid #ddd; border-radius: 50px; font-size: 16px; background: #f8f9fa; }
+    .search-bar button { position: absolute; right: 5px; top: 50%; transform: translateY(-50%); background: #ff5722; border: none; width: 50px; height: 50px; border-radius: 50%; color: #fff; font-size: 20px; cursor: pointer; }
 
-    /* User Menu & Dropdown */
-    .user-menu {
-      position: relative;
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
-    .login-btn {
-      background: #4285f4;
-      color: #fff;
-      padding: 10px 20px;
-      border-radius: 30px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      text-decoration: none;
-      font-weight: 600;
-    }
-    .settings-icon {
-      font-size: 28px;
-      cursor: pointer;
-      color: #ff5722;
-    }
-    .dropdown {
-      display: none;
-      position: absolute;
-      top: 60px;
-      right: 0;
-      background: #fff;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-      border-radius: 10px;
-      padding: 15px;
-      min-width: 220px;
-      z-index: 1000;
-    }
+    .user-menu { position: relative; display: flex; align-items: center; }
+    .login-btn { background: #4285f4; color: #fff; padding: 10px 20px; border-radius: 30px; display: flex; align-items: center; gap: 8px; text-decoration: none; font-weight: 600; }
+    .settings-icon { font-size: 28px; cursor: pointer; color: #ff5722; }
+    .dropdown { display: none; position: absolute; top: 60px; right: 0; background: #fff; box-shadow: 0 8px 20px rgba(0,0,0,0.15); border-radius: 10px; padding: 15px; min-width: 250px; z-index: 1000; }
     .dropdown.show { display: block; }
-    .dropdown-item {
-      padding: 12px 15px;
-      cursor: pointer;
-      border-bottom: 1px solid #eee;
-      font-weight: 500;
-    }
+    .dropdown-item { padding: 12px 15px; cursor: pointer; border-bottom: 1px solid #eee; font-weight: 500; }
     .dropdown-item:last-child { border-bottom: none; }
     .dropdown-item:hover { background: #f8f9fa; }
-    .saldo-display { font-weight: 700; color: #ff5722; }
+    .saldo-display { font-weight: 700; color: #ff5722; font-size: 18px; }
 
-    .section-title {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 32px;
-      font-weight: 700;
-      margin: 60px 0 40px;
-      color: #333;
-    }
-    .section-title a {
-      font-size: 16px;
-      color: #ff5722;
-      text-decoration: none;
-    }
+    .section-title { display: flex; justify-content: space-between; align-items: center; font-size: 32px; font-weight: 700; margin: 60px 0 40px; color: #333; }
+    .section-title a { font-size: 16px; color: #ff5722; text-decoration: none; }
 
-    .games-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 25px;
-      margin-bottom: 80px;
-    }
-    .game-item {
-      background: #fff;
-      border-radius: 15px;
-      overflow: hidden;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-      transition: all 0.3s ease;
-      text-align: center;
-      text-decoration: none;
-      color: inherit;
-    }
-    .game-item:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 30px rgba(255,87,34,0.2);
-    }
-    .game-item img {
-      width: 100%;
-      height: 160px;
-      object-fit: contain;
-      background: #f8f9fa;
-      padding: 20px;
-    }
-    .game-item p {
-      padding: 15px;
-      font-size: 16px;
-      font-weight: 600;
-    }
+    .games-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; margin-bottom: 80px; }
+    .game-item { background: #fff; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.08); transition: all 0.3s ease; text-align: center; text-decoration: none; color: inherit; }
+    .game-item:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(255,87,34,0.2); }
+    .game-item img { width: 100%; height: 160px; object-fit: contain; background: #f8f9fa; padding: 20px; }
+    .game-item p { padding: 15px; font-size: 16px; font-weight: 600; }
 
-    footer {
-      background: #222;
-      color: #aaa;
-      text-align: center;
-      padding: 50px 20px;
-    }
+    footer { background: #222; color: #aaa; text-align: center; padding: 50px 20px; }
   </style>
 </head>
 <body>
@@ -161,14 +45,14 @@
   <header>
     <div class="container header-inner">
       <div class="logo">
-        <img src="images/logo.png" alt="RHF Logo">
+        <img src="images/logo.png" alt="RHF Logo"> <!-- Ganti dengan logo RHF kamu -->
       </div>
       <div class="search-bar">
         <input type="text" placeholder="Cari game atau produk...">
         <button><i class="fas fa-search"></i></button>
       </div>
       <div class="user-menu" id="userMenu">
-        <a href="login.html" class="login-btn"><i class="fab fa-google"></i> Login</a>
+        <a href="login.html" class="login-btn"><i class="fas fa-sign-in-alt"></i> Login</a>
       </div>
     </div>
   </header>
@@ -187,7 +71,7 @@
     <p>Support 24/7: WhatsApp 081234567890</p>
   </footer>
 
-  <!-- Firebase Compat -->
+  <!-- Firebase -->
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
@@ -207,21 +91,21 @@
     firebase.initializeApp(firebaseConfig);
     const auth = firebase.auth();
     const db = firebase.database();
+    auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL);
 
     const userMenu = document.getElementById('userMenu');
 
-    // Toggle dropdown
     function toggleDropdown() {
-      document.getElementById('dropdownMenu').classList.toggle('show');
+      document.getElementById('dropdownMenu')?.classList.toggle('show');
     }
 
     auth.onAuthStateChanged(user => {
       if (user) {
-        const uid = user.uid; // Ini ID akun angka unik dari Firebase
+        const uid = user.uid;
         db.ref('users/' + uid).on('value', snap => {
           const data = snap.val() || {};
           const saldo = data.saldo || 0;
-          const displayName = user.displayName || 'User';
+          const displayName = user.email ? user.email.split('@')[0] : 'User';
 
           userMenu.innerHTML = `
             <div>
@@ -231,51 +115,14 @@
                 <div class="dropdown-item saldo-display">Saldo: Rp ${saldo.toLocaleString('id-ID')}</div>
                 <div class="dropdown-item" onclick="alert('Saldo Anda: Rp ${saldo.toLocaleString('id-ID')}')">Lihat Saldo</div>
                 <div class="dropdown-item" onclick="location.href='settings.html'">Pengaturan Akun</div>
-                <div class="dropdown-item" onclick="alert('ID Akun Anda (UID): ${uid}')">ID Akun: ${uid.substr(0,10)}...</div>
-                <div class="dropdown-item" style="color:#dc3545;" onclick="auth.signOut()">Logout</div>
+                <div class="dropdown-item" onclick="alert('ID Akun Anda (UID): ${uid}')">ID Akun: ${uid}</div>
+                <div class="dropdown-item" style="color:#dc3545;" onclick="auth.signOut().then(()=>location.reload())">Logout</div>
               </div>
             </div>`;
         });
       } else {
-        userMenu.innerHTML = `<a href="login.html" class="login-btn"><i class="fab fa-google"></i> Login</a>`;
+        userMenu.innerHTML = `<a href="login.html" class="login-btn"><i class="fas fa-sign-in-alt"></i> Login</a>`;
       }
-    });
-
-    // Games List - icon stabil & berkualitas tinggi
-    const gamesList = [
-      { name: "Mobile Legends Diamonds", url: "https://assets.stickpng.com/images/62061920cdd94000043e3951.png", link: "topup.html?game=ml" },
-      { name: "Free Fire Diamonds", url: "https://upload.wikimedia.org/wikipedia/en/c/c5/Logo_of_Garena_Free_Fire.png", link: "topup.html?game=ff" },
-      { name: "PUBG Mobile UC", url: "https://upload.wikimedia.org/wikipedia/commons/4/43/PUBG_Mobile_simple_logo_black.png", link: "topup.html?game=pubg" },
-      { name: "Valorant Points", url: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Valorant_logo_-_pink_color_version.svg/1024px-Valorant_logo_-_pink_color_version.svg.png", link: "topup.html?game=valorant" },
-      { name: "Genshin Impact Crystals", url: "https://www.freepnglogos.com/uploads/genshin-impact-logo-png/hd-transparent-logo-genshin-impact-free-download-2.png", link: "topup.html?game=genshin" },
-      { name: "Bigo Live Diamonds", url: "https://logowik.com/content/uploads/images/bigo-live2708.jpg", link: "topup.html?game=bigo" },
-      { name: "Honkai: Star Rail Shard", url: "https://toppng.com/uploads/preview/official-logo-of-the-honkai-star-rail-game-11728656973tfuqkczxck.png", link: "topup.html?game=hsr" },
-      { name: "Call of Duty Mobile CP", url: "https://static.wikia.nocookie.net/logopedia/images/7/77/CODM_Logo_BlackYellow.png/revision/latest", link: "topup.html?game=codm" },
-      { name: "Steam Wallet Code IDR", url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Steam_icon_logo.svg/1200px-Steam_icon_logo.svg.png", link: "topup.html?game=steam" },
-      { name: "Google Play Voucher", url: "https://logos-world.net/wp-content/uploads/2020/12/Google-Play-Logo.png", link: "topup.html?game=googleplay" },
-      { name: "Pulsa Telkomsel", url: "https://1000logos.net/wp-content/uploads/2021/12/Telkomsel-logo.png", link: "topup.html?game=telkomsel" },
-      { name: "Pulsa Indosat", url: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Indosat_Ooredoo_logo_%282019%29.svg/1280px-Indosat_Ooredoo_logo_%282019%29.svg.png", link: "topup.html?game=indosat" },
-      { name: "Pulsa Tri", url: "https://developingtelecoms.com/images/stories/Company_Logos/3-logo-600.png", link: "topup.html?game=tri" },
-      { name: "Pulsa XL", url: "https://download.logo.wine/logo/XL_Axiata/XL_Axiata-Logo.wine.png", link: "topup.html?game=xl" },
-      { name: "Pulsa Axis", url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Axis_logo_2015.svg/1200px-Axis_logo_2015.svg.png", link: "topup.html?game=axis" },
-      { name: "Pulsa Smartfren", url: "https://download.logo.wine/logo/Smartfren/Smartfren-Logo.wine.png", link: "topup.html?game=smartfren" },
-      { name: "DANA", url: "https://1000logos.net/wp-content/uploads/2021/03/Dana-logo.png", link: "topup.html?game=dana" },
-      { name: "OVO", url: "https://1000logos.net/wp-content/uploads/2021/05/GoPay-Logo.png", link: "topup.html?game=ovo" },
-      { name: "GoPay", url: "https://1000logos.net/wp-content/uploads/2021/05/GoPay-Logo.png", link: "topup.html?game=gopay" },
-      { name: "ShopeePay", url: "https://logowik.com/content/uploads/images/shopeepay4268.jpg", link: "topup.html?game=shopeepay" },
-      { name: "Fortnite V Bucks", url: "https://assets.stickpng.com/images/5ef09460f3d0af0004ad1776.png", link: "topup.html?game=fortnite" },
-      { name: "TikTok Live Koin", url: "https://www.freepnglogos.com/uploads/tik-tok-logo-png/tik-tok-how-use-tiktok-create-cool-videos-with-iphone-14.png", link: "topup.html?game=tiktok" },
-      { name: "Razer Gold Voucher", url: "https://rewards.coingate.com/_next/image?url=https%3A%2F%2Fdistributedrewards-production.s3.amazonaws.com%2Fuploads%2Fgift_card_logo%2F1097%2F5a685231-3f92-4698-bfe9-dcdbc1ec5c2e.png&w=3840&q=90", link: "topup.html?game=razer" },
-      { name: "Minecraft Minecoins", url: "https://1000logos.net/wp-content/uploads/2018/10/Minecraft-Logo.png", link: "topup.html?game=minecraft" }
-    ];
-
-    const gamesGrid = document.getElementById('gamesGrid');
-    gamesList.forEach(game => {
-      const item = document.createElement('a');
-      item.href = game.link;
-      item.className = 'game-item';
-      item.innerHTML = `<img src="\( {game.url}" alt=" \){game.name}" onerror="this.src='https://via.placeholder.com/200x160?text=No+Image'"><p>${game.name}</p>`;
-      gamesGrid.appendChild(item);
     });
 
     // Tutup dropdown kalau klik luar
@@ -290,5 +137,8 @@
       }
     }
   </script>
+
+  <!-- Load games dari js/games.js -->
+  <script src="js/games.js"></script>
 </body>
 </html>
