@@ -11,94 +11,120 @@
     body { font-family: 'Poppins', sans-serif; background: #f8f9fa; color: #333; min-height: 100vh; }
     .container { max-width: 500px; margin: 0 auto; padding: 20px; }
 
-    header { background: linear-gradient(to right, #ff6600, #ff8800); color: white; padding: 30px; text-align: center; border-radius: 0 0 30px 30px; box-shadow: 0 5px 20px rgba(0,0,0,0.2); }
-    header h1 { font-size: 28px; margin-bottom: 10px; }
+    .header { background: linear-gradient(to right, #ff6600, #ff8800); color: white; padding: 30px; text-align: center; border-radius: 0 0 30px 30px; box-shadow: 0 5px 20px rgba(0,0,0,0.2); }
+    .header h1 { font-size: 28px; margin-bottom: 15px; }
 
-    .game-icon { width: 120px; height: 120px; margin: 0 auto 20px; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-    .game-icon img { width: 100%; height: 100%; object-fit: contain; background: #fff; padding: 10px; }
+    .game-logos { display: flex; overflow-x: auto; gap: 15px; padding: 10px 0; scrollbar-width: none; }
+    .game-logos::-webkit-scrollbar { display: none; }
+    .game-logo { width: 80px; height: 80px; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.2); flex-shrink: 0; }
+    .game-logo img { width: 100%; height: 100%; object-fit: contain; background: white; padding: 8px; }
 
-    .form-section { background: white; border-radius: 20px; padding: 30px; margin: 20px 0; box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
+    .form-section { background: white; border-radius: 20px; padding: 25px; margin: 20px 0; box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
     .form-group { margin-bottom: 20px; }
-    .form-group label { display: block; font-weight: 600; margin-bottom: 8px; }
-    .form-group input, .form-group select { width: 100%; padding: 14px; border: 1px solid #ddd; border-radius: 10px; font-size: 16px; }
-    .form-group select { appearance: none; background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="6"><polygon points="0,0 12,0 6,6" fill="%23333"/></svg>') no-repeat right 15px center; }
+    .form-group label { display: block; font-weight: 600; margin-bottom: 8px; font-size: 15px; }
+    .form-group input { width: 100%; padding: 14px; border: 1px solid #ddd; border-radius: 10px; font-size: 16px; }
 
-    .payment-options { margin: 30px 0; }
-    .payment-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
+    .nominal-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin: 20px 0; }
+    .nominal-card { background: #f8f9fa; border: 2px solid #ddd; border-radius: 12px; padding: 15px; text-align: center; cursor: pointer; transition: 0.3s; }
+    .nominal-card:hover, .nominal-card.active { border-color: #ff6600; background: #fffaf5; }
+    .nominal-card .diamond { font-size: 18px; font-weight: 700; color: #ff6600; }
+    .nominal-card .price { font-size: 16px; font-weight: 600; }
+    .nominal-card .discount { font-size: 12px; color: #28a745; }
+
+    .payment-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin: 25px 0; }
     .payment-item { background: #f8f9fa; border: 2px solid #ddd; border-radius: 12px; padding: 15px; text-align: center; cursor: pointer; transition: 0.3s; }
     .payment-item:hover, .payment-item.active { border-color: #ff6600; background: #fffaf5; }
-    .payment-item i { font-size: 30px; margin-bottom: 10px; color: #ff6600; }
-    .payment-item p { font-weight: 600; }
+    .payment-item i { font-size: 30px; margin-bottom: 8px; color: #ff6600; }
+    .payment-item p { font-weight: 600; font-size: 14px; }
 
-    .btn { width: 100%; padding: 18px; background: linear-gradient(to right, #ff6600, #ff8800); color: white; border: none; border-radius: 12px; font-size: 18px; font-weight: 600; cursor: pointer; margin-top: 20px; }
-    .btn:hover { opacity: 0.9; }
+    .btn-pay { width: 100%; padding: 18px; background: linear-gradient(to right, #ff6600, #ff8800); color: white; border: none; border-radius: 12px; font-size: 18px; font-weight: 700; cursor: pointer; margin-top: 20px; }
+    .btn-pay:hover { opacity: 0.9; }
 
-    footer { text-align: center; padding: 30px; color: #777; }
+    footer { text-align: center; padding: 30px; color: #777; font-size: 14px; }
   </style>
 </head>
 <body>
 
   <header>
     <h1>Top Up Game</h1>
+    <!-- Carousel logo game sama seperti di index.html (horizontal scroll) -->
+    <div class="game-logos">
+      <div class="game-logo"><img src="https://assets.stickpng.com/images/62061920cdd94000043e3951.png" alt="ML"></div>
+      <div class="game-logo"><img src="https://upload.wikimedia.org/wikipedia/en/c/c5/Logo_of_Garena_Free_Fire.png" alt="FF"></div>
+      <div class="game-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/4/43/PUBG_Mobile_simple_logo_black.png" alt="PUBG"></div>
+      <div class="game-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Valorant_logo_-_pink_color_version.svg/2560px-Valorant_logo_-_pink_color_version.svg.png" alt="Valorant"></div>
+      <div class="game-logo"><img src="https://www.freepnglogos.com/uploads/genshin-impact-logo-png/hd-transparent-logo-genshin-impact-free-download-2.png" alt="Genshin"></div>
+      <div class="game-logo"><img src="https://logowik.com/content/uploads/images/bigo-live2708.jpg" alt="Bigo"></div>
+      <!-- Tambah logo lain sesuai index.html kamu -->
+    </div>
   </header>
 
   <div class="container">
-    <!-- Logo game sama seperti di index.html -->
-    <div class="game-icon">
-      <img src="https://assets.stickpng.com/images/62061920cdd94000043e3951.png" alt="Mobile Legends" id="gameLogo">
-    </div>
-
     <div class="form-section">
       <div class="form-group">
-        <label>ID Game / User ID</label>
+        <label>User ID / Player ID</label>
         <input type="text" id="userId" placeholder="Masukkan ID Anda" required>
       </div>
 
       <div class="form-group">
-        <label>Nominal Top Up</label>
-        <select id="nominal">
-          <option value="">Pilih Nominal</option>
-          <option value="86000">86 Diamonds - Rp 15.000</option>
-          <option value="172000">172 Diamonds - Rp 30.000</option>
-          <option value="257000">257 Diamonds - Rp 45.000</option>
-          <option value="344000">344 Diamonds - Rp 60.000</option>
-          <option value="500000">500 Diamonds - Rp 85.000</option>
-          <!-- Tambah sesuai game lain -->
-        </select>
+        <label>Pilih Nominal</label>
+        <div class="nominal-grid">
+          <div class="nominal-card" onclick="selectNominal(this, '86000', 'Rp 15.000')">
+            <div class="diamond">86 Diamonds</div>
+            <div class="price">Rp 15.000</div>
+            <div class="discount">Hemat 5%</div>
+          </div>
+          <div class="nominal-card" onclick="selectNominal(this, '172000', 'Rp 30.000')">
+            <div class="diamond">172 Diamonds</div>
+            <div class="price">Rp 30.000</div>
+            <div class="discount">Hemat 8%</div>
+          </div>
+          <div class="nominal-card" onclick="selectNominal(this, '257000', 'Rp 45.000')">
+            <div class="diamond">257 Diamonds</div>
+            <div class="price">Rp 45.000</div>
+            <div class="discount">Hemat 10%</div>
+          </div>
+          <div class="nominal-card" onclick="selectNominal(this, '344000', 'Rp 60.000')">
+            <div class="diamond">344 Diamonds</div>
+            <div class="price">Rp 60.000</div>
+            <div class="discount">Hemat 12%</div>
+          </div>
+          <!-- Tambah nominal lain sesuai kebutuhan -->
+        </div>
       </div>
 
       <div class="payment-options">
         <label>Pilih Metode Pembayaran</label>
         <div class="payment-grid">
-          <div class="payment-item active" onclick="selectPayment('saldo')">
+          <div class="payment-item active" onclick="selectPayment('saldo', this)">
             <i class="fas fa-wallet"></i>
             <p>Saldo RHF</p>
           </div>
-          <div class="payment-item" onclick="selectPayment('dana')">
+          <div class="payment-item" onclick="selectPayment('dana', this)">
             <i class="fas fa-mobile-alt"></i>
             <p>DANA</p>
           </div>
-          <div class="payment-item" onclick="selectPayment('ovo')">
+          <div class="payment-item" onclick="selectPayment('ovo', this)">
             <i class="fas fa-mobile"></i>
             <p>OVO</p>
           </div>
-          <div class="payment-item" onclick="selectPayment('gopay')">
+          <div class="payment-item" onclick="selectPayment('gopay', this)">
             <i class="fas fa-mobile"></i>
             <p>GoPay</p>
           </div>
-          <div class="payment-item" onclick="selectPayment('shopeepay')">
+          <div class="payment-item" onclick="selectPayment('shopeepay', this)">
             <i class="fas fa-shopping-cart"></i>
             <p>ShopeePay</p>
           </div>
         </div>
       </div>
 
-      <button class="btn" onclick="prosesTopup()">Proses Top Up</button>
+      <button class="btn-pay" onclick="prosesTopup()">Bayar Sekarang</button>
     </div>
   </div>
 
   <footer>
-    <p>© 2026 RHF - Aman & Cepat</p>
+    <p>© 2026 RHF - Top Up Aman & Cepat</p>
   </footer>
 
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
@@ -121,42 +147,34 @@
 
     const userKey = localStorage.getItem('userKey');
     if (!userKey) {
-      alert('Silakan login terlebih dahulu');
+      alert('Login terlebih dahulu');
       location.href = 'login.html';
     }
 
-    // Logo game sama seperti index.html
-    const gameLogos = {
-      ml: "https://assets.stickpng.com/images/62061920cdd94000043e3951.png",
-      ff: "https://upload.wikimedia.org/wikipedia/en/c/c5/Logo_of_Garena_Free_Fire.png",
-      pubg: "https://upload.wikimedia.org/wikipedia/commons/4/43/PUBG_Mobile_simple_logo_black.png",
-      valorant: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Valorant_logo_-_pink_color_version.svg/2560px-Valorant_logo_-_pink_color_version.svg.png",
-      genshin: "https://www.freepnglogos.com/uploads/genshin-impact-logo-png/hd-transparent-logo-genshin-impact-free-download-2.png",
-      // Tambah sesuai kebutuhan
-    };
+    let selectedNominal = '';
+    let selectedPrice = '';
 
-    // Ambil game dari URL (?game=ml)
-    const urlParams = new URLSearchParams(window.location.search);
-    const game = urlParams.get('game') || 'ml';
-    document.getElementById('gameName').textContent = game.toUpperCase();
-    document.getElementById('gameLogo').src = gameLogos[game] || 'https://via.placeholder.com/120?text=Game';
+    function selectNominal(element, nominal, price) {
+      document.querySelectorAll('.nominal-card').forEach(card => card.classList.remove('active'));
+      element.classList.add('active');
+      selectedNominal = nominal;
+      selectedPrice = price;
+    }
 
     let selectedPayment = 'saldo';
 
-    function selectPayment(method) {
+    function selectPayment(method, element) {
       selectedPayment = method;
       document.querySelectorAll('.payment-item').forEach(item => item.classList.remove('active'));
-      event.currentTarget.classList.add('active');
+      element.classList.add('active');
     }
 
     function prosesTopup() {
       const userId = document.getElementById('userId').value.trim();
-      const nominalSelect = document.getElementById('nominal');
-      const nominal = nominalSelect.value;
-      const priceText = nominalSelect.options[nominalSelect.selectedIndex].text;
-      const harga = parseInt(priceText.split('Rp ')[1].replace(/\./g, ''));
+      if (!userId) return alert('Masukkan User ID');
+      if (!selectedNominal) return alert('Pilih nominal top up');
 
-      if (!userId || !nominal) return alert('Isi ID dan pilih nominal');
+      const harga = parseInt(selectedPrice.replace('Rp ', '').replace(/\./g, ''));
 
       if (selectedPayment === 'saldo') {
         db.ref('users/' + userKey + '/saldo').transaction(saldo => {
@@ -169,26 +187,26 @@
           }
         }).then(result => {
           if (result.committed) {
-            saveTransaction(userId, nominal, priceText);
-            localStorage.setItem('topupSuccess', JSON.stringify({ nominal: priceText, id: userId, payment: 'Saldo RHF' }));
+            saveOrder(userId);
+            localStorage.setItem('topupSuccess', JSON.stringify({ id: userId, nominal: selectedPrice, payment: 'Saldo RHF' }));
             location.href = 'konfirmasi.html';
           }
         });
       } else {
-        // Metode lain: simulasi pembayaran
-        alert(`Pembayaran via ${selectedPayment.toUpperCase()} diproses. Nominal: ${priceText}`);
-        saveTransaction(userId, nominal, priceText);
-        localStorage.setItem('topupSuccess', JSON.stringify({ nominal: priceText, id: userId, payment: selectedPayment.toUpperCase() }));
+        // Untuk metode lain (simulasi)
+        alert(`Proses pembayaran via ${selectedPayment.toUpperCase()} untuk ${selectedPrice}`);
+        saveOrder(userId);
+        localStorage.setItem('topupSuccess', JSON.stringify({ id: userId, nominal: selectedPrice, payment: selectedPayment.toUpperCase() }));
         location.href = 'konfirmasi.html';
       }
     }
 
-    function saveTransaction(userId, nominal, price) {
+    function saveOrder(userId) {
       db.ref('orders').push({
         userKey: userKey,
         gameId: userId,
-        nominal: nominal,
-        harga: price,
+        nominal: selectedNominal,
+        harga: selectedPrice,
         payment: selectedPayment,
         status: 'pending',
         timestamp: Date.now()
