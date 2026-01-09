@@ -12,102 +12,135 @@
     .container { max-width: 1400px; margin: 0 auto; padding: 20px; }
 
     header {
-      background: linear-gradient(135deg, #ff6600, #ff8800);
-      color: white;
-      padding: 50px 20px;
+      background: linear-gradient(to right, #ff6600, #ff8800);
+      color: #fff;
+      padding: 40px;
       text-align: center;
-      border-radius: 0 0 30px 30px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      border-radius: 15px;
+      margin-bottom: 30px;
     }
-    header h1 { font-size: 42px; margin-bottom: 8px; }
-    header p { font-size: 18px; opacity: 0.9; }
+    header h1 { font-size: 40px; margin-bottom: 10px; }
 
     .admin-section {
-      background: white;
-      border-radius: 20px;
+      background: #fff;
+      border-radius: 15px;
       padding: 35px;
       margin: 30px 0;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
     }
-    .section-title {
-      font-size: 30px;
-      color: #ff6600;
-      border-bottom: 4px solid #ff6600;
-      padding-bottom: 12px;
-      margin-bottom: 25px;
+    .section-title { 
+      font-size: 32px; 
+      margin-bottom: 30px; 
+      color: #ff6600; 
+      border-bottom: 3px solid #ff6600; 
+      padding-bottom: 12px; 
       display: inline-block;
     }
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 20px 0;
-    }
-    th, td {
-      padding: 16px;
-      text-align: left;
-      border-bottom: 1px solid #eee;
-    }
-    th {
-      background: #fff8f0;
-      color: #ff6600;
-      font-weight: 600;
-    }
+    table { width: 100%; border-collapse: collapse; margin-bottom: 30px; }
+    th, td { padding: 18px; text-align: left; border-bottom: 1px solid #ddd; font-size: 16px; }
+    th { background: #f9f9f9; font-weight: 600; color: #555; }
     tr:hover { background: #fffaf5; }
 
-    .btn {
-      padding: 10px 20px;
-      border: none;
-      border-radius: 8px;
-      color: white;
-      font-weight: 600;
-      cursor: pointer;
-      transition: 0.3s;
+    .btn { 
+      padding: 12px 28px; 
+      background: #ff6600; 
+      color: #fff; 
+      border: none; 
+      border-radius: 10px; 
+      cursor: pointer; 
+      font-size: 16px; 
+      margin: 8px 5px; 
+      transition: background 0.3s; 
     }
-    .btn-add { background: #28a745; }
+    .btn:hover { background: #e55a00; }
+    .btn-delete { background: #dc3545; }
+    .btn-delete:hover { background: #c82333; }
+    .btn-add { background: #28a745; display: inline-block; margin-bottom: 25px; font-size: 18px; }
     .btn-add:hover { background: #218838; }
-    .btn-success { background: #17a2b8; }
-    .btn-success:hover { background: #138496; }
-    .btn-danger { background: #dc3545; }
-    .btn-danger:hover { background: #c82333; }
-    .btn-warning { background: #ffc107; color: #333; }
-    .btn-warning:hover { background: #e0a800; }
+    .btn-status { background: #007bff; }
+    .btn-status:hover { background: #0056b3; }
+    .btn-success { background: #28a745; }
+    .btn-success:hover { background: #218838; }
+    .btn-fail { background: #dc3545; }
+    .btn-fail:hover { background: #c82333; }
+    .btn-freeze { background: #ffc107; color: #333; }
+    .btn-freeze:hover { background: #e0a800; }
+    .btn-add-saldo { background: #17a2b8; }
+    .btn-add-saldo:hover { background: #138496; }
+    .btn-cut-saldo { background: #6c757d; }
+    .btn-cut-saldo:hover { background: #5a6268; }
+    .btn-ban { background: #dc3545; }
+    .btn-ban:hover { background: #c82333; }
+    .btn-unban { background: #28a745; }
+    .btn-unban:hover { background: #218838; }
+    .btn-edit { background: #ffc107; color: #333; }
+    .btn-edit:hover { background: #e0a800; }
+    .btn-export { background: #17a2b8; }
+    .btn-export:hover { background: #138496; }
+    .btn-search { background: #007bff; }
+    .btn-search:hover { background: #0056b3; }
 
-    form {
-      display: grid;
-      gap: 15px;
-      max-width: 600px;
+    form { 
+      display: flex; 
+      flex-direction: column; 
+      gap: 20px; 
+      max-width: 700px; 
+      margin-bottom: 40px; 
     }
-    input, textarea {
-      padding: 14px;
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      font-size: 16px;
+    input, textarea { 
+      padding: 18px; 
+      border: 1px solid #ddd; 
+      border-radius: 10px; 
+      font-size: 16px; 
     }
-    textarea { min-height: 100px; }
+    textarea { height: 120px; resize: vertical; }
 
-    .preview-img {
-      max-width: 180px;
-      border-radius: 10px;
-      margin-top: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    .event-logo-preview { 
+      width: 220px; 
+      height: auto; 
+      border-radius: 12px; 
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+      margin-top: 15px; 
     }
 
-    .count-badge {
-      background: #ff6600;
-      color: white;
-      padding: 8px 16px;
-      border-radius: 30px;
+    .orders-count {
+      font-size: 20px;
       font-weight: 600;
+      color: #ff6600;
       margin-bottom: 20px;
-      display: inline-block;
     }
 
-    footer {
+    .dashboard-stats {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+    .stat-card {
+      background: #fff;
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      flex: 1;
       text-align: center;
-      padding: 40px 20px;
-      color: #777;
-      margin-top: 60px;
+    }
+    .stat-card h3 { font-size: 36px; color: #ff6600; }
+    .stat-card p { font-size: 18px; color: #666; }
+
+    .search-form {
+      margin-bottom: 20px;
+    }
+    .search-form input { width: 300px; }
+    .search-form button { padding: 18px 30px; }
+
+    footer { 
+      background: #333; 
+      color: #fff; 
+      text-align: center; 
+      padding: 50px 20px; 
+      margin-top: 80px; 
+      font-size: 16px; 
     }
   </style>
 </head>
@@ -115,15 +148,39 @@
 
   <header>
     <h1>Admin Dashboard RHF</h1>
-    <p>Kelola semuanya secara real-time dengan aman & cepat</p>
+    <p>Kelola User, Saldo, Pesanan, Event, Promo, dan Lainnya Secara Real-Time (20+ Fitur)</p>
   </header>
 
   <div class="container">
 
-    <!-- Topup Requests -->
+    <!-- Dashboard Stats (Fitur 1: Ringkasan Data) -->
+    <div class="dashboard-stats">
+      <div class="stat-card" id="statUsers">
+        <h3>0</h3>
+        <p>Total User</p>
+      </div>
+      <div class="stat-card" id="statSaldo">
+        <h3>Rp 0</h3>
+        <p>Total Saldo</p>
+      </div>
+      <div class="stat-card" id="statTopup">
+        <h3>0</h3>
+        <p>Pending Topup</p>
+      </div>
+      <div class="stat-card" id="statOrders">
+        <h3>0</h3>
+        <p>Pending Pesanan</p>
+      </div>
+      <div class="stat-card" id="statEvents">
+        <h3>0</h3>
+        <p>Total Event</p>
+      </div>
+    </div>
+
+    <!-- Kelola Topup Requests (Fitur 2-5: Lihat, Konfirmasi, Tolak, Hapus) -->
     <div class="admin-section">
       <div class="section-title">Permintaan Topup Saldo</div>
-      <div class="count-badge" id="topupCount">Memuat...</div>
+      <div class="orders-count" id="topupCount">Total: 0</div>
       <table id="topupTable">
         <thead>
           <tr>
@@ -132,7 +189,7 @@
             <th>User ID</th>
             <th>Nominal</th>
             <th>Deskripsi</th>
-            <th>Bukti</th>
+            <th>Bukti TF</th>
             <th>Status</th>
             <th>Aksi</th>
           </tr>
@@ -141,16 +198,50 @@
       </table>
     </div>
 
-    <!-- Kelola User & Saldo -->
+    <!-- Kelola Pesanan Game (Fitur 6-9: Lihat, Konfirmasi, Tolak, Hapus) -->
     <div class="admin-section">
-      <div class="section-title">Kelola User & Saldo</div>
+      <div class="section-title">Pesanan Top Up Game</div>
+      <div class="orders-count" id="ordersCount">Total: 0</div>
+      <table id="ordersTable">
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>Waktu</th>
+            <th>User ID</th>
+            <th>Game</th>
+            <th>Nominal</th>
+            <th>Harga</th>
+            <th>Status</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <!-- Kelola User (Fitur 10-15: Lihat, Tambah, Edit, Hapus, Tambah/Potong Saldo, Bekukan/Ban dengan Reason) -->
+    <div class="admin-section">
+      <div class="section-title">Kelola User</div>
+      <button class="btn btn-add" onclick="toggleUserForm()">Tambah User Baru</button>
+      <div id="userForm" style="display:none;">
+        <form>
+          <input type="text" id="newUsername" placeholder="Username" required>
+          <input type="password" id="newPassword" placeholder="Password" required>
+          <input type="number" id="newSaldo" placeholder="Saldo Awal (Rp)" value="0">
+          <button type="button" class="btn" onclick="addUser()">Simpan User</button>
+        </form>
+      </div>
+      <div class="search-form">
+        <input type="text" id="searchUser" placeholder="Cari User by ID/Username">
+        <button class="btn btn-search" onclick="searchUser()">Cari</button>
+      </div>
       <table id="userTable">
         <thead>
           <tr>
             <th>No</th>
-            <th>Nama/Email</th>
+            <th>Username</th>
             <th>User ID</th>
-            <th>Saldo</th>
+            <th>Saldo (Rp)</th>
             <th>Status</th>
             <th>Aksi</th>
           </tr>
@@ -159,16 +250,18 @@
       </table>
     </div>
 
-    <!-- Kelola Event Carousel -->
+    <!-- Kelola Event Carousel (Fitur 16-18: Tambah, Edit, Hapus) -->
     <div class="admin-section">
       <div class="section-title">Kelola Event Carousel</div>
-      <button class="btn btn-add" onclick="toggleEventForm()">+ Tambah Event Baru</button>
-      <div id="eventForm" style="display:none; margin:20px 0;">
-        <input type="text" id="eventTitle" placeholder="Judul Event" required>
-        <textarea id="eventDesc" placeholder="Deskripsi Event" required></textarea>
-        <input type="url" id="eventImage" placeholder="URL Gambar (https://...)" required>
-        <img id="eventImagePreview" class="preview-img" src="" alt="Preview" style="display:none;">
-        <button class="btn btn-success" onclick="addEvent()">Simpan Event</button>
+      <button class="btn btn-add" onclick="toggleEventForm()">Tambah Event Baru</button>
+      <div id="eventForm" style="display:none;">
+        <form>
+          <input type="text" id="eventTitle" placeholder="Judul Event" required>
+          <textarea id="eventDesc" placeholder="Deskripsi Event" required></textarea>
+          <input type="url" id="eventImage" placeholder="URL Gambar Event (HTTPS)" required>
+          <img id="eventImagePreview" class="event-logo-preview" src="" alt="Preview" style="display:none;">
+          <button type="button" class="btn" onclick="addEvent()">Simpan Event</button>
+        </form>
       </div>
       <table id="eventTable">
         <thead>
@@ -184,12 +277,63 @@
       </table>
     </div>
 
+    <!-- Kelola Promo/Diskon (Fitur 19: Tambah Promo Global) -->
+    <div class="admin-section">
+      <div class="section-title">Kelola Promo & Diskon</div>
+      <button class="btn btn-add" onclick="togglePromoForm()">Tambah Promo Baru</button>
+      <div id="promoForm" style="display:none;">
+        <form>
+          <input type="text" id="promoCode" placeholder="Kode Promo" required>
+          <input type="number" id="promoDiscount" placeholder="Diskon (%)" required>
+          <input type="date" id="promoExpiry" placeholder="Tanggal Kadaluarsa" required>
+          <button type="button" class="btn" onclick="addPromo()">Simpan Promo</button>
+        </form>
+      </div>
+      <table id="promoTable">
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>Kode Promo</th>
+            <th>Diskon (%)</th>
+            <th>Kadaluarsa</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <!-- Log Activity (Fitur 20: Lihat Log Sistem) -->
+    <div class="admin-section">
+      <div class="section-title">Log Activity Sistem</div>
+      <table id="logTable">
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>Waktu</th>
+            <th>Aktivitas</th>
+            <th>User/Admin</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <!-- Export Data (Fitur 21: Export User/Topup to CSV) -->
+    <div class="admin-section">
+      <div class="section-title">Export Data</div>
+      <button class="btn btn-export" onclick="exportUsers()">Export User to CSV</button>
+      <button class="btn btn-export" onclick="exportTopups()">Export Topup Requests to CSV</button>
+    </div>
+
   </div>
 
   <footer>
-    <p>© 2026 RHF Admin Panel - Semua data real-time dari Firebase</p>
+    <p>© 2026 RHF - Dibuat oleh RHF SETORS. All Rights Reserved.</p>
+    <p>Support 24/7: wa.me/081234567890</p>
   </footer>
 
+  <!-- Firebase SDK Compat -->
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
 
@@ -208,20 +352,40 @@
     firebase.initializeApp(firebaseConfig);
     const db = firebase.database();
 
-    // === TOPUP REQUESTS ===
+    // Fitur 1: Load Dashboard Stats
+    function loadStats() {
+      db.ref('users').once('value', snap => {
+        document.getElementById('statUsers').querySelector('h3').textContent = snap.numChildren();
+      });
+      db.ref('users').once('value', snap => {
+        let totalSaldo = 0;
+        snap.forEach(child => totalSaldo += child.val().saldo || 0);
+        document.getElementById('statSaldo').querySelector('h3').textContent = 'Rp ' + totalSaldo.toLocaleString('id-ID');
+      });
+      db.ref('topup_requests').orderByChild('status').equalTo('pending').once('value', snap => {
+        document.getElementById('statTopup').querySelector('h3').textContent = snap.numChildren();
+      });
+      db.ref('orders').orderByChild('status').equalTo('pending').once('value', snap => {
+        document.getElementById('statOrders').querySelector('h3').textContent = snap.numChildren();
+      });
+      db.ref('events').once('value', snap => {
+        document.getElementById('statEvents').querySelector('h3').textContent = snap.numChildren();
+      });
+    }
+
+    // Fitur 2-5: Topup Requests
     function loadTopupRequests() {
       db.ref('topup_requests').orderByChild('timestamp').on('value', snap => {
         const tbody = document.querySelector('#topupTable tbody');
         tbody.innerHTML = '';
-        const count = document.getElementById('topupCount');
-        let total = 0;
-        const requests = snap.val() || {};
-        Object.keys(requests).forEach(key => {
-          total++;
-          const r = requests[key];
+        let no = 1;
+        snap.forEach(child => {
+          const key = child.key;
+          const r = child.val();
           const date = new Date(r.timestamp).toLocaleString('id-ID');
-          const row = `<tr>
-            <td>${total}</td>
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td>${no++}</td>
             <td>${date}</td>
             <td>${r.uid}</td>
             <td>Rp ${r.nominal.toLocaleString('id-ID')}</td>
@@ -229,29 +393,74 @@
             <td><a href="${r.bukti}" target="_blank">Lihat Bukti</a></td>
             <td>${r.status || 'Pending'}</td>
             <td>
-              \( {r.status === 'pending' ? `<button class="btn btn-success" onclick="confirmTopup(' \){key}', \( {r.nominal}, ' \){r.uid}')">Konfirmasi</button>` : ''}
-              <button class="btn btn-danger" onclick="deleteRequest('${key}')">Hapus</button>
+              <button class="btn btn-success" onclick="confirmTopup('${key}', \( {r.nominal}, ' \){r.uid}')">Konfirmasi</button>
+              <button class="btn btn-fail" onclick="rejectTopup('${key}')">Tolak</button>
+              <button class="btn btn-delete" onclick="deleteTopup('${key}')">Hapus</button>
             </td>
-          </tr>`;
-          tbody.innerHTML += row;
+          `;
+          tbody.appendChild(row);
         });
-        count.textContent = `Total Permintaan: ${total}`;
       });
     }
 
     function confirmTopup(key, nominal, uid) {
-      if (confirm(`Konfirmasi tambah saldo Rp ${nominal.toLocaleString('id-ID')} ke user ${uid}?`)) {
-        db.ref('users/' + uid + '/saldo').transaction(s => (s || 0) + nominal);
+      if (confirm('Konfirmasi topup Rp ' + nominal.toLocaleString('id-ID') + '?')) {
+        db.ref('users/' + uid + '/saldo').transaction(current => (current || 0) + nominal);
         db.ref('topup_requests/' + key + '/status').set('success');
-        alert('Saldo berhasil ditambahkan!');
       }
     }
 
-    function deleteRequest(key) {
-      if (confirm('Hapus permintaan ini?')) db.ref('topup_requests/' + key).remove();
+    function rejectTopup(key) {
+      if (confirm('Tolak topup ini?')) db.ref('topup_requests/' + key + '/status').set('rejected');
     }
 
-    // === KELOLA USER ===
+    function deleteTopup(key) {
+      if (confirm('Hapus permintaan?')) db.ref('topup_requests/' + key).remove();
+    }
+
+    // Fitur 6-9: Pesanan Game
+    function loadOrders() {
+      db.ref('orders').orderByChild('timestamp').on('value', snap => {
+        const tbody = document.querySelector('#ordersTable tbody');
+        tbody.innerHTML = '';
+        let no = 1;
+        snap.forEach(child => {
+          const key = child.key;
+          const o = child.val();
+          const date = new Date(o.timestamp).toLocaleString('id-ID');
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td>${no++}</td>
+            <td>${date}</td>
+            <td>${o.uid}</td>
+            <td>${o.game}</td>
+            <td>${o.nominal}</td>
+            <td>Rp ${o.harga.toLocaleString('id-ID')}</td>
+            <td>${o.status || 'Pending'}</td>
+            <td>
+              <button class="btn btn-success" onclick="confirmOrder('${key}')">Konfirmasi</button>
+              <button class="btn btn-fail" onclick="rejectOrder('${key}')">Tolak</button>
+              <button class="btn btn-delete" onclick="deleteOrder('${key}')">Hapus</button>
+            </td>
+          `;
+          tbody.appendChild(row);
+        });
+      });
+    }
+
+    function confirmOrder(key) {
+      if (confirm('Konfirmasi pesanan ini?')) db.ref('orders/' + key + '/status').set('success');
+    }
+
+    function rejectOrder(key) {
+      if (confirm('Tolak pesanan ini?')) db.ref('orders/' + key + '/status').set('rejected');
+    }
+
+    function deleteOrder(key) {
+      if (confirm('Hapus pesanan?')) db.ref('orders/' + key).remove();
+    }
+
+    // Fitur 10-15: Kelola User
     function loadUsers() {
       db.ref('users').on('value', snap => {
         const tbody = document.querySelector('#userTable tbody');
@@ -260,100 +469,88 @@
         snap.forEach(child => {
           const key = child.key;
           const u = child.val();
-          const row = `<tr>
+          const status = u.banned ? 'Banned' : (u.frozen ? 'Frozen' : 'Aktif');
+          const row = document.createElement('tr');
+          row.innerHTML = `
             <td>${no++}</td>
-            <td>${u.username || u.email || '-'}</td>
+            <td>${u.username || '-'}</td>
             <td>${key}</td>
             <td>Rp ${(u.saldo || 0).toLocaleString('id-ID')}</td>
-            <td>${u.frozen ? '<span style="color:red;">Dibekukan</span>' : 'Aktif'}</td>
+            <td>${status}</td>
             <td>
               <button class="btn btn-add-saldo" onclick="addSaldo('${key}')">+ Saldo</button>
               <button class="btn btn-cut-saldo" onclick="cutSaldo('${key}')">- Saldo</button>
-              <button class="btn btn-warning" onclick="toggleFreeze('${key}', \( {u.frozen || false})"> \){u.frozen ? 'Aktifkan' : 'Bekukan'}</button>
+              <button class="btn btn-freeze" onclick="toggleFreeze('${key}', \( {u.frozen || false})"> \){u.frozen ? 'Unfreeze' : 'Freeze'}</button>
+              <button class="btn btn-ban" onclick="banUser('${key}')">Ban</button>
+              <button class="btn btn-unban" onclick="unbanUser('${key}')">Unban</button>
+              <button class="btn btn-delete" onclick="deleteUser('${key}')">Hapus</button>
             </td>
-          </tr>`;
-          tbody.innerHTML += row;
+          `;
+          tbody.appendChild(row);
         });
       });
     }
 
+    function toggleUserForm() {
+      const form = document.getElementById('userForm');
+      form.style.display = form.style.display === 'none' ? 'block' : 'none';
+    }
+
+    function addUser() {
+      const username = document.getElementById('newUsername').value.trim();
+      const password = document.getElementById('newPassword').value;
+      const saldo = parseInt(document.getElementById('newSaldo').value) || 0;
+      if (!username || !password) return alert('Username dan Password wajib!');
+      db.ref('users').push({ username, password, saldo, frozen: false, banned: false });
+    }
+
     function addSaldo(key) {
-      const amt = prompt('Nominal tambah saldo (Rp):');
-      if (amt && !isNaN(amt)) db.ref('users/' + key + '/saldo').transaction(s => (s || 0) + parseInt(amt));
+      const amount = prompt('Tambah saldo (Rp):');
+      if (amount && !isNaN(amount)) db.ref('users/' + key + '/saldo').transaction(s => (s || 0) + parseInt(amount));
     }
 
     function cutSaldo(key) {
-      const amt = prompt('Nominal potong saldo (Rp):');
-      if (amt && !isNaN(amt)) db.ref('users/' + key + '/saldo').transaction(s => (s || 0) - parseInt(amt));
+      const amount = prompt('Potong saldo (Rp):');
+      if (amount && !isNaN(amount)) db.ref('users/' + key + '/saldo').transaction(s => (s || 0) - parseInt(amount));
     }
 
     function toggleFreeze(key, current) {
       db.ref('users/' + key + '/frozen').set(!current);
     }
 
-    // === KELOLA EVENT ===
-    function loadEvents() {
-      db.ref('events').on('value', snap => {
-        const tbody = document.querySelector('#eventTable tbody');
+    function banUser(key) {
+      const reason = prompt('Alasan ban:');
+      if (reason) db.ref('users/' + key).update({ banned: true, banReason: reason });
+    }
+
+    function unbanUser(key) {
+      if (confirm('Unban user ini?')) db.ref('users/' + key).update({ banned: false, banReason: null });
+    }
+
+    function deleteUser(key) {
+      if (confirm('Hapus user ini?')) db.ref('users/' + key).remove();
+    }
+
+    function searchUser() {
+      const query = document.getElementById('searchUser').value.trim().toLowerCase();
+      db.ref('users').once('value', snap => {
+        const tbody = document.querySelector('#userTable tbody');
         tbody.innerHTML = '';
         let no = 1;
         snap.forEach(child => {
           const key = child.key;
-          const e = child.val();
-          const row = `<tr>
-            <td>${no++}</td>
-            <td>${e.title || '-'}</td>
-            <td>${e.desc || '-'}</td>
-            <td><img src="${e.image}" style="width:120px; height:auto; border-radius:8px;" onerror="this.src='https://via.placeholder.com/120'"></td>
-            <td><button class="btn btn-danger" onclick="deleteEvent('${key}')">Hapus</button></td>
-          </tr>`;
-          tbody.innerHTML += row;
-        });
-      });
-    }
-
-    function toggleEventForm() {
-      const f = document.getElementById('eventForm');
-      f.style.display = f.style.display === 'none' ? 'block' : 'none';
-    }
-
-    function addEvent() {
-      const title = document.getElementById('eventTitle').value.trim();
-      const desc = document.getElementById('eventDesc').value.trim();
-      const image = document.getElementById('eventImage').value.trim();
-      if (!title || !desc || !image) return alert('Lengkapi semua!');
-      if (!image.startsWith('https://')) return alert('URL gambar harus https://');
-
-      db.ref('events').push({ title, desc, image }).then(() => {
-        alert('Event berhasil ditambahkan');
-        toggleEventForm();
-        document.getElementById('eventTitle').value = '';
-        document.getElementById('eventDesc').value = '';
-        document.getElementById('eventImage').value = '';
-        document.getElementById('eventImagePreview').style.display = 'none';
-      });
-    }
-
-    function deleteEvent(key) {
-      if (confirm('Hapus event ini?')) db.ref('events/' + key).remove();
-    }
-
-    document.getElementById('eventImage').addEventListener('input', function() {
-      const url = this.value.trim();
-      const preview = document.getElementById('eventImagePreview');
-      if (url) {
-        preview.src = url;
-        preview.style.display = 'block';
-      } else {
-        preview.style.display = 'none';
-      }
-    });
-
-    // Load semua data saat halaman dibuka
-    loadTopupRequests();
-    loadOrders();
-    loadUsers();
-    loadEvents();
-  </script>
-</body>
-</html>
+          const u = child.val();
+          if (key.toLowerCase().includes(query) || u.username.toLowerCase().includes(query)) {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+              <td>${no++}</td>
+              <td>${u.username || '-'}</td>
+              <td>${key}</td>
+              <td>Rp ${(u.saldo || 0).toLocaleString('id-ID')}</td>
+              <td>${u.banned ? 'Banned' : (u.frozen ? 'Frozen' : 'Aktif')}</td>
+              <td>
+                <button class="btn btn-add-saldo" onclick="addSaldo('${key}')">+ Saldo</button>
+                <button class="btn btn-cut-saldo" onclick="cutSaldo('${key}')">- Saldo</button>
+                <button class="btn btn-freeze" onclick="toggleFreeze('${key}', \( {u.frozen || false})"> \){u.frozen ? 'Unfreeze' : 'Freeze'}</button>
+                <button class="btn btn-ban" onclick="banUser('${key}')">Ban</button>
+                <button class="btn btn-unban" onclick="unbanUser('${ke
