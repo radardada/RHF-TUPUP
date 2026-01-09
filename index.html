@@ -18,26 +18,31 @@
     .search-bar input { width: 100%; padding: 14px 60px 14px 25px; border: 1px solid #ddd; border-radius: 50px; font-size: 16px; background: #f8f9fa; }
     .search-bar button { position: absolute; right: 5px; top: 50%; transform: translateY(-50%); background: #ff5722; border: none; width: 50px; height: 50px; border-radius: 50%; color: #fff; font-size: 20px; cursor: pointer; }
 
-    .user-menu { position: relative; display: flex; align-items: center; }
+    /* User Menu & Dropdown */
+    .user-menu { position: relative; }
     .login-btn { background: #4285f4; color: #fff; padding: 10px 20px; border-radius: 30px; display: flex; align-items: center; gap: 8px; text-decoration: none; font-weight: 600; }
-    .settings-icon { font-size: 28px; cursor: pointer; color: #ff5722; }
-    .dropdown { display: none; position: absolute; top: 60px; right: 0; background: #fff; box-shadow: 0 8px 20px rgba(0,0,0,0.15); border-radius: 10px; padding: 15px; min-width: 250px; z-index: 1000; }
-    .dropdown.show { display: block; }
-    .dropdown-item { padding: 12px 15px; cursor: pointer; border-bottom: 1px solid #eee; font-weight: 500; }
+    .settings-icon { font-size: 30px; cursor: pointer; color: #ff5722; transition: transform 0.2s; }
+    .settings-icon:hover { transform: rotate(30deg); }
+    .dropdown { display: none; position: absolute; top: 65px; right: 0; background: #fff; box-shadow: 0 10px 30px rgba(0,0,0,0.15); border-radius: 12px; padding: 15px 0; min-width: 280px; z-index: 1000; }
+    .dropdown.show { display: block; animation: fadeIn 0.3s; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+    .dropdown-item { padding: 12px 20px; cursor: pointer; font-weight: 500; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
     .dropdown-item:last-child { border-bottom: none; }
     .dropdown-item:hover { background: #f8f9fa; }
     .saldo-display { font-weight: 700; color: #ff5722; font-size: 18px; }
+    .uid-display { font-size: 12px; color: #666; word-break: break-all; }
 
     .section-title { display: flex; justify-content: space-between; align-items: center; font-size: 32px; font-weight: 700; margin: 60px 0 40px; color: #333; }
     .section-title a { font-size: 16px; color: #ff5722; text-decoration: none; }
 
-    .games-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; margin-bottom: 80px; }
-    .game-item { background: #fff; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.08); transition: all 0.3s ease; text-align: center; text-decoration: none; color: inherit; }
-    .game-item:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(255,87,34,0.2); }
-    .game-item img { width: 100%; height: 160px; object-fit: contain; background: #f8f9fa; padding: 20px; }
+    .games-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; margin-bottom: 100px; }
+    .game-item { background: #fff; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.08); transition: all 0.3s ease; text-align: center; text-decoration: none; color: inherit; }
+    .game-item:hover { transform: translateY(-12px); box-shadow: 0 20px 40px rgba(255,87,34,0.2); }
+    .game-item img { width: 100%; height: 170px; object-fit: contain; background: #f8f9fa; padding: 25px; }
     .game-item p { padding: 15px; font-size: 16px; font-weight: 600; }
 
-    footer { background: #222; color: #aaa; text-align: center; padding: 50px 20px; }
+    footer { background: #222; color: #aaa; text-align: center; padding: 60px 20px; }
+    footer p { margin: 10px 0; }
   </style>
 </head>
 <body>
@@ -45,7 +50,7 @@
   <header>
     <div class="container header-inner">
       <div class="logo">
-        <img src="images/logo.png" alt="RHF Logo"> <!-- Ganti dengan logo RHF kamu -->
+        <img src="images/logo.png" alt="RHF Logo"> <!-- Ganti dengan logo kamu -->
       </div>
       <div class="search-bar">
         <input type="text" placeholder="Cari game atau produk...">
@@ -63,7 +68,9 @@
       <a href="#">Lihat Semua ></a>
     </div>
 
-    <div class="games-grid" id="gamesGrid"></div>
+    <div class="games-grid" id="gamesGrid">
+      <!-- Diisi otomatis oleh js/games.js -->
+    </div>
   </div>
 
   <footer>
@@ -71,12 +78,13 @@
     <p>Support 24/7: WhatsApp 081234567890</p>
   </footer>
 
-  <!-- Firebase -->
+  <!-- Firebase SDK Compat -->
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
 
   <script>
+    // Firebase Config kamu
     const firebaseConfig = {
       apiKey: "AIzaSyALIhKFz4bpOPmES6t2fAdx8VMPP0ye1wc",
       authDomain: "rhf-resmi.firebaseapp.com",
@@ -91,32 +99,38 @@
     firebase.initializeApp(firebaseConfig);
     const auth = firebase.auth();
     const db = firebase.database();
+
+    // Pastikan tetap login setelah refresh/redirect
     auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL);
 
     const userMenu = document.getElementById('userMenu');
 
     function toggleDropdown() {
-      document.getElementById('dropdownMenu')?.classList.toggle('show');
+      const dropdown = document.getElementById('dropdownMenu');
+      if (dropdown) dropdown.classList.toggle('show');
     }
 
+    // Listener auth - ini yang mengubah tombol login jadi pengaturan
     auth.onAuthStateChanged(user => {
       if (user) {
-        const uid = user.uid;
+        const uid = user.uid; // ID Akun angka unik Firebase
         db.ref('users/' + uid).on('value', snap => {
           const data = snap.val() || {};
-          const saldo = data.saldo || 0;
-          const displayName = user.email ? user.email.split('@')[0] : 'User';
+          const saldo = data.saldo !== undefined ? data.saldo : 0;
+          const nama = data.nama || user.email?.split('@')[0] || 'User';
+          const email = user.email || 'Tidak tersedia';
 
           userMenu.innerHTML = `
             <div>
               <i class="fas fa-cog settings-icon" onclick="toggleDropdown()"></i>
               <div id="dropdownMenu" class="dropdown">
-                <div class="dropdown-item">Halo, ${displayName}</div>
+                <div class="dropdown-item"><strong>Halo, ${nama}</strong></div>
+                <div class="dropdown-item">Email: ${email}</div>
                 <div class="dropdown-item saldo-display">Saldo: Rp ${saldo.toLocaleString('id-ID')}</div>
-                <div class="dropdown-item" onclick="alert('Saldo Anda: Rp ${saldo.toLocaleString('id-ID')}')">Lihat Saldo</div>
-                <div class="dropdown-item" onclick="location.href='settings.html'">Pengaturan Akun</div>
-                <div class="dropdown-item" onclick="alert('ID Akun Anda (UID): ${uid}')">ID Akun: ${uid}</div>
-                <div class="dropdown-item" style="color:#dc3545;" onclick="auth.signOut().then(()=>location.reload())">Logout</div>
+                <div class="dropdown-item" onclick="alert('Saldo Anda saat ini:\\nRp ${saldo.toLocaleString('id-ID')}')">💰 Lihat Saldo</div>
+                <div class="dropdown-item" onclick="location.href='settings.html'">⚙️ Pengaturan Akun</div>
+                <div class="dropdown-item uid-display" onclick="navigator.clipboard.writeText('${uid}').then(()=>alert('UID disalin!'))">ID Akun: ${uid}<br><small>(Klik untuk salin)</small></div>
+                <div class="dropdown-item" style="color:#dc3545;" onclick="auth.signOut().then(()=>location.reload())">🚪 Logout</div>
               </div>
             </div>`;
         });
@@ -125,20 +139,18 @@
       }
     });
 
-    // Tutup dropdown kalau klik luar
-    window.onclick = function(event) {
-      if (!event.target.matches('.settings-icon')) {
-        const dropdowns = document.getElementsByClassName('dropdown');
-        for (let i = 0; i < dropdowns.length; i++) {
-          if (dropdowns[i].classList.contains('show')) {
-            dropdowns[i].classList.remove('show');
-          }
+    // Tutup dropdown kalau klik di luar
+    window.addEventListener('click', function(e) {
+      if (!e.target.matches('.settings-icon') && !e.target.closest('.dropdown')) {
+        const dropdown = document.getElementById('dropdownMenu');
+        if (dropdown && dropdown.classList.contains('show')) {
+          dropdown.classList.remove('show');
         }
       }
-    }
+    });
   </script>
 
-  <!-- Load games dari js/games.js -->
+  <!-- Load daftar game dari file terpisah -->
   <script src="js/games.js"></script>
 </body>
 </html>
