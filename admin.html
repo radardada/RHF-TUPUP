@@ -63,7 +63,6 @@
       font-weight: 600;
       cursor: pointer;
       transition: 0.3s;
-      margin: 5px;
     }
     .btn-add { background: #28a745; }
     .btn-add:hover { background: #218838; }
@@ -116,7 +115,7 @@
 
   <header>
     <h1>Admin Dashboard RHF</h1>
-    <p>Kelola User, Saldo, Topup Requests, Pesanan, dan Event Carousel Secara Real-Time</p>
+    <p>Kelola semuanya secara real-time dengan aman & cepat</p>
   </header>
 
   <div class="container">
@@ -134,26 +133,6 @@
             <th>Nominal</th>
             <th>Deskripsi</th>
             <th>Bukti</th>
-            <th>Status</th>
-            <th>Aksi</th>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
-    </div>
-
-    <!-- Pesanan Top Up Game -->
-    <div class="admin-section">
-      <div class="section-title">Pesanan Top Up Game</div>
-      <table id="ordersTable">
-        <thead>
-          <tr>
-            <th>No</th>
-            <th>Waktu</th>
-            <th>User ID</th>
-            <th>Game</th>
-            <th>Nominal</th>
-            <th>Harga</th>
             <th>Status</th>
             <th>Aksi</th>
           </tr>
@@ -229,7 +208,7 @@
     firebase.initializeApp(firebaseConfig);
     const db = firebase.database();
 
-    // Topup Requests
+    // === TOPUP REQUESTS ===
     function loadTopupRequests() {
       db.ref('topup_requests').orderByChild('timestamp').on('value', snap => {
         const tbody = document.querySelector('#topupTable tbody');
@@ -241,72 +220,38 @@
           total++;
           const r = requests[key];
           const date = new Date(r.timestamp).toLocaleString('id-ID');
-          const status = r.status || 'Pending';
-          const row = `
-            <tr>
-              <td>${total}</td>
-              <td>${date}</td>
-              <td>${r.uid}</td>
-              <td>Rp ${r.nominal.toLocaleString('id-ID')}</td>
-              <td>${r.desc || '-'}</td>
-              <td><a href="${r.bukti}" target="_blank">Lihat Bukti</a></td>
-              <td>${status}</td>
-              <td>
-                \( {status === 'Pending' ? `<button class="btn btn-success" onclick="confirmTopup(' \){key}', \( {r.nominal}, ' \){r.uid}')">Konfirmasi</button>` : ''}
-                <button class="btn btn-danger" onclick="deleteTopup('${key}')">Hapus</button>
-              </td>
-            </tr>`;
+          const row = `<tr>
+            <td>${total}</td>
+            <td>${date}</td>
+            <td>${r.uid}</td>
+            <td>Rp ${r.nominal.toLocaleString('id-ID')}</td>
+            <td>${r.desc || '-'}</td>
+            <td><a href="${r.bukti}" target="_blank">Lihat Bukti</a></td>
+            <td>${r.status || 'Pending'}</td>
+            <td>
+              \( {r.status === 'pending' ? `<button class="btn btn-success" onclick="confirmTopup(' \){key}', \( {r.nominal}, ' \){r.uid}')">Konfirmasi</button>` : ''}
+              <button class="btn btn-danger" onclick="deleteRequest('${key}')">Hapus</button>
+            </td>
+          </tr>`;
           tbody.innerHTML += row;
         });
-        count.textContent = `Total: ${total}`;
+        count.textContent = `Total Permintaan: ${total}`;
       });
     }
 
     function confirmTopup(key, nominal, uid) {
-      if (confirm(`Tambah Rp ${nominal.toLocaleString('id-ID')} ke user ${uid}?`)) {
+      if (confirm(`Konfirmasi tambah saldo Rp ${nominal.toLocaleString('id-ID')} ke user ${uid}?`)) {
         db.ref('users/' + uid + '/saldo').transaction(s => (s || 0) + nominal);
-        db.ref('topup_requests/' + key + '/status').set('Success');
+        db.ref('topup_requests/' + key + '/status').set('success');
+        alert('Saldo berhasil ditambahkan!');
       }
     }
 
-    function deleteTopup(key) {
-      if (confirm('Hapus permintaan?')) db.ref('topup_requests/' + key).remove();
+    function deleteRequest(key) {
+      if (confirm('Hapus permintaan ini?')) db.ref('topup_requests/' + key).remove();
     }
 
-    // Pesanan Game
-    function loadOrders() {
-      db.ref('orders').orderByChild('timestamp').on('value', snap => {
-        const tbody = document.querySelector('#ordersTable tbody');
-        tbody.innerHTML = '';
-        let no = 1;
-        const orders = snap.val() || {};
-        Object.keys(orders).forEach(key => {
-          const o = orders[key];
-          const date = new Date(o.timestamp).toLocaleString('id-ID');
-          const row = `
-            <tr>
-              <td>${no++}</td>
-              <td>${date}</td>
-              <td>${o.uid || '-'}</td>
-              <td>${o.game || '-'}</td>
-              <td>${o.nominal || '-'}</td>
-              <td>Rp ${(o.harga || 0).toLocaleString('id-ID')}</td>
-              <td>${o.status || 'Menunggu'}</td>
-              <td>
-                <button class="btn btn-success" onclick="updateOrderStatus('${key}', 'Berhasil')">Berhasil</button>
-                <button class="btn btn-danger" onclick="updateOrderStatus('${key}', 'Gagal')">Gagal</button>
-              </td>
-            </tr>`;
-          tbody.innerHTML += row;
-        });
-      });
-    }
-
-    function updateOrderStatus(key, status) {
-      db.ref('orders/' + key + '/status').set(status);
-    }
-
-    // Users
+    // === KELOLA USER ===
     function loadUsers() {
       db.ref('users').on('value', snap => {
         const tbody = document.querySelector('#userTable tbody');
@@ -315,31 +260,30 @@
         snap.forEach(child => {
           const key = child.key;
           const u = child.val();
-          const row = `
-            <tr>
-              <td>${no++}</td>
-              <td>${u.username || u.email || '-'}</td>
-              <td>${key}</td>
-              <td>Rp ${(u.saldo || 0).toLocaleString('id-ID')}</td>
-              <td>${u.frozen ? 'Dibekukan' : 'Aktif'}</td>
-              <td>
-                <button class="btn btn-add-saldo" onclick="addSaldo('${key}')">+ Saldo</button>
-                <button class="btn btn-cut-saldo" onclick="cutSaldo('${key}')">- Saldo</button>
-                <button class="btn btn-warning" onclick="toggleFreeze('${key}', \( {u.frozen || false})"> \){u.frozen ? 'Aktifkan' : 'Bekukan'}</button>
-              </td>
-            </tr>`;
+          const row = `<tr>
+            <td>${no++}</td>
+            <td>${u.username || u.email || '-'}</td>
+            <td>${key}</td>
+            <td>Rp ${(u.saldo || 0).toLocaleString('id-ID')}</td>
+            <td>${u.frozen ? '<span style="color:red;">Dibekukan</span>' : 'Aktif'}</td>
+            <td>
+              <button class="btn btn-add-saldo" onclick="addSaldo('${key}')">+ Saldo</button>
+              <button class="btn btn-cut-saldo" onclick="cutSaldo('${key}')">- Saldo</button>
+              <button class="btn btn-warning" onclick="toggleFreeze('${key}', \( {u.frozen || false})"> \){u.frozen ? 'Aktifkan' : 'Bekukan'}</button>
+            </td>
+          </tr>`;
           tbody.innerHTML += row;
         });
       });
     }
 
     function addSaldo(key) {
-      const amt = prompt('Tambah saldo (Rp):');
+      const amt = prompt('Nominal tambah saldo (Rp):');
       if (amt && !isNaN(amt)) db.ref('users/' + key + '/saldo').transaction(s => (s || 0) + parseInt(amt));
     }
 
     function cutSaldo(key) {
-      const amt = prompt('Potong saldo (Rp):');
+      const amt = prompt('Nominal potong saldo (Rp):');
       if (amt && !isNaN(amt)) db.ref('users/' + key + '/saldo').transaction(s => (s || 0) - parseInt(amt));
     }
 
@@ -347,7 +291,7 @@
       db.ref('users/' + key + '/frozen').set(!current);
     }
 
-    // Events
+    // === KELOLA EVENT ===
     function loadEvents() {
       db.ref('events').on('value', snap => {
         const tbody = document.querySelector('#eventTable tbody');
@@ -356,14 +300,13 @@
         snap.forEach(child => {
           const key = child.key;
           const e = child.val();
-          const row = `
-            <tr>
-              <td>${no++}</td>
-              <td>${e.title || '-'}</td>
-              <td>${e.desc || '-'}</td>
-              <td><img src="${e.image || ''}" style="width:120px;height:auto;border-radius:8px;" onerror="this.src='https://via.placeholder.com/120'"></td>
-              <td><button class="btn btn-danger" onclick="deleteEvent('${key}')">Hapus</button></td>
-            </tr>`;
+          const row = `<tr>
+            <td>${no++}</td>
+            <td>${e.title || '-'}</td>
+            <td>${e.desc || '-'}</td>
+            <td><img src="${e.image}" style="width:120px; height:auto; border-radius:8px;" onerror="this.src='https://via.placeholder.com/120'"></td>
+            <td><button class="btn btn-danger" onclick="deleteEvent('${key}')">Hapus</button></td>
+          </tr>`;
           tbody.innerHTML += row;
         });
       });
@@ -379,7 +322,7 @@
       const desc = document.getElementById('eventDesc').value.trim();
       const image = document.getElementById('eventImage').value.trim();
       if (!title || !desc || !image) return alert('Lengkapi semua!');
-      if (!image.startsWith('https://')) return alert('URL harus HTTPS');
+      if (!image.startsWith('https://')) return alert('URL gambar harus https://');
 
       db.ref('events').push({ title, desc, image }).then(() => {
         alert('Event berhasil ditambahkan');
@@ -392,17 +335,21 @@
     }
 
     function deleteEvent(key) {
-      if (confirm('Hapus event?')) db.ref('events/' + key).remove();
+      if (confirm('Hapus event ini?')) db.ref('events/' + key).remove();
     }
 
     document.getElementById('eventImage').addEventListener('input', function() {
       const url = this.value.trim();
       const preview = document.getElementById('eventImagePreview');
-      preview.src = url;
-      preview.style.display = url ? 'block' : 'none';
+      if (url) {
+        preview.src = url;
+        preview.style.display = 'block';
+      } else {
+        preview.style.display = 'none';
+      }
     });
 
-    // Load semua
+    // Load semua data saat halaman dibuka
     loadTopupRequests();
     loadOrders();
     loadUsers();
