@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Konfirmasi Pembayaran - RHF</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Poppins', sans-serif; background: #f4f4f4; color: #333; min-height: 100vh; display: flex; align-items: center; justify-content: center; }
+    .card {
+      background: #fff;
+      width: 90%;
+      max-width: 500px;
+      border-radius: 20px;
+      padding: 50px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+    .checkmark {
+      font-size: 100px;
+      color: #28a745;
+      margin-bottom: 20px;
+    }
+    h1 { font-size: 32px; color: #28a745; margin-bottom: 15px; }
+    p { font-size: 18px; color: #555; margin-bottom: 30px; }
+    .nota {
+      background: #f8f9fa;
+      border-radius: 12px;
+      padding: 20px;
+      margin: 30px 0;
+      text-align: left;
+      border: 1px solid #ddd;
+    }
+    .nota p { margin: 10px 0; font-size: 16px; }
+    .nota strong { color: #ff6600; }
+    .btn-home {
+      padding: 15px 40px;
+      background: linear-gradient(to right, #ff6600, #ff8800);
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      font-size: 18px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn-home:hover { opacity: 0.9; }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <i class="fas fa-check-circle checkmark"></i>
+    <h1>Pembayaran Berhasil Dikirim</h1>
+    <p>Permintaan topup saldo kamu sedang diproses oleh admin. Mohon tunggu konfirmasi dalam 5-30 menit.</p>
+
+    <div class="nota">
+      <p><strong>Nota Pembayaran</strong></p>
+      <p>Waktu: <strong id="time"></strong></p>
+      <p>Nominal: <strong id="nominal"></strong></p>
+      <p>Deskripsi: <strong id="desc"></strong></p>
+      <p>Metode: DANA (85124869641)</p>
+      <p>Status: <strong>Menunggu Konfirmasi</strong></p>
+    </div>
+
+    <a href="index.html" class="btn-home">Kembali ke Beranda</a>
+  </div>
+
+  <script>
+    // Ambil data dari localStorage
+    document.getElementById('time').textContent = localStorage.getItem('topupTime') || new Date().toLocaleString('id-ID');
+    document.getElementById('nominal').textContent = 'Rp ' + Number(localStorage.getItem('topupNominal') || 0).toLocaleString('id-ID');
+    document.getElementById('desc').textContent = localStorage.getItem('topupDesc') || '-';
+
+    // Hapus data setelah ditampilkan
+    setTimeout(() => {
+      localStorage.removeItem('topupNominal');
+      localStorage.removeItem('topupDesc');
+      localStorage.removeItem('topupTime');
+    }, 5000);
+  </script>
+</body>
+</html>
