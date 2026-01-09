@@ -49,9 +49,13 @@
     .game-item img { width: 100%; height: 120px; object-fit: contain; background: #f8f9fa; padding: 10px; flex-grow: 1; }
     .game-item p { padding: 8px 5px; font-weight: 600; font-size: 13px; line-height: 1.3; }
 
-    .modal { display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); align-items: center; justify-content: center; }
-    .modal-content { background: #fff; border-radius: 15px; padding: 30px; width: 90%; max-width: 400px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
-    .close { float: right; font-size: 28px; cursor: pointer; color: #aaa; }
+    .modal { display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); align-items: center; justify-content: center; }
+    .modal-content { background: #fff; border-radius: 20px; padding: 35px; width: 90%; max-width: 420px; box-shadow: 0 15px 40px rgba(0,0,0,0.3); text-align: center; }
+    .modal-content h3 { font-size: 26px; margin-bottom: 20px; color: #ff6600; }
+    .modal-content input, .modal-content button { width: 100%; padding: 15px; margin: 12px 0; border-radius: 12px; font-size: 16px; }
+    .modal-content input { border: 1px solid #ddd; }
+    .modal-content button { background: linear-gradient(to right, #ff6600, #ff8800); color: #fff; border: none; cursor: pointer; font-weight: 600; }
+    .close { float: right; font-size: 32px; cursor: pointer; color: #aaa; }
 
     footer { background: #222; color: #aaa; text-align: center; padding: 60px 20px; }
   </style>
@@ -75,7 +79,7 @@
   <div class="container">
     <div class="tagline">Top Up Games & Voucher Murah, Aman, Cepat</div>
 
-    <!-- Carousel Event real-time dari Firebase -->
+    <!-- Carousel Event real-time -->
     <div class="carousel" id="carousel"></div>
 
     <div class="search-bar">
@@ -91,15 +95,15 @@
     <div class="games-grid" id="gamesGrid"></div>
   </div>
 
-  <!-- Modal Tambah Saldo -->
+  <!-- Modal Tambah Saldo (Super Cepat) -->
   <div id="topupModal" class="modal">
     <div class="modal-content">
       <span class="close" onclick="document.getElementById('topupModal').style.display='none'">&times;</span>
       <h3>Tambah Saldo</h3>
-      <input type="number" id="nominalInput" placeholder="Nominal (Rp)" min="10000">
+      <input type="number" id="nominalInput" placeholder="Nominal (Rp)" min="10000" required autofocus>
       <p style="font-size:15px;margin:15px 0;">Transfer ke DANA:<br><strong>85124869641</strong></p>
       <input type="text" id="descInput" placeholder="Deskripsi (opsional)">
-      <input type="file" id="buktiInput" accept="image/*">
+      <input type="file" id="buktiInput" accept="image/*" required>
       <button onclick="kirimTopup()">Kirim Bukti Transfer</button>
     </div>
   </div>
@@ -131,13 +135,12 @@
     const userMenu = document.getElementById('userMenu');
     const carousel = document.getElementById('carousel');
 
-    // Cek login dari localStorage (dari login.html kamu)
+    // Cek login dari localStorage
     const userKey = localStorage.getItem('userKey');
     const username = localStorage.getItem('username');
     const savedSaldo = localStorage.getItem('saldo');
 
     if (userKey && username) {
-      // User sudah login
       db.ref('users/' + userKey).on('value', snap => {
         const data = snap.val() || {};
         const saldo = data.saldo || savedSaldo || 0;
@@ -150,6 +153,7 @@
           </div>
           <div id="dropdownMenu" class="dropdown">
             <div class="dropdown-item"><strong>${username}</strong></div>
+            <div class="dropdown-item" onclick="location.href='saldo.html'">Saldo</div>
             <div class="dropdown-item" onclick="openTopupModal()">Tambah Saldo</div>
             <div class="dropdown-item" onclick="location.href='settings.html'">Pengaturan Akun</div>
             <div class="dropdown-item" onclick="alert('ID Akun: ${userKey}')">ID Akun: ${userKey}</div>
@@ -157,7 +161,6 @@
           </div>`;
       });
     } else {
-      // Belum login
       userMenu.innerHTML = `<a href="login.html" class="login-btn">Login</a>`;
     }
 
@@ -175,7 +178,7 @@
 
     function logout() {
       localStorage.clear();
-      location.reload();
+      location.href = 'login.html';
     }
 
     function openTopupModal() {
@@ -191,6 +194,12 @@
 
       if (!nominal || !file) return alert('Isi nominal dan upload bukti');
 
+      // Simpan data topup ke localStorage untuk ditampilkan di halaman konfirmasi
+      localStorage.setItem('topupNominal', nominal);
+      localStorage.setItem('topupDesc', desc || '-');
+      localStorage.setItem('topupTime', new Date().toLocaleString('id-ID'));
+
+      // Upload bukti ke storage
       const ref = storage.ref(`bukti_topup/\( {userKey}/ \){Date.now()}_${file.name}`);
       ref.put(file).then(() => {
         ref.getDownloadURL().then(url => {
@@ -203,17 +212,14 @@
             status: 'pending',
             timestamp: Date.now()
           }).then(() => {
-            alert('Permintaan topup dikirim. Tunggu konfirmasi admin.');
-            document.getElementById('topupModal').style.display = 'none';
-            document.getElementById('nominalInput').value = '';
-            document.getElementById('descInput').value = '';
-            document.getElementById('buktiInput').value = '';
+            // Langsung redirect ke halaman konfirmasi
+            location.href = 'konfirmasi.html';
           });
         });
-      });
+      }).catch(err => alert('Error upload: ' + err.message));
     }
 
-    // Load Event Carousel real-time dari Firebase
+    // Load Event Carousel real-time
     db.ref('events').on('value', snap => {
       carousel.innerHTML = '';
       if (snap.exists()) {
@@ -229,8 +235,6 @@
         carousel.innerHTML = '<div class="banner-item"><p>Belum ada event promo saat ini</p></div>';
       }
     });
-
-    // Load Games dari js/games.js
   </script>
 
   <script src="js/games.js"></script>
