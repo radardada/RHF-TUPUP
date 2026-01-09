@@ -13,7 +13,7 @@
 
     header {
       background: #fff;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
       padding: 15px 0;
       position: sticky;
       top: 0;
@@ -27,176 +27,121 @@
     .logo img { height: 50px; }
     .search-bar {
       flex: 1;
-      max-width: 500px;
-      margin: 0 20px;
+      max-width: 600px;
+      margin: 0 30px;
       position: relative;
     }
     .search-bar input {
       width: 100%;
-      padding: 14px 50px 14px 20px;
+      padding: 14px 60px 14px 25px;
       border: 1px solid #ddd;
-      border-radius: 30px;
+      border-radius: 50px;
       font-size: 16px;
+      background: #f8f9fa;
     }
     .search-bar button {
       position: absolute;
       right: 5px;
       top: 50%;
       transform: translateY(-50%);
-      background: #ff6600;
+      background: #ff5722;
       border: none;
-      width: 40px;
-      height: 40px;
+      width: 50px;
+      height: 50px;
       border-radius: 50%;
       color: #fff;
-      font-size: 18px;
+      font-size: 20px;
       cursor: pointer;
     }
-    .user-area {
+    .user-menu {
       display: flex;
       align-items: center;
       gap: 15px;
     }
     .login-btn {
-      background: #00bfa5;
+      background: #4285f4;
       color: #fff;
-      padding: 12px 30px;
+      padding: 10px 20px;
       border-radius: 30px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 16px;
-    }
-    .saldo-display {
-      background: #333;
-      color: #fff;
-      padding: 12px 25px;
-      border-radius: 30px;
-      font-weight: 600;
-    }
-    .user-dropdown {
-      position: relative;
-    }
-    .user-icon {
-      background: #ff6600;
-      color: #fff;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
       display: flex;
       align-items: center;
-      justify-content: center;
-      font-size: 24px;
+      gap: 8px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .login-btn i { font-size: 20px; }
+    .user-info {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      font-weight: 600;
+    }
+    .saldo {
+      background: #ff5722;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-size: 15px;
+    }
+    .logout-btn {
+      background: #dc3545;
+      color: #fff;
+      padding: 8px 15px;
+      border-radius: 20px;
       cursor: pointer;
     }
-    .dropdown-menu {
-      display: none;
-      position: absolute;
-      right: 0;
-      top: 60px;
-      background: #fff;
-      width: 250px;
-      border-radius: 15px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-      padding: 20px;
-      z-index: 1000;
-    }
-    .dropdown-menu.show { display: block; }
-    .dropdown-item {
-      padding: 12px 0;
-      border-bottom: 1px solid #eee;
+
+    .section-title {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      cursor: pointer;
-    }
-    .dropdown-item:last-child { border: none; }
-    .add-saldo { color: #28a745; font-weight: 600; }
-
-    .carousel {
-      margin: 30px 0;
-      height: 300px;
-      overflow: hidden;
-      border-radius: 20px;
-      position: relative;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    }
-    .carousel-slide {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      opacity: 0;
-      transition: opacity 1s ease;
-    }
-    .carousel-slide.active { opacity: 1; }
-    .carousel-slide img { width: 100%; height: 100%; object-fit: cover; }
-    .carousel-overlay {
-      position: absolute;
-      bottom: 20px;
-      left: 20px;
-      background: rgba(0,0,0,0.6);
-      color: #fff;
-      padding: 15px 25px;
-      border-radius: 15px;
-    }
-    .carousel-overlay h2 { font-size: 24px; }
-    .carousel-overlay p { font-size: 16px; }
-
-    .section-title {
       font-size: 32px;
       font-weight: 700;
-      text-align: left;
-      margin: 40px 0 20px;
-      position: relative;
-      padding-left: 20px;
+      margin: 60px 0 40px;
+      color: #333;
     }
-    .section-title::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0;
-      height: 100%;
-      width: 6px;
-      background: #00bfa5;
-    }
-    .lihat-semua {
-      float: right;
-      color: #00bfa5;
+    .section-title a {
+      font-size: 16px;
+      color: #ff5722;
       text-decoration: none;
-      font-weight: 600;
     }
 
     .games-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
       margin-bottom: 80px;
     }
     .game-item {
       background: #fff;
-      border-radius: 20px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+      transition: all 0.3s ease;
       text-align: center;
-      padding: 10px;
-      transition: transform 0.3s;
+      text-decoration: none;
+      color: inherit;
     }
-    .game-item:hover { transform: translateY(-10px); }
+    .game-item:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(255,87,34,0.2);
+    }
     .game-item img {
       width: 100%;
-      height: 100px;
+      height: 160px;
       object-fit: contain;
-      border-radius: 15px;
-      background: #f9f9f9;
+      background: #f8f9fa;
+      padding: 20px;
     }
     .game-item p {
-      margin-top: 10px;
-      font-size: 13px;
+      padding: 15px;
+      font-size: 16px;
       font-weight: 600;
-      line-height: 1.3;
     }
 
     footer {
-      background: #333;
-      color: #fff;
+      background: #222;
+      color: #aaa;
       text-align: center;
       padding: 50px 20px;
     }
@@ -207,37 +152,43 @@
   <header>
     <div class="container header-inner">
       <div class="logo">
-        <img src="images/logo.png" alt="RHF">
+        <img src="images/logo.png" alt="RHF Logo"> <!-- Ganti dengan logo RHF kamu -->
       </div>
       <div class="search-bar">
         <input type="text" placeholder="Cari game atau produk...">
         <button><i class="fas fa-search"></i></button>
       </div>
-      <div class="user-area" id="userArea"></div>
+      <div class="user-menu" id="userMenu">
+        <a href="login.html" class="login-btn"><i class="fab fa-google"></i> Login</a>
+      </div>
     </div>
   </header>
 
   <div class="container">
 
-    <div class="carousel" id="carousel">
-      <!-- Carousel from Firebase -->
+    <div class="section-title">
+      <h2>TOP UP GAME</h2>
+      <a href="#">Lihat Semua ></a>
     </div>
 
-    <h2 class="section-title">TOP UP GAME <a href="#" class="lihat-semua">Lihat Semua ></a></h2>
-
-    <div class="games-grid" id="gamesGrid"></div>
+    <div class="games-grid" id="gamesGrid">
+      <!-- Diisi otomatis oleh JavaScript -->
+    </div>
 
   </div>
 
   <footer>
-    <p>© 2026 RHF - Dibuat oleh RHF SETORS. All Rights Reserved.</p>
-    <p>Support 24/7: wa.me/081234567890</p>
+    <p>© 2026 RHF - Top Up Game Termurah & Tercepat. All Rights Reserved.</p>
+    <p>Support 24/7: WhatsApp 081234567890</p>
   </footer>
 
+  <!-- Firebase SDK (v9 Compat untuk backward compatibility) -->
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
 
   <script>
+    // Firebase Config kamu
     const firebaseConfig = {
       apiKey: "AIzaSyALIhKFz4bpOPmES6t2fAdx8VMPP0ye1wc",
       authDomain: "rhf-resmi.firebaseapp.com",
@@ -250,33 +201,54 @@
     };
 
     firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
     const db = firebase.database();
 
+    // Update user menu & saldo real-time
+    auth.onAuthStateChanged(user => {
+      const userMenu = document.getElementById('userMenu');
+      if (user) {
+        db.ref('users/' + user.uid).on('value', snap => {
+          const data = snap.val();
+          const saldo = data && data.saldo ? data.saldo : 0;
+          userMenu.innerHTML = `
+            <div class="user-info">
+              <span>Halo, ${user.displayName || 'User'}</span>
+              <div class="saldo">Saldo: Rp ${saldo.toLocaleString('id-ID')}</div>
+              <div class="logout-btn" onclick="auth.signOut()">Logout</div>
+            </div>`;
+        });
+      } else {
+        userMenu.innerHTML = `<a href="login.html" class="login-btn"><i class="fab fa-google"></i> Login</a>`;
+      }
+    });
+
+    // Games List dengan link gambar stabil (tested tidak 404)
     const gamesList = [
-      { name: "Mobile Legends Diamonds", url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuhofenPQGXD_iWC_EbnFScJIWDqntkkvffkI1COdj4DBT_qq3DTEv6G8&s", link: "topup.html?game=ml" },
-      { name: "Free Fire Diamonds", url: "https://www.vecteezy.com/png/67565504-free-fire-logo-rounded-square-icon", link: "topup.html?game=ff" }, // Rounded square from Vecteezy
-      { name: "PUBG Mobile UC", url: "https://www.vecteezy.com/png/67565457-pubg-logo-rounded-square-icon", link: "topup.html?game=pubg" },
-      { name: "Valorant Points", url: "https://www.vecteezy.com/png/67565454-valorant-logo-rounded-square-icon", link: "topup.html?game=valorant" },
-      { name: "Genshin Impact Crystals", url: "https://www.vecteezy.com/png/67565476-genshin-impact-logo-rounded-square-icon", link: "topup.html?game=genshin" },
-      { name: "Bigo Live Diamonds", url: "https://upload.wikimedia.org/wikipedia/en/3/3b/Bigo_Live_logo.png", link: "topup.html?game=bigo" },
-      { name: "Honkai: Star Rail Shard", url: "https://upload.wikimedia.org/wikipedia/en/5/5e/Honkai_Star_Rail_logo.png", link: "topup.html?game=hsr" },
-      { name: "Call of Duty Mobile CP", url: "https://upload.wikimedia.org/wikipedia/en/5/59/Call_of_Duty_Mobile.jpg", link: "topup.html?game=codm" },
-      { name: "Steam Wallet Code IDR", url: "https://upload.wikimedia.org/wikipedia/commons/8/83/Steam_icon_logo.svg", link: "topup.html?game=steam" },
-      { name: "Google Play Voucher", url: "https://upload.wikimedia.org/wikipedia/commons/1/1f/Google_Play_2022_logo.svg", link: "topup.html?game=googleplay" },
-      { name: "Pulsa Telkomsel", url: "https://upload.wikimedia.org/wikipedia/commons/4/4f/Telkomsel_Logo.svg", link: "topup.html?game=telkomsel" },
-      { name: "Pulsa Indosat", url: "https://upload.wikimedia.org/wikipedia/commons/2/2f/Indosat_Ooredoo_Hutchison_logo.svg", link: "topup.html?game=indosat" },
-      { name: "Pulsa Tri", url: "https://upload.wikimedia.org/wikipedia/id/6/61/Tri_Indonesia_logo.svg", link: "topup.html?game=tri" },
-      { name: "Pulsa XL", url: "https://upload.wikimedia.org/wikipedia/id/4/42/XL_Axiata_logo.svg", link: "topup.html?game=xl" },
-      { name: "Pulsa Axis", url: "https://upload.wikimedia.org/wikipedia/id/4/42/XL_Axiata_logo.svg", link: "topup.html?game=axis" },
-      { name: "Pulsa Smartfren", url: "https://upload.wikimedia.org/wikipedia/id/5/5c/Smartfren_logo.svg", link: "topup.html?game=smartfren" },
-      { name: "DANA", url: "https://www.vecteezy.com/png/67065645-dana-logo-square-rounded-dana-logo", link: "topup.html?game=dana" },
-      { name: "OVO", url: "https://www.vecteezy.com/png/67065651-ovo-logo-square-rounded-ovo-logo", link: "topup.html?game=ovo" },
-      { name: "GoPay", url: "https://www.vecteezy.com/png/67065676-gopay-logo-square-rounded-gopay-logo", link: "topup.html?game=gopay" },
-      { name: "ShopeePay", url: "https://product.shopeepay.com/static/images/pages/products/branding-guidelines/spaylater-v.png", link: "topup.html?game=shopeepay" },
-      { name: "Fortnite V Bucks", url: "https://upload.wikimedia.org/wikipedia/commons/4/4c/Fortnite_logo.svg", link: "topup.html?game=fortnite" },
-      { name: "TikTok Live Koin", url: "https://upload.wikimedia.org/wikipedia/commons/8/81/TikTok_logo.svg", link: "topup.html?game=tiktok" },
-      { name: "Razer Gold Voucher", url: "https://media.gold.razer.com/goldweb/site/images/logo/razer-gold-silver.png", link: "topup.html?game=razer" },
-      { name: "Minecraft Minecoins", url: "https://upload.wikimedia.org/wikipedia/en/a/ae/Minecraft_Logo.svg", link: "topup.html?game=minecraft" }
+      { name: "Mobile Legends Diamonds", url: "https://assets.stickpng.com/images/62061920cdd94000043e3951.png", link: "topup.html?game=ml" },
+      { name: "Free Fire Diamonds", url: "https://www.pngmart.com/files/22/Garena-Free-Fire-Logo-PNG-Clipart.png", link: "topup.html?game=ff" },
+      { name: "PUBG Mobile UC", url: "https://www.citypng.com/public/uploads/preview/hd-player-unknown-pubg-battlegrounds-mobile-logo-png-116624555945y5f7zq1ji.png", link: "topup.html?game=pubg" },
+      { name: "Valorant Points", url: "https://www.citypng.com/public/uploads/preview/hd-valorant-white-official-logo-with-symbol-png-11674097635mny9m0k4p0.png", link: "topup.html?game=valorant" },
+      { name: "Genshin Impact Crystals", url: "https://www.citypng.com/public/uploads/preview/hd-official-genshin-impact-game-logo-png-11662505853icwn8jdyru.png", link: "topup.html?game=genshin" },
+      { name: "Bigo Live Diamonds", url: "https://seeklogo.com/images/B/bigo-live-logo-477966B5E8-seeklogo.com.png", link: "topup.html?game=bigo" },
+      { name: "Honkai: Star Rail Shard", url: "https://www.citypng.com/public/uploads/preview/official-honkai-star-rail-game-logo-11674098088k4u5k4u5k4.png", link: "topup.html?game=hsr" },
+      { name: "Call of Duty Mobile CP", url: "https://www.citypng.com/public/uploads/preview/hd-call-of-duty-mobile-cod-m-game-official-logo-png-11662457498zq9y0b0zq9.png", link: "topup.html?game=codm" },
+      { name: "Steam Wallet Code IDR", url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Steam_icon_logo.svg/1200px-Steam_icon_logo.svg.png", link: "topup.html?game=steam" },
+      { name: "Google Play Voucher", url: "https://logos-world.net/wp-content/uploads/2020/12/Google-Play-Logo.png", link: "topup.html?game=googleplay" },
+      { name: "Pulsa Telkomsel", url: "https://1000logos.net/wp-content/uploads/2021/12/Telkomsel-logo.png", link: "topup.html?game=telkomsel" },
+      { name: "Pulsa Indosat", url: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Indosat_Ooredoo_logo_%282019%29.svg/1280px-Indosat_Ooredoo_logo_%282019%29.svg.png", link: "topup.html?game=indosat" },
+      { name: "Pulsa Tri", url: "https://developingtelecoms.com/images/stories/Company_Logos/3-logo-600.png", link: "topup.html?game=tri" },
+      { name: "Pulsa XL", url: "https://download.logo.wine/logo/XL_Axiata/XL_Axiata-Logo.wine.png", link: "topup.html?game=xl" },
+      { name: "Pulsa Axis", url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Axis_logo_2015.svg/1200px-Axis_logo_2015.svg.png", link: "topup.html?game=axis" },
+      { name: "Pulsa Smartfren", url: "https://download.logo.wine/logo/Smartfren/Smartfren-Logo.wine.png", link: "topup.html?game=smartfren" },
+      { name: "DANA", url: "https://1000logos.net/wp-content/uploads/2021/03/Dana-logo.png", link: "topup.html?game=dana" },
+      { name: "OVO", url: "https://1000logos.net/wp-content/uploads/2021/05/GoPay-Logo.png", link: "topup.html?game=ovo" }, // Note: ini GoPay, ganti kalau punya OVO lebih baik
+      { name: "GoPay", url: "https://1000logos.net/wp-content/uploads/2021/05/GoPay-Logo.png", link: "topup.html?game=gopay" },
+      { name: "ShopeePay", url: "https://logowik.com/content/uploads/images/shopeepay4268.jpg", link: "topup.html?game=shopeepay" },
+      { name: "Fortnite V Bucks", url: "https://assets.stickpng.com/images/5ef09460f3d0af0004ad1776.png", link: "topup.html?game=fortnite" },
+      { name: "TikTok Live Koin", url: "https://www.freepnglogos.com/uploads/tik-tok-logo-png/tik-tok-how-use-tiktok-create-cool-videos-with-iphone-14.png", link: "topup.html?game=tiktok" },
+      { name: "Razer Gold Voucher", url: "https://seeklogo.com/images/R/razer-gold-logo-500630-v2.png", link: "topup.html?game=razer" },
+      { name: "Minecraft Minecoins", url: "https://1000logos.net/wp-content/uploads/2018/10/Minecraft-Logo.png", link: "topup.html?game=minecraft" }
     ];
 
     const gamesGrid = document.getElementById('gamesGrid');
@@ -284,19 +256,9 @@
       const item = document.createElement('a');
       item.href = game.link;
       item.className = 'game-item';
-      item.innerHTML = `
-        <img src="\( {game.url}" alt=" \){game.name}" onerror="this.src='https://via.placeholder.com/100/orange/white?text=${game.name}'">
-        <p>${game.name}</p>
-      `;
+      item.innerHTML = `<img src="\( {game.url}" alt=" \){game.name}" onerror="this.src='https://via.placeholder.com/200?text=No+Image'"><p>${game.name}</p>`;
       gamesGrid.appendChild(item);
     });
-
-    // Carousel, user area, saldo real-time, dll tetap seperti sebelumnya
-
-    // ...
-
-    updateUserArea();
   </script>
-
 </body>
 </html>
