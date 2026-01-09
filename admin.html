@@ -9,106 +9,106 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'Poppins', sans-serif; background: #f4f4f4; color: #333; }
-    .container { max-width: 1300px; margin: 0 auto; padding: 20px; }
+    .container { max-width: 1400px; margin: 0 auto; padding: 20px; }
 
     header {
-      background: linear-gradient(to right, #ff6600, #ff8800);
-      color: #fff;
-      padding: 40px;
+      background: linear-gradient(135deg, #ff6600, #ff8800);
+      color: white;
+      padding: 50px 20px;
       text-align: center;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-      border-radius: 15px;
-      margin-bottom: 30px;
+      border-radius: 0 0 30px 30px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     }
-    header h1 { font-size: 40px; margin-bottom: 10px; }
+    header h1 { font-size: 42px; margin-bottom: 8px; }
+    header p { font-size: 18px; opacity: 0.9; }
 
     .admin-section {
-      background: #fff;
-      border-radius: 15px;
+      background: white;
+      border-radius: 20px;
       padding: 35px;
       margin: 30px 0;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
     }
-    .section-title { 
-      font-size: 32px; 
-      margin-bottom: 30px; 
-      color: #ff6600; 
-      border-bottom: 3px solid #ff6600; 
-      padding-bottom: 12px; 
+    .section-title {
+      font-size: 30px;
+      color: #ff6600;
+      border-bottom: 4px solid #ff6600;
+      padding-bottom: 12px;
+      margin-bottom: 25px;
       display: inline-block;
     }
 
-    table { width: 100%; border-collapse: collapse; margin-bottom: 30px; }
-    th, td { padding: 18px; text-align: left; border-bottom: 1px solid #ddd; font-size: 16px; }
-    th { background: #f9f9f9; font-weight: 600; color: #555; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+    th, td {
+      padding: 16px;
+      text-align: left;
+      border-bottom: 1px solid #eee;
+    }
+    th {
+      background: #fff8f0;
+      color: #ff6600;
+      font-weight: 600;
+    }
     tr:hover { background: #fffaf5; }
 
-    .btn { 
-      padding: 12px 28px; 
-      background: #ff6600; 
-      color: #fff; 
-      border: none; 
-      border-radius: 10px; 
-      cursor: pointer; 
-      font-size: 16px; 
-      margin: 8px 5px; 
-      transition: background 0.3s; 
-    }
-    .btn:hover { background: #e55a00; }
-    .btn-delete { background: #dc3545; }
-    .btn-delete:hover { background: #c82333; }
-    .btn-add { background: #28a745; display: inline-block; margin-bottom: 25px; font-size: 18px; }
-    .btn-add:hover { background: #218838; }
-    .btn-status { background: #007bff; }
-    .btn-status:hover { background: #0056b3; }
-    .btn-success { background: #28a745; }
-    .btn-success:hover { background: #218838; }
-    .btn-fail { background: #dc3545; }
-    .btn-fail:hover { background: #c82333; }
-    .btn-freeze { background: #ffc107; color: #333; }
-    .btn-freeze:hover { background: #e0a800; }
-    .btn-add-saldo { background: #17a2b8; }
-    .btn-add-saldo:hover { background: #138496; }
-    .btn-cut-saldo { background: #6c757d; }
-    .btn-cut-saldo:hover { background: #5a6268; }
-
-    form { 
-      display: flex; 
-      flex-direction: column; 
-      gap: 20px; 
-      max-width: 700px; 
-      margin-bottom: 40px; 
-    }
-    input, textarea { 
-      padding: 18px; 
-      border: 1px solid #ddd; 
-      border-radius: 10px; 
-      font-size: 16px; 
-    }
-    textarea { height: 120px; resize: vertical; }
-
-    .event-logo-preview { 
-      width: 220px; 
-      height: auto; 
-      border-radius: 12px; 
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
-      margin-top: 15px; 
-    }
-
-    .orders-count {
-      font-size: 20px;
+    .btn {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      color: white;
       font-weight: 600;
-      color: #ff6600;
-      margin-bottom: 20px;
+      cursor: pointer;
+      transition: 0.3s;
+      margin: 5px;
+    }
+    .btn-add { background: #28a745; }
+    .btn-add:hover { background: #218838; }
+    .btn-success { background: #17a2b8; }
+    .btn-success:hover { background: #138496; }
+    .btn-danger { background: #dc3545; }
+    .btn-danger:hover { background: #c82333; }
+    .btn-warning { background: #ffc107; color: #333; }
+    .btn-warning:hover { background: #e0a800; }
+
+    form {
+      display: grid;
+      gap: 15px;
+      max-width: 600px;
+    }
+    input, textarea {
+      padding: 14px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      font-size: 16px;
+    }
+    textarea { min-height: 100px; }
+
+    .preview-img {
+      max-width: 180px;
+      border-radius: 10px;
+      margin-top: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
 
-    footer { 
-      background: #333; 
-      color: #fff; 
-      text-align: center; 
-      padding: 50px 20px; 
-      margin-top: 80px; 
-      font-size: 16px; 
+    .count-badge {
+      background: #ff6600;
+      color: white;
+      padding: 8px 16px;
+      border-radius: 30px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      display: inline-block;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      color: #777;
+      margin-top: 60px;
     }
   </style>
 </head>
@@ -121,9 +121,10 @@
 
   <div class="container">
 
-    <!-- Topup Requests (bukti transfer dari user) -->
+    <!-- Topup Requests -->
     <div class="admin-section">
-      <div class="section-title">Permintaan Topup Saldo (Bukti Transfer)</div>
+      <div class="section-title">Permintaan Topup Saldo</div>
+      <div class="count-badge" id="topupCount">Memuat...</div>
       <table id="topupTable">
         <thead>
           <tr>
@@ -132,7 +133,8 @@
             <th>User ID</th>
             <th>Nominal</th>
             <th>Deskripsi</th>
-            <th>Bukti TF</th>
+            <th>Bukti</th>
+            <th>Status</th>
             <th>Aksi</th>
           </tr>
         </thead>
@@ -140,7 +142,7 @@
       </table>
     </div>
 
-    <!-- Daftar Pesanan Top Up Game (jika ada path orders) -->
+    <!-- Pesanan Top Up Game -->
     <div class="admin-section">
       <div class="section-title">Pesanan Top Up Game</div>
       <table id="ordersTable">
@@ -163,20 +165,13 @@
     <!-- Kelola User & Saldo -->
     <div class="admin-section">
       <div class="section-title">Kelola User & Saldo</div>
-      <button class="btn btn-add" onclick="toggleUserForm()">Tambah User Baru</button>
-      <div id="userForm" style="display:none;">
-        <input type="text" id="newUsername" placeholder="Username">
-        <input type="password" id="newPassword" placeholder="Password">
-        <input type="number" id="newSaldo" placeholder="Saldo Awal (Rp)" value="0">
-        <button class="btn" onclick="addUser()">Simpan User</button>
-      </div>
       <table id="userTable">
         <thead>
           <tr>
             <th>No</th>
             <th>Nama/Email</th>
             <th>User ID</th>
-            <th>Saldo (Rp)</th>
+            <th>Saldo</th>
             <th>Status</th>
             <th>Aksi</th>
           </tr>
@@ -188,13 +183,13 @@
     <!-- Kelola Event Carousel -->
     <div class="admin-section">
       <div class="section-title">Kelola Event Carousel</div>
-      <button class="btn btn-add" onclick="toggleEventForm()">Tambah Event Baru</button>
-      <div id="eventForm" style="display:none;">
+      <button class="btn btn-add" onclick="toggleEventForm()">+ Tambah Event Baru</button>
+      <div id="eventForm" style="display:none; margin:20px 0;">
         <input type="text" id="eventTitle" placeholder="Judul Event" required>
         <textarea id="eventDesc" placeholder="Deskripsi Event" required></textarea>
-        <input type="url" id="eventImage" placeholder="URL Gambar Event (HTTPS)" required>
-        <img id="eventImagePreview" class="event-logo-preview" src="" alt="Preview" style="display:none;">
-        <button class="btn" onclick="addEvent()">Simpan Event</button>
+        <input type="url" id="eventImage" placeholder="URL Gambar (https://...)" required>
+        <img id="eventImagePreview" class="preview-img" src="" alt="Preview" style="display:none;">
+        <button class="btn btn-success" onclick="addEvent()">Simpan Event</button>
       </div>
       <table id="eventTable">
         <thead>
@@ -213,7 +208,7 @@
   </div>
 
   <footer>
-    <p>© 2026 RHF - All Rights Reserved.</p>
+    <p>© 2026 RHF Admin Panel - Semua data real-time dari Firebase</p>
   </footer>
 
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
@@ -234,164 +229,160 @@
     firebase.initializeApp(firebaseConfig);
     const db = firebase.database();
 
-    // Load Topup Requests
+    // Topup Requests
     function loadTopupRequests() {
-      db.ref('topup_requests').orderByChild('timestamp').on('value', snapshot => {
+      db.ref('topup_requests').orderByChild('timestamp').on('value', snap => {
         const tbody = document.querySelector('#topupTable tbody');
         tbody.innerHTML = '';
-        let no = 1;
-        const requests = snapshot.val() || {};
-        const sorted = Object.keys(requests).sort((a,b) => requests[b].timestamp - requests[a].timestamp);
-        sorted.forEach(key => {
-          const req = requests[key];
-          const date = new Date(req.timestamp).toLocaleString('id-ID');
-          const row = document.createElement('tr');
-          row.innerHTML = `
-            <td>${no++}</td>
-            <td>${date}</td>
-            <td>${req.uid}</td>
-            <td>Rp ${req.nominal.toLocaleString('id-ID')}</td>
-            <td>${req.desc || '-'}</td>
-            <td><a href="${req.bukti}" target="_blank">Lihat Bukti</a></td>
-            <td>
-              <button class="btn btn-success" onclick="confirmTopup('${key}', \( {req.nominal}, ' \){req.uid}')">Konfirmasi</button>
-              <button class="btn btn-delete" onclick="deleteTopup('${key}')">Hapus</button>
-            </td>
-          `;
-          tbody.appendChild(row);
+        const count = document.getElementById('topupCount');
+        let total = 0;
+        const requests = snap.val() || {};
+        Object.keys(requests).forEach(key => {
+          total++;
+          const r = requests[key];
+          const date = new Date(r.timestamp).toLocaleString('id-ID');
+          const status = r.status || 'Pending';
+          const row = `
+            <tr>
+              <td>${total}</td>
+              <td>${date}</td>
+              <td>${r.uid}</td>
+              <td>Rp ${r.nominal.toLocaleString('id-ID')}</td>
+              <td>${r.desc || '-'}</td>
+              <td><a href="${r.bukti}" target="_blank">Lihat Bukti</a></td>
+              <td>${status}</td>
+              <td>
+                \( {status === 'Pending' ? `<button class="btn btn-success" onclick="confirmTopup(' \){key}', \( {r.nominal}, ' \){r.uid}')">Konfirmasi</button>` : ''}
+                <button class="btn btn-danger" onclick="deleteTopup('${key}')">Hapus</button>
+              </td>
+            </tr>`;
+          tbody.innerHTML += row;
         });
+        count.textContent = `Total: ${total}`;
       });
     }
 
     function confirmTopup(key, nominal, uid) {
-      if (confirm('Konfirmasi topup Rp ' + nominal.toLocaleString('id-ID') + '?')) {
-        db.ref('users/' + uid + '/saldo').transaction(current => (current || 0) + nominal);
-        db.ref('topup_requests/' + key + '/status').set('success');
-        alert('Saldo ditambahkan!');
+      if (confirm(`Tambah Rp ${nominal.toLocaleString('id-ID')} ke user ${uid}?`)) {
+        db.ref('users/' + uid + '/saldo').transaction(s => (s || 0) + nominal);
+        db.ref('topup_requests/' + key + '/status').set('Success');
       }
     }
 
     function deleteTopup(key) {
-      if (confirm('Hapus permintaan ini?')) db.ref('topup_requests/' + key).remove();
+      if (confirm('Hapus permintaan?')) db.ref('topup_requests/' + key).remove();
     }
 
-    // Load Orders (jika ada)
+    // Pesanan Game
     function loadOrders() {
-      db.ref('orders').orderByChild('timestamp').on('value', snapshot => {
+      db.ref('orders').orderByChild('timestamp').on('value', snap => {
         const tbody = document.querySelector('#ordersTable tbody');
         tbody.innerHTML = '';
         let no = 1;
-        const orders = snapshot.val() || {};
-        Object.keys(orders).reverse().forEach(key => {
-          const ord = orders[key];
-          const date = new Date(ord.timestamp).toLocaleString('id-ID');
-          const row = document.createElement('tr');
-          row.innerHTML = `
-            <td>${no++}</td>
-            <td>${date}</td>
-            <td>${ord.uid || '-'}</td>
-            <td>${ord.game || '-'}</td>
-            <td>${ord.nominal || '-'}</td>
-            <td>Rp ${ (ord.harga || 0).toLocaleString('id-ID') }</td>
-            <td>${ord.status || 'Menunggu'}</td>
-            <td>
-              <button class="btn btn-success" onclick="db.ref('orders/${key}/status').set('BERHASIL')">Berhasil</button>
-              <button class="btn btn-fail" onclick="db.ref('orders/${key}/status').set('GAGAL')">Gagal</button>
-            </td>
-          `;
-          tbody.appendChild(row);
+        const orders = snap.val() || {};
+        Object.keys(orders).forEach(key => {
+          const o = orders[key];
+          const date = new Date(o.timestamp).toLocaleString('id-ID');
+          const row = `
+            <tr>
+              <td>${no++}</td>
+              <td>${date}</td>
+              <td>${o.uid || '-'}</td>
+              <td>${o.game || '-'}</td>
+              <td>${o.nominal || '-'}</td>
+              <td>Rp ${(o.harga || 0).toLocaleString('id-ID')}</td>
+              <td>${o.status || 'Menunggu'}</td>
+              <td>
+                <button class="btn btn-success" onclick="updateOrderStatus('${key}', 'Berhasil')">Berhasil</button>
+                <button class="btn btn-danger" onclick="updateOrderStatus('${key}', 'Gagal')">Gagal</button>
+              </td>
+            </tr>`;
+          tbody.innerHTML += row;
         });
       });
     }
 
-    // Load Users
+    function updateOrderStatus(key, status) {
+      db.ref('orders/' + key + '/status').set(status);
+    }
+
+    // Users
     function loadUsers() {
-      db.ref('users').on('value', snapshot => {
+      db.ref('users').on('value', snap => {
         const tbody = document.querySelector('#userTable tbody');
         tbody.innerHTML = '';
         let no = 1;
-        snapshot.forEach(child => {
+        snap.forEach(child => {
           const key = child.key;
-          const user = child.val();
-          const row = document.createElement('tr');
-          row.innerHTML = `
-            <td>${no++}</td>
-            <td>${user.nama || user.email || '-'}</td>
-            <td>${key}</td>
-            <td>Rp ${(user.saldo || 0).toLocaleString('id-ID')}</td>
-            <td>${user.frozen ? 'Dibekukan' : 'Aktif'}</td>
-            <td>
-              <button class="btn btn-add-saldo" onclick="addSaldo('${key}')">+ Saldo</button>
-              <button class="btn btn-cut-saldo" onclick="cutSaldo('${key}')">- Saldo</button>
-              <button class="btn btn-freeze" onclick="toggleFreeze('${key}', \( {user.frozen || false})"> \){user.frozen ? 'Aktifkan' : 'Bekukan'}</button>
-              <button class="btn btn-delete" onclick="deleteUser('${key}')">Hapus</button>
-            </td>
-          `;
-          tbody.appendChild(row);
+          const u = child.val();
+          const row = `
+            <tr>
+              <td>${no++}</td>
+              <td>${u.username || u.email || '-'}</td>
+              <td>${key}</td>
+              <td>Rp ${(u.saldo || 0).toLocaleString('id-ID')}</td>
+              <td>${u.frozen ? 'Dibekukan' : 'Aktif'}</td>
+              <td>
+                <button class="btn btn-add-saldo" onclick="addSaldo('${key}')">+ Saldo</button>
+                <button class="btn btn-cut-saldo" onclick="cutSaldo('${key}')">- Saldo</button>
+                <button class="btn btn-warning" onclick="toggleFreeze('${key}', \( {u.frozen || false})"> \){u.frozen ? 'Aktifkan' : 'Bekukan'}</button>
+              </td>
+            </tr>`;
+          tbody.innerHTML += row;
         });
       });
     }
 
     function addSaldo(key) {
-      const amount = prompt('Tambah saldo (Rp):');
-      if (amount && !isNaN(amount)) {
-        db.ref('users/' + key + '/saldo').transaction(s => (s || 0) + parseInt(amount));
-      }
+      const amt = prompt('Tambah saldo (Rp):');
+      if (amt && !isNaN(amt)) db.ref('users/' + key + '/saldo').transaction(s => (s || 0) + parseInt(amt));
     }
 
     function cutSaldo(key) {
-      const amount = prompt('Potong saldo (Rp):');
-      if (amount && !isNaN(amount)) {
-        db.ref('users/' + key + '/saldo').transaction(s => (s || 0) - parseInt(amount));
-      }
+      const amt = prompt('Potong saldo (Rp):');
+      if (amt && !isNaN(amt)) db.ref('users/' + key + '/saldo').transaction(s => (s || 0) - parseInt(amt));
     }
 
     function toggleFreeze(key, current) {
       db.ref('users/' + key + '/frozen').set(!current);
     }
 
-    function deleteUser(key) {
-      if (confirm('Hapus user ini?')) db.ref('users/' + key).remove();
-    }
-
-    // Load Events
+    // Events
     function loadEvents() {
-      db.ref('events').on('value', snapshot => {
+      db.ref('events').on('value', snap => {
         const tbody = document.querySelector('#eventTable tbody');
         tbody.innerHTML = '';
         let no = 1;
-        snapshot.forEach(child => {
+        snap.forEach(child => {
           const key = child.key;
-          const ev = child.val();
-          const row = document.createElement('tr');
-          row.innerHTML = `
-            <td>${no++}</td>
-            <td>${ev.title || '-'}</td>
-            <td>${ev.desc || '-'}</td>
-            <td><img src="${ev.image || ''}" style="width:120px;height:auto;border-radius:8px;" onerror="this.src='https://via.placeholder.com/120'"></td>
-            <td>
-              <button class="btn btn-delete" onclick="deleteEvent('${key}')">Hapus</button>
-            </td>
-          `;
-          tbody.appendChild(row);
+          const e = child.val();
+          const row = `
+            <tr>
+              <td>${no++}</td>
+              <td>${e.title || '-'}</td>
+              <td>${e.desc || '-'}</td>
+              <td><img src="${e.image || ''}" style="width:120px;height:auto;border-radius:8px;" onerror="this.src='https://via.placeholder.com/120'"></td>
+              <td><button class="btn btn-danger" onclick="deleteEvent('${key}')">Hapus</button></td>
+            </tr>`;
+          tbody.innerHTML += row;
         });
       });
     }
 
     function toggleEventForm() {
-      const form = document.getElementById('eventForm');
-      form.style.display = form.style.display === 'none' ? 'block' : 'none';
+      const f = document.getElementById('eventForm');
+      f.style.display = f.style.display === 'none' ? 'block' : 'none';
     }
 
     function addEvent() {
       const title = document.getElementById('eventTitle').value.trim();
       const desc = document.getElementById('eventDesc').value.trim();
       const image = document.getElementById('eventImage').value.trim();
-      if (!title || !desc || !image) return alert('Isi semua field');
+      if (!title || !desc || !image) return alert('Lengkapi semua!');
       if (!image.startsWith('https://')) return alert('URL harus HTTPS');
 
       db.ref('events').push({ title, desc, image }).then(() => {
-        alert('Event ditambahkan');
+        alert('Event berhasil ditambahkan');
         toggleEventForm();
         document.getElementById('eventTitle').value = '';
         document.getElementById('eventDesc').value = '';
@@ -407,12 +398,8 @@
     document.getElementById('eventImage').addEventListener('input', function() {
       const url = this.value.trim();
       const preview = document.getElementById('eventImagePreview');
-      if (url.startsWith('https://')) {
-        preview.src = url;
-        preview.style.display = 'block';
-      } else {
-        preview.style.display = 'none';
-      }
+      preview.src = url;
+      preview.style.display = url ? 'block' : 'none';
     });
 
     // Load semua
