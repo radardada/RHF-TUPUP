@@ -103,23 +103,23 @@
 
   <header>
     <h1>Admin Dashboard RHF</h1>
-    <p>Kelola User Terdaftar, Saldo, Topup, Pesanan, Event & Ban Secara Real-Time</p>
+    <p>Kelola User Terdaftar, Saldo, Topup Requests, Pesanan, Event Secara Real-Time</p>
   </header>
 
   <div class="container">
 
-    <!-- Dashboard Ringkasan -->
+    <!-- Ringkasan Data -->
     <div class="admin-section">
-      <div class="section-title">Ringkasan Data</div>
-      <div class="count-badge" id="totalUsers">User Terdaftar: Memuat...</div>
-      <div class="count-badge" id="totalSaldo">Total Saldo Sistem: Memuat...</div>
+      <div class="section-title">Ringkasan</div>
+      <div class="count-badge" id="totalUsers">User: Memuat...</div>
+      <div class="count-badge" id="totalSaldo">Saldo Sistem: Memuat...</div>
     </div>
 
-    <!-- Kelola User Terdaftar (Fokus Utama) -->
+    <!-- Daftar User Terdaftar -->
     <div class="admin-section">
-      <div class="section-title">Daftar User Terdaftar</div>
+      <div class="section-title">Daftar User</div>
       <div class="search-form">
-        <input type="text" id="searchInput" placeholder="Cari Username atau User ID">
+        <input type="text" id="searchInput" placeholder="Cari Username atau ID">
         <button class="btn btn-success" onclick="searchUsers()">Cari</button>
       </div>
       <table id="userTable">
@@ -127,7 +127,7 @@
           <tr>
             <th>No</th>
             <th>Username</th>
-            <th>User ID (Key)</th>
+            <th>User ID</th>
             <th>Saldo (Rp)</th>
             <th>Status</th>
             <th>Aksi</th>
@@ -137,9 +137,9 @@
       </table>
     </div>
 
-    <!-- Topup Requests -->
+    <!-- Permintaan Topup -->
     <div class="admin-section">
-      <div class="section-title">Permintaan Topup Saldo</div>
+      <div class="section-title">Topup Requests</div>
       <table id="topupTable">
         <thead>
           <tr>
@@ -159,7 +159,7 @@
 
     <!-- Pesanan Game -->
     <div class="admin-section">
-      <div class="section-title">Pesanan Top Up Game</div>
+      <div class="section-title">Pesanan Top Up</div>
       <table id="ordersTable">
         <thead>
           <tr>
@@ -177,16 +177,16 @@
       </table>
     </div>
 
-    <!-- Kelola Event Carousel -->
+    <!-- Event Carousel -->
     <div class="admin-section">
-      <div class="section-title">Kelola Event Carousel</div>
-      <button class="btn btn-add" onclick="toggleEventForm()">Tambah Event Baru</button>
+      <div class="section-title">Event Carousel</div>
+      <button class="btn btn-add" onclick="toggleEventForm()">+ Tambah Event</button>
       <div id="eventForm" style="display:none; margin:20px 0;">
-        <input type="text" id="eventTitle" placeholder="Judul Event" required>
-        <textarea id="eventDesc" placeholder="Deskripsi Event" required></textarea>
-        <input type="url" id="eventImage" placeholder="URL Gambar (HTTPS)" required>
-        <img id="eventImagePreview" class="preview-img" src="" alt="Preview" style="display:none;">
-        <button class="btn btn-success" onclick="addEvent()">Simpan Event</button>
+        <input type="text" id="eventTitle" placeholder="Judul">
+        <textarea id="eventDesc" placeholder="Deskripsi"></textarea>
+        <input type="url" id="eventImage" placeholder="URL Gambar (https://)">
+        <img id="eventImagePreview" src="" alt="Preview" style="max-width:200px;display:none;">
+        <button class="btn btn-success" onclick="addEvent()">Simpan</button>
       </div>
       <table id="eventTable">
         <thead>
@@ -205,7 +205,7 @@
   </div>
 
   <footer>
-    <p>© 2026 RHF Admin Panel - Semua data real-time dari Firebase</p>
+    <p>© 2026 RHF Admin - Real-Time Firebase</p>
   </footer>
 
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
@@ -226,19 +226,16 @@
     firebase.initializeApp(firebaseConfig);
     const db = firebase.database();
 
-    // Load Total User Terdaftar & Total Saldo (Real-time)
-    function loadUserStats() {
-      db.ref('users').on('value', snap => {
-        const totalUsers = snap.numChildren();
-        let totalSaldo = 0;
-        snap.forEach(child => totalSaldo += child.val().saldo || 0);
+    // Ringkasan Stats
+    db.ref('users').on('value', snap => {
+      const total = snap.numChildren();
+      let saldoTotal = 0;
+      snap.forEach(child => saldoTotal += child.val().saldo || 0);
+      document.getElementById('totalUsers').textContent = `User: ${total}`;
+      document.getElementById('totalSaldo').textContent = `Saldo: Rp ${saldoTotal.toLocaleString('id-ID')}`;
+    });
 
-        document.getElementById('totalUsers').textContent = `User Terdaftar: ${totalUsers}`;
-        document.getElementById('totalSaldo').textContent = `Total Saldo Sistem: Rp ${totalSaldo.toLocaleString('id-ID')}`;
-      });
-    }
-
-    // Load User Terdaftar (Fokus Utama)
+    // Load & Kelola User
     function loadUsers(search = '') {
       db.ref('users').on('value', snap => {
         const tbody = document.querySelector('#userTable tbody');
@@ -247,10 +244,10 @@
         snap.forEach(child => {
           const key = child.key;
           const u = child.val();
-          const username = u.username || u.email || '-';
+          const username = u.username || '-';
           if (search && !username.toLowerCase().includes(search.toLowerCase()) && !key.toLowerCase().includes(search.toLowerCase())) return;
 
-          const status = u.banned ? '<span style="color:red;">Banned</span>' : (u.frozen ? '<span style="color:orange;">Frozen</span>' : 'Aktif');
+          const status = u.banned ? 'Banned' : (u.frozen ? 'Frozen' : 'Aktif');
           const row = document.createElement('tr');
           row.innerHTML = `
             <td>${no++}</td>
@@ -261,7 +258,7 @@
             <td>
               <button class="btn btn-add-saldo" onclick="addSaldo('${key}')">+ Saldo</button>
               <button class="btn btn-cut-saldo" onclick="cutSaldo('${key}')">- Saldo</button>
-              <button class="btn btn-freeze" onclick="toggleFreeze('${key}', \( {u.frozen || false})"> \){u.frozen ? 'Unfreeze' : 'Freeze'}</button>
+              <button class="btn btn-freeze" onclick="toggleFreeze('${key}', \( {u.frozen || false})"> \){u.frozen ? 'Aktifkan' : 'Bekukan'}</button>
               <button class="btn btn-ban" onclick="banUser('${key}')">Ban</button>
               <button class="btn btn-unban" onclick="unbanUser('${key}')">Unban</button>
               <button class="btn btn-delete" onclick="deleteUser('${key}')">Hapus</button>
@@ -273,46 +270,34 @@
     }
 
     function addSaldo(key) {
-      const amount = prompt('Tambah saldo (Rp):');
-      if (amount && !isNaN(amount)) {
-        db.ref('users/' + key + '/saldo').transaction(s => (s || 0) + parseInt(amount));
-        alert('Saldo ditambahkan!');
+      const amt = prompt('Tambah saldo (Rp):');
+      if (amt && !isNaN(amt)) {
+        db.ref('users/' + key + '/saldo').transaction(s => (s || 0) + parseInt(amt));
       }
     }
 
     function cutSaldo(key) {
-      const amount = prompt('Potong saldo (Rp):');
-      if (amount && !isNaN(amount)) {
-        db.ref('users/' + key + '/saldo').transaction(s => Math.max(0, (s || 0) - parseInt(amount)));
-        alert('Saldo dipotong!');
+      const amt = prompt('Potong saldo (Rp):');
+      if (amt && !isNaN(amt)) {
+        db.ref('users/' + key + '/saldo').transaction(s => Math.max(0, (s || 0) - parseInt(amt)));
       }
     }
 
     function toggleFreeze(key, current) {
       db.ref('users/' + key + '/frozen').set(!current);
-      alert(current ? 'Akun diaktifkan kembali' : 'Akun dibekukan');
     }
 
     function banUser(key) {
       const reason = prompt('Alasan ban:');
-      if (reason) {
-        db.ref('users/' + key).update({ banned: true, banReason: reason, frozen: true });
-        alert('User dibanned!');
-      }
+      if (reason) db.ref('users/' + key).update({ banned: true, banReason: reason });
     }
 
     function unbanUser(key) {
-      if (confirm('Unban user ini?')) {
-        db.ref('users/' + key).update({ banned: false, banReason: null, frozen: false });
-        alert('User diunban!');
-      }
+      if (confirm('Unban?')) db.ref('users/' + key).update({ banned: false, banReason: null });
     }
 
     function deleteUser(key) {
-      if (confirm('Hapus user ini? (Data permanen hilang)')) {
-        db.ref('users/' + key).remove();
-        alert('User dihapus!');
-      }
+      if (confirm('Hapus user?')) db.ref('users/' + key).remove();
     }
 
     function searchUsers() {
@@ -320,7 +305,7 @@
       loadUsers(query);
     }
 
-    // Load Topup Requests
+    // Topup Requests
     function loadTopupRequests() {
       db.ref('topup_requests').orderByChild('timestamp').on('value', snap => {
         const tbody = document.querySelector('#topupTable tbody');
@@ -337,7 +322,7 @@
             <td>${r.uid}</td>
             <td>Rp ${r.nominal.toLocaleString('id-ID')}</td>
             <td>${r.desc || '-'}</td>
-            <td><a href="${r.bukti}" target="_blank">Lihat Bukti</a></td>
+            <td><a href="${r.bukti}" target="_blank">Lihat</a></td>
             <td>${r.status || 'Pending'}</td>
             <td>
               <button class="btn btn-success" onclick="confirmTopup('${key}', \( {r.nominal}, ' \){r.uid}')">Konfirmasi</button>
@@ -350,17 +335,17 @@
     }
 
     function confirmTopup(key, nominal, uid) {
-      if (confirm('Konfirmasi topup Rp ' + nominal.toLocaleString('id-ID') + '?')) {
+      if (confirm('Tambah Rp ' + nominal.toLocaleString('id-ID') + '?')) {
         db.ref('users/' + uid + '/saldo').transaction(s => (s || 0) + nominal);
         db.ref('topup_requests/' + key + '/status').set('success');
       }
     }
 
     function deleteTopup(key) {
-      if (confirm('Hapus permintaan?')) db.ref('topup_requests/' + key).remove();
+      if (confirm('Hapus?')) db.ref('topup_requests/' + key).remove();
     }
 
-    // Load Pesanan
+    // Pesanan
     function loadOrders() {
       db.ref('orders').orderByChild('timestamp').on('value', snap => {
         const tbody = document.querySelector('#ordersTable tbody');
@@ -390,14 +375,14 @@
     }
 
     function confirmOrder(key) {
-      if (confirm('Konfirmasi pesanan ini?')) db.ref('orders/' + key + '/status').set('success');
+      if (confirm('Konfirmasi?')) db.ref('orders/' + key + '/status').set('success');
     }
 
     function deleteOrder(key) {
-      if (confirm('Hapus pesanan?')) db.ref('orders/' + key).remove();
+      if (confirm('Hapus?')) db.ref('orders/' + key).remove();
     }
 
-    // Load Event Carousel
+    // Event
     function loadEvents() {
       db.ref('events').on('value', snap => {
         const tbody = document.querySelector('#eventTable tbody');
@@ -428,7 +413,7 @@
       const title = document.getElementById('eventTitle').value.trim();
       const desc = document.getElementById('eventDesc').value.trim();
       const image = document.getElementById('eventImage').value.trim();
-      if (!title || !desc || !image) return alert('Isi semua field');
+      if (!title || !desc || !image) return alert('Isi semua');
       if (!image.startsWith('https://')) return alert('URL harus HTTPS');
 
       db.ref('events').push({ title, desc, image }).then(() => {
@@ -448,7 +433,7 @@
       preview.style.display = url ? 'block' : 'none';
     });
 
-    // Load Semua Data Saat Halaman Dibuka
+    // Load Semua
     loadUserStats();
     loadTopupRequests();
     loadOrders();
