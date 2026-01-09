@@ -1,13 +1,13 @@
-// js/games.js - Logo stabil high-quality transparan (diperbaiki & dioptimasi)
+// js/games.js - Logo stabil high-quality transparan
 const gamesList = [
   { name: "Mobile Legends Diamonds", url: "https://assets.stickpng.com/images/62061920cdd94000043e3951.png", link: "topup.html?game=ml" },
   { name: "Free Fire Diamonds", url: "https://upload.wikimedia.org/wikipedia/en/c/c5/Logo_of_Garena_Free_Fire.png", link: "topup.html?game=ff" },
   { name: "PUBG Mobile UC", url: "https://upload.wikimedia.org/wikipedia/commons/4/43/PUBG_Mobile_simple_logo_black.png", link: "topup.html?game=pubg" },
   { name: "Valorant Points", url: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Valorant_logo_-_pink_color_version.svg/2560px-Valorant_logo_-_pink_color_version.svg.png", link: "topup.html?game=valorant" },
-  { name: "Genshin Impact Crystals", url: "https://www.citypng.com/public/uploads/preview/hd-official-genshin-impact-game-logo-png-11662505853icwn8jdyru.png", link: "topup.html?game=genshin" },
-  { name: "Bigo Live Diamonds", url: "https://seeklogo.com/images/B/bigo-live-logo-477966B5E8-seeklogo.com.png", link: "topup.html?game=bigo" },
-  { name: "Honkai: Star Rail Shard", url: "https://www.citypng.com/public/uploads/preview/official-honkai-star-rail-game-logo-11674098088k4u5k4u5k4.png", link: "topup.html?game=hsr" },
-  { name: "Call of Duty Mobile CP", url: "https://www.citypng.com/public/uploads/preview/hd-call-of-duty-mobile-cod-m-game-official-logo-png-11662457498zq9y0b0zq9.png", link: "topup.html?game=codm" },
+  { name: "Genshin Impact Crystals", url: "https://www.freepnglogos.com/uploads/genshin-impact-logo-png/hd-transparent-logo-genshin-impact-free-download-2.png", link: "topup.html?game=genshin" },
+  { name: "Bigo Live Diamonds", url: "https://logowik.com/content/uploads/images/bigo-live2708.jpg", link: "topup.html?game=bigo" },
+  { name: "Honkai: Star Rail Shard", url: "https://toppng.com/uploads/preview/official-logo-of-the-honkai-star-rail-game-11728656973tfuqkczxck.png", link: "topup.html?game=hsr" },
+  { name: "Call of Duty Mobile CP", url: "https://static.wikia.nocookie.net/logopedia/images/7/77/CODM_Logo_BlackYellow.png/revision/latest?cb=20200325111109", link: "topup.html?game=codm" },
   { name: "Steam Wallet Code IDR", url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Steam_icon_logo.svg/1200px-Steam_icon_logo.svg.png", link: "topup.html?game=steam" },
   { name: "Google Play Voucher", url: "https://logos-world.net/wp-content/uploads/2020/12/Google-Play-Logo.png", link: "topup.html?game=googleplay" },
   { name: "Pulsa Telkomsel", url: "https://1000logos.net/wp-content/uploads/2021/12/Telkomsel-logo.png", link: "topup.html?game=telkomsel" },
@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const item = document.createElement('a');
     item.href = game.link;
     item.className = 'game-item';
-    item.innerHTML = `<img src="\( {game.url}" alt=" \){game.name}" onerror="this.src='https://via.placeholder.com/200x200?text=No+Image'"><p>${game.name}</p>`;
+    item.innerHTML = `<img src="\( {game.url}" alt=" \){game.name}" onerror="this.src='https://via.placeholder.com/150x150?text=No+Image'"><p>${game.name}</p>`;
     gamesGrid.appendChild(item);
   });
 });
