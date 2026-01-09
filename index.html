@@ -43,12 +43,11 @@
     .section-title::after { content: ''; position: absolute; bottom: -10px; left: 0; width: 100px; height: 6px; background: #4caf50; border-radius: 3px; }
     .section-title a { font-size: 18px; color: #4caf50; text-decoration: none; font-weight: 600; }
 
-    /* Grid game kecil kotak persis tokogame */
     .games-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 15px; margin-bottom: 100px; }
-    .game-item { background: #fff; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: 0.3s; text-align: center; text-decoration: none; color: inherit; height: 180px; display: flex; flex-direction: column; }
-    .game-item:hover { transform: translateY(-8px); }
+    .game-item { background: #fff; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: 0.3s; text-decoration: none; color: inherit; cursor: pointer; height: 180px; display: flex; flex-direction: column; }
+    .game-item:hover { transform: translateY(-8px); box-shadow: 0 12px 25px rgba(0,0,0,0.2); }
     .game-item img { width: 100%; height: 120px; object-fit: contain; background: #f8f9fa; padding: 10px; flex-grow: 1; }
-    .game-item p { padding: 8px 5px; font-weight: 600; font-size: 13px; line-height: 1.3; }
+    .game-item p { padding: 8px 5px; font-weight: 600; font-size: 13px; line-height: 1.3; text-align: center; }
 
     .modal { display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); align-items: center; justify-content: center; }
     .modal-content { background: #fff; border-radius: 20px; padding: 35px; width: 90%; max-width: 420px; box-shadow: 0 15px 40px rgba(0,0,0,0.3); text-align: center; }
@@ -80,7 +79,7 @@
   <div class="container">
     <div class="tagline">Top Up Games & Voucher Murah, Aman, Cepat</div>
 
-    <!-- Carousel Event real-time dari Firebase -->
+    <!-- Carousel Event real-time -->
     <div class="carousel" id="carousel"></div>
 
     <div class="search-bar">
@@ -93,8 +92,64 @@
       <a href="#">Lihat Semua ></a>
     </div>
 
-    <!-- Grid game langsung di index.html (tanpa games.js) -->
-    <div class="games-grid" id="gamesGrid"></div>
+    <!-- Grid game langsung di index.html -->
+    <div class="games-grid">
+      <!-- Mobile Legends -->
+      <a href="topup.html?game=ml" class="game-item">
+        <img src="https://assets.stickpng.com/images/62061920cdd94000043e3951.png" alt="Mobile Legends Diamonds" onerror="this.src='https://via.placeholder.com/120x120?text=ML'">
+        <p>Mobile Legends Diamonds</p>
+      </a>
+
+      <!-- Free Fire -->
+      <a href="topup.html?game=ff" class="game-item">
+        <img src="https://upload.wikimedia.org/wikipedia/en/c/c5/Logo_of_Garena_Free_Fire.png" alt="Free Fire Diamonds" onerror="this.src='https://via.placeholder.com/120x120?text=FF'">
+        <p>Free Fire Diamonds</p>
+      </a>
+
+      <!-- PUBG Mobile -->
+      <a href="topup.html?game=pubg" class="game-item">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/43/PUBG_Mobile_simple_logo_black.png" alt="PUBG Mobile UC" onerror="this.src='https://via.placeholder.com/120x120?text=PUBG'">
+        <p>PUBG Mobile UC</p>
+      </a>
+
+      <!-- Valorant -->
+      <a href="topup.html?game=valorant" class="game-item">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Valorant_logo_-_pink_color_version.svg/2560px-Valorant_logo_-_pink_color_version.svg.png" alt="Valorant Points" onerror="this.src='https://via.placeholder.com/120x120?text=VALORANT'">
+        <p>Valorant Points</p>
+      </a>
+
+      <!-- Genshin Impact -->
+      <a href="topup.html?game=genshin" class="game-item">
+        <img src="https://www.freepnglogos.com/uploads/genshin-impact-logo-png/hd-transparent-logo-genshin-impact-free-download-2.png" alt="Genshin Impact Crystals" onerror="this.src='https://via.placeholder.com/120x120?text=GENSHIN'">
+        <p>Genshin Impact Crystals</p>
+      </a>
+
+      <!-- Bigo Live -->
+      <a href="topup.html?game=bigo" class="game-item">
+        <img src="https://logowik.com/content/uploads/images/bigo-live2708.jpg" alt="Bigo Live Diamonds" onerror="this.src='https://via.placeholder.com/120x120?text=BIGO'">
+        <p>Bigo Live Diamonds</p>
+      </a>
+
+      <!-- Honkai Star Rail -->
+      <a href="topup.html?game=hsr" class="game-item">
+        <img src="https://toppng.com/uploads/preview/official-logo-of-the-honkai-star-rail-game-11728656973tfuqkczxck.png" alt="Honkai Star Rail" onerror="this.src='https://via.placeholder.com/120x120?text=HSR'">
+        <p>Honkai Star Rail</p>
+      </a>
+
+      <!-- Call of Duty Mobile -->
+      <a href="topup.html?game=codm" class="game-item">
+        <img src="https://static.wikia.nocookie.net/logopedia/images/7/77/CODM_Logo_BlackYellow.png/revision/latest?cb=20200325111109" alt="COD Mobile" onerror="this.src='https://via.placeholder.com/120x120?text=CODM'">
+        <p>Call of Duty Mobile</p>
+      </a>
+
+      <!-- Steam -->
+      <a href="topup.html?game=steam" class="game-item">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Steam_icon_logo.svg/1200px-Steam_icon_logo.svg.png" alt="Steam Wallet" onerror="this.src='https://via.placeholder.com/120x120?text=STEAM'">
+        <p>Steam Wallet</p>
+      </a>
+
+      <!-- Tambahkan game lain sesuai kebutuhan dengan format sama -->
+    </div>
   </div>
 
   <!-- Modal Tambah Saldo -->
@@ -136,9 +191,8 @@
 
     const userMenu = document.getElementById('userMenu');
     const carousel = document.getElementById('carousel');
-    const gamesGrid = document.getElementById('gamesGrid');
 
-    // Cek login dari localStorage
+    // Cek login
     const userKey = localStorage.getItem('userKey');
     const username = localStorage.getItem('username');
     const savedSaldo = localStorage.getItem('saldo');
@@ -216,10 +270,10 @@
             location.href = 'konfirmasi.html';
           });
         });
-      }).catch(err => alert('Error upload: ' + err.message));
+      }).catch(err => alert('Error: ' + err.message));
     }
 
-    // Load Event Carousel real-time
+    // Event Carousel real-time
     db.ref('events').on('value', snap => {
       carousel.innerHTML = '';
       if (snap.exists()) {
@@ -234,42 +288,6 @@
       } else {
         carousel.innerHTML = '<div class="banner-item"><p>Belum ada event promo saat ini</p></div>';
       }
-    });
-
-    // Logo games langsung di index.html (tanpa games.js)
-    const gamesList = [
-      { name: "Mobile Legends Diamonds", url: "https://assets.stickpng.com/images/62061920cdd94000043e3951.png", link: "topup.html?game=ml" },
-      { name: "Free Fire Diamonds", url: "https://upload.wikimedia.org/wikipedia/en/c/c5/Logo_of_Garena_Free_Fire.png", link: "topup.html?game=ff" },
-      { name: "PUBG Mobile UC", url: "https://upload.wikimedia.org/wikipedia/commons/4/43/PUBG_Mobile_simple_logo_black.png", link: "topup.html?game=pubg" },
-      { name: "Valorant Points", url: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Valorant_logo_-_pink_color_version.svg/2560px-Valorant_logo_-_pink_color_version.svg.png", link: "topup.html?game=valorant" },
-      { name: "Genshin Impact Crystals", url: "https://www.freepnglogos.com/uploads/genshin-impact-logo-png/hd-transparent-logo-genshin-impact-free-download-2.png", link: "topup.html?game=genshin" },
-      { name: "Bigo Live Diamonds", url: "https://logowik.com/content/uploads/images/bigo-live2708.jpg", link: "topup.html?game=bigo" },
-      { name: "Honkai: Star Rail Shard", url: "https://toppng.com/uploads/preview/official-logo-of-the-honkai-star-rail-game-11728656973tfuqkczxck.png", link: "topup.html?game=hsr" },
-      { name: "Call of Duty Mobile CP", url: "https://static.wikia.nocookie.net/logopedia/images/7/77/CODM_Logo_BlackYellow.png/revision/latest?cb=20200325111109", link: "topup.html?game=codm" },
-      { name: "Steam Wallet Code IDR", url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Steam_icon_logo.svg/1200px-Steam_icon_logo.svg.png", link: "topup.html?game=steam" },
-      { name: "Google Play Voucher", url: "https://logos-world.net/wp-content/uploads/2020/12/Google-Play-Logo.png", link: "topup.html?game=googleplay" },
-      { name: "Pulsa Telkomsel", url: "https://1000logos.net/wp-content/uploads/2021/12/Telkomsel-logo.png", link: "topup.html?game=telkomsel" },
-      { name: "Pulsa Indosat", url: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Indosat_Ooredoo_logo_%282019%29.svg/2560px-Indosat_Ooredoo_logo_%282019%29.svg.png", link: "topup.html?game=indosat" },
-      { name: "Pulsa Tri", url: "https://upload.wikimedia.org/wikipedia/id/thumb/1/1e/Logo_Tri.svg/1200px-Logo_Tri.svg.png", link: "topup.html?game=tri" },
-      { name: "Pulsa XL", url: "https://download.logo.wine/logo/XL_Axiata/XL_Axiata-Logo.wine.png", link: "topup.html?game=xl" },
-      { name: "Pulsa Axis", url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Axis_logo_2015.svg/1200px-Axis_logo_2015.svg.png", link: "topup.html?game=axis" },
-      { name: "Pulsa Smartfren", url: "https://download.logo.wine/logo/Smartfren/Smartfren-Logo.wine.png", link: "topup.html?game=smartfren" },
-      { name: "DANA", url: "https://logos-world.net/wp-content/uploads/2023/02/Dana-Logo.png", link: "topup.html?game=dana" },
-      { name: "OVO", url: "https://assets.stickpng.com/images/620517004e162f000480edaa.png", link: "topup.html?game=ovo" },
-      { name: "GoPay", url: "https://1000logos.net/wp-content/uploads/2021/05/GoPay-Logo.png", link: "topup.html?game=gopay" },
-      { name: "ShopeePay", url: "https://logowik.com/content/uploads/images/shopeepay4268.jpg", link: "topup.html?game=shopeepay" },
-      { name: "Fortnite V Bucks", url: "https://assets.stickpng.com/images/5ef09460f3d0af0004ad1776.png", link: "topup.html?game=fortnite" },
-      { name: "TikTok Live Koin", url: "https://www.freepnglogos.com/uploads/tik-tok-logo-png/tik-tok-how-use-tiktok-create-cool-videos-with-iphone-14.png", link: "topup.html?game=tiktok" },
-      { name: "Razer Gold Voucher", url: "https://www.nicepng.com/png/full/346-3465823_razer-gold-silver.png", link: "topup.html?game=razer" },
-      { name: "Minecraft Minecoins", url: "https://1000logos.net/wp-content/uploads/2018/10/Minecraft-Logo.png", link: "topup.html?game=minecraft" }
-    ];
-
-    // Render grid game langsung
-    gamesList.forEach(game => {
-      const item = document.createElement('a');
-      item.href = game.link;
-      item.innerHTML = `<img src="\( {game.url}" alt=" \){game.name}" onerror="this.src='https://via.placeholder.com/120x120?text=No+Image'"><p>${game.name}</p>`;
-      gamesGrid.appendChild(item);
     });
   </script>
 </body>
