@@ -1,131 +1,418 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Proses Topup</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RHF — Proses Topup</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    body { margin:0; font-family:Inter,system-ui; background:#0f1220; color:#e9ecf5; }
-    .container { max-width:720px; margin:24px auto; padding:0 20px; }
-    .card { background:#171a2b; border:1px solid #23263a; border-radius:14px; padding:18px; margin-bottom:20px; }
-    .input { width:100%; padding:12px; border-radius:10px; border:1px solid #23263a; background:#121528; color:#e9ecf5; }
-    .pkg { display:grid; grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); gap:12px; }
-    .pkg-item { background:#121528; border:1px solid #23263a; border-radius:12px; padding:12px; cursor:pointer; }
-    .pkg-item.active { border-color:#00d4a6; }
-    .chip { padding:8px 12px; border-radius:999px; background:#121528; border:1px solid #23263a; cursor:pointer; }
-    .chip.active { border-color:#5b8cff; }
-    .btn { padding:12px 16px; border-radius:10px; background:#5b8cff; color:#fff; font-weight:700; border:0; cursor:pointer; }
-    .error { color:#ff5b6e; font-weight:600; }
-    .success { color:#00d4a6; font-weight:600; }
-    .logo { text-align:center; margin-bottom:20px; }
-    .logo img { width:100px; height:100px; object-fit:contain; }
+    :root {
+      --bg:#0f1220; --card:#171a2b; --text:#e9ecf5; --muted:#8b90a7;
+      --border:#23263a; --accent:#5b8cff; --success:#00d4a6; --danger:#ff5b6e;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial}
+    .container{max-width:820px;margin:24px auto;padding:0 20px}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px;margin-bottom:20px}
+    .logo{text-align:center;margin-bottom:12px}
+    .logo img{width:96px;height:96px;object-fit:contain;border-radius:12px;background:#0b0d18}
+    .logo h2{margin:10px 0 0;font-size:20px}
+    .input,select,textarea{width:100%;padding:12px;border-radius:10px;border:1px solid var(--border);background:#121528;color:var(--text)}
+    .input:focus,select:focus,textarea:focus{border-color:var(--accent);outline:none}
+    .muted{color:var(--muted);font-size:13px}
+    .pkg{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
+    .pkg-item{background:#121528;border:1px solid var(--border);border-radius:12px;padding:12px;cursor:pointer}
+    .pkg-item.active{border-color:var(--success);box-shadow:0 0 0 2px rgba(0,212,166,.15) inset}
+    .pkg-title{font-weight:600}
+    .pkg-price{color:var(--success);font-weight:700;margin-top:4px}
+    .chips{display:flex;gap:10px;flex-wrap:wrap}
+    .chip{padding:8px 12px;border-radius:999px;border:1px solid var(--border);background:#121528;color:var(--text);cursor:pointer}
+    .chip.active{border-color:var(--accent);background:#0f1430}
+    .btn{padding:12px 16px;border-radius:10px;border:0;background:var(--accent);color:#fff;font-weight:700;cursor:pointer}
+    .btn:disabled{opacity:.6;cursor:not-allowed}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    @media (max-width:720px){.row{grid-template-columns:1fr}}
+    .msg{margin-top:10px}
+    .error{color:var(--danger);font-weight:600}
+    .success{color:var(--success);font-weight:600}
   </style>
 </head>
 <body>
   <div class="container">
-    <!-- Logo game -->
-    <div class="logo" id="gameLogo"></div>
+    <!-- Logo & nama game -->
+    <div class="logo" id="gameHeader"></div>
 
-    <!-- Input akun -->
+    <!-- Informasi akun -->
     <div class="card">
-      <h2>Informasi Akun</h2>
-      <div id="accountFields"></div>
-      <label class="muted">Kontak</label>
-      <input id="contact" class="input" placeholder="WhatsApp / Email">
+      <h2>Informasi akun</h2>
+      <p class="muted">Isi data sesuai game yang dipilih dari halaman utama.</p>
+      <div id="accountFields" class="row" style="margin-top:10px;"></div>
+      <div class="row" style="margin-top:10px;">
+        <div>
+          <label class="muted">Kontak (WhatsApp/Email)</label>
+          <input id="contact" class="input" placeholder="Contoh: 08xxxx / email@domain.com">
+        </div>
+        <div>
+          <label class="muted">Catatan (opsional)</label>
+          <input id="note" class="input" placeholder="Catatan untuk admin">
+        </div>
+      </div>
     </div>
 
     <!-- Paket -->
     <div class="card">
-      <h2>Pilih Paket</h2>
-      <div id="packages" class="pkg"></div>
+      <h2>Pilih paket</h2>
+      <p class="muted">Harga default dapat diubah dari admin (PRICES_OVERRIDES).</p>
+      <div id="packages" class="pkg" style="margin-top:10px;"></div>
     </div>
 
     <!-- Metode pembayaran -->
     <div class="card">
-      <h2>Metode Pembayaran</h2>
-      <div id="payMethods"></div>
-      <button id="payBtn" class="btn">Bayar Sekarang</button>
-      <p id="payMsg"></p>
+      <h2>Metode pembayaran</h2>
+      <p class="muted">Saldo RHF diproses langsung. E‑wallet diarahkan ke halaman tunggu untuk upload bukti.</p>
+      <div id="payMethods" class="chips" style="margin-top:10px;"></div>
+      <div id="saldoInfo" class="muted" style="margin-top:10px;display:none;"></div>
+      <button id="payBtn" class="btn" style="margin-top:14px;">Bayar sekarang</button>
+      <p id="payMsg" class="msg"></p>
     </div>
   </div>
 
+  <!-- Firebase SDK (module) -->
   <script type="module">
-    // ambil parameter game dari URL
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getDatabase, ref, get, set, update } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+
+    // Firebase config (sesuai firedatabase kamu)
+    const firebaseConfig = {
+      apiKey: "AIzaSyALIhKFz4bpOPmES6t2fAdx8VMPP0ye1wc",
+      authDomain: "rhf-resmi.firebaseapp.com",
+      databaseURL: "https://rhf-resmi-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "rhf-resmi",
+      storageBucket: "rhf-resmi.firebasestorage.app",
+      messagingSenderId: "313439235544",
+      appId: "1:313439235544:web:b19a2ad538e34c1fe516ad",
+      measurementId: "G-LNCVH73P3X"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+
+    // --- Helpers & state ---
     const params = new URLSearchParams(location.search);
     const gameKey = params.get('game') || 'ff';
+    const userId = params.get('uid') || 'demoUser'; // ganti dengan UID auth jika ada
+    const orderId = () => 'ORD-' + Math.random().toString(36).slice(2, 10).toUpperCase();
 
-    // config game (contoh singkat)
     const GAME_CONFIG = {
       ff: {
         name:'Free Fire',
         logo:'https://upload.wikimedia.org/wikipedia/en/c/c5/Logo_of_Garena_Free_Fire.png',
-        fields:[{id:'ff_id',label:'Player ID',placeholder:'Contoh: 123456789'}],
-        packages:[{id:'ff_50',title:'50 Diamonds',price:9000},{id:'ff_100',title:'100 Diamonds',price:17000}]
+        fields:[
+          {id:'ff_id',label:'Player ID',placeholder:'Contoh: 123456789'},
+          {id:'nickname',label:'Nickname',placeholder:'Nama dalam game'}
+        ],
+        packages:[
+          {id:'ff_50',title:'50 Diamonds',price:9000},
+          {id:'ff_100',title:'100 Diamonds',price:17000},
+          {id:'ff_310',title:'310 Diamonds',price:50000},
+          {id:'ff_520',title:'520 Diamonds',price:80000},
+          {id:'ff_1060',title:'1060 Diamonds',price:155000},
+          {id:'ff_week',title:'Weekly Membership',price:30000},
+          {id:'ff_month',title:'Monthly Membership',price:150000},
+        ],
       },
       ml: {
         name:'Mobile Legends',
         logo:'https://assets.stickpng.com/images/62061920cdd94000043e3951.png',
-        fields:[{id:'ml_id',label:'ID (Server)',placeholder:'Contoh: 12345678 (1234)'}],
-        packages:[{id:'ml_86',title:'86 Diamonds',price:20000}]
-      }
-      // tambahkan game lain sesuai kebutuhan
+        fields:[
+          {id:'ml_id',label:'ID (Server)',placeholder:'Contoh: 12345678 (1234)'},
+          {id:'nickname',label:'Nickname',placeholder:'Nama dalam game'}
+        ],
+        packages:[
+          {id:'ml_86',title:'86 Diamonds',price:20000},
+          {id:'ml_172',title:'172 Diamonds',price:38000},
+          {id:'ml_257',title:'257 Diamonds',price:56000},
+          {id:'ml_344',title:'344 Diamonds',price:74000},
+          {id:'ml_429',title:'429 Diamonds',price:92000},
+          {id:'ml_514',title:'514 Diamonds',price:110000},
+        ],
+      },
+      pubg: {
+        name:'PUBG Mobile',
+        logo:'https://upload.wikimedia.org/wikipedia/commons/4/43/PUBG_Mobile_simple_logo_black.png',
+        fields:[
+          {id:'pubg_id',label:'Character ID',placeholder:'Contoh: 5123456789'},
+          {id:'nickname',label:'Nickname',placeholder:'Nama dalam game'}
+        ],
+        packages:[
+          {id:'pubg_60',title:'60 UC',price:15000},
+          {id:'pubg_300',title:'300 UC',price:70000},
+          {id:'pubg_600',title:'600 UC',price:135000},
+          {id:'pubg_1200',title:'1200 UC',price:265000},
+        ],
+      },
+      valorant: {
+        name:'Valorant',
+        logo:'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Valorant_logo_-_pink_color_version.svg/2560px-Valorant_logo_-_pink_color_version.svg.png',
+        fields:[{id:'riot_id',label:'Riot ID',placeholder:'Contoh: Nama#1234'}],
+        packages:[
+          {id:'val_475',title:'475 VP',price:55000},
+          {id:'val_1000',title:'1000 VP',price:105000},
+          {id:'val_2050',title:'2050 VP',price:205000},
+        ],
+      },
+      genshin: {
+        name:'Genshin Impact',
+        logo:'https://www.freepnglogos.com/uploads/genshin-impact-logo-png/hd-transparent-logo-genshin-impact-free-download-2.png',
+        fields:[
+          {id:'uid',label:'UID',placeholder:'Contoh: 800123456'},
+          {id:'server',label:'Server',placeholder:'Asia / America / Europe'}
+        ],
+        packages:[
+          {id:'gen_60',title:'60 Genesis Crystals',price:15000},
+          {id:'gen_300',title:'300 Genesis Crystals',price:70000},
+          {id:'gen_980',title:'980 Genesis Crystals',price:210000},
+        ],
+      },
+      bigo: {
+        name:'Bigo Live',
+        logo:'https://logowik.com/content/uploads/images/bigo-live2708.jpg',
+        fields:[{id:'bigo_id',label:'Bigo ID',placeholder:'Contoh: 12345678'}],
+        packages:[
+          {id:'bigo_42',title:'42 Diamonds',price:12000},
+          {id:'bigo_210',title:'210 Diamonds',price:55000},
+          {id:'bigo_420',title:'420 Diamonds',price:105000},
+        ],
+      },
+      hsr: {
+        name:'Honkai Star Rail',
+        logo:'https://toppng.com/uploads/preview/official-logo-of-the-honkai-star-rail-game-11728656973tfuqkczxck.png',
+        fields:[
+          {id:'uid',label:'UID',placeholder:'Contoh: 800123456'},
+          {id:'server',label:'Server',placeholder:'Asia / America / Europe'}
+        ],
+        packages:[
+          {id:'hsr_60',title:'60 Oneiric Shards',price:15000},
+          {id:'hsr_300',title:'300 Oneiric Shards',price:70000},
+          {id:'hsr_980',title:'980 Oneiric Shards',price:210000},
+        ],
+      },
+      codm: {
+        name:'Call of Duty Mobile',
+        logo:'https://static.wikia.nocookie.net/logopedia/images/7/77/CODM_Logo_BlackYellow.png/revision/latest?cb=20200325111109',
+        fields:[
+          {id:'uid',label:'UID',placeholder:'Contoh: 800123456'},
+          {id:'nickname',label:'Nickname',placeholder:'Nama dalam game'}
+        ],
+        packages:[
+          {id:'codm_80',title:'80 CP',price:15000},
+          {id:'codm_420',title:'420 CP',price:75000},
+          {id:'codm_880',title:'880 CP',price:150000},
+        ],
+      },
+      steam: {
+        name:'Steam Wallet',
+        logo:'https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Steam_icon_logo.svg/1200px-Steam_icon_logo.svg.png',
+        fields:[{id:'steam_id',label:'Steam ID / Email',placeholder:'Contoh: email@domain.com'}],
+        packages:[
+          {id:'steam_45',title:'Wallet 45k',price:45000},
+          {id:'steam_90',title:'Wallet 90k',price:90000},
+          {id:'steam_200',title:'Wallet 200k',price:200000},
+        ],
+      },
     };
 
-    const game = GAME_CONFIG[gameKey];
-    document.getElementById('gameLogo').innerHTML = `<img src="${game.logo}" alt="${game.name}"><h2>${game.name}</h2>`;
+    const PAYMENT = {
+      SALDO: { id:'saldo', label:'Saldo RHF' },
+      EWALLET: { id:'ewallet', label:'E‑Wallet (DANA/OVO/GoPay/ShopeePay/QRIS)' },
+      BANK: { id:'bank', label:'Transfer Bank' },
+    };
 
-    // render fields
-    const accountFields = document.getElementById('accountFields');
+    const game = GAME_CONFIG[gameKey] || GAME_CONFIG.ff;
+    let selectedPkg = null;
+    let selectedPay = PAYMENT.SALDO.id;
+
+    // --- Render header ---
+    document.getElementById('gameHeader').innerHTML =
+      `<img src="${game.logo}" alt="${game.name}" onerror="this.src='https://via.placeholder.com/96x96?text=${game.name}'"><h2>${game.name}</h2>`;
+
+    // --- Render fields ---
+    const fieldsWrap = document.getElementById('accountFields');
+    fieldsWrap.innerHTML = '';
     game.fields.forEach(f=>{
-      const div=document.createElement('div');
-      div.innerHTML=`<label>${f.label}</label><input id="${f.id}" class="input" placeholder="${f.placeholder}">`;
-      accountFields.appendChild(div);
+      const div = document.createElement('div');
+      div.innerHTML = `<label class="muted">${f.label}</label><input id="${f.id}" class="input" placeholder="${f.placeholder}">`;
+      fieldsWrap.appendChild(div);
     });
 
-    // render packages
-    const packages=document.getElementById('packages');
-    game.packages.forEach(p=>{
-      const item=document.createElement('div');
-      item.className='pkg-item';
-      item.innerHTML=`<div>${p.title}</div><div>Rp ${p.price.toLocaleString('id-ID')}</div>`;
-      item.addEventListener('click',()=>{ 
-        document.querySelectorAll('.pkg-item').forEach(el=>el.classList.remove('active'));
-        item.classList.add('active');
-        selectedPkg=p;
+    // --- Price override ---
+    async function getOverridePrice(pkgId, defaultPrice){
+      try{
+        const snap = await get(ref(db, 'PRICES_OVERRIDES/' + pkgId));
+        if(snap.exists()){
+          const val = snap.val();
+          if(typeof val === 'number' && val >= 0) return val;
+        }
+      }catch(e){}
+      return defaultPrice;
+    }
+
+    // --- Render packages ---
+    async function renderPackages(){
+      const wrap = document.getElementById('packages');
+      wrap.innerHTML = '';
+      for(const p of game.packages){
+        const price = await getOverridePrice(p.id, p.price);
+        const item = document.createElement('div');
+        item.className = 'pkg-item';
+        item.dataset.id = p.id;
+        item.innerHTML = `<div class="pkg-title">${p.title}</div><div class="pkg-price">Rp ${price.toLocaleString('id-ID')}</div>`;
+        item.addEventListener('click',()=>{
+          selectedPkg = { ...p, price };
+          document.querySelectorAll('.pkg-item').forEach(el=>el.classList.remove('active'));
+          item.classList.add('active');
+        });
+        wrap.appendChild(item);
+      }
+    }
+    renderPackages();
+
+    // --- Render payment methods ---
+    function renderPayments(){
+      const wrap = document.getElementById('payMethods');
+      wrap.innerHTML = '';
+      [PAYMENT.SALDO, PAYMENT.EWALLET, PAYMENT.BANK].forEach(m=>{
+        const chip = document.createElement('button');
+        chip.type = 'button';
+        chip.className = 'chip' + (selectedPay === m.id ? ' active' : '');
+        chip.textContent = m.label;
+        chip.addEventListener('click',()=>{
+          selectedPay = m.id;
+          document.querySelectorAll('.chip').forEach(el=>el.classList.remove('active'));
+          chip.classList.add('active');
+          updateSaldoInfo();
+        });
+        wrap.appendChild(chip);
       });
-      packages.appendChild(item);
-    });
+      updateSaldoInfo();
+    }
+    renderPayments();
 
-    // render metode pembayaran
-    const payMethods=document.getElementById('payMethods');
-    ['saldo','ewallet'].forEach(m=>{
-      const chip=document.createElement('button');
-      chip.className='chip'+(m==='saldo'?' active':'');
-      chip.textContent=(m==='saldo'?'Saldo RHF':'E-Wallet (DANA/OVO/GoPay/ShopeePay/QRIS)');
-      chip.addEventListener('click',()=>{
-        document.querySelectorAll('.chip').forEach(el=>el.classList.remove('active'));
-        chip.classList.add('active');
-        selectedPay=m;
-      });
-      payMethods.appendChild(chip);
-    });
+    async function updateSaldoInfo(){
+      const el = document.getElementById('saldoInfo');
+      if(selectedPay !== PAYMENT.SALDO.id){ el.style.display='none'; return; }
+      el.style.display='block';
+      try{
+        const snap = await get(ref(db, 'SALDO_USERS/' + userId));
+        const saldo = snap.exists() ? Number(snap.val()) : 0;
+        el.textContent = `Saldo RHF kamu: Rp ${saldo.toLocaleString('id-ID')}. Jika saldo tidak cukup, transaksi tidak diarahkan ke konfirmasi dan akan tercatat di admin.`;
+      }catch(e){
+        el.textContent = 'Gagal memuat saldo. Kamu tetap bisa menggunakan e‑wallet/bank.';
+      }
+    }
 
-    let selectedPkg=null;
-    let selectedPay='saldo';
+    // --- Collect account data ---
+    function collectAccount(){
+      const data = {};
+      for(const f of game.fields){
+        const el = document.getElementById(f.id);
+        if(!el || !el.value.trim()) return null;
+        data[f.id] = el.value.trim();
+      }
+      return data;
+    }
 
-    document.getElementById('payBtn').addEventListener('click',()=>{
-      const msg=document.getElementById('payMsg');
-      msg.textContent='';
-      const contact=document.getElementById('contact').value.trim();
-      if(!selectedPkg){ msg.textContent='Pilih paket dulu'; msg.className='error'; return; }
-      if(!contact){ msg.textContent='Isi kontak'; msg.className='error'; return; }
-      if(selectedPay==='saldo'){
-        msg.textContent='Pembayaran dengan Saldo RHF diproses...'; msg.className='success';
-        // logika saldo: cek saldo di Firebase, kurangi kalau cukup, kalau tidak cukup masuk admin
-      }else{
-        msg.textContent='Dialihkan ke halaman tunggu untuk upload bukti e-wallet...'; msg.className='success';
-        location.href=`tunggu.html?order=ORD123&game=${gameKey}`;
+    // --- Create order object ---
+    function buildOrder(price){
+      return {
+        id: orderId(),
+        userId,
+        game: gameKey,
+        gameName: game.name,
+        packageId: selectedPkg.id,
+        packageTitle: selectedPkg.title,
+        price,
+        account: collectAccount(),
+        contact: (document.getElementById('contact').value || '').trim(),
+        note: (document.getElementById('note').value || '').trim(),
+        payMethod: selectedPay,
+        status: 'created',
+        createdAt: Date.now(),
+      };
+    }
+
+    // --- Saldo ops (per user) ---
+    async function getUserSaldo(uid){
+      const snap = await get(ref(db, 'SALDO_USERS/' + uid));
+      return snap.exists() ? Number(snap.val()) : 0;
+    }
+    async function setUserSaldo(uid, newSaldo){
+      await set(ref(db, 'SALDO_USERS/' + uid), newSaldo);
+    }
+
+    // --- Persist order to DB ---
+    async function logOrder(order){
+      await set(ref(db, 'ORDERS_LOG/' + order.id), order);
+    }
+    async function pushConfirmed(order){
+      await set(ref(db, 'CONFIRMED/' + order.id), order);
+    }
+    async function pushAdminQueue(order){
+      await set(ref(db, 'ADMIN_QUEUE/' + order.id), order);
+    }
+
+    // --- Pay flow ---
+    async function payWithSaldo(order){
+      const msg = document.getElementById('payMsg');
+      try{
+        const saldo = await getUserSaldo(order.userId);
+        if(saldo >= order.price){
+          const newSaldo = saldo - order.price;
+          await setUserSaldo(order.userId, newSaldo);
+          order.status = 'confirmed';
+          await pushConfirmed(order);
+          location.href = `konfirmasi.html?order=${order.id}`;
+        }else{
+          order.status = 'saldo_insufficient';
+          await pushAdminQueue(order);
+          msg.textContent = 'Saldo tidak cukup. Order masuk ke kontrol admin dan tidak diarahkan ke konfirmasi.';
+          msg.className = 'error';
+        }
+      }catch(e){
+        msg.textContent = 'Terjadi kesalahan saat memproses saldo. Coba lagi atau gunakan e‑wallet.';
+        msg.className = 'error';
+      }
+    }
+
+    async function payWithEwalletOrBank(order, method){
+      order.status = 'waiting_payment';
+      await pushAdminQueue(order);
+      const m = method === PAYMENT.BANK.id ? 'bank' : 'ewallet';
+      location.href = `tunggu.html?order=${order.id}&method=${m}`;
+    }
+
+    // --- Button handler ---
+    document.getElementById('payBtn').addEventListener('click', async ()=>{
+      const msg = document.getElementById('payMsg');
+      msg.textContent = '';
+      msg.className = '';
+
+      const account = collectAccount();
+      const contact = (document.getElementById('contact').value || '').trim();
+
+      if(!account){ msg.textContent='Mohon lengkapi data akun.'; msg.className='error'; return; }
+      if(!selectedPkg){ msg.textContent='Pilih paket terlebih dahulu.'; msg.className='error'; return; }
+      if(!contact){ msg.textContent='Isi kontak agar admin bisa menghubungi.'; msg.className='error'; return; }
+
+      const price = selectedPkg.price; // bisa ditambah voucher/logic lain jika perlu
+      const order = buildOrder(price);
+
+      await logOrder(order);
+
+      if(selectedPay === PAYMENT.SALDO.id){
+        await payWithSaldo(order);
+      }else if(selectedPay === PAYMENT.EWALLET.id || selectedPay === PAYMENT.BANK.id){
+        await payWithEwalletOrBank(order, selectedPay);
       }
     });
   </script>
