@@ -1,427 +1,133 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>RHF Topup — Topup</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Proses Topup</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --bg: #0f1220;
-      --card: #171a2b;
-      --muted: #8b90a7;
-      --text: #e9ecf5;
-      --accent: #5b8cff;
-      --accent-2: #00d4a6;
-      --danger: #ff5b6e;
-      --warning: #ffb020;
-      --border: #23263a;
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0; background: var(--bg); color: var(--text);
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-    }
-    header {
-      position: sticky; top: 0; z-index: 10;
-      background: rgba(15,18,32,0.8); backdrop-filter: blur(8px);
-      border-bottom: 1px solid var(--border);
-    }
-    .nav {
-      max-width: 1080px; margin: 0 auto; padding: 14px 20px;
-      display: flex; align-items: center; gap: 16px;
-    }
-    .brand {
-      display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text);
-      font-weight: 700; letter-spacing: 0.2px;
-    }
-    .brand img { width: 36px; height: 36px; border-radius: 8px; object-fit: contain; background: #0b0d18; }
-    .container { max-width: 1080px; margin: 24px auto; padding: 0 20px; }
-    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-    @media (max-width: 860px) { .grid { grid-template-columns: 1fr; } }
-    .card {
-      background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 18px;
-    }
-    .card h2 { margin: 0 0 12px; font-size: 18px; }
-    .muted { color: var(--muted); font-size: 13px; }
-    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    .row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
-    .input, select, textarea {
-      width: 100%; padding: 12px 12px; border-radius: 10px; border: 1px solid var(--border);
-      background: #121528; color: var(--text); outline: none;
-    }
-    .input:focus, select:focus, textarea:focus { border-color: var(--accent); }
-    .pkg {
-      display: grid; gap: 10px;
-      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    }
-    .pkg-item {
-      border: 1px solid var(--border); border-radius: 12px; padding: 12px; background: #121528;
-      cursor: pointer; transition: border-color .2s, transform .1s;
-    }
-    .pkg-item:hover { border-color: var(--accent); transform: translateY(-1px); }
-    .pkg-item.active { border-color: var(--accent-2); box-shadow: 0 0 0 2px rgba(0,212,166,.15) inset; }
-    .pkg-title { font-weight: 600; font-size: 14px; }
-    .pkg-price { color: var(--accent-2); font-weight: 700; margin-top: 4px; }
-    .pay-methods { display: flex; gap: 10px; flex-wrap: wrap; }
-    .chip {
-      padding: 8px 12px; border-radius: 999px; border: 1px solid var(--border);
-      background: #121528; cursor: pointer; font-size: 13px;
-    }
-    .chip.active { border-color: var(--accent); background: #0f1430; }
-    .btn {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 12px 16px; border-radius: 10px; border: 1px solid transparent;
-      background: var(--accent); color: white; font-weight: 700; cursor: pointer;
-    }
-    .btn.secondary { background: #1b2144; border-color: var(--border); color: var(--text); }
-    .btn.danger { background: var(--danger); }
-    .btn:disabled { opacity: .6; cursor: not-allowed; }
-    .notice { padding: 10px 12px; border-radius: 10px; background: #121528; border: 1px solid var(--border); }
-    .games-grid {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px;
-    }
-    .game-item {
-      display: flex; flex-direction: column; align-items: center; gap: 8px;
-      text-decoration: none; color: var(--text); border: 1px solid var(--border);
-      border-radius: 12px; padding: 12px; background: #121528;
-    }
-    .game-item img { width: 80px; height: 80px; object-fit: contain; background: #0b0d18; border-radius: 10px; }
-    footer { color: var(--muted); font-size: 12px; padding: 20px; text-align: center; }
-    .error { color: var(--danger); font-weight: 600; }
-    .success { color: var(--accent-2); font-weight: 600; }
+    body { margin:0; font-family:Inter,system-ui; background:#0f1220; color:#e9ecf5; }
+    .container { max-width:720px; margin:24px auto; padding:0 20px; }
+    .card { background:#171a2b; border:1px solid #23263a; border-radius:14px; padding:18px; margin-bottom:20px; }
+    .input { width:100%; padding:12px; border-radius:10px; border:1px solid #23263a; background:#121528; color:#e9ecf5; }
+    .pkg { display:grid; grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); gap:12px; }
+    .pkg-item { background:#121528; border:1px solid #23263a; border-radius:12px; padding:12px; cursor:pointer; }
+    .pkg-item.active { border-color:#00d4a6; }
+    .chip { padding:8px 12px; border-radius:999px; background:#121528; border:1px solid #23263a; cursor:pointer; }
+    .chip.active { border-color:#5b8cff; }
+    .btn { padding:12px 16px; border-radius:10px; background:#5b8cff; color:#fff; font-weight:700; border:0; cursor:pointer; }
+    .error { color:#ff5b6e; font-weight:600; }
+    .success { color:#00d4a6; font-weight:600; }
+    .logo { text-align:center; margin-bottom:20px; }
+    .logo img { width:100px; height:100px; object-fit:contain; }
   </style>
 </head>
 <body>
-  <header>
-    <div class="nav">
-      <a class="brand" href="index.html">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/8/8f/Logo_RHF.png" alt="RHF" onerror="this.src='https://via.placeholder.com/36x36?text=RHF'">
-        <span>RHF Topup</span>
-      </a>
-      <span class="muted">Topup cepat, aman, tanpa ribet</span>
-    </div>
-  </header>
-
   <div class="container">
-    <div class="grid">
-      <div class="card">
-        <h2>Informasi akun</h2>
-        <p class="muted">Masukkan detail akun sesuai game yang dipilih.</p>
-        <div id="accountFields" class="row" style="margin-top:10px;"></div>
-        <div class="row" style="margin-top:10px;">
-          <div>
-            <label class="muted">Kode diskon (opsional)</label>
-            <input id="voucher" class="input" placeholder="Contoh: HEMAT10" />
-          </div>
-          <div>
-            <label class="muted">Kontak (WhatsApp/Email)</label>
-            <input id="contact" class="input" placeholder="Contoh: 08xxxx / email@domain.com" />
-          </div>
-        </div>
-      </div>
+    <!-- Logo game -->
+    <div class="logo" id="gameLogo"></div>
 
-      <div class="card">
-        <h2>Pilih paket</h2>
-        <p class="muted">Harga dan nominal berbeda tiap game. Admin bisa ubah harga dari panel.</p>
-        <div id="packages" class="pkg" style="margin-top:10px;"></div>
-        <div class="notice" style="margin-top:12px;">
-          <strong>Catatan:</strong> Paket otomatis menyesuaikan game. Harga default bisa di-override dari admin.
-        </div>
-      </div>
+    <!-- Input akun -->
+    <div class="card">
+      <h2>Informasi Akun</h2>
+      <div id="accountFields"></div>
+      <label class="muted">Kontak</label>
+      <input id="contact" class="input" placeholder="WhatsApp / Email">
+    </div>
 
-      <div class="card">
-        <h2>Metode pembayaran</h2>
-        <p class="muted">Pilih salah satu metode. Halaman tunggu hanya untuk e-wallet/bank.</p>
-        <div id="payMethods" class="pay-methods" style="margin-top:10px;"></div>
-        <div id="saldoInfo" class="notice" style="margin-top:12px; display:none;"></div>
-        <div id="ewalletInfo" class="notice" style="margin-top:12px; display:none;">
-          <strong>Instruksi e-wallet/bank:</strong> Setelah klik bayar, kamu akan diarahkan ke <em>tunggu.html</em> untuk upload bukti transfer dan catatan untuk admin.
-        </div>
-        <div style="margin-top:14px; display:flex; gap:10px;">
-          <button id="payBtn" class="btn">Bayar sekarang</button>
-          <button id="resetBtn" class="btn secondary">Reset</button>
-        </div>
-        <p id="payMsg" style="margin-top:10px;"></p>
-      </div>
+    <!-- Paket -->
+    <div class="card">
+      <h2>Pilih Paket</h2>
+      <div id="packages" class="pkg"></div>
+    </div>
 
-      <!-- Grid game kamu (dipertahankan utuh) -->
-      <div class="card">
-        <h2>Pilih game lain</h2>
-        <div class="games-grid">
-            <a href="topup.html?game=ml" class="game-item">
-                <img src="https://assets.stickpng.com/images/62061920cdd94000043e3951.png" alt="Mobile Legends Diamonds" onerror="this.src='https://via.placeholder.com/120x120?text=ML'">
-                <p>Mobile Legends Diamonds</p>
-            </a>
-
-            <a href="topup.html?game=ff" class="game-item">
-                <img src="https://upload.wikimedia.org/wikipedia/en/c/c5/Logo_of_Garena_Free_Fire.png" alt="Free Fire Diamonds" onerror="this.src='https://via.placeholder.com/120x120?text=FF'">
-                <p>Free Fire Diamonds</p>
-            </a>
-
-            <a href="topup.html?game=pubg" class="game-item">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/4/43/PUBG_Mobile_simple_logo_black.png" alt="PUBG Mobile UC" onerror="this.src='https://via.placeholder.com/120x120?text=PUBG'">
-                <p>PUBG Mobile UC</p>
-            </a>
-
-            <a href="topup.html?game=valorant" class="game-item">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Valorant_logo_-_pink_color_version.svg/2560px-Valorant_logo_-_pink_color_version.svg.png" alt="Valorant Points" onerror="this.src='https://via.placeholder.com/120x120?text=VALORANT'">
-                <p>Valorant Points</p>
-            </a>
-
-            <a href="topup.html?game=genshin" class="game-item">
-                <img src="https://www.freepnglogos.com/uploads/genshin-impact-logo-png/hd-transparent-logo-genshin-impact-free-download-2.png" alt="Genshin Impact Crystals" onerror="this.src='https://via.placeholder.com/120x120?text=GENSHIN'">
-                <p>Genshin Impact Crystals</p>
-            </a>
-
-            <a href="topup.html?game=bigo" class="game-item">
-                <img src="https://logowik.com/content/uploads/images/bigo-live2708.jpg" alt="Bigo Live Diamonds" onerror="this.src='https://via.placeholder.com/120x120?text=BIGO'">
-                <p>Bigo Live Diamonds</p>
-            </a>
-
-            <a href="topup.html?game=hsr" class="game-item">
-                <img src="https://toppng.com/uploads/preview/official-logo-of-the-honkai-star-rail-game-11728656973tfuqkczxck.png" alt="Honkai Star Rail" onerror="this.src='https://via.placeholder.com/120x120?text=HSR'">
-                <p>Honkai Star Rail</p>
-            </a>
-
-            <a href="topup.html?game=codm" class="game-item">
-                <img src="https://static.wikia.nocookie.net/logopedia/images/7/77/CODM_Logo_BlackYellow.png/revision/latest?cb=20200325111109" alt="COD Mobile" onerror="this.src='https://via.placeholder.com/120x120?text=CODM'">
-                <p>Call of Duty Mobile</p>
-            </a>
-
-            <a href="topup.html?game=steam" class="game-item">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Steam_icon_logo.svg/1200px-Steam_icon_logo.svg.png" alt="Steam Wallet" onerror="this.src='https://via.placeholder.com/120x120?text=STEAM'">
-                <p>Steam Wallet</p>
-            </a>
-        </div>
-      </div>
-
-      <!-- Grid game kamu (kedua, tetap utuh) -->
-      <div class="card">
-        <h2>Pilih game lain</h2>
-        <div class="games-grid">
-            <a href="topup.html?game=ml" class="game-item">
-                <img src="https://assets.stickpng.com/images/62061920cdd94000043e3951.png" alt="Mobile Legends Diamonds" onerror="this.src='https://via.placeholder.com/120x120?text=ML'">
-                <p>Mobile Legends Diamonds</p>
-            </a>
-
-            <a href="topup.html?game=ff" class="game-item">
-                <img src="https://upload.wikimedia.org/wikipedia/en/c/c5/Logo_of_Garena_Free_Fire.png" alt="Free Fire Diamonds" onerror="this.src='https://via.placeholder.com/120x120?text=FF'">
-                <p>Free Fire Diamonds</p>
-            </a>
-
-            <a href="topup.html?game=pubg" class="game-item">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/4/43/PUBG_Mobile_simple_logo_black.png" alt="PUBG Mobile UC" onerror="this.src='https://via.placeholder.com/120x120?text=PUBG'">
-                <p>PUBG Mobile UC</p>
-            </a>
-
-            <a href="topup.html?game=valorant" class="game-item">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Valorant_logo_-_pink_color_version.svg/2560px-Valorant_logo_-_pink_color_version.svg.png" alt="Valorant Points" onerror="this.src='https://via.placeholder.com/120x120?text=VALORANT'">
-                <p>Valorant Points</p>
-            </a>
-
-            <a href="topup.html?game=genshin" class="game-item">
-                <img src="https://www.freepnglogos.com/uploads/genshin-impact-logo-png/hd-transparent-logo-genshin-impact-free-download-2.png" alt="Genshin Impact Crystals" onerror="this.src='https://via.placeholder.com/120x120?text=GENSHIN'">
-                <p>Genshin Impact Crystals</p>
-            </a>
-
-            <a href="topup.html?game=bigo" class="game-item">
-                <img src="https://logowik.com/content/uploads/images/bigo-live2708.jpg" alt="Bigo Live Diamonds" onerror="this.src='https://via.placeholder.com/120x120?text=BIGO'">
-                <p>Bigo Live Diamonds</p>
-            </a>
-
-            <a href="topup.html?game=hsr" class="game-item">
-                <img src="https://toppng.com/uploads/preview/official-logo-of-the-honkai-star-rail-game-11728656973tfuqkczxck.png" alt="Honkai Star Rail" onerror="this.src='https://via.placeholder.com/120x120?text=HSR'">
-                <p>Honkai Star Rail</p>
-            </a>
-
-            <a href="topup.html?game=codm" class="game-item">
-                <img src="https://static.wikia.nocookie.net/logopedia/images/7/77/CODM_Logo_BlackYellow.png/revision/latest?cb=20200325111109" alt="COD Mobile" onerror="this.src='https://via.placeholder.com/120x120?text=CODM'">
-                <p>Call of Duty Mobile</p>
-            </a>
-
-            <a href="topup.html?game=steam" class="game-item">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Steam_icon_logo.svg/1200px-Steam_icon_logo.svg.png" alt="Steam Wallet" onerror="this.src='https://via.placeholder.com/120x120?text=STEAM'">
-                <p>Steam Wallet</p>
-            </a>
-        </div>
-      </div>
+    <!-- Metode pembayaran -->
+    <div class="card">
+      <h2>Metode Pembayaran</h2>
+      <div id="payMethods"></div>
+      <button id="payBtn" class="btn">Bayar Sekarang</button>
+      <p id="payMsg"></p>
     </div>
   </div>
 
-  <footer>© RHF Topup — Semua transaksi dipantau admin. Halaman tunggu hanya untuk e-wallet/bank.</footer>
-
-  <!-- Firebase SDK + App Logic -->
   <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-    import { getDatabase, ref, get, set, child } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
-
-    const firebaseConfig = {
-      apiKey: "AIzaSyALIhKFz4bpOPmES6t2fAdx8VMPP0ye1wc",
-      authDomain: "rhf-resmi.firebaseapp.com",
-      databaseURL: "https://rhf-resmi-default-rtdb.asia-southeast1.firebasedatabase.app",
-      projectId: "rhf-resmi",
-      storageBucket: "rhf-resmi.firebasestorage.app",
-      messagingSenderId: "313439235544",
-      appId: "1:313439235544:web:b19a2ad538e34c1fe516ad",
-      measurementId: "G-LNCVH73P3X"
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const db = getDatabase(app);
-
-    // --- Helpers ---
-    const DB = {
-      uid() { return 'ORD-' + Math.random().toString(36).slice(2, 8).toUpperCase(); },
-    };
-
-    // --- Game config: fields + packages (default prices; admin can override via PRICES_OVERRIDES) ---
-    const GAME_CONFIG = {
-      ml: {
-        name: 'Mobile Legends',
-        fields: [
-          { id: 'ml_id', label: 'ID (Server)', placeholder: 'Contoh: 12345678 (1234)' },
-          { id: 'nickname', label: 'Nickname', placeholder: 'Nama dalam game' },
-        ],
-        packages: [
-          { id: 'ml_86', title: '86 Diamonds', price: 20000 },
-          { id: 'ml_172', title: '172 Diamonds', price: 38000 },
-          { id: 'ml_257', title: '257 Diamonds', price: 56000 },
-          { id: 'ml_344', title: '344 Diamonds', price: 74000 },
-          { id: 'ml_429', title: '429 Diamonds', price: 92000 },
-          { id: 'ml_514', title: '514 Diamonds', price: 110000 },
-        ],
-      },
-      ff: {
-        name: 'Free Fire',
-        fields: [
-          { id: 'ff_id', label: 'Player ID', placeholder: 'Contoh: 123456789' },
-          { id: 'nickname', label: 'Nickname', placeholder: 'Nama dalam game' },
-        ],
-        packages: [
-          { id: 'ff_50', title: '50 Diamonds', price: 9000 },
-          { id: 'ff_100', title: '100 Diamonds', price: 17000 },
-          { id: 'ff_310', title: '310 Diamonds', price: 50000 },
-          { id: 'ff_520', title: '520 Diamonds', price: 80000 },
-          { id: 'ff_1060', title: '1060 Diamonds', price: 155000 },
-          { id: 'ff_week', title: 'Weekly Membership', price: 30000 },
-          { id: 'ff_month', title: 'Monthly Membership', price: 150000 },
-        ],
-      },
-      pubg: {
-        name: 'PUBG Mobile',
-        fields: [
-          { id: 'pubg_id', label: 'Character ID', placeholder: 'Contoh: 5123456789' },
-          { id: 'nickname', label: 'Nickname', placeholder: 'Nama dalam game' },
-        ],
-        packages: [
-          { id: 'pubg_60', title: '60 UC', price: 15000 },
-          { id: 'pubg_300', title: '300 UC', price: 70000 },
-          { id: 'pubg_600', title: '600 UC', price: 135000 },
-          { id: 'pubg_1200', title: '1200 UC', price: 265000 },
-        ],
-      },
-      valorant: {
-        name: 'Valorant',
-        fields: [
-          { id: 'riot_id', label: 'Riot ID', placeholder: 'Contoh: Nama#1234' },
-        ],
-        packages: [
-          { id: 'val_475', title: '475 VP', price: 55000 },
-          { id: 'val_1000', title: '1000 VP', price: 105000 },
-          { id: 'val_2050', title: '2050 VP', price: 205000 },
-        ],
-      },
-      genshin: {
-        name: 'Genshin Impact',
-        fields: [
-          { id: 'uid', label: 'UID', placeholder: 'Contoh: 800123456' },
-          { id: 'server', label: 'Server', placeholder: 'Asia / America / Europe' },
-        ],
-        packages: [
-          { id: 'gen_60', title: '60 Genesis Crystals', price: 15000 },
-          { id: 'gen_300', title: '300 Genesis Crystals', price: 70000 },
-          { id: 'gen_980', title: '980 Genesis Crystals', price: 210000 },
-        ],
-      },
-      bigo: {
-        name: 'Bigo Live',
-        fields: [
-          { id: 'bigo_id', label: 'Bigo ID', placeholder: 'Contoh: 12345678' },
-        ],
-        packages: [
-          { id: 'bigo_42', title: '42 Diamonds', price: 12000 },
-          { id: 'bigo_210', title: '210 Diamonds', price: 55000 },
-          { id: 'bigo_420', title: '420 Diamonds', price: 105000 },
-        ],
-      },
-      hsr: {
-        name: 'Honkai Star Rail',
-        fields: [
-          { id: 'uid', label: 'UID', placeholder: 'Contoh: 800123456' },
-          { id: 'server', label: 'Server', placeholder: 'Asia / America / Europe' },
-        ],
-        packages: [
-          { id: 'hsr_60', title: '60 Oneiric Shards', price: 15000 },
-          { id: 'hsr_300', title: '300 Oneiric Shards', price: 70000 },
-          { id: 'hsr_980', title: '980 Oneiric Shards', price: 210000 },
-        ],
-      },
-      codm: {
-        name: 'Call of Duty Mobile',
-        fields: [
-          { id: 'uid', label: 'UID', placeholder: 'Contoh: 800123456' },
-          { id: 'nickname', label: 'Nickname', placeholder: 'Nama dalam game' },
-        ],
-        packages: [
-          { id: 'codm_80', title: '80 CP', price: 15000 },
-          { id: 'codm_420', title: '420 CP', price: 75000 },
-          { id: 'codm_880', title: '880 CP', price: 150000 },
-        ],
-      },
-      steam: {
-        name: 'Steam Wallet',
-        fields: [
-          { id: 'steam_id', label: 'Steam ID / Email', placeholder: 'Contoh: email@domain.com' },
-        ],
-        packages: [
-          { id: 'steam_45', title: 'Wallet 45k', price: 45000 },
-          { id: 'steam_90', title: 'Wallet 90k', price: 90000 },
-          { id: 'steam_200', title: 'Wallet 200k', price: 200000 },
-        ],
-      },
-    };
-
-    const PAYMENT = {
-      RHF_SALDO: { id: 'saldo', label: 'Saldo RHF' },
-      EWALLET: { id: 'ewallet', label: 'E-Wallet (DANA/OVO/GoPay/ShopeePay/QRIS)' },
-      BANK: { id: 'bank', label: 'Transfer Bank' },
-    };
-
-    // --- State ---
+    // ambil parameter game dari URL
     const params = new URLSearchParams(location.search);
     const gameKey = params.get('game') || 'ff';
-    const game = GAME_CONFIG[gameKey] || GAME_CONFIG.ff;
 
-    let selectedPkg = null;
-    let selectedPay = PAYMENT.RHF_SALDO.id;
+    // config game (contoh singkat)
+    const GAME_CONFIG = {
+      ff: {
+        name:'Free Fire',
+        logo:'https://upload.wikimedia.org/wikipedia/en/c/c5/Logo_of_Garena_Free_Fire.png',
+        fields:[{id:'ff_id',label:'Player ID',placeholder:'Contoh: 123456789'}],
+        packages:[{id:'ff_50',title:'50 Diamonds',price:9000},{id:'ff_100',title:'100 Diamonds',price:17000}]
+      },
+      ml: {
+        name:'Mobile Legends',
+        logo:'https://assets.stickpng.com/images/62061920cdd94000043e3951.png',
+        fields:[{id:'ml_id',label:'ID (Server)',placeholder:'Contoh: 12345678 (1234)'}],
+        packages:[{id:'ml_86',title:'86 Diamonds',price:20000}]
+      }
+      // tambahkan game lain sesuai kebutuhan
+    };
 
-    // Demo userId (ganti dengan auth uid jika sudah pakai Firebase Auth)
-    const userId = 'demoUser';
+    const game = GAME_CONFIG[gameKey];
+    document.getElementById('gameLogo').innerHTML = `<img src="${game.logo}" alt="${game.name}"><h2>${game.name}</h2>`;
 
-    // --- Render account fields ---
-    function renderFields() {
-      const wrap = document.getElementById('accountFields');
-      wrap.innerHTML = '';
-      game.fields.forEach(f => {
-        const div = document.createElement('div');
-        div.innerHTML = `
-          <label class="muted">${f.label}</label>
-          <input id="${f.id}" class="input" placeholder="${f.placeholder}" />
-        `;
-        wrap.appendChild(div);
+    // render fields
+    const accountFields = document.getElementById('accountFields');
+    game.fields.forEach(f=>{
+      const div=document.createElement('div');
+      div.innerHTML=`<label>${f.label}</label><input id="${f.id}" class="input" placeholder="${f.placeholder}">`;
+      accountFields.appendChild(div);
+    });
+
+    // render packages
+    const packages=document.getElementById('packages');
+    game.packages.forEach(p=>{
+      const item=document.createElement('div');
+      item.className='pkg-item';
+      item.innerHTML=`<div>${p.title}</div><div>Rp ${p.price.toLocaleString('id-ID')}</div>`;
+      item.addEventListener('click',()=>{ 
+        document.querySelectorAll('.pkg-item').forEach(el=>el.classList.remove('active'));
+        item.classList.add('active');
+        selectedPkg=p;
       });
-    }
+      packages.appendChild(item);
+    });
 
-    // --- Get price override from Firebase ---
-    async funct
+    // render metode pembayaran
+    const payMethods=document.getElementById('payMethods');
+    ['saldo','ewallet'].forEach(m=>{
+      const chip=document.createElement('button');
+      chip.className='chip'+(m==='saldo'?' active':'');
+      chip.textContent=(m==='saldo'?'Saldo RHF':'E-Wallet (DANA/OVO/GoPay/ShopeePay/QRIS)');
+      chip.addEventListener('click',()=>{
+        document.querySelectorAll('.chip').forEach(el=>el.classList.remove('active'));
+        chip.classList.add('active');
+        selectedPay=m;
+      });
+      payMethods.appendChild(chip);
+    });
+
+    let selectedPkg=null;
+    let selectedPay='saldo';
+
+    document.getElementById('payBtn').addEventListener('click',()=>{
+      const msg=document.getElementById('payMsg');
+      msg.textContent='';
+      const contact=document.getElementById('contact').value.trim();
+      if(!selectedPkg){ msg.textContent='Pilih paket dulu'; msg.className='error'; return; }
+      if(!contact){ msg.textContent='Isi kontak'; msg.className='error'; return; }
+      if(selectedPay==='saldo'){
+        msg.textContent='Pembayaran dengan Saldo RHF diproses...'; msg.className='success';
+        // logika saldo: cek saldo di Firebase, kurangi kalau cukup, kalau tidak cukup masuk admin
+      }else{
+        msg.textContent='Dialihkan ke halaman tunggu untuk upload bukti e-wallet...'; msg.className='success';
+        location.href=`tunggu.html?order=ORD123&game=${gameKey}`;
+      }
+    });
+  </script>
+</body>
+</html>
