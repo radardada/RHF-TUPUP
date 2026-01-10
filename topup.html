@@ -69,7 +69,7 @@
     <!-- Metode pembayaran -->
     <div class="card">
       <h2>Metode pembayaran</h2>
-      <p class="muted">Saldo RHF diproses langsung. E‑wallet diarahkan ke halaman tunggu untuk upload bukti.</p>
+      <p class="muted">Saldo RHF diproses langsung. E‑wallet/Bank diarahkan ke halaman tunggu untuk upload bukti.</p>
       <div id="payMethods" class="chips" style="margin-top:10px;"></div>
       <div id="saldoInfo" class="muted" style="margin-top:10px;display:none;"></div>
       <button id="payBtn" class="btn" style="margin-top:14px;">Bayar sekarang</button>
@@ -82,7 +82,6 @@
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
     import { getDatabase, ref, get, set, update } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
-    // Firebase config (sesuai firedatabase kamu)
     const firebaseConfig = {
       apiKey: "AIzaSyALIhKFz4bpOPmES6t2fAdx8VMPP0ye1wc",
       authDomain: "rhf-resmi.firebaseapp.com",
@@ -100,7 +99,7 @@
     // --- Helpers & state ---
     const params = new URLSearchParams(location.search);
     const gameKey = params.get('game') || 'ff';
-    const userId = params.get('uid') || 'demoUser'; // ganti dengan UID auth jika ada
+    const userId = params.get('uid') || '-OiaOj6ERcsxHhKRQzSd'; // ganti dengan UID auth jika ada
     const orderId = () => 'ORD-' + Math.random().toString(36).slice(2, 10).toUpperCase();
 
     const GAME_CONFIG = {
@@ -303,7 +302,7 @@
       if(selectedPay !== PAYMENT.SALDO.id){ el.style.display='none'; return; }
       el.style.display='block';
       try{
-        const snap = await get(ref(db, 'SALDO_USERS/' + userId));
+        const snap = await get(ref(db, 'users/' + userId + '/saldo'));
         const saldo = snap.exists() ? Number(snap.val()) : 0;
         el.textContent = `Saldo RHF kamu: Rp ${saldo.toLocaleString('id-ID')}. Jika saldo tidak cukup, transaksi tidak diarahkan ke konfirmasi dan akan tercatat di admin.`;
       }catch(e){
@@ -334,20 +333,20 @@
         price,
         account: collectAccount(),
         contact: (document.getElementById('contact').value || '').trim(),
-        note: (document.getElementById('note').value || '').trim(),
+        note: (document.getElementById('note')?.value || '').trim(),
         payMethod: selectedPay,
         status: 'created',
         createdAt: Date.now(),
       };
     }
 
-    // --- Saldo ops (per user) ---
+    // --- Saldo ops (users/{uid}/saldo) ---
     async function getUserSaldo(uid){
-      const snap = await get(ref(db, 'SALDO_USERS/' + uid));
+      const snap = await get(ref(db, 'users/' + uid + '/saldo'));
       return snap.exists() ? Number(snap.val()) : 0;
     }
     async function setUserSaldo(uid, newSaldo){
-      await set(ref(db, 'SALDO_USERS/' + uid), newSaldo);
+      await update(ref(db, 'users/' + uid), { saldo: newSaldo });
     }
 
     // --- Persist order to DB ---
@@ -388,7 +387,7 @@
       order.status = 'waiting_payment';
       await pushAdminQueue(order);
       const m = method === PAYMENT.BANK.id ? 'bank' : 'ewallet';
-      location.href = `tunggu.html?order=${order.id}&method=${m}`;
+      location.href = `tunggu.html?order=${order.id}&method=${m}&game=${order.game}`;
     }
 
     // --- Button handler ---
@@ -404,7 +403,7 @@
       if(!selectedPkg){ msg.textContent='Pilih paket terlebih dahulu.'; msg.className='error'; return; }
       if(!contact){ msg.textContent='Isi kontak agar admin bisa menghubungi.'; msg.className='error'; return; }
 
-      const price = selectedPkg.price; // bisa ditambah voucher/logic lain jika perlu
+      const price = selectedPkg.price;
       const order = buildOrder(price);
 
       await logOrder(order);
